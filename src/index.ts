@@ -13,6 +13,8 @@ export type {
   PitchCurve,
 } from './providers/types.js';
 
+export { AudioBus, IAudioBus } from './core/AudioBus.js';
+
 export class ChipAudioEngine {
   // TODO: implementation
 }
