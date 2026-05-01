@@ -73,8 +73,8 @@
       "properties": {
         "type": {
           "type": "string",
-          "enum": ["sine", "square", "sawtooth", "triangle", "custom"],
-          "description": "Oscillator waveform type"
+          "enum": ["sine", "square", "sawtooth", "triangle", "custom", "noise"],
+          "description": "Oscillator waveform type (noise = pink noise buffer)"
         },
         "frequency": {
           "oneOf": [
@@ -163,7 +163,21 @@
         },
         "curve": {
           "type": "string",
-          "description": "Easing curve name (e.g. 'linear', 'exponential')"
+          "enum": ["linear", "exponential", "vibrato"],
+          "description": "Pitch ramp curve type (default: exponential)"
+        },
+        "vibrato": {
+          "type": "object",
+          "properties": {
+            "rate": {
+              "type": "number",
+              "description": "LFO rate in Hz"
+            },
+            "depth": {
+              "type": "number",
+              "description": "Detune depth in cents"
+            }
+          }
         }
       }
     }

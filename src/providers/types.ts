@@ -1,6 +1,6 @@
 /** 波形配置 */
 export interface WaveformConfig {
-  type: OscillatorType;
+  type: OscillatorType | 'noise';
   frequency: number | [number, number];
   detune?: number;
   gain?: number;
@@ -26,6 +26,8 @@ export interface FilterConfig {
 export interface PitchCurve {
   start: number;
   end: number;
+  curve?: 'linear' | 'exponential' | 'vibrato';
+  vibrato?: { rate: number; depth: number };
 }
 
 /** 声音参数 — 创建声音实例时使用 */
