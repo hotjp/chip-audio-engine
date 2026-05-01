@@ -34,7 +34,11 @@ export class EventEmitter<Events extends EventMap = EventMap> {
 
   emit<K extends keyof Events>(event: K, payload: Events[K]): void {
     this.handlers.get(event)?.forEach((handler) => {
-      handler(payload);
+      try {
+        handler(payload);
+      } catch {
+        // Isolate handler errors to prevent interrupting subsequent listeners.
+      }
     });
   }
 }
