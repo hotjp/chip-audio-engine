@@ -40,6 +40,8 @@ export class DuckManager {
 
     const stillReferencedTrigger = this.rules.some((r) => r.trigger === trigger);
     if (!stillReferencedTrigger) {
+      // Note: if the trigger is currently active, its count is not decremented
+      // here; this is a known limitation of dynamic rule removal.
       this.triggerCounts.delete(trigger);
     }
   }
@@ -49,6 +51,8 @@ export class DuckManager {
   }
 
   setActive(soundId: string): void {
+    // Invariant: matchingRules must remain stable between setActive and
+    // clearActive calls for the same trigger, otherwise activeCount will drift.
     const matchingRules = this.getDuckRules(soundId);
     if (matchingRules.length === 0) {
       return;
