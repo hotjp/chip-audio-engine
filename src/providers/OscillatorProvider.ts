@@ -36,7 +36,6 @@ export class OscillatorProvider implements SoundProvider {
 
 export class OscillatorSound implements SoundInstance {
   private ctx: BaseAudioContext;
-  private soundId: string;
   private params: SoundParams;
   private oscillators: OscillatorNode[] = [];
   private waveGains: GainNode[] = [];
@@ -47,9 +46,8 @@ export class OscillatorSound implements SoundInstance {
   private currentGain = 0;
   private disposed = false;
 
-  constructor(ctx: BaseAudioContext, soundId: string, params: SoundParams) {
+  constructor(ctx: BaseAudioContext, _soundId: string, params: SoundParams) {
     this.ctx = ctx;
-    this.soundId = soundId;
     this.params = params;
 
     this.masterGain = ctx.createGain();
