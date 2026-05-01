@@ -6,6 +6,7 @@ import { ChannelPool } from '../core/ChannelPool.js';
 import { Aggregator, AggregationConfig } from '../core/Aggregator.js';
 import { DuckManager, DuckRule } from '../core/DuckManager.js';
 import { SoundPackLoader, SoundPack } from '../config/SoundPackLoader.js';
+import { VisibilityManager } from './VisibilityManager.js';
 
 export interface EngineConfig {
   audioContext?: AudioContext;
@@ -30,12 +31,14 @@ export class ChipAudioEngine {
   private providers: Map<string, SoundProvider> = new Map();
   private activeSounds: Map<string, ActiveSound> = new Map();
   private config: EngineConfig;
+  private visibilityManager: VisibilityManager;
 
   constructor(config: EngineConfig = {}) {
     this.config = config;
     this.aggregator = new Aggregator();
     this.duckManager = new DuckManager();
     this.soundPackLoader = new SoundPackLoader();
+    this.visibilityManager = new VisibilityManager(this);
 
     if (config.soundPack) {
       this.soundPackLoader.register(config.soundPack);
@@ -168,6 +171,7 @@ export class ChipAudioEngine {
     this.providers.clear();
     this.aggregator.reset();
     this.duckManager.clearAll();
+    this.disableVisibilityMute();
   }
 
   registerProvider(provider: SoundProvider): void {
@@ -213,6 +217,14 @@ export class ChipAudioEngine {
     if (this.masterBus) {
       this.masterBus.muted = value;
     }
+  }
+
+  enableVisibilityMute(): void {
+    this.visibilityManager.enable();
+  }
+
+  disableVisibilityMute(): void {
+    this.visibilityManager.disable();
   }
 
   private disposeSound(soundId: string): void {

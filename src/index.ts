@@ -23,3 +23,4 @@ export { DuckManager, DuckRule } from './core/DuckManager.js';
 export { SoundPackLoader, SoundPack, SoundPackEntry } from './config/SoundPackLoader.js';
 
 export { ChipAudioEngine, EngineConfig } from './engine/ChipAudioEngine.js';
+export { VisibilityManager } from './engine/VisibilityManager.js';
