@@ -107,14 +107,14 @@ export class ChipAudioEngine extends EventEmitter<EngineEvents> {
       return;
     }
 
-    // If another active sound was preempted from this channel, dispose it
-    // without releasing the channel since it has been reassigned.
-    for (const [otherSoundId, active] of this.activeSounds) {
-      if (active.channelId === channelId && otherSoundId !== soundId) {
-        this.disposeSound(otherSoundId, 'stolen', false);
-        break;
-      }
-    }
+    // Capture the old active sound with the same id before we overwrite it.
+    const oldActive = this.activeSounds.get(soundId);
+
+    // If another active sound was preempted from this channel, note it
+    // without mutating activeSounds during iteration.
+    const preempted = Array.from(this.activeSounds.entries()).find(
+      ([otherSoundId, active]) => active.channelId === channelId && otherSoundId !== soundId
+    );
 
     const instance = provider.createSound(this.ctx, soundId, soundParams);
 
@@ -132,8 +132,6 @@ export class ChipAudioEngine extends EventEmitter<EngineEvents> {
       this.disposeSound(soundId, 'completed');
     }, durationMs + 100);
 
-    this.stopIfActive(soundId, 'stolen');
-
     this.activeSounds.set(soundId, {
       instance,
       channelId,
@@ -141,6 +139,24 @@ export class ChipAudioEngine extends EventEmitter<EngineEvents> {
     });
 
     this.emit('play', { soundId, channelId });
+
+    // Dispose the old instance of the same sound after the new state is set,
+    // so that listeners observing activeSounds during the 'stop' event see
+    // the new sound already registered.
+    if (oldActive) {
+      clearTimeout(oldActive.timeoutId);
+      oldActive.instance.stop(this.ctx.currentTime);
+      oldActive.instance.dispose();
+      if (oldActive.channelId !== channelId) {
+        this.channelPool.release(oldActive.channelId);
+      }
+      this.clearDucking(soundId);
+      this.emit('stop', { soundId, reason: 'stolen' });
+    }
+
+    if (preempted) {
+      this.disposeSound(preempted[0], 'stolen', false);
+    }
   }
 
   stop(soundId: string): void {
@@ -171,6 +187,7 @@ export class ChipAudioEngine extends EventEmitter<EngineEvents> {
     this.providers.clear();
     this.aggregator.reset();
     this.duckManager.clearAll();
+    this.activeSounds.clear();
   }
 
   suspend(): void {
