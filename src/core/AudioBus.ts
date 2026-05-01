@@ -49,6 +49,9 @@ export class AudioBus implements IAudioBus {
   }
 
   setVolume(value: number): void {
+    if (!Number.isFinite(value)) {
+      return;
+    }
     const clamped = Math.max(0, Math.min(1, value));
     this._volume = clamped;
     if (!this._muted) {
@@ -82,6 +85,9 @@ export class AudioBus implements IAudioBus {
   }
 
   fadeTo(target: number, durationMs: number): void {
+    if (!Number.isFinite(target) || !Number.isFinite(durationMs)) {
+      return;
+    }
     const clampedTarget = Math.max(0, Math.min(1, target));
     const now = this.context.currentTime;
 
@@ -103,6 +109,12 @@ export class AudioBus implements IAudioBus {
   }
 
   addBus(subBus: AudioBus): void {
+    if (subBus === this) {
+      throw new Error('Cannot add a bus as a child of itself');
+    }
+    if (subBus._parent !== null) {
+      throw new Error(`Bus "${subBus.id}" already has a parent`);
+    }
     if (this.children.has(subBus.id)) {
       throw new Error(`Bus with id "${subBus.id}" already exists in bus "${this.id}"`);
     }

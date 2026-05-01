@@ -108,10 +108,12 @@ export class OscillatorSound implements SoundInstance {
     if (this.started || this.disposed) return;
     this.started = true;
 
-    const delay = playParams.delay ?? 0;
+    const delay = Number.isFinite(playParams.delay) ? (playParams.delay ?? 0) : 0;
     const t0 = when + delay;
-    const volume = playParams.volume ?? this.params.volume ?? 1;
-    const pitchMul = playParams.pitch ?? 1;
+    const volume = Number.isFinite(playParams.volume)
+      ? (playParams.volume ?? this.params.volume ?? 1)
+      : (this.params.volume ?? 1);
+    const pitchMul = Number.isFinite(playParams.pitch) ? (playParams.pitch ?? 1) : 1;
     const envelope = this.params.envelope;
     const pitchCurve = this.params.pitch;
     const durationMs = this.params.duration;

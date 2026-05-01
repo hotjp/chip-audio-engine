@@ -47,6 +47,9 @@ export class ChipAudioEngine extends EventEmitter<EngineEvents> {
   }
 
   init(): void {
+    if (this.ctx) {
+      return;
+    }
     if (this.config.audioContext) {
       this.ctx = this.config.audioContext;
       this.ownsContext = false;
@@ -247,8 +250,9 @@ export class ChipAudioEngine extends EventEmitter<EngineEvents> {
   }
 
   set masterMuted(value: boolean) {
-    if (this.masterBus) {
+    if (this.masterBus && this.masterBus.muted !== value) {
       this.masterBus.muted = value;
+      this.emit('bus:mute', { busId: 'master', muted: value });
     }
   }
 
