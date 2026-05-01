@@ -7,13 +7,13 @@
       "description": "项目骨架：package.json + tsconfig.json + 构建配置",
       "template": "task",
       "priority": "P0",
-      "status": "pending",
+      "status": "completed",
       "parent_id": null,
       "output_req": "8k",
       "context_hint": "8k",
       "task_file": "tasks/task_001.md",
       "created_at": "2026-05-01T12:33:43.945566",
-      "updated_at": "2026-05-01T12:33:43.945568",
+      "updated_at": "2026-05-01T12:59:03.513663",
       "dependencies": [],
       "dependency_type": "all",
       "deadline": null,
@@ -34,13 +34,13 @@
       "description": "AudioBus 基础类",
       "template": "task",
       "priority": "P0",
-      "status": "blocked",
+      "status": "pending",
       "parent_id": null,
       "output_req": "8k",
       "context_hint": "8k",
       "task_file": "tasks/task_002.md",
       "created_at": "2026-05-01T12:34:07.331881",
-      "updated_at": "2026-05-01T12:34:07.331890",
+      "updated_at": "2026-05-01T12:59:03.383519",
       "dependencies": [
         "task_001"
       ],
@@ -684,6 +684,118 @@
       "dependencies": [
         "task_019"
       ],
+      "dependency_type": "all",
+      "deadline": null,
+      "ralph": {
+        "iteration": 0,
+        "max_iterations": 7,
+        "quality_checks": {
+          "tests_passed": false,
+          "lint_passed": false,
+          "acceptance_met": false
+        },
+        "issues": [],
+        "optimization_history": []
+      }
+    },
+    {
+      "id": "task_025",
+      "description": "AudioBus 基础类：GainNode 封装",
+      "template": "task",
+      "priority": "P0",
+      "status": "pending",
+      "parent_id": null,
+      "output_req": "8k",
+      "context_hint": "8k",
+      "task_file": "tasks/task_025.md",
+      "created_at": "2026-05-01T13:05:19.128300",
+      "updated_at": "2026-05-01T13:05:19.128315",
+      "dependencies": [
+        "task_001"
+      ],
+      "dependency_type": "all",
+      "deadline": null,
+      "ralph": {
+        "iteration": 0,
+        "max_iterations": 7,
+        "quality_checks": {
+          "tests_passed": false,
+          "lint_passed": false,
+          "acceptance_met": false
+        },
+        "issues": [],
+        "optimization_history": []
+      }
+    },
+    {
+      "id": "task_026",
+      "description": "Bus 树构建：MasterBus 到 MusicBus+SFXBus",
+      "template": "task",
+      "priority": "P0",
+      "status": "blocked",
+      "parent_id": null,
+      "output_req": "8k",
+      "context_hint": "8k",
+      "task_file": "tasks/task_026.md",
+      "created_at": "2026-05-01T13:05:24.870812",
+      "updated_at": "2026-05-01T13:05:24.870824",
+      "dependencies": [
+        "task_025"
+      ],
+      "dependency_type": "all",
+      "deadline": null,
+      "ralph": {
+        "iteration": 0,
+        "max_iterations": 7,
+        "quality_checks": {
+          "tests_passed": false,
+          "lint_passed": false,
+          "acceptance_met": false
+        },
+        "issues": [],
+        "optimization_history": []
+      }
+    },
+    {
+      "id": "task_027",
+      "description": "ChannelPool：8 通道管理与分配",
+      "template": "task",
+      "priority": "P1",
+      "status": "pending",
+      "parent_id": null,
+      "output_req": "8k",
+      "context_hint": "8k",
+      "task_file": "tasks/task_027.md",
+      "created_at": "2026-05-01T13:05:41.081477",
+      "updated_at": "2026-05-01T13:05:41.081488",
+      "dependencies": [],
+      "dependency_type": "all",
+      "deadline": null,
+      "ralph": {
+        "iteration": 0,
+        "max_iterations": 7,
+        "quality_checks": {
+          "tests_passed": false,
+          "lint_passed": false,
+          "acceptance_met": false
+        },
+        "issues": [],
+        "optimization_history": []
+      }
+    },
+    {
+      "id": "task_028",
+      "description": "OscillatorProvider：振荡器合成音源",
+      "template": "task",
+      "priority": "P0",
+      "status": "pending",
+      "parent_id": null,
+      "output_req": "8k",
+      "context_hint": "8k",
+      "task_file": "tasks/task_028.md",
+      "created_at": "2026-05-01T13:05:47.357923",
+      "updated_at": "2026-05-01T13:05:47.357933",
+      "dependencies": [],
       "dependency_type": "all",
       "deadline": null,
       "ralph": {

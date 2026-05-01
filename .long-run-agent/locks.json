@@ -1,11 +1,19 @@
 {
   "locks": {
-    "task_001": {
-      "session_id": "task_001_202605011254_7e17",
-      "task_id": "task_001",
+    "task_025": {
+      "session_id": "task_025_202605011505_9d96",
+      "task_id": "task_025",
       "status": "claimed",
-      "claimed_at": "2026-05-01T12:54:17.897664",
-      "last_heartbeat": "2026-05-01T12:54:17.897664",
+      "claimed_at": "2026-05-01T15:05:02.435315",
+      "last_heartbeat": "2026-05-01T15:05:02.435315",
+      "checkpoint": null
+    },
+    "task_005": {
+      "session_id": "task_005_202605011505_e705",
+      "task_id": "task_005",
+      "status": "claimed",
+      "claimed_at": "2026-05-01T15:05:02.624636",
+      "last_heartbeat": "2026-05-01T15:05:02.624636",
       "checkpoint": null
     }
   }

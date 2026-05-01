@@ -31,7 +31,8 @@ SoundProvider 接口定义
 
 ## 交付物 (deliverables)
 
-<!-- 在此填写交付物文件路径 -->
+- src/providers/SoundProvider.ts
+- src/providers/types.ts
 
 
 
