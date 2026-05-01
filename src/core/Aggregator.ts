@@ -10,6 +10,7 @@ interface SoundState {
   lastSubmitTime: number;
   count: number;
   timerId?: ReturnType<typeof setTimeout>;
+  priority?: number;
 }
 
 export class Aggregator {
@@ -25,14 +26,20 @@ export class Aggregator {
     this.defaultConfig = config;
   }
 
-  submit(soundId: string, _priority: number): boolean {
+  removeAllConfigs(): void {
+    this.configs.clear();
+  }
+
+  submit(soundId: string, priority: number): boolean {
     const config = this.configs.get(soundId) ?? this.defaultConfig;
     const now = Date.now();
     const state = this.states.get(soundId);
 
     switch (config.strategy) {
-      case 'restart':
+      case 'restart': {
+        this.states.set(soundId, { lastSubmitTime: now, count: 1, priority });
         return true;
+      }
 
       case 'arpeggio': {
         const windowMs = config.windowMs ?? 200;
@@ -41,7 +48,7 @@ export class Aggregator {
           state.count++;
           return false;
         }
-        this.states.set(soundId, { lastSubmitTime: now, count: 1 });
+        this.states.set(soundId, { lastSubmitTime: now, count: 1, priority });
         return true;
       }
 
@@ -56,7 +63,7 @@ export class Aggregator {
           state.count++;
           return true;
         }
-        this.states.set(soundId, { lastSubmitTime: now, count: 1 });
+        this.states.set(soundId, { lastSubmitTime: now, count: 1, priority });
         return true;
       }
 
@@ -66,17 +73,13 @@ export class Aggregator {
           if (state.timerId) {
             clearTimeout(state.timerId);
           }
-          state.timerId = setTimeout(() => {
-            this.states.delete(soundId);
-          }, windowMs);
+          state.timerId = setTimeout(() => this.expireState(soundId), windowMs);
           return false;
         }
         const newState: SoundState = {
           lastSubmitTime: now,
           count: 1,
-          timerId: setTimeout(() => {
-            this.states.delete(soundId);
-          }, windowMs),
+          timerId: setTimeout(() => this.expireState(soundId), windowMs),
         };
         this.states.set(soundId, newState);
         return true;
@@ -85,6 +88,10 @@ export class Aggregator {
       default:
         return true;
     }
+  }
+
+  private expireState(soundId: string): void {
+    this.states.delete(soundId);
   }
 
   reset(): void {
