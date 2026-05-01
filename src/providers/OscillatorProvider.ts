@@ -42,6 +42,7 @@ export class OscillatorSound implements SoundInstance {
   private connected = false;
   private started = false;
   private currentGain = 0;
+  private disposed = false;
 
   constructor(ctx: BaseAudioContext, soundId: string, params: SoundParams) {
     this.ctx = ctx;
@@ -95,13 +96,13 @@ export class OscillatorSound implements SoundInstance {
   }
 
   connect(node: AudioNode): void {
-    if (this.connected) return;
+    if (this.connected || this.disposed) return;
     this.connected = true;
     this.masterGain.connect(node);
   }
 
   start(when: number, playParams: PlayParams): void {
-    if (this.started) return;
+    if (this.started || this.disposed) return;
     this.started = true;
 
     const delay = playParams.delay ?? 0;
@@ -152,6 +153,7 @@ export class OscillatorSound implements SoundInstance {
   }
 
   stop(when: number): void {
+    if (this.disposed) return;
     const releaseMs = this.params.envelope?.release ?? 100;
     const releaseEnd = when + toSeconds(releaseMs);
 
@@ -171,6 +173,9 @@ export class OscillatorSound implements SoundInstance {
   }
 
   dispose(): void {
+    if (this.disposed) return;
+    this.disposed = true;
+
     for (const osc of this.oscillators) {
       try {
         osc.stop();
@@ -186,11 +191,9 @@ export class OscillatorSound implements SoundInstance {
       this.filterNode.disconnect();
     }
     this.masterGain.disconnect();
+
     this.oscillators = [];
     this.waveGains = [];
     this.filterNode = undefined;
-    this.masterGain = null as unknown as GainNode;
-    this.ctx = null as unknown as BaseAudioContext;
-    this.params = null as unknown as SoundParams;
   }
 }
