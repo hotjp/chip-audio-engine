@@ -30,10 +30,12 @@ export class AudioBus implements IAudioBus {
     return this._parent;
   }
 
+  /** Underlying GainNode used as the bus input. */
   get input(): AudioNode {
     return this.gainNode;
   }
 
+  /** Underlying GainNode used as the bus output. */
   get output(): AudioNode {
     return this.gainNode;
   }
@@ -89,6 +91,8 @@ export class AudioBus implements IAudioBus {
     this.gainNode.gain.linearRampToValueAtTime(clampedTarget, endTime);
 
     this._volume = clampedTarget;
+    // A fade to a positive target implies the bus should be audible,
+    // so we clear the muted flag as a side effect.
     if (this._muted && clampedTarget > 0) {
       this._muted = false;
     }
@@ -116,6 +120,7 @@ export class AudioBus implements IAudioBus {
     return undefined;
   }
 
+  /** Returns the number of child buses attached to this bus. */
   getActiveCount(): number {
     return this.children.size;
   }
