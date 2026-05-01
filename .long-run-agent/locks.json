@@ -1,0 +1,12 @@
+{
+  "locks": {
+    "task_001": {
+      "session_id": "task_001_202605011254_7e17",
+      "task_id": "task_001",
+      "status": "claimed",
+      "claimed_at": "2026-05-01T12:54:17.897664",
+      "last_heartbeat": "2026-05-01T12:54:17.897664",
+      "checkpoint": null
+    }
+  }
+}

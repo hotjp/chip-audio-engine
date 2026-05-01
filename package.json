@@ -1,0 +1,21 @@
+{
+  "name": "chip-audio-engine",
+  "version": "0.1.0",
+  "description": "通用浏览器端音频引擎",
+  "main": "dist/umd/index.js",
+  "module": "dist/index.js",
+  "type": "module",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc && tsc -p tsconfig.umd.json"
+  },
+  "keywords": [
+    "audio",
+    "web-audio-api",
+    "chip-audio"
+  ],
+  "license": "MIT"
+}

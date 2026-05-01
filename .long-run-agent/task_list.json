@@ -1,0 +1,702 @@
+{
+  "project_name": "CAE",
+  "created_at": "2026-05-01T12:31:31.621093",
+  "tasks": [
+    {
+      "id": "task_001",
+      "description": "项目骨架：package.json + tsconfig.json + 构建配置",
+      "template": "task",
+      "priority": "P0",
+      "status": "pending",
+      "parent_id": null,
+      "output_req": "8k",
+      "context_hint": "8k",
+      "task_file": "tasks/task_001.md",
+      "created_at": "2026-05-01T12:33:43.945566",
+      "updated_at": "2026-05-01T12:33:43.945568",
+      "dependencies": [],
+      "dependency_type": "all",
+      "deadline": null,
+      "ralph": {
+        "iteration": 0,
+        "max_iterations": 7,
+        "quality_checks": {
+          "tests_passed": false,
+          "lint_passed": false,
+          "acceptance_met": false
+        },
+        "issues": [],
+        "optimization_history": []
+      }
+    },
+    {
+      "id": "task_002",
+      "description": "AudioBus 基础类",
+      "template": "task",
+      "priority": "P0",
+      "status": "blocked",
+      "parent_id": null,
+      "output_req": "8k",
+      "context_hint": "8k",
+      "task_file": "tasks/task_002.md",
+      "created_at": "2026-05-01T12:34:07.331881",
+      "updated_at": "2026-05-01T12:34:07.331890",
+      "dependencies": [
+        "task_001"
+      ],
+      "dependency_type": "all",
+      "deadline": null,
+      "ralph": {
+        "iteration": 0,
+        "max_iterations": 7,
+        "quality_checks": {
+          "tests_passed": false,
+          "lint_passed": false,
+          "acceptance_met": false
+        },
+        "issues": [],
+        "optimization_history": []
+      }
+    },
+    {
+      "id": "task_003",
+      "description": "Bus 树构建",
+      "template": "task",
+      "priority": "P0",
+      "status": "blocked",
+      "parent_id": null,
+      "output_req": "8k",
+      "context_hint": "8k",
+      "task_file": "tasks/task_003.md",
+      "created_at": "2026-05-01T12:34:57.307276",
+      "updated_at": "2026-05-01T12:34:57.307288",
+      "dependencies": [
+        "task_002"
+      ],
+      "dependency_type": "all",
+      "deadline": null,
+      "ralph": {
+        "iteration": 0,
+        "max_iterations": 7,
+        "quality_checks": {
+          "tests_passed": false,
+          "lint_passed": false,
+          "acceptance_met": false
+        },
+        "issues": [],
+        "optimization_history": []
+      }
+    },
+    {
+      "id": "task_004",
+      "description": "ChannelPool 通道管理",
+      "template": "task",
+      "priority": "P1",
+      "status": "blocked",
+      "parent_id": null,
+      "output_req": "8k",
+      "context_hint": "8k",
+      "task_file": "tasks/task_004.md",
+      "created_at": "2026-05-01T12:34:57.548843",
+      "updated_at": "2026-05-01T12:34:57.548853",
+      "dependencies": [
+        "task_003"
+      ],
+      "dependency_type": "all",
+      "deadline": null,
+      "ralph": {
+        "iteration": 0,
+        "max_iterations": 7,
+        "quality_checks": {
+          "tests_passed": false,
+          "lint_passed": false,
+          "acceptance_met": false
+        },
+        "issues": [],
+        "optimization_history": []
+      }
+    },
+    {
+      "id": "task_005",
+      "description": "SoundProvider 接口定义",
+      "template": "task",
+      "priority": "P0",
+      "status": "pending",
+      "parent_id": null,
+      "output_req": "8k",
+      "context_hint": "8k",
+      "task_file": "tasks/task_005.md",
+      "created_at": "2026-05-01T12:34:57.788245",
+      "updated_at": "2026-05-01T12:34:57.788253",
+      "dependencies": [],
+      "dependency_type": "all",
+      "deadline": null,
+      "ralph": {
+        "iteration": 0,
+        "max_iterations": 7,
+        "quality_checks": {
+          "tests_passed": false,
+          "lint_passed": false,
+          "acceptance_met": false
+        },
+        "issues": [],
+        "optimization_history": []
+      }
+    },
+    {
+      "id": "task_006",
+      "description": "OscillatorProvider 单振荡器合成",
+      "template": "task",
+      "priority": "P0",
+      "status": "blocked",
+      "parent_id": null,
+      "output_req": "8k",
+      "context_hint": "8k",
+      "task_file": "tasks/task_006.md",
+      "created_at": "2026-05-01T12:34:58.028939",
+      "updated_at": "2026-05-01T12:34:58.028949",
+      "dependencies": [
+        "task_005"
+      ],
+      "dependency_type": "all",
+      "deadline": null,
+      "ralph": {
+        "iteration": 0,
+        "max_iterations": 7,
+        "quality_checks": {
+          "tests_passed": false,
+          "lint_passed": false,
+          "acceptance_met": false
+        },
+        "issues": [],
+        "optimization_history": []
+      }
+    },
+    {
+      "id": "task_007",
+      "description": "OscillatorProvider 频率滑音",
+      "template": "task",
+      "priority": "P0",
+      "status": "blocked",
+      "parent_id": null,
+      "output_req": "8k",
+      "context_hint": "8k",
+      "task_file": "tasks/task_007.md",
+      "created_at": "2026-05-01T12:34:58.269595",
+      "updated_at": "2026-05-01T12:34:58.269604",
+      "dependencies": [
+        "task_006"
+      ],
+      "dependency_type": "all",
+      "deadline": null,
+      "ralph": {
+        "iteration": 0,
+        "max_iterations": 7,
+        "quality_checks": {
+          "tests_passed": false,
+          "lint_passed": false,
+          "acceptance_met": false
+        },
+        "issues": [],
+        "optimization_history": []
+      }
+    },
+    {
+      "id": "task_008",
+      "description": "OscillatorProvider 多波形叠加",
+      "template": "task",
+      "priority": "P1",
+      "status": "blocked",
+      "parent_id": null,
+      "output_req": "8k",
+      "context_hint": "8k",
+      "task_file": "tasks/task_008.md",
+      "created_at": "2026-05-01T12:34:58.524124",
+      "updated_at": "2026-05-01T12:34:58.524134",
+      "dependencies": [
+        "task_007"
+      ],
+      "dependency_type": "all",
+      "deadline": null,
+      "ralph": {
+        "iteration": 0,
+        "max_iterations": 7,
+        "quality_checks": {
+          "tests_passed": false,
+          "lint_passed": false,
+          "acceptance_met": false
+        },
+        "issues": [],
+        "optimization_history": []
+      }
+    },
+    {
+      "id": "task_009",
+      "description": "OscillatorProvider 滤波器",
+      "template": "task",
+      "priority": "P1",
+      "status": "blocked",
+      "parent_id": null,
+      "output_req": "8k",
+      "context_hint": "8k",
+      "task_file": "tasks/task_009.md",
+      "created_at": "2026-05-01T12:34:58.771669",
+      "updated_at": "2026-05-01T12:34:58.771684",
+      "dependencies": [
+        "task_008"
+      ],
+      "dependency_type": "all",
+      "deadline": null,
+      "ralph": {
+        "iteration": 0,
+        "max_iterations": 7,
+        "quality_checks": {
+          "tests_passed": false,
+          "lint_passed": false,
+          "acceptance_met": false
+        },
+        "issues": [],
+        "optimization_history": []
+      }
+    },
+    {
+      "id": "task_010",
+      "description": "SoundPack 加载器",
+      "template": "task",
+      "priority": "P0",
+      "status": "blocked",
+      "parent_id": null,
+      "output_req": "8k",
+      "context_hint": "8k",
+      "task_file": "tasks/task_010.md",
+      "created_at": "2026-05-01T12:34:59.011474",
+      "updated_at": "2026-05-01T12:34:59.011484",
+      "dependencies": [
+        "task_005"
+      ],
+      "dependency_type": "all",
+      "deadline": null,
+      "ralph": {
+        "iteration": 0,
+        "max_iterations": 7,
+        "quality_checks": {
+          "tests_passed": false,
+          "lint_passed": false,
+          "acceptance_met": false
+        },
+        "issues": [],
+        "optimization_history": []
+      }
+    },
+    {
+      "id": "task_011",
+      "description": "SoundPack JSON Schema",
+      "template": "task",
+      "priority": "P1",
+      "status": "blocked",
+      "parent_id": null,
+      "output_req": "8k",
+      "context_hint": "8k",
+      "task_file": "tasks/task_011.md",
+      "created_at": "2026-05-01T12:34:59.254600",
+      "updated_at": "2026-05-01T12:34:59.254611",
+      "dependencies": [
+        "task_010"
+      ],
+      "dependency_type": "all",
+      "deadline": null,
+      "ralph": {
+        "iteration": 0,
+        "max_iterations": 7,
+        "quality_checks": {
+          "tests_passed": false,
+          "lint_passed": false,
+          "acceptance_met": false
+        },
+        "issues": [],
+        "optimization_history": []
+      }
+    },
+    {
+      "id": "task_012",
+      "description": "pixel-sfc.json UI 音效参数",
+      "template": "task",
+      "priority": "P0",
+      "status": "blocked",
+      "parent_id": null,
+      "output_req": "8k",
+      "context_hint": "8k",
+      "task_file": "tasks/task_012.md",
+      "created_at": "2026-05-01T12:34:59.494538",
+      "updated_at": "2026-05-01T12:34:59.494549",
+      "dependencies": [
+        "task_010"
+      ],
+      "dependency_type": "all",
+      "deadline": null,
+      "ralph": {
+        "iteration": 0,
+        "max_iterations": 7,
+        "quality_checks": {
+          "tests_passed": false,
+          "lint_passed": false,
+          "acceptance_met": false
+        },
+        "issues": [],
+        "optimization_history": []
+      }
+    },
+    {
+      "id": "task_013",
+      "description": "pixel-sfc.json Gameplay 音效参数",
+      "template": "task",
+      "priority": "P0",
+      "status": "blocked",
+      "parent_id": null,
+      "output_req": "8k",
+      "context_hint": "8k",
+      "task_file": "tasks/task_013.md",
+      "created_at": "2026-05-01T12:34:59.736171",
+      "updated_at": "2026-05-01T12:34:59.736179",
+      "dependencies": [
+        "task_010"
+      ],
+      "dependency_type": "all",
+      "deadline": null,
+      "ralph": {
+        "iteration": 0,
+        "max_iterations": 7,
+        "quality_checks": {
+          "tests_passed": false,
+          "lint_passed": false,
+          "acceptance_met": false
+        },
+        "issues": [],
+        "optimization_history": []
+      }
+    },
+    {
+      "id": "task_014",
+      "description": "Aggregator 调度框架",
+      "template": "task",
+      "priority": "P0",
+      "status": "blocked",
+      "parent_id": null,
+      "output_req": "8k",
+      "context_hint": "8k",
+      "task_file": "tasks/task_014.md",
+      "created_at": "2026-05-01T12:34:59.976962",
+      "updated_at": "2026-05-01T12:34:59.976970",
+      "dependencies": [
+        "task_005"
+      ],
+      "dependency_type": "all",
+      "deadline": null,
+      "ralph": {
+        "iteration": 0,
+        "max_iterations": 7,
+        "quality_checks": {
+          "tests_passed": false,
+          "lint_passed": false,
+          "acceptance_met": false
+        },
+        "issues": [],
+        "optimization_history": []
+      }
+    },
+    {
+      "id": "task_015",
+      "description": "DebounceStrategy 防抖",
+      "template": "task",
+      "priority": "P0",
+      "status": "blocked",
+      "parent_id": null,
+      "output_req": "8k",
+      "context_hint": "8k",
+      "task_file": "tasks/task_015.md",
+      "created_at": "2026-05-01T12:35:00.218124",
+      "updated_at": "2026-05-01T12:35:00.218132",
+      "dependencies": [
+        "task_014"
+      ],
+      "dependency_type": "all",
+      "deadline": null,
+      "ralph": {
+        "iteration": 0,
+        "max_iterations": 7,
+        "quality_checks": {
+          "tests_passed": false,
+          "lint_passed": false,
+          "acceptance_met": false
+        },
+        "issues": [],
+        "optimization_history": []
+      }
+    },
+    {
+      "id": "task_016",
+      "description": "StackStrategy 叠加排队",
+      "template": "task",
+      "priority": "P0",
+      "status": "blocked",
+      "parent_id": null,
+      "output_req": "8k",
+      "context_hint": "8k",
+      "task_file": "tasks/task_016.md",
+      "created_at": "2026-05-01T12:35:00.459565",
+      "updated_at": "2026-05-01T12:35:00.459579",
+      "dependencies": [
+        "task_014"
+      ],
+      "dependency_type": "all",
+      "deadline": null,
+      "ralph": {
+        "iteration": 0,
+        "max_iterations": 7,
+        "quality_checks": {
+          "tests_passed": false,
+          "lint_passed": false,
+          "acceptance_met": false
+        },
+        "issues": [],
+        "optimization_history": []
+      }
+    },
+    {
+      "id": "task_017",
+      "description": "ArpeggioStrategy 琶音合并",
+      "template": "task",
+      "priority": "P1",
+      "status": "blocked",
+      "parent_id": null,
+      "output_req": "8k",
+      "context_hint": "8k",
+      "task_file": "tasks/task_017.md",
+      "created_at": "2026-05-01T12:35:00.702360",
+      "updated_at": "2026-05-01T12:35:00.702374",
+      "dependencies": [
+        "task_014"
+      ],
+      "dependency_type": "all",
+      "deadline": null,
+      "ralph": {
+        "iteration": 0,
+        "max_iterations": 7,
+        "quality_checks": {
+          "tests_passed": false,
+          "lint_passed": false,
+          "acceptance_met": false
+        },
+        "issues": [],
+        "optimization_history": []
+      }
+    },
+    {
+      "id": "task_018",
+      "description": "DuckManager 侧链压缩",
+      "template": "task",
+      "priority": "P1",
+      "status": "blocked",
+      "parent_id": null,
+      "output_req": "8k",
+      "context_hint": "8k",
+      "task_file": "tasks/task_018.md",
+      "created_at": "2026-05-01T12:35:00.942910",
+      "updated_at": "2026-05-01T12:35:00.942919",
+      "dependencies": [
+        "task_003"
+      ],
+      "dependency_type": "all",
+      "deadline": null,
+      "ralph": {
+        "iteration": 0,
+        "max_iterations": 7,
+        "quality_checks": {
+          "tests_passed": false,
+          "lint_passed": false,
+          "acceptance_met": false
+        },
+        "issues": [],
+        "optimization_history": []
+      }
+    },
+    {
+      "id": "task_019",
+      "description": "ChipAudioEngine 主类",
+      "template": "task",
+      "priority": "P0",
+      "status": "blocked",
+      "parent_id": null,
+      "output_req": "8k",
+      "context_hint": "8k",
+      "task_file": "tasks/task_019.md",
+      "created_at": "2026-05-01T12:35:01.186753",
+      "updated_at": "2026-05-01T12:35:01.186764",
+      "dependencies": [
+        "task_003",
+        "task_006",
+        "task_010",
+        "task_014",
+        "task_018"
+      ],
+      "dependency_type": "all",
+      "deadline": null,
+      "ralph": {
+        "iteration": 0,
+        "max_iterations": 7,
+        "quality_checks": {
+          "tests_passed": false,
+          "lint_passed": false,
+          "acceptance_met": false
+        },
+        "issues": [],
+        "optimization_history": []
+      }
+    },
+    {
+      "id": "task_020",
+      "description": "playground.html 验证页面",
+      "template": "task",
+      "priority": "P0",
+      "status": "blocked",
+      "parent_id": null,
+      "output_req": "8k",
+      "context_hint": "8k",
+      "task_file": "tasks/task_020.md",
+      "created_at": "2026-05-01T12:35:01.426952",
+      "updated_at": "2026-05-01T12:35:01.426961",
+      "dependencies": [
+        "task_019"
+      ],
+      "dependency_type": "all",
+      "deadline": null,
+      "ralph": {
+        "iteration": 0,
+        "max_iterations": 7,
+        "quality_checks": {
+          "tests_passed": false,
+          "lint_passed": false,
+          "acceptance_met": false
+        },
+        "issues": [],
+        "optimization_history": []
+      }
+    },
+    {
+      "id": "task_021",
+      "description": "参数调优听感验证",
+      "template": "task",
+      "priority": "P0",
+      "status": "blocked",
+      "parent_id": null,
+      "output_req": "8k",
+      "context_hint": "8k",
+      "task_file": "tasks/task_021.md",
+      "created_at": "2026-05-01T12:35:01.669747",
+      "updated_at": "2026-05-01T12:35:01.669757",
+      "dependencies": [
+        "task_020"
+      ],
+      "dependency_type": "all",
+      "deadline": null,
+      "ralph": {
+        "iteration": 0,
+        "max_iterations": 7,
+        "quality_checks": {
+          "tests_passed": false,
+          "lint_passed": false,
+          "acceptance_met": false
+        },
+        "issues": [],
+        "optimization_history": []
+      }
+    },
+    {
+      "id": "task_022",
+      "description": "单元测试 Engine+Bus+Pool",
+      "template": "task",
+      "priority": "P1",
+      "status": "blocked",
+      "parent_id": null,
+      "output_req": "8k",
+      "context_hint": "8k",
+      "task_file": "tasks/task_022.md",
+      "created_at": "2026-05-01T12:35:01.911035",
+      "updated_at": "2026-05-01T12:35:01.911047",
+      "dependencies": [
+        "task_019"
+      ],
+      "dependency_type": "all",
+      "deadline": null,
+      "ralph": {
+        "iteration": 0,
+        "max_iterations": 7,
+        "quality_checks": {
+          "tests_passed": false,
+          "lint_passed": false,
+          "acceptance_met": false
+        },
+        "issues": [],
+        "optimization_history": []
+      }
+    },
+    {
+      "id": "task_023",
+      "description": "单元测试 Provider+Aggregator",
+      "template": "task",
+      "priority": "P1",
+      "status": "blocked",
+      "parent_id": null,
+      "output_req": "8k",
+      "context_hint": "8k",
+      "task_file": "tasks/task_023.md",
+      "created_at": "2026-05-01T12:35:02.152363",
+      "updated_at": "2026-05-01T12:35:02.152376",
+      "dependencies": [
+        "task_019"
+      ],
+      "dependency_type": "all",
+      "deadline": null,
+      "ralph": {
+        "iteration": 0,
+        "max_iterations": 7,
+        "quality_checks": {
+          "tests_passed": false,
+          "lint_passed": false,
+          "acceptance_met": false
+        },
+        "issues": [],
+        "optimization_history": []
+      }
+    },
+    {
+      "id": "task_024",
+      "description": "README+LICENSE",
+      "template": "task",
+      "priority": "P2",
+      "status": "blocked",
+      "parent_id": null,
+      "output_req": "8k",
+      "context_hint": "8k",
+      "task_file": "tasks/task_024.md",
+      "created_at": "2026-05-01T12:35:02.393143",
+      "updated_at": "2026-05-01T12:35:02.393153",
+      "dependencies": [
+        "task_019"
+      ],
+      "dependency_type": "all",
+      "deadline": null,
+      "ralph": {
+        "iteration": 0,
+        "max_iterations": 7,
+        "quality_checks": {
+          "tests_passed": false,
+          "lint_passed": false,
+          "acceptance_met": false
+        },
+        "issues": [],
+        "optimization_history": []
+      }
+    }
+  ]
+}
