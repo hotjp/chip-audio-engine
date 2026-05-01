@@ -384,14 +384,18 @@ export class ChipAudioEngine extends EventEmitter<EngineEvents> {
     const rules = this.duckManager.getDuckRules(soundId);
     this.duckManager.clearActive(soundId);
 
+    const restored = new Set<string>();
     for (const rule of rules) {
-      const isDucked = this.duckManager.isDucked(rule.target);
-      if (!isDucked) {
+      if (restored.has(rule.target)) {
+        continue;
+      }
+      if (!this.duckManager.isDucked(rule.target)) {
         const bus = this.masterBus.getBus(rule.target);
         if (bus) {
           const originalVol = this.duckManager.getOriginalVolume(rule.target);
           bus.fadeTo(originalVol, rule.fadeInMs);
         }
+        restored.add(rule.target);
       }
     }
   }
