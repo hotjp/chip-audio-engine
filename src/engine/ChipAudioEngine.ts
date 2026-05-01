@@ -107,6 +107,15 @@ export class ChipAudioEngine extends EventEmitter<EngineEvents> {
       return;
     }
 
+    // If another active sound was preempted from this channel, dispose it
+    // without releasing the channel since it has been reassigned.
+    for (const [otherSoundId, active] of this.activeSounds) {
+      if (active.channelId === channelId && otherSoundId !== soundId) {
+        this.disposeSound(otherSoundId, 'stolen', false);
+        break;
+      }
+    }
+
     const instance = provider.createSound(this.ctx, soundId, soundParams);
 
     const bus = this.resolveBus(soundId);
@@ -266,7 +275,8 @@ export class ChipAudioEngine extends EventEmitter<EngineEvents> {
 
   private disposeSound(
     soundId: string,
-    reason: 'completed' | 'manual' | 'stolen' = 'completed'
+    reason: 'completed' | 'manual' | 'stolen' = 'completed',
+    releaseChannel: boolean = true
   ): void {
     const active = this.activeSounds.get(soundId);
     if (!active || !this.ctx || !this.channelPool) {
@@ -276,7 +286,9 @@ export class ChipAudioEngine extends EventEmitter<EngineEvents> {
     clearTimeout(active.timeoutId);
     active.instance.stop(this.ctx.currentTime);
     active.instance.dispose();
-    this.channelPool.release(active.channelId);
+    if (releaseChannel) {
+      this.channelPool.release(active.channelId);
+    }
     this.activeSounds.delete(soundId);
 
     this.clearDucking(soundId);

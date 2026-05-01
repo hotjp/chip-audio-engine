@@ -40,9 +40,9 @@ export interface SoundParams {
 
 /** 播放参数 — 覆盖默认值 */
 export interface PlayParams {
-  volume?: number;
-  pitch?: number;
-  delay?: number;
+  readonly volume?: number;
+  readonly pitch?: number;
+  readonly delay?: number;
 }
 
 /** 音源提供者能力声明 */
