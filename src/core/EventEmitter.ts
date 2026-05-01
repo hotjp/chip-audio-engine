@@ -18,7 +18,13 @@ export class EventEmitter<Events extends EventMap = EventMap> {
     event: K,
     handler: (payload: Events[K]) => void
   ): void {
-    this.handlers.get(event)?.delete(handler);
+    const set = this.handlers.get(event);
+    if (set) {
+      set.delete(handler);
+      if (set.size === 0) {
+        this.handlers.delete(event);
+      }
+    }
   }
 
   once<K extends keyof Events>(

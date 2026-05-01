@@ -94,9 +94,7 @@ export class Aggregator {
   }
 
   private expireState(soundId: string): void {
-    if (this.states.has(soundId)) {
-      this.states.delete(soundId);
-    }
+    this.states.delete(soundId);
   }
 
   reset(): void {

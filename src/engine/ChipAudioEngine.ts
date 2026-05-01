@@ -179,7 +179,7 @@ export class ChipAudioEngine extends EventEmitter<EngineEvents> {
     }
 
     if (this.ownsContext && this.ctx && this.ctx.state !== 'closed') {
-      this.ctx.close();
+      Promise.resolve(this.ctx.close()).catch(() => {});
     }
     this.ctx = null;
 
@@ -192,13 +192,13 @@ export class ChipAudioEngine extends EventEmitter<EngineEvents> {
 
   suspend(): void {
     if (this.ctx && this.ownsContext) {
-      this.ctx.suspend();
+      Promise.resolve(this.ctx.suspend()).catch(() => {});
     }
   }
 
   resume(): void {
     if (this.ctx && this.ownsContext) {
-      this.ctx.resume();
+      Promise.resolve(this.ctx.resume()).catch(() => {});
     }
   }
 
