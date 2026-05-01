@@ -15,7 +15,6 @@ export class AudioBus implements IAudioBus {
   private readonly gainNode: GainNode;
   private _volume: number = 1;
   private _muted: boolean = false;
-  private _preMuteGain: number = 1;
   private readonly children: Map<string, AudioBus> = new Map();
 
   constructor(context: BaseAudioContext, id: string, parent: AudioBus | null = null) {
@@ -77,7 +76,6 @@ export class AudioBus implements IAudioBus {
     const now = this.context.currentTime;
     this.gainNode.gain.cancelScheduledValues(now);
     if (value) {
-      this._preMuteGain = this.gainNode.gain.value;
       this.gainNode.gain.setValueAtTime(0, now);
     } else {
       this.gainNode.gain.setValueAtTime(this._volume, now);
