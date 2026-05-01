@@ -67,7 +67,7 @@
 <body>
   <div class="wrap">
     <h1>Chip Audio Engine <span style="color:var(--highlight)">Playground</span></h1>
-    <div class="sub">Web Audio API · Oscillator · ADSR · Multi-waveform · Pitch slide</div>
+    <div class="sub">Web Audio API · Oscillator · ADSR · Multi-waveform · Pitch slide · <strong>22 Sounds</strong></div>
 
     <div class="panel">
       <h2>Master Controls</h2>
@@ -79,6 +79,7 @@
       <div class="row">
         <button id="btnMute">Mute</button>
         <button id="btnStopAll">Stop All</button>
+        <button id="btnPlayAll">Play All</button>
         <span id="status" class="badge">Ready</span>
       </div>
     </div>
@@ -138,6 +139,46 @@
           duration: 200,
           volume: 0.5
         },
+        'ui.panelOpen': {
+          waveforms: [
+            { type: 'square', frequency: 300, gain: 0.5 },
+            { type: 'sawtooth', frequency: 305, gain: 0.3 }
+          ],
+          envelope: { attack: 10, decay: 60, sustain: 0.2, release: 80 },
+          duration: 150,
+          pitch: { start: 1.0, end: 2.0 },
+          volume: 0.5
+        },
+        'ui.panelClose': {
+          waveforms: [
+            { type: 'square', frequency: 600, gain: 0.5 },
+            { type: 'sawtooth', frequency: 605, gain: 0.3 }
+          ],
+          envelope: { attack: 10, decay: 50, sustain: 0.2, release: 60 },
+          duration: 120,
+          pitch: { start: 1.0, end: 0.5 },
+          volume: 0.5
+        },
+        'ui.toast': {
+          waveforms: [{ type: 'sine', frequency: 400, gain: 0.5 }],
+          envelope: { attack: 5, decay: 30, sustain: 0, release: 45 },
+          duration: 80,
+          pitch: { start: 1.0, end: 2.0 },
+          volume: 0.4
+        },
+        'ui.toggle': {
+          waveforms: [{ type: 'square', frequency: 1000, gain: 0.4 }],
+          envelope: { attack: 2, decay: 10, sustain: 0, release: 18 },
+          duration: 30,
+          volume: 0.3
+        },
+        'ui.dragStart': {
+          waveforms: [{ type: 'sine', frequency: 500, gain: 0.5 }],
+          envelope: { attack: 5, decay: 25, sustain: 0, release: 30 },
+          duration: 60,
+          pitch: { start: 1.0, end: 1.4 },
+          volume: 0.4
+        },
         'game.taskComplete': {
           waveforms: [
             { type: 'square', frequency: 600, gain: 0.4 },
@@ -161,11 +202,28 @@
           duration: 80,
           volume: 0.6
         },
+        'game.agentDeselect': {
+          waveforms: [{ type: 'sine', frequency: 400, gain: 0.5 }],
+          envelope: { attack: 5, decay: 25, sustain: 0, release: 30 },
+          duration: 60,
+          pitch: { start: 1.0, end: 0.75 },
+          volume: 0.4
+        },
         'game.agentMove': {
           waveforms: [{ type: 'triangle', frequency: 350, gain: 0.5 }],
           envelope: { attack: 10, decay: 40, sustain: 0.2, release: 50 },
           duration: 100,
           pitch: { start: 1.0, end: 1.286 },
+          volume: 0.5
+        },
+        'game.taskAssign': {
+          waveforms: [
+            { type: 'square', frequency: 500, gain: 0.5 },
+            { type: 'sawtooth', frequency: 505, gain: 0.25 }
+          ],
+          filter: { type: 'lowpass', frequency: 1200, Q: 2 },
+          envelope: { attack: 10, decay: 60, sustain: 0.2, release: 80 },
+          duration: 150,
           volume: 0.5
         },
         'game.zoneAlert': {
@@ -176,6 +234,36 @@
           envelope: { attack: 20, decay: 200, sustain: 0.5, release: 180 },
           duration: 400,
           volume: 0.6
+        },
+        'game.zoneCreate': {
+          waveforms: [{ type: 'square', frequency: 100, gain: 0.5 }],
+          envelope: { attack: 20, decay: 80, sustain: 0.3, release: 100 },
+          duration: 200,
+          pitch: { start: 1.0, end: 4.0 },
+          volume: 0.5
+        },
+        'game.zoneDestroy': {
+          waveforms: [{ type: 'sawtooth', frequency: 400, gain: 0.5 }],
+          envelope: { attack: 15, decay: 100, sustain: 0.2, release: 135 },
+          duration: 250,
+          pitch: { start: 1.0, end: 0.2 },
+          volume: 0.6
+        },
+        'game.error': {
+          waveforms: [{ type: 'sawtooth', frequency: 150, gain: 0.5 }],
+          envelope: { attack: 10, decay: 60, sustain: 0.3, release: 80 },
+          duration: 150,
+          volume: 0.6
+        },
+        'game.connect': {
+          waveforms: [
+            { type: 'sine', frequency: 300, gain: 0.4 },
+            { type: 'sine', frequency: 600, gain: 0.3 },
+            { type: 'sine', frequency: 900, gain: 0.2 }
+          ],
+          envelope: { attack: 10, decay: 80, sustain: 0.3, release: 110 },
+          duration: 200,
+          volume: 0.5
         },
         'game.disconnect': {
           waveforms: [
@@ -222,10 +310,22 @@
       const envelope = params.envelope;
       const pitchCurve = params.pitch;
       const waveforms = params.waveforms ?? [{ type: 'sine', frequency: 440 }];
+      const filterDef = params.filter;
 
       const master = ctx.createGain();
       master.gain.value = 0;
       master.connect(masterGain);
+
+      let filterNode = null;
+      if (filterDef && ctx) {
+        filterNode = ctx.createBiquadFilter();
+        filterNode.type = filterDef.type || 'lowpass';
+        filterNode.frequency.value = filterDef.frequency ?? 1000;
+        if (filterDef.Q !== undefined) filterNode.Q.value = filterDef.Q;
+        filterNode.connect(master);
+      }
+
+      const targetNode = filterNode || master;
 
       const oscillators = [];
       const waveGains = [];
@@ -241,7 +341,7 @@
         g.gain.value = wave.gain ?? 1;
 
         osc.connect(g);
-        g.connect(master);
+        g.connect(targetNode);
 
         oscillators.push(osc);
         waveGains.push(g);
@@ -289,7 +389,7 @@
         try { osc.stop(releaseEnd); } catch {}
       }
 
-      const nodeSet = { oscillators, waveGains, master };
+      const nodeSet = { oscillators, waveGains, master, filterNode };
       activeNodes.push(nodeSet);
 
       setTimeout(() => {
@@ -305,6 +405,7 @@
         osc.disconnect();
       }
       for (const g of nodeSet.waveGains) g.disconnect();
+      if (nodeSet.filterNode) nodeSet.filterNode.disconnect();
       nodeSet.master.disconnect();
     }
 
@@ -316,6 +417,7 @@
           osc.disconnect();
         }
         for (const g of nodeSet.waveGains) g.disconnect();
+        if (nodeSet.filterNode) nodeSet.filterNode.disconnect();
         nodeSet.master.disconnect();
       }
     }
@@ -346,7 +448,7 @@
 
     Object.keys(SOUND_PACK.sounds).forEach(id => {
       const btn = document.createElement('button');
-      btn.textContent = id.replace(/^ui\.|^game\./, '');
+      btn.textContent = id;
       btn.onclick = () => { playSound(id); updateStatus('Playing ' + id); };
       if (id.startsWith('ui.')) uiGrid.appendChild(btn);
       else gameGrid.appendChild(btn);
@@ -371,6 +473,15 @@
     btnStopAll.addEventListener('click', () => {
       stopAll();
       updateStatus('Stopped all');
+    });
+
+    const btnPlayAll = document.getElementById('btnPlayAll');
+    btnPlayAll.addEventListener('click', () => {
+      const ids = Object.keys(SOUND_PACK.sounds);
+      ids.forEach((id, i) => {
+        setTimeout(() => playSound(id), i * 350);
+      });
+      updateStatus('Playing all 22 sounds');
     });
 
     const statusEl = document.getElementById('status');
