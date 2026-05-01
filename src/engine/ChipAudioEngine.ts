@@ -102,6 +102,11 @@ export class ChipAudioEngine extends EventEmitter<EngineEvents> {
       return;
     }
 
+    const bus = this.resolveBus(soundId);
+    if (!bus) {
+      return;
+    }
+
     const channelId = this.channelPool.allocate(soundId, 0);
     if (channelId === null) {
       return;
@@ -118,19 +123,14 @@ export class ChipAudioEngine extends EventEmitter<EngineEvents> {
 
     const instance = provider.createSound(this.ctx, soundId, soundParams);
 
-    const bus = this.resolveBus(soundId);
-    if (!bus) {
-      this.channelPool.release(channelId);
-      return;
-    }
-
-    const when = this.ctx.currentTime + (playParams?.delay ?? 0);
+    const when = this.ctx.currentTime;
     this.startSound(soundId, instance, bus, when, playParams);
 
     const durationMs = soundParams.duration ?? 300;
+    const delayMs = Math.max(0, (playParams?.delay ?? 0) * 1000);
     const timeoutId = setTimeout(() => {
       this.disposeSound(soundId, 'completed');
-    }, durationMs + 100);
+    }, durationMs + delayMs + 100);
 
     this.activeSounds.set(soundId, {
       instance,
