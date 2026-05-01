@@ -81,6 +81,17 @@ describe('Aggregator', () => {
     expect(aggregator.submit('s1', 0)).toBe(true);
   });
 
+  it('should remove all per-sound configs', () => {
+    aggregator.setConfig('s1', { strategy: 'arpeggio', windowMs: 200 });
+    aggregator.setConfig('s2', { strategy: 'stack', windowMs: 100, maxQueueDepth: 2 });
+    aggregator.removeAllConfigs();
+    // After removing all configs, sounds should fall back to default (restart)
+    expect(aggregator.submit('s1', 0)).toBe(true);
+    expect(aggregator.submit('s1', 0)).toBe(true);
+    expect(aggregator.submit('s2', 0)).toBe(true);
+    expect(aggregator.submit('s2', 0)).toBe(true);
+  });
+
   it('should use default windowMs for arpeggio', () => {
     aggregator.setConfig('s1', { strategy: 'arpeggio' });
     expect(aggregator.submit('s1', 0)).toBe(true);

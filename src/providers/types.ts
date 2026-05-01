@@ -38,6 +38,8 @@ export interface SoundParams {
   volume?: number;
   duration?: number;
   pitch?: PitchCurve;
+  url?: string;
+  buffer?: AudioBuffer;
 }
 
 /** 播放参数 — 覆盖默认值 */

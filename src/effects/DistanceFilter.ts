@@ -25,6 +25,14 @@ export interface DistanceFilterConfig {
  * DistanceFilter 将欧几里得距离实时映射为：
  * - BiquadFilterNode 的 cutoffFrequency
  * - GainNode 的 gainAttenuation
+ *
+ * @example
+ * ```ts
+ * const filter = new DistanceFilter(ctx);
+ * filter.update(32);
+ * sound.connect(filter.input);
+ * filter.output.connect(masterBus.input);
+ * ```
  */
 export class DistanceFilter {
   /** 输入节点 */
@@ -38,6 +46,14 @@ export class DistanceFilter {
   private config: Required<DistanceFilterConfig>;
   private currentDistance = 0;
 
+  /**
+   * @param ctx - 音频上下文
+   * @param config - 距离滤音配置
+   * @example
+   * ```ts
+   * const filter = new DistanceFilter(audioContext, { referenceCutoff: 8000 });
+   * ```
+   */
   constructor(ctx: BaseAudioContext, config: DistanceFilterConfig = {}) {
     this.ctx = ctx;
     this.config = {
@@ -71,6 +87,11 @@ export class DistanceFilter {
    *
    * cutoffFrequency = referenceCutoff * (referenceDistance / max(distance, referenceDistance)) ^ rolloffFactor
    * gainAttenuation = 1 / (1 + rolloffScale * distance)
+   * @param distance - 声源距离
+   * @example
+   * ```ts
+   * filter.update(32);
+   * ```
    */
   update(distance: number): void {
     const clampedDistance = Math.max(
@@ -95,12 +116,25 @@ export class DistanceFilter {
     this.gainNode.gain.setValueAtTime(gainAttenuation, now);
   }
 
-  /** 当前距离 */
+  /**
+   * 获取当前距离。
+   * @returns 当前距离值
+   * @example
+   * ```ts
+   * const d = filter.distance;
+   * ```
+   */
   get distance(): number {
     return this.currentDistance;
   }
 
-  /** 断开所有节点 */
+  /**
+   * 断开所有节点。
+   * @example
+   * ```ts
+   * filter.dispose();
+   * ```
+   */
   dispose(): void {
     this.input.disconnect();
     if (this.filter) {

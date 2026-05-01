@@ -34,6 +34,13 @@ export interface ReverbParams {
  *
  * 设计为全局 send bus：多个 SoundInstance 可通过 input 送入同一 ConvolverNode，
  * output 返回至 master bus 进行混音。
+ *
+ * @example
+ * ```ts
+ * const reverb = new ReverbEngine(ctx, 'hall');
+ * musicBus.output.connect(reverb.input);
+ * reverb.output.connect(masterBus.input);
+ * ```
  */
 export class ReverbEngine {
   /** Send 目标节点 */
@@ -54,6 +61,14 @@ export class ReverbEngine {
     ['plate', { name: 'plate', decayTime: 250, wetMix: 0.25, preDelay: 15, hfDamping: 0.5 }],
   ]);
 
+  /**
+   * @param ctx - 音频上下文
+   * @param presetName - 初始预设名称，默认为 'room'
+   * @example
+   * ```ts
+   * const reverb = new ReverbEngine(audioContext, 'hall');
+   * ```
+   */
   constructor(ctx: BaseAudioContext, presetName = 'room') {
     this.ctx = ctx;
     this.input = ctx.createGain();
@@ -128,7 +143,14 @@ export class ReverbEngine {
     this.wetGain.gain.value = this.enabled ? this.currentPreset.wetMix : 0;
   }
 
-  /** 切换预设（room / hall / plate） */
+  /**
+   * 切换混响预设（room / hall / plate）。
+   * @param presetName - 预设名称
+   * @example
+   * ```ts
+   * reverb.setPreset('hall');
+   * ```
+   */
   setPreset(presetName: string): void {
     const preset = ReverbEngine.PRESETS.get(presetName);
     if (!preset) return;
@@ -142,7 +164,14 @@ export class ReverbEngine {
     }
   }
 
-  /** 微调当前混响参数并重新生成 IR */
+  /**
+   * 微调当前混响参数并重新生成 IR。
+   * @param params - 混响参数
+   * @example
+   * ```ts
+   * reverb.setParams({ wetMix: 0.4, decayTime: 300 });
+   * ```
+   */
   setParams(params: ReverbParams): void {
     if (params.decayTime !== undefined) this.currentPreset.decayTime = params.decayTime;
     if (params.wetMix !== undefined) this.currentPreset.wetMix = params.wetMix;
@@ -158,7 +187,13 @@ export class ReverbEngine {
     }
   }
 
-  /** 启用混响（恢复 wet gain） */
+  /**
+   * 启用混响（恢复 wet gain）。
+   * @example
+   * ```ts
+   * reverb.enable();
+   * ```
+   */
   enable(): void {
     if (this.enabled) return;
     this.enabled = true;
@@ -167,7 +202,13 @@ export class ReverbEngine {
     }
   }
 
-  /** 旁路混响（wet gain 置 0，不销毁节点） */
+  /**
+   * 旁路混响（wet gain 置 0，不销毁节点）。
+   * @example
+   * ```ts
+   * reverb.disable();
+   * ```
+   */
   disable(): void {
     if (!this.enabled) return;
     this.enabled = false;
@@ -176,11 +217,25 @@ export class ReverbEngine {
     }
   }
 
+  /**
+   * 获取混响启用状态。
+   * @returns 如果已启用则返回 true
+   * @example
+   * ```ts
+   * const on = reverb.isEnabled;
+   * ```
+   */
   get isEnabled(): boolean {
     return this.enabled;
   }
 
-  /** 断开并清理内部节点 */
+  /**
+   * 断开并清理内部节点。
+   * @example
+   * ```ts
+   * reverb.dispose();
+   * ```
+   */
   dispose(): void {
     this.input.disconnect();
     this.output.disconnect();

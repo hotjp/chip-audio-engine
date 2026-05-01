@@ -29,6 +29,8 @@ describe('AudioBus', () => {
     const bus = new AudioBus(ctx, 'master');
     expect(bus.id).toBe('master');
     expect(bus.parent).toBeNull();
+    expect(bus.volume).toBe(1);
+    expect(bus.muted).toBe(false);
   });
 
   it('should set volume and update gain value', () => {
@@ -79,6 +81,38 @@ describe('AudioBus', () => {
     expect(bus.volume).toBe(0);
     bus.fadeTo(2, 100);
     expect(bus.volume).toBe(1);
+  });
+
+  it('should ignore NaN and Infinity for setVolume', () => {
+    const bus = new AudioBus(ctx, 'bus');
+    bus.setVolume(0.5);
+    bus.setVolume(NaN);
+    expect(bus.volume).toBe(0.5);
+    bus.setVolume(Infinity);
+    expect(bus.volume).toBe(0.5);
+    bus.setVolume(-Infinity);
+    expect(bus.volume).toBe(0.5);
+  });
+
+  it('should apply fadeTo immediately when durationMs <= 0', () => {
+    const bus = new AudioBus(ctx, 'bus');
+    bus.fadeTo(0.3, 0);
+    expect(bus.volume).toBe(0.3);
+    bus.fadeTo(0.6, -100);
+    expect(bus.volume).toBe(0.6);
+  });
+
+  it('should throw when adding self as child', () => {
+    const bus = new AudioBus(ctx, 'bus');
+    expect(() => bus.addBus(bus)).toThrow('Cannot add a bus as a child of itself');
+  });
+
+  it('should throw when adding a bus that already has a parent', () => {
+    const parent1 = new AudioBus(ctx, 'parent1');
+    const parent2 = new AudioBus(ctx, 'parent2');
+    const child = new AudioBus(ctx, 'child');
+    parent1.addBus(child);
+    expect(() => parent2.addBus(child)).toThrow('already has a parent');
   });
 
   it('should unmute when fadeTo sets positive target', () => {

@@ -11,6 +11,8 @@ import { BGMEngine } from './BGMEngine.js';
 import type { EngineEvents, BGMScore } from './types.js';
 import { ReverbEngine, ReverbParams } from '../effects/ReverbEngine.js';
 import { SpatialAudio } from '../effects/SpatialAudio.js';
+import { FocusManager } from '../core/FocusManager.js';
+import type { FocusMode, FocusConfig } from '../core/FocusManager.js';
 
 export interface EngineConfig {
   audioContext?: AudioContext;
@@ -26,6 +28,19 @@ interface ActiveSound {
   spatial?: SpatialAudio;
 }
 
+/**
+ * ChipAudioEngine 是浏览器端音频引擎的主入口，负责管理音频上下文、
+ * 总线树、声道池、音效播放、BGM 播放以及闪避和聚合策略。
+ *
+ * @example
+ * ```ts
+ * const engine = new ChipAudioEngine({
+ *   soundPack: { name: 'default', sounds: { 'ui.click': { duration: 100 } } },
+ * });
+ * engine.init();
+ * engine.play('ui.click');
+ * ```
+ */
 export class ChipAudioEngine extends EventEmitter<EngineEvents> {
   private ctx: AudioContext | null = null;
   private ownsContext: boolean = false;
@@ -40,7 +55,19 @@ export class ChipAudioEngine extends EventEmitter<EngineEvents> {
   private destroyed: boolean = false;
   private bgmEngine: BGMEngine | null = null;
   private reverbEngine: ReverbEngine | null = null;
+  private focusManager: FocusManager = new FocusManager();
 
+  /**
+   * @param config - 引擎初始化配置
+   * @example
+   * ```ts
+   * const engine = new ChipAudioEngine({
+   *   audioContext: new AudioContext(),
+   *   channelCount: 16,
+   *   soundPack: { name: 'sfx', sounds: {} },
+   * });
+   * ```
+   */
   constructor(config: EngineConfig = {}) {
     super();
     this.config = config;
@@ -54,7 +81,14 @@ export class ChipAudioEngine extends EventEmitter<EngineEvents> {
     }
   }
 
-  /** Initialize the audio context and internal bus tree. Idempotent. */
+  /**
+   * 初始化音频上下文和内部总线树。可重复调用（幂等）。
+   * @example
+   * ```ts
+   * const engine = new ChipAudioEngine();
+   * engine.init();
+   * ```
+   */
   init(): void {
     if (this.destroyed || this.ctx) {
       return;
@@ -103,10 +137,40 @@ export class ChipAudioEngine extends EventEmitter<EngineEvents> {
 
     if (musicBus) {
       this.bgmEngine = new BGMEngine(this.ctx, oscProvider, musicBus, this.duckManager);
+      this.bgmEngine.on('bgm:start', (payload) => this.emit('bgm:start', payload));
+      this.bgmEngine.on('bgm:stop', (payload) => this.emit('bgm:stop', payload));
       if (this.config.bgmScores) {
         this.bgmEngine.loadScores(this.config.bgmScores);
       }
     }
+
+    this.emit('engine:init', { audioContext: this.ctx });
+  }
+
+  /**
+   * 设置声音焦点模式。
+   * @param mode - 焦点模式（viewport / follow / zone / legion）
+   * @param config - 模式配置
+   * @example
+   * ```ts
+   * engine.setFocusMode('follow', { target: { x: 100, y: 200 } });
+   * ```
+   */
+  setFocusMode(mode: FocusMode, config?: FocusConfig): void {
+    this.focusManager.setMode(mode, config);
+    this.emit('focus:change', { mode, config });
+  }
+
+  /**
+   * 获取当前焦点模式。
+   * @returns 当前焦点模式
+   * @example
+   * ```ts
+   * const mode = engine.getFocusMode();
+   * ```
+   */
+  getFocusMode(): FocusMode {
+    return this.focusManager.getMode();
   }
 
   private initBusTree(): void {
@@ -120,17 +184,25 @@ export class ChipAudioEngine extends EventEmitter<EngineEvents> {
     const gameplayBus = new AudioBus(this.ctx, 'gameplay');
 
     this.masterBus.addBus(musicBus);
+    this.emit('bus:add', { parentId: 'master', busId: 'music' });
     this.masterBus.addBus(sfxBus);
+    this.emit('bus:add', { parentId: 'master', busId: 'sfx' });
     sfxBus.addBus(uiBus);
+    this.emit('bus:add', { parentId: 'sfx', busId: 'ui' });
     sfxBus.addBus(gameplayBus);
+    this.emit('bus:add', { parentId: 'sfx', busId: 'gameplay' });
 
     this.masterBus.output.connect(this.ctx.destination);
   }
 
   /**
-   * Play a sound by id.
-   * @param soundId the sound identifier
-   * @param playParams optional overrides for this playback
+   * 播放指定音效。
+   * @param soundId - 音效标识符
+   * @param playParams - 可选的播放覆盖参数
+   * @example
+   * ```ts
+   * engine.play('game.jump', { volume: 0.8, pitch: 1.2 });
+   * ```
    */
   play(soundId: string, playParams?: PlayParams): void {
     if (this.destroyed || !this.ctx || !this.masterBus || !this.channelPool) {
@@ -212,12 +284,25 @@ export class ChipAudioEngine extends EventEmitter<EngineEvents> {
     }
   }
 
-  /** Stop a specific sound if it is currently playing. */
+  /**
+   * 停止指定音效（如果正在播放）。
+   * @param soundId - 音效标识符
+   * @example
+   * ```ts
+   * engine.stop('game.jump');
+   * ```
+   */
   stop(soundId: string): void {
     this.stopIfActive(soundId, 'manual');
   }
 
-  /** Stop all currently playing sounds. */
+  /**
+   * 停止所有正在播放的音效。
+   * @example
+   * ```ts
+   * engine.stopAll();
+   * ```
+   */
   stopAll(): void {
     const soundIds = Array.from(this.activeSounds.keys());
     for (const soundId of soundIds) {
@@ -226,8 +311,11 @@ export class ChipAudioEngine extends EventEmitter<EngineEvents> {
   }
 
   /**
-   * Tear down the engine, stop all sounds, and close the owned context.
-   * Idempotent.
+   * 销毁引擎，停止所有声音，并关闭自有的音频上下文。可重复调用（幂等）。
+   * @example
+   * ```ts
+   * engine.destroy();
+   * ```
    */
   destroy(): void {
     if (this.destroyed) {
@@ -262,52 +350,118 @@ export class ChipAudioEngine extends EventEmitter<EngineEvents> {
     this.aggregator.reset();
     this.duckManager.clearAll();
     this.activeSounds.clear();
+
+    this.emit('engine:destroy', {});
   }
 
-  /** Suspend the owned audio context. */
+  /**
+   * 暂停自有的音频上下文。
+   * @example
+   * ```ts
+   * engine.suspend();
+   * ```
+   */
   suspend(): void {
     if (this.ctx && this.ownsContext) {
       Promise.resolve(this.ctx.suspend()).catch(() => {});
     }
+    this.emit('engine:suspend', {});
   }
 
-  /** Resume the owned audio context. */
+  /**
+   * 恢复自有的音频上下文。
+   * @example
+   * ```ts
+   * engine.resume();
+   * ```
+   */
   resume(): void {
     if (this.ctx && this.ownsContext) {
       Promise.resolve(this.ctx.resume()).catch(() => {});
     }
+    this.emit('engine:resume', {});
   }
 
-  /** Check whether the owned context is suspended. */
+  /**
+   * 检查自有的音频上下文是否处于暂停状态。
+   * @returns 如果已暂停则返回 true
+   * @example
+   * ```ts
+   * if (engine.isSuspended()) {
+   *   engine.resume();
+   * }
+   * ```
+   */
   isSuspended(): boolean {
     return this.ctx?.state === 'suspended';
   }
 
-  /** Register a custom sound provider. */
+  /**
+   * 注册自定义音效提供者。
+   * @param provider - 音效提供者实例
+   * @example
+   * ```ts
+   * engine.registerProvider(new CustomProvider());
+   * ```
+   */
   registerProvider(provider: SoundProvider): void {
     this.providers.set(provider.id, provider);
+    this.emit('provider:register', { providerId: provider.id });
   }
 
-  /** Load and activate a sound pack. */
+  /**
+   * 加载并激活音效包。
+   * @param pack - 音效包对象
+   * @example
+   * ```ts
+   * engine.loadSoundPack({
+   *   name: 'pixel-sfc',
+   *   sounds: { 'ui.click': { duration: 50 } },
+   * });
+   * ```
+   */
   loadSoundPack(pack: SoundPack): void {
     this.soundPackLoader.register(pack);
     this.soundPackLoader.setActive(pack.name);
+    this.emit('pack:load', {
+      packName: pack.name,
+      soundCount: Object.keys(pack.sounds).length,
+    });
   }
 
-  /** Find a bus by id (recursive). */
+  /**
+   * 按 ID 查找总线（递归查找）。
+   * @param busId - 总线标识符
+   * @returns 找到的总线，若不存在则返回 undefined
+   * @example
+   * ```ts
+   * const musicBus = engine.getBus('music');
+   * ```
+   */
   getBus(busId: string): AudioBus | undefined {
     return this.masterBus?.getBus(busId);
   }
 
-  /** Get the master output bus. */
+  /**
+   * 获取主输出总线。
+   * @returns 主总线实例，若未初始化则返回 null
+   * @example
+   * ```ts
+   * const master = engine.getMasterBus();
+   * ```
+   */
   getMasterBus(): AudioBus | null {
     return this.masterBus;
   }
 
   /**
-   * Play a BGM score by id.
-   * @param scoreId the BGM score identifier
-   * @param options optional fade-in duration in ms
+   * 按 ID 播放 BGM 乐谱。
+   * @param scoreId - BGM 乐谱标识符
+   * @param options - 可选的淡入时长（毫秒）
+   * @example
+   * ```ts
+   * engine.playBGM('title', { fadeIn: 500 });
+   * ```
    */
   playBGM(scoreId: string, options?: { fadeIn?: number }): void {
     if (!this.bgmEngine) {
@@ -317,8 +471,12 @@ export class ChipAudioEngine extends EventEmitter<EngineEvents> {
   }
 
   /**
-   * Stop the currently playing BGM.
-   * @param options optional fade-out duration in ms
+   * 停止当前播放的 BGM。
+   * @param options - 可选的淡出时长（毫秒）
+   * @example
+   * ```ts
+   * engine.stopBGM({ fadeOut: 800 });
+   * ```
    */
   stopBGM(options?: { fadeOut?: number }): void {
     if (!this.bgmEngine) {
@@ -327,25 +485,70 @@ export class ChipAudioEngine extends EventEmitter<EngineEvents> {
     this.bgmEngine.stop(options);
   }
 
-  /** Get the BGM engine instance. */
+  /**
+   * 获取 BGM 引擎实例。
+   * @returns BGMEngine 实例，若未初始化则返回 null
+   * @example
+   * ```ts
+   * const bgm = engine.getBGMEngine();
+   * ```
+   */
   getBGMEngine(): BGMEngine | null {
     return this.bgmEngine;
   }
 
-  /** Add a ducking rule. */
+  /**
+   * 添加闪避规则。
+   * @param rule - 闪避规则对象
+   * @example
+   * ```ts
+   * engine.addDuckRule({
+   *   trigger: 'bgm',
+   *   target: 'sfx',
+   *   duckVolume: 0.3,
+   *   fadeOutMs: 300,
+   *   fadeInMs: 800,
+   *   holdMs: 0,
+   * });
+   * ```
+   */
   addDuckRule(rule: DuckRule): void {
     this.duckManager.addRule(rule);
   }
 
-  /** Configure aggregation behavior for a sound. */
+  /**
+   * 为指定音效配置聚合行为。
+   * @param soundId - 音效标识符
+   * @param config - 聚合配置
+   * @example
+   * ```ts
+   * engine.setAggregation('ui.click', { strategy: 'debounce', windowMs: 150 });
+   * ```
+   */
   setAggregation(soundId: string, config: AggregationConfig): void {
     this.aggregator.setConfig(soundId, config);
   }
 
+  /**
+   * 获取主总线音量。
+   * @returns 当前主音量（0–1），未初始化时返回 1
+   * @example
+   * ```ts
+   * const vol = engine.masterVolume;
+   * ```
+   */
   get masterVolume(): number {
     return this.masterBus?.volume ?? 1;
   }
 
+  /**
+   * 设置主总线音量。
+   * @param value - 目标音量（0–1）
+   * @example
+   * ```ts
+   * engine.masterVolume = 0.75;
+   * ```
+   */
   set masterVolume(value: number) {
     if (this.masterBus) {
       this.masterBus.volume = value;
@@ -353,10 +556,26 @@ export class ChipAudioEngine extends EventEmitter<EngineEvents> {
     }
   }
 
+  /**
+   * 获取主总线静音状态。
+   * @returns 如果主总线已静音则返回 true
+   * @example
+   * ```ts
+   * const muted = engine.masterMuted;
+   * ```
+   */
   get masterMuted(): boolean {
     return this.masterBus?.muted ?? false;
   }
 
+  /**
+   * 设置主总线静音状态。
+   * @param value - 是否静音
+   * @example
+   * ```ts
+   * engine.masterMuted = true;
+   * ```
+   */
   set masterMuted(value: boolean) {
     if (this.masterBus && this.masterBus.muted !== value) {
       this.masterBus.muted = value;
@@ -364,12 +583,26 @@ export class ChipAudioEngine extends EventEmitter<EngineEvents> {
     }
   }
 
-  /** 切换混响预设（room / hall / plate） */
+  /**
+   * 切换混响预设（room / hall / plate）。
+   * @param preset - 预设名称
+   * @example
+   * ```ts
+   * engine.setReverb('hall');
+   * ```
+   */
   setReverb(preset: string): void {
     this.reverbEngine?.setPreset(preset);
   }
 
-  /** 微调当前混响参数 */
+  /**
+   * 微调当前混响参数。
+   * @param params - 混响参数
+   * @example
+   * ```ts
+   * engine.setReverbParams({ wetMix: 0.4, decayTime: 300 });
+   * ```
+   */
   setReverbParams(params: ReverbParams): void {
     this.reverbEngine?.setParams(params);
   }
@@ -405,7 +638,20 @@ export class ChipAudioEngine extends EventEmitter<EngineEvents> {
 
     if (hasSpatial && this.ctx) {
       const spatial = new SpatialAudio(this.ctx);
-      spatial.updatePosition(playParams.position.x, playParams.position.y, playParams.viewport);
+
+      // Use FocusManager to compute pan/distance based on current focus mode
+      const { pan, distance } = this.focusManager.computeSpatial(
+        playParams.position,
+        playParams.viewport
+      );
+
+      // Synthesize a virtual position so that SpatialAudio computes correctly
+      const halfWidth = playParams.viewport.width / 2;
+      const virtualX = playParams.viewport.centerX + pan * halfWidth;
+      const dy = Math.sqrt(Math.max(0, distance * distance - (pan * halfWidth) * (pan * halfWidth)));
+      const virtualY = playParams.viewport.centerY + dy;
+
+      spatial.updatePosition(virtualX, virtualY, playParams.viewport);
       instance.connect(spatial.input);
       spatial.output.connect(bus.input);
       if (this.reverbEngine) {

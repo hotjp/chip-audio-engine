@@ -3,6 +3,7 @@ import type { DuckManager } from '../core/DuckManager.js';
 import { OscillatorProvider } from '../providers/OscillatorProvider.js';
 import type { SoundParams } from '../providers/types.js';
 import type { SoundInstance } from '../providers/SoundProvider.js';
+import { EventEmitter } from '../core/EventEmitter.js';
 import type { BGMScore, BGMTrack, BGMNote } from './types.js';
 
 interface TrackState {
@@ -15,7 +16,24 @@ interface ActiveNote {
   timeoutId: ReturnType<typeof setTimeout>;
 }
 
-export class BGMEngine {
+export interface BGMEngineEvents {
+  'bgm:start': { scoreId: string };
+  'bgm:stop': { scoreId: string };
+}
+
+/**
+ * 后台音乐（BGM）引擎，负责按 Score 调度音符播放。
+ *
+ * @example
+ * ```ts
+ * const engine = new ChipAudioEngine();
+ * engine.init();
+ * const bgm = engine.getBGMEngine()!;
+ * bgm.loadScore({ id: 'title', name: 'Title Theme', bpm: 120, tracks: [] });
+ * bgm.play('title', { fadeIn: 500 });
+ * ```
+ */
+export class BGMEngine extends EventEmitter<BGMEngineEvents> {
   private ctx: AudioContext;
   private provider: OscillatorProvider;
   private musicBus: AudioBus;
@@ -32,28 +50,61 @@ export class BGMEngine {
   private readonly scheduleAheadTime = 0.1;
   private readonly lookahead = 25;
 
+  /**
+   * @param ctx - 音频上下文
+   * @param provider - 振荡器提供者
+   * @param musicBus - 音乐总线
+   * @param duckManager - 可选的闪避管理器
+   */
   constructor(
     ctx: AudioContext,
     provider: OscillatorProvider,
     musicBus: AudioBus,
     duckManager?: DuckManager
   ) {
+    super();
     this.ctx = ctx;
     this.provider = provider;
     this.musicBus = musicBus;
     this.duckManager = duckManager ?? null;
   }
 
+  /**
+   * 加载单个 BGM 乐谱。
+   * @param score - 乐谱对象
+   * @example
+   * ```ts
+   * bgm.loadScore({ id: 'boss', name: 'Boss', bpm: 140, tracks: [] });
+   * ```
+   */
   loadScore(score: BGMScore): void {
     this.scores.set(score.id, score);
   }
 
+  /**
+   * 批量加载 BGM 乐谱。
+   * @param scores - 乐谱数组
+   * @example
+   * ```ts
+   * bgm.loadScores([
+   *   { id: 'stage1', name: 'Stage 1', bpm: 120, tracks: [] },
+   * ]);
+   * ```
+   */
   loadScores(scores: BGMScore[]): void {
     for (const score of scores) {
       this.scores.set(score.id, score);
     }
   }
 
+  /**
+   * 卸载指定乐谱。如果当前正在播放该乐谱，会先停止。
+   * @param scoreId - 乐谱标识符
+   * @example
+   * ```ts
+   * bgm.unloadScore('boss');
+   * ```
+   */
   unloadScore(scoreId: string): void {
     if (this.currentScore?.id === scoreId) {
       this.stop();
@@ -61,6 +112,15 @@ export class BGMEngine {
     this.scores.delete(scoreId);
   }
 
+  /**
+   * 播放指定 BGM 乐谱。
+   * @param scoreId - 乐谱标识符
+   * @param options - 可选的淡入配置
+   * @example
+   * ```ts
+   * bgm.play('title', { fadeIn: 1000 });
+   * ```
+   */
   play(scoreId: string, options?: { fadeIn?: number }): void {
     if (this.disposed) return;
 
@@ -90,11 +150,22 @@ export class BGMEngine {
     }));
 
     this.scheduler();
+    this.emit('bgm:start', { scoreId });
   }
 
+  /**
+   * 停止当前播放的 BGM。
+   * @param options - 可选的淡出配置
+   * @example
+   * ```ts
+   * bgm.stop({ fadeOut: 500 });
+   * ```
+   */
   stop(options?: { fadeOut?: number }): void {
     if (!this.isPlaying) return;
     this.isPlaying = false;
+
+    const scoreId = this.currentScore?.id ?? '';
 
     if (this.duckManager) {
       this.duckManager.clearActive('bgm');
@@ -111,20 +182,55 @@ export class BGMEngine {
       this.internalCleanup();
       this.musicBus.volume = this.normalMusicVolume;
     }
+
+    this.emit('bgm:stop', { scoreId });
   }
 
+  /**
+   * 检查是否正在播放 BGM。
+   * @returns 如果正在播放则返回 true
+   * @example
+   * ```ts
+   * if (bgm.isCurrentlyPlaying()) {
+   *   console.log('BGM is playing');
+   * }
+   * ```
+   */
   isCurrentlyPlaying(): boolean {
     return this.isPlaying;
   }
 
+  /**
+   * 获取当前播放的乐谱 ID。
+   * @returns 当前乐谱 ID，如果没有播放则返回 null
+   * @example
+   * ```ts
+   * const id = bgm.getCurrentScoreId();
+   * ```
+   */
   getCurrentScoreId(): string | null {
     return this.currentScore?.id ?? null;
   }
 
+  /**
+   * 获取所有已加载的乐谱 ID 列表。
+   * @returns 乐谱 ID 数组
+   * @example
+   * ```ts
+   * const ids = bgm.getLoadedScoreIds();
+   * ```
+   */
   getLoadedScoreIds(): string[] {
     return Array.from(this.scores.keys());
   }
 
+  /**
+   * 释放 BGM 引擎资源。
+   * @example
+   * ```ts
+   * bgm.dispose();
+   * ```
+   */
   dispose(): void {
     if (this.disposed) return;
     this.disposed = true;

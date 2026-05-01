@@ -809,6 +809,152 @@
         "issues": [],
         "optimization_history": []
       }
+    },
+    {
+      "id": "task_029",
+      "description": "单元测试套件：核心模块全覆盖",
+      "template": "task",
+      "priority": "P0",
+      "status": "pending",
+      "parent_id": null,
+      "output_req": "12k",
+      "context_hint": "16k",
+      "task_file": "tasks/task_029.md",
+      "created_at": "2026-05-01T23:31:47.231Z",
+      "updated_at": "2026-05-01T23:31:47.231Z",
+      "dependencies": [],
+      "dependency_type": "all",
+      "deadline": null,
+      "ralph": {
+        "iteration": 0,
+        "max_iterations": 3,
+        "quality_checks": {
+          "tests_passed": false,
+          "lint_passed": false,
+          "acceptance_met": false
+        },
+        "issues": [],
+        "optimization_history": []
+      }
+    },
+    {
+      "id": "task_030",
+      "description": "SampleProvider：采样音源播放器",
+      "template": "task",
+      "priority": "P0",
+      "status": "pending",
+      "parent_id": null,
+      "output_req": "8k",
+      "context_hint": "12k",
+      "task_file": "tasks/task_030.md",
+      "created_at": "2026-05-01T23:31:47.231Z",
+      "updated_at": "2026-05-01T23:31:47.231Z",
+      "dependencies": [
+        "task_001"
+      ],
+      "dependency_type": "all",
+      "deadline": null,
+      "ralph": {
+        "iteration": 0,
+        "max_iterations": 5,
+        "quality_checks": {
+          "tests_passed": false,
+          "lint_passed": false,
+          "acceptance_met": false
+        },
+        "issues": [],
+        "optimization_history": []
+      }
+    },
+    {
+      "id": "task_031",
+      "description": "焦点模式状态机：视口/跟随/Zone/军团",
+      "template": "task",
+      "priority": "P1",
+      "status": "pending",
+      "parent_id": null,
+      "output_req": "8k",
+      "context_hint": "12k",
+      "task_file": "tasks/task_031.md",
+      "created_at": "2026-05-01T23:31:47.231Z",
+      "updated_at": "2026-05-01T23:31:47.231Z",
+      "dependencies": [
+        "task_001"
+      ],
+      "dependency_type": "all",
+      "deadline": null,
+      "ralph": {
+        "iteration": 0,
+        "max_iterations": 5,
+        "quality_checks": {
+          "tests_passed": false,
+          "lint_passed": false,
+          "acceptance_met": false
+        },
+        "issues": [],
+        "optimization_history": []
+      }
+    },
+    {
+      "id": "task_032",
+      "description": "事件系统扩展 + JSDoc 完善",
+      "template": "task",
+      "priority": "P1",
+      "status": "pending",
+      "parent_id": null,
+      "output_req": "8k",
+      "context_hint": "12k",
+      "task_file": "tasks/task_032.md",
+      "created_at": "2026-05-01T23:31:47.231Z",
+      "updated_at": "2026-05-01T23:31:47.231Z",
+      "dependencies": [
+        "task_001"
+      ],
+      "dependency_type": "all",
+      "deadline": null,
+      "ralph": {
+        "iteration": 0,
+        "max_iterations": 3,
+        "quality_checks": {
+          "tests_passed": false,
+          "lint_passed": false,
+          "acceptance_met": false
+        },
+        "issues": [],
+        "optimization_history": []
+      }
+    },
+    {
+      "id": "task_033",
+      "description": "README.md + API 文档 + 使用示例",
+      "template": "task",
+      "priority": "P2",
+      "status": "pending",
+      "parent_id": null,
+      "output_req": "8k",
+      "context_hint": "16k",
+      "task_file": "tasks/task_033.md",
+      "created_at": "2026-05-01T23:31:47.231Z",
+      "updated_at": "2026-05-01T23:31:47.231Z",
+      "dependencies": [
+        "task_029",
+        "task_030",
+        "task_031",
+        "task_032"
+      ],
+      "dependency_type": "all",
+      "deadline": null,
+      "ralph": {
+        "iteration": 0,
+        "max_iterations": 3,
+        "quality_checks": {
+          "tests_passed": false,
+          "lint_passed": false,
+          "acceptance_met": false
+        },
+        "issues": [],
+        "optimization_history": []
+      }
     }
   ]
 }

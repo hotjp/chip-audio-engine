@@ -22,6 +22,14 @@ export interface Viewport {
  * - StereoPannerNode 的 pan 值（左右定位）
  * - DistanceFilter 的 cutoff / gain（远近滤音）
  * - send GainNode 的增益（混响 wet 比）
+ *
+ * @example
+ * ```ts
+ * const spatial = new SpatialAudio(ctx);
+ * spatial.updatePosition(32, 32, { centerX: 32, centerY: 32, width: 64, height: 64 });
+ * sound.connect(spatial.input);
+ * spatial.output.connect(bus.input);
+ * ```
  */
 export class SpatialAudio {
   /** 声音输入节点 */
@@ -35,6 +43,13 @@ export class SpatialAudio {
   private distanceFilter: DistanceFilter | null = null;
   private ctx: BaseAudioContext;
 
+  /**
+   * @param ctx - 音频上下文
+   * @example
+   * ```ts
+   * const spatial = new SpatialAudio(audioContext);
+   * ```
+   */
   constructor(ctx: BaseAudioContext) {
     this.ctx = ctx;
     this.input = ctx.createGain();
@@ -74,6 +89,13 @@ export class SpatialAudio {
    *
    * pan = clamp((sourceX - centerX) / (width / 2), -1, 1)
    * 距离视口中心越远 → reverb send 越高
+   * @param sourceX - 声源 X 坐标
+   * @param sourceY - 声源 Y 坐标
+   * @param viewport - 视口描述
+   * @example
+   * ```ts
+   * spatial.updatePosition(10, 20, { centerX: 32, centerY: 32, width: 64, height: 64 });
+   * ```
    */
   updatePosition(sourceX: number, sourceY: number, viewport: Viewport): void {
     const halfWidth = viewport.width / 2;
@@ -102,7 +124,13 @@ export class SpatialAudio {
     this.send.gain.setValueAtTime(sendGain, now);
   }
 
-  /** 断开并清理所有节点 */
+  /**
+   * 断开并清理所有节点。
+   * @example
+   * ```ts
+   * spatial.dispose();
+   * ```
+   */
   dispose(): void {
     this.input.disconnect();
     this.output.disconnect();

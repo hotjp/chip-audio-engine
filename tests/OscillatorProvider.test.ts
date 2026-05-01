@@ -1,32 +1,66 @@
-import { describe, it, expect, vi } from 'vitest';
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { OscillatorProvider, OscillatorSound } from '../src/providers/OscillatorProvider.js';
 import type { SoundParams } from '../src/providers/types.js';
 
 function createMockAudioContext() {
+  const createGainSpy = vi.fn(() => ({
+    gain: {
+      value: 1,
+      setValueAtTime: vi.fn(),
+      linearRampToValueAtTime: vi.fn(),
+      cancelScheduledValues: vi.fn(),
+      exponentialRampToValueAtTime: vi.fn(),
+    },
+    connect: vi.fn(),
+    disconnect: vi.fn(),
+  }));
+
+  const createOscillatorSpy = vi.fn(() => ({
+    type: 'sine',
+    frequency: {
+      value: 440,
+      setValueAtTime: vi.fn(),
+      linearRampToValueAtTime: vi.fn(),
+      exponentialRampToValueAtTime: vi.fn(),
+    },
+    detune: { value: 0 },
+    connect: vi.fn(),
+    disconnect: vi.fn(),
+    start: vi.fn(),
+    stop: vi.fn(),
+  }));
+
+  const createBiquadFilterSpy = vi.fn(() => ({
+    type: 'lowpass',
+    frequency: { value: 20000, setValueAtTime: vi.fn() },
+    Q: { value: 1, setValueAtTime: vi.fn() },
+    gain: { value: 1, setValueAtTime: vi.fn() },
+    connect: vi.fn(),
+    disconnect: vi.fn(),
+  }));
+
+  const createBufferSourceSpy = vi.fn(() => ({
+    buffer: null,
+    loop: false,
+    connect: vi.fn(),
+    disconnect: vi.fn(),
+    start: vi.fn(),
+    stop: vi.fn(),
+  }));
+
+  const createBufferSpy = vi.fn((_channels: number, length: number, _sampleRate: number) => ({
+    length,
+    getChannelData: vi.fn(() => new Float32Array(length)),
+  }));
+
   return {
     currentTime: 0,
-    createGain: () => ({
-      gain: { value: 1, setValueAtTime: vi.fn(), linearRampToValueAtTime: vi.fn(), cancelScheduledValues: vi.fn() },
-      connect: vi.fn(),
-      disconnect: vi.fn(),
-    }),
-    createOscillator: () => ({
-      type: 'sine',
-      frequency: { value: 440, setValueAtTime: vi.fn(), linearRampToValueAtTime: vi.fn(), exponentialRampToValueAtTime: vi.fn() },
-      detune: { value: 0 },
-      connect: vi.fn(),
-      disconnect: vi.fn(),
-      start: vi.fn(),
-      stop: vi.fn(),
-    }),
-    createBiquadFilter: () => ({
-      type: 'lowpass',
-      frequency: { value: 20000, setValueAtTime: vi.fn() },
-      Q: { value: 1, setValueAtTime: vi.fn() },
-      gain: { value: 1, setValueAtTime: vi.fn() },
-      connect: vi.fn(),
-      disconnect: vi.fn(),
-    }),
+    sampleRate: 48000,
+    createGain: createGainSpy,
+    createOscillator: createOscillatorSpy,
+    createBiquadFilter: createBiquadFilterSpy,
+    createBufferSource: createBufferSourceSpy,
+    createBuffer: createBufferSpy,
     destination: {},
   } as unknown as BaseAudioContext;
 }
@@ -152,5 +186,82 @@ describe('OscillatorSound', () => {
     };
     const sound = new OscillatorSound(ctx, 'id', params);
     expect(sound).toBeDefined();
+  });
+
+  it('should support noise waveform', () => {
+    const params: SoundParams = {
+      waveforms: [{ type: 'noise', frequency: 0 }],
+    };
+    const sound = new OscillatorSound(ctx, 'id', params);
+    expect(sound).toBeDefined();
+    const node = { connect: vi.fn() } as unknown as AudioNode;
+    sound.connect(node);
+    sound.start(0, {});
+    sound.stop(0);
+    sound.dispose();
+  });
+
+  it('should support multiple waveform stacking', () => {
+    const params: SoundParams = {
+      waveforms: [
+        { type: 'sine', frequency: 220 },
+        { type: 'square', frequency: 440, gain: 0.5 },
+        { type: 'noise', frequency: 0, gain: 0.3 },
+      ],
+    };
+    const sound = new OscillatorSound(ctx, 'id', params);
+    expect(sound).toBeDefined();
+    const node = { connect: vi.fn() } as unknown as AudioNode;
+    sound.connect(node);
+    sound.start(0, {});
+    sound.stop(0);
+    sound.dispose();
+  });
+
+  it('should apply ADSR envelope parameters', () => {
+    const params: SoundParams = {
+      waveforms: [{ type: 'sine', frequency: 440 }],
+      envelope: { attack: 100, decay: 50, sustain: 0.3, release: 200 },
+    };
+    const sound = new OscillatorSound(ctx, 'id', params);
+    const node = { connect: vi.fn() } as unknown as AudioNode;
+    sound.connect(node);
+    sound.start(0, { volume: 1 });
+
+    const masterGain = (sound as any).masterGain as GainNode;
+    expect(masterGain.gain.setValueAtTime).toHaveBeenCalledWith(0, 0);
+    expect(masterGain.gain.linearRampToValueAtTime).toHaveBeenCalledWith(1, 0.1);
+    expect(masterGain.gain.linearRampToValueAtTime).toHaveBeenLastCalledWith(0.3, expect.closeTo(0.15, 10));
+  });
+
+  it('should handle vibrato pitch curve', () => {
+    const params: SoundParams = {
+      waveforms: [{ type: 'sine', frequency: 440 }],
+      pitch: { start: 1, end: 1, curve: 'vibrato', vibrato: { rate: 6, depth: 20 } },
+    };
+    const sound = new OscillatorSound(ctx, 'id', params);
+    expect(sound).toBeDefined();
+  });
+
+  it('should handle linear pitch curve', () => {
+    const params: SoundParams = {
+      waveforms: [{ type: 'sine', frequency: 440 }],
+      duration: 200,
+      pitch: { start: 1, end: 0.5, curve: 'linear' },
+    };
+    const sound = new OscillatorSound(ctx, 'id', params);
+    sound.start(0, {});
+    sound.stop(0);
+  });
+
+  it('should handle exponential pitch curve', () => {
+    const params: SoundParams = {
+      waveforms: [{ type: 'sine', frequency: 440 }],
+      duration: 200,
+      pitch: { start: 1, end: 0.5, curve: 'exponential' },
+    };
+    const sound = new OscillatorSound(ctx, 'id', params);
+    sound.start(0, {});
+    sound.stop(0);
   });
 });

@@ -23,6 +23,7 @@ export { SpatialAudio } from './effects/SpatialAudio.js';
 export type { Viewport as SpatialViewport } from './effects/SpatialAudio.js';
 
 export { OscillatorProvider, OscillatorSound } from './providers/OscillatorProvider.js';
+export { SampleProvider, SampleSound } from './providers/SampleProvider.js';
 
 export { AudioBus, IAudioBus } from './core/AudioBus.js';
 export { ChannelPool } from './core/ChannelPool.js';
@@ -30,6 +31,8 @@ export { Aggregator, AggregationConfig } from './core/Aggregator.js';
 export { DuckManager, DuckRule } from './core/DuckManager.js';
 export { EventEmitter } from './core/EventEmitter.js';
 export type { EventMap } from './core/EventEmitter.js';
+export { FocusManager } from './core/FocusManager.js';
+export type { FocusMode, FocusConfig } from './core/FocusManager.js';
 
 export { SoundPackLoader, SoundPack, SoundPackEntry } from './config/SoundPackLoader.js';
 

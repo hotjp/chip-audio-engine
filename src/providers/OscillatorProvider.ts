@@ -56,23 +56,64 @@ function getVibratoConfig(pitchCurve?: PitchCurve): { rate: number; depth: numbe
   return null;
 }
 
+/**
+ * 振荡器提供者，通过 Web Audio API 的 OscillatorNode 合成声音。
+ *
+ * @example
+ * ```ts
+ * const provider = new OscillatorProvider();
+ * engine.registerProvider(provider);
+ * ```
+ */
 export class OscillatorProvider implements SoundProvider {
+  /** 提供者标识 */
   readonly id = 'oscillator';
+  /** 提供者能力 */
   readonly capabilities: SoundProviderCapabilities = {
     supportedTypes: ['synth'],
     maxPolyphony: Infinity,
     realtimeParams: true,
   };
 
+  /**
+   * 创建振荡器声音实例。
+   * @param ctx - 音频上下文
+   * @param soundId - 音效标识符
+   * @param params - 声音参数
+   * @returns 声音实例
+   * @example
+   * ```ts
+   * const sound = provider.createSound(ctx, 'ui.click', params);
+   * ```
+   */
   createSound(ctx: BaseAudioContext, soundId: string, params: SoundParams): SoundInstance {
     return new OscillatorSound(ctx, soundId, params);
   }
 
+  /**
+   * 预加载（振荡器无需外部资源，直接 resolve）。
+   * @param _soundIds - 要预加载的音效 ID 数组
+   * @returns 已 resolve 的 Promise
+   * @example
+   * ```ts
+   * await provider.preload(['ui.click', 'game.jump']);
+   * ```
+   */
   async preload(_soundIds: string[]): Promise<void> {
     // Oscillator nodes require no external asset loading.
   }
 }
 
+/**
+ * 振荡器声音实例，管理多个振荡器节点、滤波器和颤音。
+ *
+ * @example
+ * ```ts
+ * const sound = new OscillatorSound(ctx, 'ui.click', params);
+ * sound.connect(bus.input);
+ * sound.start(ctx.currentTime, {});
+ * ```
+ */
 export class OscillatorSound implements SoundInstance {
   private ctx: BaseAudioContext;
   private params: SoundParams;
@@ -88,6 +129,11 @@ export class OscillatorSound implements SoundInstance {
   private currentGain = 0;
   private disposed = false;
 
+  /**
+   * @param ctx - 音频上下文
+   * @param _soundId - 音效标识符
+   * @param params - 声音参数
+   */
   constructor(ctx: BaseAudioContext, _soundId: string, params: SoundParams) {
     this.ctx = ctx;
     this.params = params;
@@ -165,12 +211,29 @@ export class OscillatorSound implements SoundInstance {
     }
   }
 
+  /**
+   * 连接到目标音频节点。
+   * @param node - 目标音频节点
+   * @example
+   * ```ts
+   * sound.connect(bus.input);
+   * ```
+   */
   connect(node: AudioNode): void {
     if (this.connected || this.disposed) return;
     this.connected = true;
     this.masterGain.connect(node);
   }
 
+  /**
+   * 在指定时间开始播放。
+   * @param when - 开始时间（音频上下文时间）
+   * @param playParams - 实时播放参数覆盖
+   * @example
+   * ```ts
+   * sound.start(ctx.currentTime, { volume: 0.8, pitch: 1.2 });
+   * ```
+   */
   start(when: number, playParams: PlayParams): void {
     if (this.started || this.disposed) return;
     this.started = true;
@@ -239,6 +302,14 @@ export class OscillatorSound implements SoundInstance {
     }
   }
 
+  /**
+   * 在指定时间停止播放并进入释放阶段。
+   * @param when - 停止时间（音频上下文时间）
+   * @example
+   * ```ts
+   * sound.stop(ctx.currentTime + 0.5);
+   * ```
+   */
   stop(when: number): void {
     if (this.disposed) return;
     const releaseMs = this.params.envelope?.release ?? 100;
@@ -277,6 +348,13 @@ export class OscillatorSound implements SoundInstance {
     }
   }
 
+  /**
+   * 释放所有内部节点资源。
+   * @example
+   * ```ts
+   * sound.dispose();
+   * ```
+   */
   dispose(): void {
     if (this.disposed) return;
     this.disposed = true;
