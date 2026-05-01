@@ -33,6 +33,7 @@ export class OscillatorProvider implements SoundProvider {
 
 export class OscillatorSound implements SoundInstance {
   private ctx: BaseAudioContext;
+  private soundId: string;
   private params: SoundParams;
   private oscillators: OscillatorNode[] = [];
   private waveGains: GainNode[] = [];
@@ -40,13 +41,16 @@ export class OscillatorSound implements SoundInstance {
   private filterNode?: BiquadFilterNode;
   private connected = false;
   private started = false;
+  private currentGain = 0;
 
-  constructor(ctx: BaseAudioContext, _soundId: string, params: SoundParams) {
+  constructor(ctx: BaseAudioContext, soundId: string, params: SoundParams) {
     this.ctx = ctx;
+    this.soundId = soundId;
     this.params = params;
 
     this.masterGain = ctx.createGain();
     this.masterGain.gain.value = 0;
+    this.currentGain = 0;
 
     if (params.filter) {
       const f = ctx.createBiquadFilter();
@@ -130,6 +134,7 @@ export class OscillatorSound implements SoundInstance {
     const gain = this.masterGain.gain;
     gain.cancelScheduledValues(t0);
     gain.setValueAtTime(0, t0);
+    this.currentGain = 0;
 
     if (envelope) {
       const attack = toSeconds(envelope.attack);
@@ -139,8 +144,10 @@ export class OscillatorSound implements SoundInstance {
 
       gain.linearRampToValueAtTime(peak, t0 + attack);
       gain.linearRampToValueAtTime(sustain, t0 + attack + decay);
+      this.currentGain = sustain;
     } else {
       gain.linearRampToValueAtTime(volume, t0);
+      this.currentGain = volume;
     }
   }
 
@@ -150,8 +157,9 @@ export class OscillatorSound implements SoundInstance {
 
     const gain = this.masterGain.gain;
     gain.cancelScheduledValues(when);
-    gain.setValueAtTime(gain.value, when);
+    gain.setValueAtTime(this.currentGain, when);
     gain.linearRampToValueAtTime(0, releaseEnd);
+    this.currentGain = 0;
 
     for (const osc of this.oscillators) {
       try {
@@ -180,5 +188,9 @@ export class OscillatorSound implements SoundInstance {
     this.masterGain.disconnect();
     this.oscillators = [];
     this.waveGains = [];
+    this.filterNode = undefined;
+    this.masterGain = null as unknown as GainNode;
+    this.ctx = null as unknown as BaseAudioContext;
+    this.params = null as unknown as SoundParams;
   }
 }
