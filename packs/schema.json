@@ -1,0 +1,171 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://chip-audio-engine.dev/packs/schema.json",
+  "title": "SoundPack",
+  "description": "Schema for Chip Audio Engine SoundPack definitions",
+  "type": "object",
+  "required": ["name", "sounds"],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Unique name of the sound pack"
+    },
+    "version": {
+      "type": "string",
+      "description": "Semantic version of the sound pack"
+    },
+    "style": {
+      "type": "string",
+      "description": "Descriptive style tag (e.g. '16-bit chiptune')"
+    },
+    "sounds": {
+      "type": "object",
+      "description": "Map of sound IDs to their synthesis parameters",
+      "additionalProperties": {
+        "$ref": "#/definitions/SoundPackEntry"
+      }
+    }
+  },
+  "definitions": {
+    "SoundPackEntry": {
+      "type": "object",
+      "required": ["provider"],
+      "properties": {
+        "provider": {
+          "type": "string",
+          "default": "oscillator",
+          "description": "Provider ID that synthesizes this sound"
+        },
+        "waveforms": {
+          "type": "array",
+          "description": "One or more waveforms to layer",
+          "items": {
+            "$ref": "#/definitions/WaveformConfig"
+          }
+        },
+        "envelope": {
+          "$ref": "#/definitions/ADSRConfig",
+          "description": "ADSR amplitude envelope in milliseconds / 0-1 level"
+        },
+        "filter": {
+          "$ref": "#/definitions/FilterConfig",
+          "description": "Optional biquad filter"
+        },
+        "pitch": {
+          "$ref": "#/definitions/PitchCurve",
+          "description": "Pitch bend as frequency multipliers"
+        },
+        "duration": {
+          "type": "number",
+          "description": "Total duration in milliseconds"
+        },
+        "volume": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Master volume multiplier (0-1)"
+        }
+      }
+    },
+    "WaveformConfig": {
+      "type": "object",
+      "required": ["type", "frequency"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["sine", "square", "sawtooth", "triangle", "custom"],
+          "description": "Oscillator waveform type"
+        },
+        "frequency": {
+          "oneOf": [
+            {
+              "type": "number",
+              "description": "Fixed frequency in Hz"
+            },
+            {
+              "type": "array",
+              "items": { "type": "number" },
+              "minItems": 2,
+              "maxItems": 2,
+              "description": "Frequency range [start, end] in Hz"
+            }
+          ]
+        },
+        "detune": {
+          "type": "number",
+          "description": "Detune in cents"
+        },
+        "gain": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Waveform volume multiplier (0-1)"
+        }
+      }
+    },
+    "ADSRConfig": {
+      "type": "object",
+      "required": ["attack", "decay", "sustain", "release"],
+      "properties": {
+        "attack": {
+          "type": "number",
+          "description": "Attack time in milliseconds"
+        },
+        "decay": {
+          "type": "number",
+          "description": "Decay time in milliseconds"
+        },
+        "sustain": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Sustain level (0-1)"
+        },
+        "release": {
+          "type": "number",
+          "description": "Release time in milliseconds"
+        }
+      }
+    },
+    "FilterConfig": {
+      "type": "object",
+      "required": ["type", "frequency"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["lowpass", "highpass", "bandpass", "lowshelf", "highshelf", "peaking", "notch", "allpass"],
+          "description": "Biquad filter type"
+        },
+        "frequency": {
+          "type": "number",
+          "description": "Filter cutoff / center frequency in Hz"
+        },
+        "Q": {
+          "type": "number",
+          "description": "Quality factor"
+        },
+        "gain": {
+          "type": "number",
+          "description": "Filter gain in dB (for shelf/peaking filters)"
+        }
+      }
+    },
+    "PitchCurve": {
+      "type": "object",
+      "required": ["start", "end"],
+      "properties": {
+        "start": {
+          "type": "number",
+          "description": "Starting frequency multiplier"
+        },
+        "end": {
+          "type": "number",
+          "description": "Ending frequency multiplier"
+        },
+        "curve": {
+          "type": "string",
+          "description": "Easing curve name (e.g. 'linear', 'exponential')"
+        }
+      }
+    }
+  }
+}
