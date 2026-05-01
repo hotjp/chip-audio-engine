@@ -6,7 +6,8 @@ import { ChannelPool } from '../core/ChannelPool.js';
 import { Aggregator, AggregationConfig } from '../core/Aggregator.js';
 import { DuckManager, DuckRule } from '../core/DuckManager.js';
 import { SoundPackLoader, SoundPack } from '../config/SoundPackLoader.js';
-import { VisibilityManager } from './VisibilityManager.js';
+import { EventEmitter } from '../core/EventEmitter.js';
+import type { EngineEvents } from './types.js';
 
 export interface EngineConfig {
   audioContext?: AudioContext;
@@ -20,7 +21,7 @@ interface ActiveSound {
   timeoutId: ReturnType<typeof setTimeout>;
 }
 
-export class ChipAudioEngine {
+export class ChipAudioEngine extends EventEmitter<EngineEvents> {
   private ctx: AudioContext | null = null;
   private ownsContext: boolean = false;
   private masterBus: AudioBus | null = null;
@@ -31,14 +32,13 @@ export class ChipAudioEngine {
   private providers: Map<string, SoundProvider> = new Map();
   private activeSounds: Map<string, ActiveSound> = new Map();
   private config: EngineConfig;
-  private visibilityManager: VisibilityManager;
 
   constructor(config: EngineConfig = {}) {
+    super();
     this.config = config;
     this.aggregator = new Aggregator();
     this.duckManager = new DuckManager();
     this.soundPackLoader = new SoundPackLoader();
-    this.visibilityManager = new VisibilityManager(this);
 
     if (config.soundPack) {
       this.soundPackLoader.register(config.soundPack);
@@ -129,15 +129,12 @@ export class ChipAudioEngine {
 
     const durationMs = soundParams.duration ?? 300;
     const timeoutId = setTimeout(() => {
-      this.disposeSound(soundId);
+      this.disposeSound(soundId, 'completed');
     }, durationMs + 100);
 
     const prev = this.activeSounds.get(soundId);
     if (prev) {
-      clearTimeout(prev.timeoutId);
-      prev.instance.stop(this.ctx.currentTime);
-      prev.instance.dispose();
-      this.channelPool.release(prev.channelId);
+      this.disposeSound(soundId, 'stolen');
     }
 
     this.activeSounds.set(soundId, {
@@ -145,12 +142,20 @@ export class ChipAudioEngine {
       channelId,
       timeoutId,
     });
+
+    this.emit('play', { soundId, channelId });
+  }
+
+  stop(soundId: string): void {
+    if (this.activeSounds.has(soundId)) {
+      this.disposeSound(soundId, 'manual');
+    }
   }
 
   stopAll(): void {
     const soundIds = Array.from(this.activeSounds.keys());
     for (const soundId of soundIds) {
-      this.disposeSound(soundId);
+      this.disposeSound(soundId, 'manual');
     }
   }
 
@@ -171,7 +176,22 @@ export class ChipAudioEngine {
     this.providers.clear();
     this.aggregator.reset();
     this.duckManager.clearAll();
-    this.disableVisibilityMute();
+  }
+
+  suspend(): void {
+    if (this.ctx && this.ownsContext) {
+      this.ctx.suspend();
+    }
+  }
+
+  resume(): void {
+    if (this.ctx && this.ownsContext) {
+      this.ctx.resume();
+    }
+  }
+
+  isSuspended(): boolean {
+    return this.ctx?.state === 'suspended';
   }
 
   registerProvider(provider: SoundProvider): void {
@@ -206,6 +226,7 @@ export class ChipAudioEngine {
   set masterVolume(value: number) {
     if (this.masterBus) {
       this.masterBus.volume = value;
+      this.emit('bus:volume', { busId: 'master', volume: value });
     }
   }
 
@@ -219,15 +240,10 @@ export class ChipAudioEngine {
     }
   }
 
-  enableVisibilityMute(): void {
-    this.visibilityManager.enable();
-  }
-
-  disableVisibilityMute(): void {
-    this.visibilityManager.disable();
-  }
-
-  private disposeSound(soundId: string): void {
+  private disposeSound(
+    soundId: string,
+    reason: 'completed' | 'manual' | 'stolen' = 'completed'
+  ): void {
     const active = this.activeSounds.get(soundId);
     if (!active || !this.ctx || !this.channelPool) {
       return;
@@ -240,6 +256,7 @@ export class ChipAudioEngine {
     this.activeSounds.delete(soundId);
 
     this.clearDucking(soundId);
+    this.emit('stop', { soundId, reason });
   }
 
   private applyDucking(soundId: string): void {

@@ -19,8 +19,10 @@ export { AudioBus, IAudioBus } from './core/AudioBus.js';
 export { ChannelPool } from './core/ChannelPool.js';
 export { Aggregator, AggregationConfig } from './core/Aggregator.js';
 export { DuckManager, DuckRule } from './core/DuckManager.js';
+export { EventEmitter } from './core/EventEmitter.js';
+export type { EventMap } from './core/EventEmitter.js';
 
 export { SoundPackLoader, SoundPack, SoundPackEntry } from './config/SoundPackLoader.js';
 
 export { ChipAudioEngine, EngineConfig } from './engine/ChipAudioEngine.js';
-export { VisibilityManager } from './engine/VisibilityManager.js';
+export type { EngineEvents } from './engine/types.js';
