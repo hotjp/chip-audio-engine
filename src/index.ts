@@ -16,6 +16,7 @@ export type {
 export { OscillatorProvider, OscillatorSound } from './providers/OscillatorProvider.js';
 
 export { AudioBus, IAudioBus } from './core/AudioBus.js';
+export { ChannelPool } from './core/ChannelPool.js';
 
 export class ChipAudioEngine {
   // TODO: implementation
