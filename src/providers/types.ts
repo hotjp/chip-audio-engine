@@ -45,6 +45,10 @@ export interface PlayParams {
   readonly volume?: number;
   readonly pitch?: number;
   readonly delay?: number;
+  /** 声源在 2D 世界中的坐标（配合 viewport 启用空间音频） */
+  readonly position?: { x: number; y: number };
+  /** 当前视口信息（配合 position 启用空间音频） */
+  readonly viewport?: { centerX: number; centerY: number; width: number; height: number };
 }
 
 /** 音源提供者能力声明 */

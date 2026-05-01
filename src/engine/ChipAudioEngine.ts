@@ -7,18 +7,23 @@ import { Aggregator, AggregationConfig } from '../core/Aggregator.js';
 import { DuckManager, DuckRule } from '../core/DuckManager.js';
 import { SoundPackLoader, SoundPack } from '../config/SoundPackLoader.js';
 import { EventEmitter } from '../core/EventEmitter.js';
-import type { EngineEvents } from './types.js';
+import { BGMEngine } from './BGMEngine.js';
+import type { EngineEvents, BGMScore } from './types.js';
+import { ReverbEngine, ReverbParams } from '../effects/ReverbEngine.js';
+import { SpatialAudio } from '../effects/SpatialAudio.js';
 
 export interface EngineConfig {
   audioContext?: AudioContext;
   channelCount?: number;
   soundPack?: SoundPack;
+  bgmScores?: BGMScore[];
 }
 
 interface ActiveSound {
   instance: SoundInstance;
   channelId: number;
   timeoutId: ReturnType<typeof setTimeout>;
+  spatial?: SpatialAudio;
 }
 
 export class ChipAudioEngine extends EventEmitter<EngineEvents> {
@@ -33,6 +38,8 @@ export class ChipAudioEngine extends EventEmitter<EngineEvents> {
   private activeSounds: Map<string, ActiveSound> = new Map();
   private config: EngineConfig;
   private destroyed: boolean = false;
+  private bgmEngine: BGMEngine | null = null;
+  private reverbEngine: ReverbEngine | null = null;
 
   constructor(config: EngineConfig = {}) {
     super();
@@ -62,12 +69,44 @@ export class ChipAudioEngine extends EventEmitter<EngineEvents> {
 
     this.initBusTree();
 
+    this.reverbEngine = new ReverbEngine(this.ctx);
+    const masterBus = this.masterBus;
+    const musicBus = masterBus?.getBus('music');
+    if (musicBus && this.reverbEngine && masterBus) {
+      musicBus.output.connect(this.reverbEngine.input);
+      this.reverbEngine.output.connect(masterBus.input);
+    }
+
+    this.duckManager.addRule({
+      trigger: 'bgm',
+      target: 'sfx',
+      duckVolume: 0.3,
+      fadeOutMs: 300,
+      fadeInMs: 800,
+      holdMs: 0,
+    });
+    this.duckManager.addRule({
+      trigger: 'bgm',
+      target: 'ui',
+      duckVolume: 0.3,
+      fadeOutMs: 300,
+      fadeInMs: 800,
+      holdMs: 0,
+    });
+
     this.channelPool = new ChannelPool({
       maxChannels: this.config.channelCount ?? 8,
     });
 
     const oscProvider = new OscillatorProvider();
     this.providers.set(oscProvider.id, oscProvider);
+
+    if (musicBus) {
+      this.bgmEngine = new BGMEngine(this.ctx, oscProvider, musicBus, this.duckManager);
+      if (this.config.bgmScores) {
+        this.bgmEngine.loadScores(this.config.bgmScores);
+      }
+    }
   }
 
   private initBusTree(): void {
@@ -134,7 +173,7 @@ export class ChipAudioEngine extends EventEmitter<EngineEvents> {
     const instance = provider.createSound(this.ctx, soundId, soundParams);
 
     const when = this.ctx.currentTime;
-    this.startSound(soundId, instance, bus, when, playParams);
+    const spatial = this.startSound(soundId, instance, bus, when, playParams);
 
     const durationMs = soundParams.duration ?? 300;
     const delayMs = Math.max(0, (playParams?.delay ?? 0) * 1000);
@@ -146,6 +185,7 @@ export class ChipAudioEngine extends EventEmitter<EngineEvents> {
       instance,
       channelId,
       timeoutId,
+      spatial,
     });
 
     this.emit('play', { soundId, channelId });
@@ -157,6 +197,9 @@ export class ChipAudioEngine extends EventEmitter<EngineEvents> {
       clearTimeout(oldActive.timeoutId);
       oldActive.instance.stop(this.ctx.currentTime);
       oldActive.instance.dispose();
+      if (oldActive.spatial) {
+        oldActive.spatial.dispose();
+      }
       if (oldActive.channelId !== channelId) {
         this.channelPool.release(oldActive.channelId);
       }
@@ -194,6 +237,11 @@ export class ChipAudioEngine extends EventEmitter<EngineEvents> {
     this.stopAll();
     this.activeSounds.clear();
 
+    if (this.reverbEngine) {
+      this.reverbEngine.dispose();
+      this.reverbEngine = null;
+    }
+
     if (this.masterBus) {
       this.masterBus.output.disconnect();
       this.masterBus = null;
@@ -203,6 +251,11 @@ export class ChipAudioEngine extends EventEmitter<EngineEvents> {
       Promise.resolve(this.ctx.close()).catch(() => {});
     }
     this.ctx = null;
+
+    if (this.bgmEngine) {
+      this.bgmEngine.dispose();
+      this.bgmEngine = null;
+    }
 
     this.channelPool = null;
     this.providers.clear();
@@ -251,6 +304,34 @@ export class ChipAudioEngine extends EventEmitter<EngineEvents> {
     return this.masterBus;
   }
 
+  /**
+   * Play a BGM score by id.
+   * @param scoreId the BGM score identifier
+   * @param options optional fade-in duration in ms
+   */
+  playBGM(scoreId: string, options?: { fadeIn?: number }): void {
+    if (!this.bgmEngine) {
+      return;
+    }
+    this.bgmEngine.play(scoreId, options);
+  }
+
+  /**
+   * Stop the currently playing BGM.
+   * @param options optional fade-out duration in ms
+   */
+  stopBGM(options?: { fadeOut?: number }): void {
+    if (!this.bgmEngine) {
+      return;
+    }
+    this.bgmEngine.stop(options);
+  }
+
+  /** Get the BGM engine instance. */
+  getBGMEngine(): BGMEngine | null {
+    return this.bgmEngine;
+  }
+
   /** Add a ducking rule. */
   addDuckRule(rule: DuckRule): void {
     this.duckManager.addRule(rule);
@@ -283,6 +364,16 @@ export class ChipAudioEngine extends EventEmitter<EngineEvents> {
     }
   }
 
+  /** 切换混响预设（room / hall / plate） */
+  setReverb(preset: string): void {
+    this.reverbEngine?.setPreset(preset);
+  }
+
+  /** 微调当前混响参数 */
+  setReverbParams(params: ReverbParams): void {
+    this.reverbEngine?.setParams(params);
+  }
+
   private resolveProvider(soundId: string): SoundProvider | undefined {
     const entry = this.soundPackLoader.getSoundEntry(soundId);
     const providerId = entry?.provider ?? 'oscillator';
@@ -309,10 +400,26 @@ export class ChipAudioEngine extends EventEmitter<EngineEvents> {
     bus: AudioBus,
     when: number,
     playParams?: PlayParams
-  ): void {
+  ): SpatialAudio | undefined {
+    const hasSpatial = playParams?.position && playParams?.viewport && this.ctx;
+
+    if (hasSpatial && this.ctx) {
+      const spatial = new SpatialAudio(this.ctx);
+      spatial.updatePosition(playParams.position.x, playParams.position.y, playParams.viewport);
+      instance.connect(spatial.input);
+      spatial.output.connect(bus.input);
+      if (this.reverbEngine) {
+        spatial.send.connect(this.reverbEngine.input);
+      }
+      instance.start(when, playParams ?? {});
+      this.applyDucking(soundId);
+      return spatial;
+    }
+
     instance.connect(bus.input);
     instance.start(when, playParams ?? {});
     this.applyDucking(soundId);
+    return undefined;
   }
 
   private stopIfActive(soundId: string, reason: 'completed' | 'manual' | 'stolen'): void {
@@ -334,6 +441,9 @@ export class ChipAudioEngine extends EventEmitter<EngineEvents> {
     clearTimeout(active.timeoutId);
     active.instance.stop(this.ctx.currentTime);
     active.instance.dispose();
+    if (active.spatial) {
+      active.spatial.dispose();
+    }
     if (releaseChannel) {
       this.channelPool.release(active.channelId);
     }

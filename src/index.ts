@@ -13,6 +13,15 @@ export type {
   PitchCurve,
 } from './providers/types.js';
 
+export { ReverbEngine } from './effects/ReverbEngine.js';
+export type { ReverbPreset, ReverbParams } from './effects/ReverbEngine.js';
+
+export { DistanceFilter } from './effects/DistanceFilter.js';
+export type { DistanceFilterConfig } from './effects/DistanceFilter.js';
+
+export { SpatialAudio } from './effects/SpatialAudio.js';
+export type { Viewport as SpatialViewport } from './effects/SpatialAudio.js';
+
 export { OscillatorProvider, OscillatorSound } from './providers/OscillatorProvider.js';
 
 export { AudioBus, IAudioBus } from './core/AudioBus.js';
@@ -25,4 +34,5 @@ export type { EventMap } from './core/EventEmitter.js';
 export { SoundPackLoader, SoundPack, SoundPackEntry } from './config/SoundPackLoader.js';
 
 export { ChipAudioEngine, EngineConfig } from './engine/ChipAudioEngine.js';
-export type { EngineEvents } from './engine/types.js';
+export { BGMEngine } from './engine/BGMEngine.js';
+export type { EngineEvents, BGMScore, BGMTrack, BGMNote } from './engine/types.js';
