@@ -22,12 +22,25 @@ export class DuckManager {
   }
 
   removeRule(trigger: string, target: string): void {
+    const hadRule = this.rules.some(
+      (r) => r.trigger === trigger && r.target === target
+    );
+    if (!hadRule) {
+      return;
+    }
+
     this.rules = this.rules.filter(
       (r) => !(r.trigger === trigger && r.target === target)
     );
-    const stillReferenced = this.rules.some((r) => r.target === target);
-    if (!stillReferenced) {
+
+    const stillReferencedTarget = this.rules.some((r) => r.target === target);
+    if (!stillReferencedTarget) {
       this.targetStates.delete(target);
+    }
+
+    const stillReferencedTrigger = this.rules.some((r) => r.trigger === trigger);
+    if (!stillReferencedTrigger) {
+      this.triggerCounts.delete(trigger);
     }
   }
 
