@@ -1,4 +1,5 @@
-export type AggregationStrategy = 'restart' | 'arpeggio' | 'stack' | 'debounce';
+export const AggregationStrategies = ['restart', 'arpeggio', 'stack', 'debounce'] as const;
+export type AggregationStrategy = (typeof AggregationStrategies)[number];
 
 export interface AggregationConfig {
   strategy: AggregationStrategy;
@@ -85,13 +86,17 @@ export class Aggregator {
         return true;
       }
 
-      default:
-        return true;
+      default: {
+        const _exhaustive: never = config.strategy;
+        return _exhaustive;
+      }
     }
   }
 
   private expireState(soundId: string): void {
-    this.states.delete(soundId);
+    if (this.states.has(soundId)) {
+      this.states.delete(soundId);
+    }
   }
 
   reset(): void {
