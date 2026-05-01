@@ -17,7 +17,9 @@ export { OscillatorProvider, OscillatorSound } from './providers/OscillatorProvi
 
 export { AudioBus, IAudioBus } from './core/AudioBus.js';
 export { ChannelPool } from './core/ChannelPool.js';
+export { Aggregator, AggregationConfig } from './core/Aggregator.js';
+export { DuckManager, DuckRule } from './core/DuckManager.js';
 
-export class ChipAudioEngine {
-  // TODO: implementation
-}
+export { SoundPackLoader, SoundPack, SoundPackEntry } from './config/SoundPackLoader.js';
+
+export { ChipAudioEngine, EngineConfig } from './engine/ChipAudioEngine.js';

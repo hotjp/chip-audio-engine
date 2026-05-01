@@ -1,0 +1,101 @@
+export interface DuckRule {
+  trigger: string;
+  target: string;
+  duckVolume: number;
+  fadeOutMs: number;
+  fadeInMs: number;
+  holdMs: number;
+}
+
+interface DuckTargetState {
+  originalVolume: number;
+  activeCount: number;
+}
+
+export class DuckManager {
+  private rules: DuckRule[] = [];
+  private triggerCounts: Map<string, number> = new Map();
+  private targetStates: Map<string, DuckTargetState> = new Map();
+
+  addRule(rule: DuckRule): void {
+    this.rules.push(rule);
+  }
+
+  removeRule(trigger: string, target: string): void {
+    this.rules = this.rules.filter(
+      (r) => !(r.trigger === trigger && r.target === target)
+    );
+    const stillReferenced = this.rules.some((r) => r.target === target);
+    if (!stillReferenced) {
+      this.targetStates.delete(target);
+    }
+  }
+
+  getDuckRules(soundId: string): DuckRule[] {
+    return this.rules.filter((r) => r.trigger === soundId);
+  }
+
+  setActive(soundId: string): void {
+    const matchingRules = this.getDuckRules(soundId);
+    if (matchingRules.length === 0) {
+      return;
+    }
+
+    const count = this.triggerCounts.get(soundId) ?? 0;
+    this.triggerCounts.set(soundId, count + 1);
+
+    for (const rule of matchingRules) {
+      const state = this.targetStates.get(rule.target);
+      if (state) {
+        state.activeCount++;
+      } else {
+        this.targetStates.set(rule.target, {
+          originalVolume: 1,
+          activeCount: 1,
+        });
+      }
+    }
+  }
+
+  clearActive(soundId: string): void {
+    const count = this.triggerCounts.get(soundId) ?? 0;
+    if (count <= 1) {
+      this.triggerCounts.delete(soundId);
+    } else {
+      this.triggerCounts.set(soundId, count - 1);
+    }
+
+    const matchingRules = this.getDuckRules(soundId);
+    for (const rule of matchingRules) {
+      const state = this.targetStates.get(rule.target);
+      if (state) {
+        state.activeCount--;
+        if (state.activeCount <= 0) {
+          this.targetStates.delete(rule.target);
+        }
+      }
+    }
+  }
+
+  isDucked(target: string): boolean {
+    const state = this.targetStates.get(target);
+    return state !== undefined && state.activeCount > 0;
+  }
+
+  getOriginalVolume(target: string): number {
+    return this.targetStates.get(target)?.originalVolume ?? 1;
+  }
+
+  setOriginalVolume(target: string, volume: number): void {
+    const state = this.targetStates.get(target);
+    if (state) {
+      state.originalVolume = volume;
+    }
+  }
+
+  clearAll(): void {
+    this.rules = [];
+    this.triggerCounts.clear();
+    this.targetStates.clear();
+  }
+}
