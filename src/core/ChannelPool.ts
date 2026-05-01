@@ -12,6 +12,7 @@ export class ChannelPool {
   private readonly maxChannels: number;
   private readonly reservedChannels: number;
   private readonly channels: (ChannelEntry | null)[];
+  private usedCount: number = 0;
 
   constructor(options: ChannelPoolOptions = {}) {
     const max = options.maxChannels ?? 8;
@@ -40,6 +41,7 @@ export class ChannelPool {
     for (let i = start; i < end; i++) {
       if (this.channels[i] === null) {
         this.channels[i] = { soundId, priority };
+        this.usedCount++;
         return i;
       }
     }
@@ -68,6 +70,7 @@ export class ChannelPool {
     for (let i = 0; i < this.reservedChannels; i++) {
       if (this.channels[i] === null) {
         this.channels[i] = { soundId, priority: 0 };
+        this.usedCount++;
         return i;
       }
     }
@@ -76,6 +79,9 @@ export class ChannelPool {
 
   release(channelId: number): void {
     if (channelId >= 0 && channelId < this.maxChannels) {
+      if (this.channels[channelId] !== null) {
+        this.usedCount--;
+      }
       this.channels[channelId] = null;
     }
   }
@@ -84,6 +90,7 @@ export class ChannelPool {
     for (let i = 0; i < this.maxChannels; i++) {
       this.channels[i] = null;
     }
+    this.usedCount = 0;
   }
 
   isInUse(channelId: number): boolean {
@@ -94,23 +101,11 @@ export class ChannelPool {
   }
 
   getUsedCount(): number {
-    let count = 0;
-    for (let i = 0; i < this.maxChannels; i++) {
-      if (this.channels[i] !== null) {
-        count++;
-      }
-    }
-    return count;
+    return this.usedCount;
   }
 
   getFreeCount(): number {
-    let count = 0;
-    for (let i = 0; i < this.maxChannels; i++) {
-      if (this.channels[i] === null) {
-        count++;
-      }
-    }
-    return count;
+    return this.maxChannels - this.usedCount;
   }
 
   getMaxChannels(): number {
