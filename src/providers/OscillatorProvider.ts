@@ -11,7 +11,10 @@ function toSeconds(ms: number): number {
 }
 
 function getBaseFrequency(wave: WaveformConfig): number {
-  return Array.isArray(wave.frequency) ? wave.frequency[0] : wave.frequency;
+  if (Array.isArray(wave.frequency)) {
+    return wave.frequency.length > 0 ? wave.frequency[0] : 440;
+  }
+  return wave.frequency;
 }
 
 export class OscillatorProvider implements SoundProvider {
@@ -121,7 +124,7 @@ export class OscillatorSound implements SoundInstance {
       const baseFreq = getBaseFrequency(wave) * pitchMul;
 
       if (pitchCurve && durationMs !== undefined) {
-        const startFreq = baseFreq * pitchCurve.start;
+        const startFreq = Math.max(0.01, baseFreq * pitchCurve.start);
         const endFreq = Math.max(0.01, baseFreq * pitchCurve.end);
         osc.frequency.setValueAtTime(startFreq, t0);
         osc.frequency.exponentialRampToValueAtTime(endFreq, t0 + toSeconds(durationMs));
@@ -155,11 +158,13 @@ export class OscillatorSound implements SoundInstance {
   stop(when: number): void {
     if (this.disposed) return;
     const releaseMs = this.params.envelope?.release ?? 100;
-    const releaseEnd = when + toSeconds(releaseMs);
+    const now = this.ctx.currentTime;
+    const releaseStart = Math.max(when, now);
+    const releaseEnd = releaseStart + toSeconds(releaseMs);
 
     const gain = this.masterGain.gain;
-    gain.cancelScheduledValues(when);
-    gain.setValueAtTime(this.currentGain, when);
+    gain.cancelScheduledValues(now);
+    gain.setValueAtTime(this.currentGain, releaseStart);
     gain.linearRampToValueAtTime(0, releaseEnd);
     this.currentGain = 0;
 

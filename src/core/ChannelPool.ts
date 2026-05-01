@@ -34,6 +34,9 @@ export class ChannelPool {
   }
 
   allocate(soundId: string, priority: number = 0): number | null {
+    if (Number.isNaN(priority)) {
+      priority = 0;
+    }
     const start = this.reservedChannels;
     const end = this.maxChannels;
 

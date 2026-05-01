@@ -84,11 +84,15 @@ export class AudioBus implements IAudioBus {
   fadeTo(target: number, durationMs: number): void {
     const clampedTarget = Math.max(0, Math.min(1, target));
     const now = this.context.currentTime;
-    const endTime = now + durationMs / 1000;
 
     this.gainNode.gain.cancelScheduledValues(now);
-    this.gainNode.gain.setValueAtTime(this.gainNode.gain.value, now);
-    this.gainNode.gain.linearRampToValueAtTime(clampedTarget, endTime);
+    if (durationMs <= 0) {
+      this.gainNode.gain.setValueAtTime(clampedTarget, now);
+    } else {
+      const endTime = now + durationMs / 1000;
+      this.gainNode.gain.setValueAtTime(this.gainNode.gain.value, now);
+      this.gainNode.gain.linearRampToValueAtTime(clampedTarget, endTime);
+    }
 
     this._volume = clampedTarget;
     // A fade to a positive target implies the bus should be audible,
