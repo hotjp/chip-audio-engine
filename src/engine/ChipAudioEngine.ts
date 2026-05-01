@@ -32,6 +32,7 @@ export class ChipAudioEngine extends EventEmitter<EngineEvents> {
   private providers: Map<string, SoundProvider> = new Map();
   private activeSounds: Map<string, ActiveSound> = new Map();
   private config: EngineConfig;
+  private destroyed: boolean = false;
 
   constructor(config: EngineConfig = {}) {
     super();
@@ -47,7 +48,7 @@ export class ChipAudioEngine extends EventEmitter<EngineEvents> {
   }
 
   init(): void {
-    if (this.ctx) {
+    if (this.destroyed || this.ctx) {
       return;
     }
     if (this.config.audioContext) {
@@ -87,7 +88,7 @@ export class ChipAudioEngine extends EventEmitter<EngineEvents> {
   }
 
   play(soundId: string, playParams?: PlayParams): void {
-    if (!this.ctx || !this.masterBus || !this.channelPool) {
+    if (this.destroyed || !this.ctx || !this.masterBus || !this.channelPool) {
       return;
     }
 
@@ -174,7 +175,12 @@ export class ChipAudioEngine extends EventEmitter<EngineEvents> {
   }
 
   destroy(): void {
+    if (this.destroyed) {
+      return;
+    }
+    this.destroyed = true;
     this.stopAll();
+    this.activeSounds.clear();
 
     if (this.masterBus) {
       this.masterBus.output.disconnect();
