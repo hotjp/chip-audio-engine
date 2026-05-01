@@ -13,6 +13,8 @@ export type {
   PitchCurve,
 } from './providers/types.js';
 
+export { OscillatorProvider, OscillatorSound } from './providers/OscillatorProvider.js';
+
 export { AudioBus, IAudioBus } from './core/AudioBus.js';
 
 export class ChipAudioEngine {
