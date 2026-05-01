@@ -19,25 +19,36 @@ export interface SoundPack {
 export class SoundPackLoader {
   private packs: Map<string, SoundPack> = new Map();
   private activePackName: string | null = null;
+  private soundCache: Map<string, SoundParams> = new Map();
 
   register(pack: SoundPack): void {
     this.packs.set(pack.name, pack);
+    if (this.activePackName === pack.name) {
+      this.soundCache.clear();
+    }
   }
 
   setActive(packName: string): boolean {
     if (!this.packs.has(packName)) {
       return false;
     }
-    this.activePackName = packName;
+    if (this.activePackName !== packName) {
+      this.activePackName = packName;
+      this.soundCache.clear();
+    }
     return true;
   }
 
   getSound(soundId: string): SoundParams | null {
+    const cached = this.soundCache.get(soundId);
+    if (cached) {
+      return cached;
+    }
     const entry = this.getSoundEntry(soundId);
     if (!entry) {
       return null;
     }
-    return {
+    const params: SoundParams = {
       waveforms: entry.waveforms,
       envelope: entry.envelope,
       filter: entry.filter,
@@ -45,6 +56,8 @@ export class SoundPackLoader {
       duration: entry.duration,
       pitch: entry.pitch,
     };
+    this.soundCache.set(soundId, params);
+    return params;
   }
 
   getSoundEntry(soundId: string): SoundPackEntry | null {
