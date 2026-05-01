@@ -1,7 +1,7 @@
 import type { SoundParams } from '../providers/types.js';
 
 export interface SoundPackEntry {
-  provider: string;
+  provider?: string;
   waveforms?: SoundParams['waveforms'];
   envelope?: SoundParams['envelope'];
   filter?: SoundParams['filter'];
@@ -68,7 +68,9 @@ export class SoundPackLoader {
     if (!pack) {
       return null;
     }
-    return pack.sounds[soundId] ?? null;
+    const entry = pack.sounds[soundId] ?? null;
+    // Consumers may wish to warn here in debug builds when entry is null.
+    return entry;
   }
 
   listSounds(): string[] {

@@ -46,7 +46,7 @@ export class VisibilityManager implements EventListenerObject {
   }
 
   handleEvent(_event: Event): void {
-    if (typeof document === 'undefined') {
+    if (!this.enabled || typeof document === 'undefined') {
       return;
     }
     if (document.visibilityState === 'hidden') {
