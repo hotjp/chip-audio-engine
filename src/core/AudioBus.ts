@@ -20,9 +20,11 @@ export class AudioBus implements IAudioBus {
   constructor(context: BaseAudioContext, id: string, parent: AudioBus | null = null) {
     this.context = context;
     this.id = id;
-    this._parent = parent;
     this.gainNode = context.createGain();
     this.gainNode.gain.value = this._volume;
+    if (parent) {
+      parent.addBus(this);
+    }
   }
 
   get parent(): IAudioBus | null {
