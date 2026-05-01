@@ -55,7 +55,20 @@ export class ChipAudioEngine extends EventEmitter<EngineEvents> {
       this.ownsContext = true;
     }
 
-    // Bus tree: master > music + sfx > ui + gameplay
+    this.initBusTree();
+
+    this.channelPool = new ChannelPool({
+      maxChannels: this.config.channelCount ?? 8,
+    });
+
+    const oscProvider = new OscillatorProvider();
+    this.providers.set(oscProvider.id, oscProvider);
+  }
+
+  private initBusTree(): void {
+    if (!this.ctx) {
+      return;
+    }
     this.masterBus = new AudioBus(this.ctx, 'master');
     const musicBus = new AudioBus(this.ctx, 'music');
     const sfxBus = new AudioBus(this.ctx, 'sfx');
@@ -68,13 +81,6 @@ export class ChipAudioEngine extends EventEmitter<EngineEvents> {
     sfxBus.addBus(gameplayBus);
 
     this.masterBus.output.connect(this.ctx.destination);
-
-    this.channelPool = new ChannelPool({
-      maxChannels: this.config.channelCount ?? 8,
-    });
-
-    const oscProvider = new OscillatorProvider();
-    this.providers.set(oscProvider.id, oscProvider);
   }
 
   play(soundId: string, playParams?: PlayParams): void {
@@ -91,9 +97,7 @@ export class ChipAudioEngine extends EventEmitter<EngineEvents> {
       return;
     }
 
-    const entry = this.soundPackLoader.getSoundEntry(soundId);
-    const providerId = entry?.provider ?? 'oscillator';
-    const provider = this.providers.get(providerId);
+    const provider = this.resolveProvider(soundId);
     if (!provider) {
       return;
     }
@@ -105,37 +109,21 @@ export class ChipAudioEngine extends EventEmitter<EngineEvents> {
 
     const instance = provider.createSound(this.ctx, soundId, soundParams);
 
-    let bus: AudioBus | undefined;
-    if (soundId.startsWith('ui.')) {
-      bus = this.masterBus.getBus('ui');
-    } else if (soundId.startsWith('game.')) {
-      bus = this.masterBus.getBus('gameplay');
-    } else if (soundId.startsWith('bgm.') || soundId.startsWith('music.')) {
-      bus = this.masterBus.getBus('music');
-    } else {
-      bus = this.masterBus.getBus('gameplay');
-    }
-
+    const bus = this.resolveBus(soundId);
     if (!bus) {
       this.channelPool.release(channelId);
       return;
     }
 
-    instance.connect(bus.input);
     const when = this.ctx.currentTime + (playParams?.delay ?? 0);
-    instance.start(when, playParams ?? {});
-
-    this.applyDucking(soundId);
+    this.startSound(soundId, instance, bus, when, playParams);
 
     const durationMs = soundParams.duration ?? 300;
     const timeoutId = setTimeout(() => {
       this.disposeSound(soundId, 'completed');
     }, durationMs + 100);
 
-    const prev = this.activeSounds.get(soundId);
-    if (prev) {
-      this.disposeSound(soundId, 'stolen');
-    }
+    this.stopIfActive(soundId, 'stolen');
 
     this.activeSounds.set(soundId, {
       instance,
@@ -147,9 +135,7 @@ export class ChipAudioEngine extends EventEmitter<EngineEvents> {
   }
 
   stop(soundId: string): void {
-    if (this.activeSounds.has(soundId)) {
-      this.disposeSound(soundId, 'manual');
-    }
+    this.stopIfActive(soundId, 'manual');
   }
 
   stopAll(): void {
@@ -237,6 +223,44 @@ export class ChipAudioEngine extends EventEmitter<EngineEvents> {
   set masterMuted(value: boolean) {
     if (this.masterBus) {
       this.masterBus.muted = value;
+    }
+  }
+
+  private resolveProvider(soundId: string): SoundProvider | undefined {
+    const entry = this.soundPackLoader.getSoundEntry(soundId);
+    const providerId = entry?.provider ?? 'oscillator';
+    return this.providers.get(providerId);
+  }
+
+  private resolveBus(soundId: string): AudioBus | undefined {
+    if (!this.masterBus) {
+      return undefined;
+    }
+    if (soundId.startsWith('ui.')) {
+      return this.masterBus.getBus('ui');
+    } else if (soundId.startsWith('game.')) {
+      return this.masterBus.getBus('gameplay');
+    } else if (soundId.startsWith('bgm.') || soundId.startsWith('music.')) {
+      return this.masterBus.getBus('music');
+    }
+    return this.masterBus.getBus('gameplay');
+  }
+
+  private startSound(
+    soundId: string,
+    instance: SoundInstance,
+    bus: AudioBus,
+    when: number,
+    playParams?: PlayParams
+  ): void {
+    instance.connect(bus.input);
+    instance.start(when, playParams ?? {});
+    this.applyDucking(soundId);
+  }
+
+  private stopIfActive(soundId: string, reason: 'completed' | 'manual' | 'stolen'): void {
+    if (this.activeSounds.has(soundId)) {
+      this.disposeSound(soundId, reason);
     }
   }
 
