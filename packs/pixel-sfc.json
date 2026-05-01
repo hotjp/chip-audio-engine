@@ -1,0 +1,114 @@
+{
+  "name": "pixel-sfc",
+  "style": "16-bit chiptune",
+  "sounds": {
+    "ui.click": {
+      "provider": "oscillator",
+      "waveforms": [
+        { "type": "square", "frequency": 800, "gain": 0.5 }
+      ],
+      "envelope": { "attack": 5, "decay": 15, "sustain": 0.1, "release": 20 },
+      "duration": 50,
+      "volume": 0.6
+    },
+    "ui.hover": {
+      "provider": "oscillator",
+      "waveforms": [
+        { "type": "sine", "frequency": 600, "gain": 0.3 }
+      ],
+      "envelope": { "attack": 5, "decay": 10, "sustain": 0, "release": 15 },
+      "duration": 30,
+      "volume": 0.3
+    },
+    "ui.tabSwitch": {
+      "provider": "oscillator",
+      "waveforms": [
+        { "type": "triangle", "frequency": 500, "gain": 0.5 }
+      ],
+      "envelope": { "attack": 5, "decay": 30, "sustain": 0.2, "release": 45 },
+      "duration": 80,
+      "pitch": { "start": 1.0, "end": 1.4 },
+      "volume": 0.5
+    },
+    "ui.buttonPress": {
+      "provider": "oscillator",
+      "waveforms": [
+        { "type": "square", "frequency": 400, "gain": 0.6 }
+      ],
+      "envelope": { "attack": 5, "decay": 20, "sustain": 0.1, "release": 35 },
+      "duration": 60,
+      "volume": 0.7
+    },
+    "ui.alert": {
+      "provider": "oscillator",
+      "waveforms": [
+        { "type": "sawtooth", "frequency": 900, "gain": 0.4 }
+      ],
+      "envelope": { "attack": 10, "decay": 80, "sustain": 0.3, "release": 110 },
+      "duration": 200,
+      "volume": 0.5
+    },
+    "game.taskComplete": {
+      "provider": "oscillator",
+      "waveforms": [
+        { "type": "square", "frequency": 600, "gain": 0.4 },
+        { "type": "sine", "frequency": 1200, "gain": 0.2 }
+      ],
+      "envelope": { "attack": 10, "decay": 100, "sustain": 0.4, "release": 190 },
+      "duration": 300,
+      "pitch": { "start": 1.0, "end": 2.0 },
+      "volume": 0.7
+    },
+    "game.taskFail": {
+      "provider": "oscillator",
+      "waveforms": [
+        { "type": "sawtooth", "frequency": 300, "gain": 0.5 }
+      ],
+      "envelope": { "attack": 15, "decay": 100, "sustain": 0.2, "release": 135 },
+      "duration": 250,
+      "pitch": { "start": 1.0, "end": 0.5 },
+      "volume": 0.6
+    },
+    "game.agentSelect": {
+      "provider": "oscillator",
+      "waveforms": [
+        { "type": "sine", "frequency": 880, "gain": 0.5 }
+      ],
+      "envelope": { "attack": 5, "decay": 30, "sustain": 0.2, "release": 45 },
+      "duration": 80,
+      "volume": 0.6
+    },
+    "game.agentMove": {
+      "provider": "oscillator",
+      "waveforms": [
+        { "type": "triangle", "frequency": 350, "gain": 0.5 }
+      ],
+      "envelope": { "attack": 10, "decay": 40, "sustain": 0.2, "release": 50 },
+      "duration": 100,
+      "pitch": { "start": 1.0, "end": 1.286 },
+      "volume": 0.5
+    },
+    "game.zoneAlert": {
+      "provider": "oscillator",
+      "waveforms": [
+        { "type": "square", "frequency": 700, "gain": 0.4 },
+        { "type": "sawtooth", "frequency": 703, "gain": 0.3 }
+      ],
+      "envelope": { "attack": 20, "decay": 200, "sustain": 0.5, "release": 180 },
+      "duration": 400,
+      "volume": 0.6
+    },
+    "game.disconnect": {
+      "provider": "oscillator",
+      "waveforms": [
+        { "type": "square", "frequency": 200, "gain": 0.35 },
+        { "type": "triangle", "frequency": 198, "gain": 0.25 },
+        { "type": "sawtooth", "frequency": 202, "gain": 0.2 }
+      ],
+      "envelope": { "attack": 20, "decay": 300, "sustain": 0.1, "release": 180 },
+      "duration": 500,
+      "pitch": { "start": 1.0, "end": 0.5 },
+      "volume": 0.7
+    }
+  }
+}
