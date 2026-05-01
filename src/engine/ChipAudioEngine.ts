@@ -47,6 +47,7 @@ export class ChipAudioEngine extends EventEmitter<EngineEvents> {
     }
   }
 
+  /** Initialize the audio context and internal bus tree. Idempotent. */
   init(): void {
     if (this.destroyed || this.ctx) {
       return;
@@ -87,6 +88,11 @@ export class ChipAudioEngine extends EventEmitter<EngineEvents> {
     this.masterBus.output.connect(this.ctx.destination);
   }
 
+  /**
+   * Play a sound by id.
+   * @param soundId the sound identifier
+   * @param playParams optional overrides for this playback
+   */
   play(soundId: string, playParams?: PlayParams): void {
     if (this.destroyed || !this.ctx || !this.masterBus || !this.channelPool) {
       return;
@@ -163,10 +169,12 @@ export class ChipAudioEngine extends EventEmitter<EngineEvents> {
     }
   }
 
+  /** Stop a specific sound if it is currently playing. */
   stop(soundId: string): void {
     this.stopIfActive(soundId, 'manual');
   }
 
+  /** Stop all currently playing sounds. */
   stopAll(): void {
     const soundIds = Array.from(this.activeSounds.keys());
     for (const soundId of soundIds) {
@@ -174,6 +182,10 @@ export class ChipAudioEngine extends EventEmitter<EngineEvents> {
     }
   }
 
+  /**
+   * Tear down the engine, stop all sounds, and close the owned context.
+   * Idempotent.
+   */
   destroy(): void {
     if (this.destroyed) {
       return;
@@ -199,43 +211,52 @@ export class ChipAudioEngine extends EventEmitter<EngineEvents> {
     this.activeSounds.clear();
   }
 
+  /** Suspend the owned audio context. */
   suspend(): void {
     if (this.ctx && this.ownsContext) {
       Promise.resolve(this.ctx.suspend()).catch(() => {});
     }
   }
 
+  /** Resume the owned audio context. */
   resume(): void {
     if (this.ctx && this.ownsContext) {
       Promise.resolve(this.ctx.resume()).catch(() => {});
     }
   }
 
+  /** Check whether the owned context is suspended. */
   isSuspended(): boolean {
     return this.ctx?.state === 'suspended';
   }
 
+  /** Register a custom sound provider. */
   registerProvider(provider: SoundProvider): void {
     this.providers.set(provider.id, provider);
   }
 
+  /** Load and activate a sound pack. */
   loadSoundPack(pack: SoundPack): void {
     this.soundPackLoader.register(pack);
     this.soundPackLoader.setActive(pack.name);
   }
 
+  /** Find a bus by id (recursive). */
   getBus(busId: string): AudioBus | undefined {
     return this.masterBus?.getBus(busId);
   }
 
+  /** Get the master output bus. */
   getMasterBus(): AudioBus | null {
     return this.masterBus;
   }
 
+  /** Add a ducking rule. */
   addDuckRule(rule: DuckRule): void {
     this.duckManager.addRule(rule);
   }
 
+  /** Configure aggregation behavior for a sound. */
   setAggregation(soundId: string, config: AggregationConfig): void {
     this.aggregator.setConfig(soundId, config);
   }

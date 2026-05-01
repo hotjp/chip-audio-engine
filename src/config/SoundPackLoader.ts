@@ -21,6 +21,7 @@ export class SoundPackLoader {
   private activePackName: string | null = null;
   private soundCache: Map<string, SoundParams> = new Map();
 
+  /** Register a sound pack. Overwrites any existing pack with the same name. */
   register(pack: SoundPack): void {
     this.packs.set(pack.name, pack);
     if (this.activePackName === pack.name) {
@@ -28,6 +29,7 @@ export class SoundPackLoader {
     }
   }
 
+  /** Switch to the named pack. Returns false if the pack is not registered. */
   setActive(packName: string): boolean {
     if (!this.packs.has(packName)) {
       return false;
@@ -39,6 +41,7 @@ export class SoundPackLoader {
     return true;
   }
 
+  /** Get merged sound parameters for playback. */
   getSound(soundId: string): SoundParams | null {
     const cached = this.soundCache.get(soundId);
     if (cached) {
@@ -60,6 +63,7 @@ export class SoundPackLoader {
     return params;
   }
 
+  /** Get the raw entry from the active pack. */
   getSoundEntry(soundId: string): SoundPackEntry | null {
     if (!this.activePackName) {
       return null;
@@ -73,6 +77,7 @@ export class SoundPackLoader {
     return entry;
   }
 
+  /** List all sound ids in the active pack. */
   listSounds(): string[] {
     if (!this.activePackName) {
       return [];
@@ -81,10 +86,12 @@ export class SoundPackLoader {
     return pack ? Object.keys(pack.sounds) : [];
   }
 
+  /** Get the name of the currently active pack. */
   getActivePackName(): string | null {
     return this.activePackName;
   }
 
+  /** Get names of all registered packs. */
   getPackNames(): string[] {
     return Array.from(this.packs.keys());
   }

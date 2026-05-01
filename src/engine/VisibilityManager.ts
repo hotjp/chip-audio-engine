@@ -10,6 +10,7 @@ export class VisibilityManager implements EventListenerObject {
     this.engine = engine;
   }
 
+  /** Enable auto-mute when the page becomes hidden. */
   enable(): void {
     if (this.enabled) {
       return;
@@ -27,6 +28,7 @@ export class VisibilityManager implements EventListenerObject {
     }
   }
 
+  /** Disable visibility monitoring and restore previous mute state. */
   disable(): void {
     if (!this.enabled) {
       return;
@@ -41,6 +43,7 @@ export class VisibilityManager implements EventListenerObject {
     }
   }
 
+  /** Check whether visibility monitoring is active. */
   isEnabled(): boolean {
     return this.enabled;
   }

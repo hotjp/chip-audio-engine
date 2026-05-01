@@ -3,6 +3,10 @@ export type EventMap = Record<string, any>;
 export class EventEmitter<Events extends EventMap = EventMap> {
   private handlers: Map<keyof Events, Set<(payload: any) => void>> = new Map();
 
+  /**
+   * Register an event handler.
+   * @returns an unsubscribe function
+   */
   on<K extends keyof Events>(
     event: K,
     handler: (payload: Events[K]) => void
@@ -14,6 +18,7 @@ export class EventEmitter<Events extends EventMap = EventMap> {
     return () => this.off(event, handler);
   }
 
+  /** Remove an event handler. */
   off<K extends keyof Events>(
     event: K,
     handler: (payload: Events[K]) => void
@@ -27,6 +32,10 @@ export class EventEmitter<Events extends EventMap = EventMap> {
     }
   }
 
+  /**
+   * Register a one-time event handler.
+   * @returns an unsubscribe function
+   */
   once<K extends keyof Events>(
     event: K,
     handler: (payload: Events[K]) => void
@@ -38,6 +47,10 @@ export class EventEmitter<Events extends EventMap = EventMap> {
     return this.on(event, wrapped);
   }
 
+  /**
+   * Emit an event to all registered handlers.
+   * Errors in individual handlers are isolated.
+   */
   emit<K extends keyof Events>(event: K, payload: Events[K]): void {
     this.handlers.get(event)?.forEach((handler) => {
       try {

@@ -33,6 +33,10 @@ export class ChannelPool {
     this.channels = new Array(max).fill(null);
   }
 
+  /**
+   * Allocate a non-reserved channel for a sound.
+   * @returns the channel id, or null if no channel is available and priority is too low
+   */
   allocate(soundId: string, priority: number = 0): number | null {
     if (Number.isNaN(priority)) {
       priority = 0;
@@ -69,6 +73,10 @@ export class ChannelPool {
     return null;
   }
 
+  /**
+   * Allocate a reserved channel.
+   * @returns the channel id, or null if all reserved channels are in use
+   */
   allocateReserved(soundId: string): number | null {
     for (let i = 0; i < this.reservedChannels; i++) {
       if (this.channels[i] === null) {
@@ -80,6 +88,7 @@ export class ChannelPool {
     return null;
   }
 
+  /** Release a channel so it can be reused. No-op for invalid ids. */
   release(channelId: number): void {
     if (channelId >= 0 && channelId < this.maxChannels) {
       if (this.channels[channelId] !== null) {
@@ -89,6 +98,7 @@ export class ChannelPool {
     }
   }
 
+  /** Release all channels including reserved ones. */
   releaseAll(): void {
     for (let i = 0; i < this.maxChannels; i++) {
       this.channels[i] = null;
@@ -96,6 +106,7 @@ export class ChannelPool {
     this.usedCount = 0;
   }
 
+  /** Check whether a channel is currently allocated. */
   isInUse(channelId: number): boolean {
     if (channelId < 0 || channelId >= this.maxChannels) {
       return false;

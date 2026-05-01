@@ -108,6 +108,10 @@ export class AudioBus implements IAudioBus {
     }
   }
 
+  /**
+   * Add a child bus. The sub-bus must not already have a parent.
+   * @throws if the sub-bus is this bus, already has a parent, or the id already exists
+   */
   addBus(subBus: AudioBus): void {
     if (subBus === this) {
       throw new Error('Cannot add a bus as a child of itself');
@@ -123,6 +127,9 @@ export class AudioBus implements IAudioBus {
     subBus.output.connect(this.input);
   }
 
+  /**
+   * Recursively find a bus by id. Returns this bus if id matches.
+   */
   getBus(id: string): AudioBus | undefined {
     if (this.id === id) {
       return this;

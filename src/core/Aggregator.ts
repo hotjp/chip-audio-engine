@@ -19,18 +19,25 @@ export class Aggregator {
   private defaultConfig: AggregationConfig = { strategy: 'restart' };
   private states: Map<string, SoundState> = new Map();
 
+  /** Configure aggregation strategy for a specific sound. */
   setConfig(soundId: string, config: AggregationConfig): void {
     this.configs.set(soundId, config);
   }
 
+  /** Set the fallback aggregation strategy for unconfigured sounds. */
   setDefaultConfig(config: AggregationConfig): void {
     this.defaultConfig = config;
   }
 
+  /** Remove all per-sound aggregation configs (default is preserved). */
   removeAllConfigs(): void {
     this.configs.clear();
   }
 
+  /**
+   * Submit a play request for aggregation.
+   * @returns true if the request should proceed to playback
+   */
   submit(soundId: string, priority: number): boolean {
     const config = this.configs.get(soundId) ?? this.defaultConfig;
     const now = Date.now();
@@ -97,6 +104,7 @@ export class Aggregator {
     this.states.delete(soundId);
   }
 
+  /** Clear all active aggregation states and pending timers. */
   reset(): void {
     for (const state of this.states.values()) {
       if (state.timerId) {

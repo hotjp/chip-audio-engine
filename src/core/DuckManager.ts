@@ -17,10 +17,12 @@ export class DuckManager {
   private triggerCounts: Map<string, number> = new Map();
   private targetStates: Map<string, DuckTargetState> = new Map();
 
+  /** Register a ducking rule. */
   addRule(rule: DuckRule): void {
     this.rules.push(rule);
   }
 
+  /** Remove a ducking rule by trigger and target. */
   removeRule(trigger: string, target: string): void {
     const hadRule = this.rules.some(
       (r) => r.trigger === trigger && r.target === target
@@ -46,10 +48,12 @@ export class DuckManager {
     }
   }
 
+  /** Get all rules where the given sound is the trigger. */
   getDuckRules(soundId: string): DuckRule[] {
     return this.rules.filter((r) => r.trigger === soundId);
   }
 
+  /** Signal that a trigger sound has started playing. */
   setActive(soundId: string): void {
     // Invariant: matchingRules must remain stable between setActive and
     // clearActive calls for the same trigger, otherwise activeCount will drift.
@@ -74,6 +78,7 @@ export class DuckManager {
     }
   }
 
+  /** Signal that a trigger sound has stopped playing. */
   clearActive(soundId: string): void {
     const count = this.triggerCounts.get(soundId) ?? 0;
     if (count <= 1) {
@@ -94,6 +99,7 @@ export class DuckManager {
     }
   }
 
+  /** Check whether a target bus is currently ducked. */
   isDucked(target: string): boolean {
     const state = this.targetStates.get(target);
     return state !== undefined && state.activeCount > 0;
@@ -110,6 +116,7 @@ export class DuckManager {
     }
   }
 
+  /** Reset all rules and active states. */
   clearAll(): void {
     this.rules = [];
     this.triggerCounts.clear();
