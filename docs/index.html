@@ -1041,6 +1041,39 @@
     </div>
   </section>
 
+  <!-- Live Demo -->
+  <section id="demo">
+    <h2 class="section-title yellow">LIVE DEMO</h2>
+    <p class="section-subtitle">点击播放，聆听 Chip Audio Engine 合成的芯片音乐</p>
+    <div class="demo-grid">
+      <div class="demo-card" id="demo-title-theme">
+        <div class="demo-header">
+          <div class="demo-title">Title Screen</div>
+          <div class="demo-meta">BPM 130 · 5 Tracks · 16bit-sfc</div>
+        </div>
+        <div class="demo-tracks">
+          <span class="demo-tag">lead</span>
+          <span class="demo-tag">bass</span>
+          <span class="demo-tag">arp</span>
+          <span class="demo-tag">kick</span>
+          <span class="demo-tag">hihat</span>
+        </div>
+        <div class="demo-controls">
+          <button class="demo-btn play" onclick="demoPlay('title')" id="btn-title">
+            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          </button>
+          <button class="demo-btn stop" onclick="demoStop('title')" id="btn-title-stop">
+            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="12" height="12"/></svg>
+          </button>
+        </div>
+        <div class="demo-progress">
+          <div class="demo-progress-bar" id="progress-title"></div>
+        </div>
+        <div class="demo-status" id="status-title">Ready</div>
+      </div>
+    </div>
+  </section>
+
   <!-- API Overview -->
   <section id="api">
     <h2 class="section-title magenta">API OVERVIEW</h2>
@@ -1080,6 +1113,99 @@
     </div>
   </footer>
 
+  <style>
+    /* Demo Player */
+    .demo-grid {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .demo-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .demo-card.playing {
+      border-color: var(--yellow);
+      box-shadow: 0 0 30px rgba(255, 224, 0, 0.15);
+    }
+    .demo-header { margin-bottom: 1rem; }
+    .demo-title {
+      font-family: var(--font-pixel);
+      font-size: 0.9rem;
+      color: var(--yellow);
+      margin-bottom: 0.4rem;
+    }
+    .demo-meta {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+    .demo-tracks { margin-bottom: 1rem; display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .demo-tag {
+      font-size: 0.7rem;
+      padding: 0.2rem 0.5rem;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      color: var(--text-secondary);
+      font-family: var(--font-modern);
+    }
+    .demo-controls { display: flex; gap: 1rem; margin-bottom: 1rem; }
+    .demo-btn {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 2px solid;
+      background: transparent;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s;
+    }
+    .demo-btn.play {
+      border-color: var(--cyan);
+      color: var(--cyan);
+    }
+    .demo-btn.play:hover {
+      box-shadow: 0 0 20px rgba(0, 255, 240, 0.4);
+      background: rgba(0, 255, 240, 0.1);
+    }
+    .demo-btn.stop {
+      border-color: var(--magenta);
+      color: var(--magenta);
+    }
+    .demo-btn.stop:hover {
+      box-shadow: 0 0 20px rgba(255, 0, 255, 0.4);
+      background: rgba(255, 0, 255, 0.1);
+    }
+    .demo-progress {
+      height: 3px;
+      background: var(--border);
+      border-radius: 2px;
+      margin-bottom: 0.5rem;
+      overflow: hidden;
+    }
+    .demo-progress-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--cyan), var(--yellow));
+      border-radius: 2px;
+      transition: width 0.1s linear;
+    }
+    .demo-status {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-family: var(--font-pixel);
+    }
+    .demo-card.playing .demo-status { color: var(--yellow); }
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 20px rgba(255, 224, 0, 0.15); }
+      50% { box-shadow: 0 0 40px rgba(255, 224, 0, 0.3); }
+    }
+    .demo-card.playing { animation: pulse-glow 2s ease-in-out infinite; }
+  </style>
+
   <script>
     // Randomize equalizer bars for more organic feel
     document.querySelectorAll('.wave-bar').forEach(bar => {
@@ -1094,6 +1220,365 @@
       const y = (e.clientY / window.innerHeight - 0.5) * 10;
       hero.style.background = `radial-gradient(circle at ${50 + x}% ${50 + y}%, rgba(0,255,240,0.03) 0%, transparent 50%)`;
     });
+
+    // Demo Synthesizer
+    const NOTE_NAMES = ['C','C#','D','D#','E','F','F#','G','G#','A','A#','B'];
+    function noteToFreq(note) {
+      if (!note) return 0;
+      const match = note.match(/^([A-Ga-g])([#b]?)([0-9])$/);
+      if (!match) return 0;
+      const name = match[1].toUpperCase();
+      const acc = match[2];
+      const oct = parseInt(match[3]);
+      let semitone = NOTE_NAMES.indexOf(name);
+      if (acc === '#') semitone += 1;
+      if (acc === 'b') semitone -= 1;
+      const midi = semitone + (oct + 1) * 12;
+      return 440 * Math.pow(2, (midi - 69) / 12);
+    }
+
+    function durationToMs(dur, bpm) {
+      const map = {w:4,h:2,q:1,e:0.5,s:0.25,t:0.125,'w.':6,'h.':3,'q.':1.5,'e.':0.75,'s.':0.375};
+      if (typeof dur === 'number') return dur;
+      const beats = map[dur];
+      return (beats || 1) * 60000 / bpm;
+    }
+
+    function createNoiseBuffer(ctx, duration) {
+      const sampleRate = ctx.sampleRate;
+      const length = Math.ceil(sampleRate * duration);
+      const buffer = ctx.createBuffer(1, length, sampleRate);
+      const data = buffer.getChannelData(0);
+      for (let i = 0; i < length; i++) {
+        data[i] = Math.random() * 2 - 1;
+      }
+      return buffer;
+    }
+
+    function playNote(ctx, dest, timbre, note, duration, startTime, velocity) {
+      if (!note) return;
+      const freq = noteToFreq(note);
+      if (!freq) return;
+
+      const waveforms = timbre.waveforms || [{type: 'square', gain: 1}];
+      const env = timbre.envelope || {attack: 10, decay: 30, sustain: 0.3, release: 50};
+      const vol = (timbre.volume || 1) * (velocity || 1);
+      const totalDur = duration / 1000;
+      const attack = env.attack / 1000;
+      const decay = env.decay / 1000;
+      const release = env.release / 1000;
+      const sustainLevel = env.sustain;
+
+      const masterGain = ctx.createGain();
+      masterGain.connect(dest);
+
+      let filterNode = null;
+      if (timbre.filter) {
+        filterNode = ctx.createBiquadFilter();
+        filterNode.type = timbre.filter.type || 'lowpass';
+        filterNode.frequency.value = timbre.filter.frequency || 2000;
+        filterNode.Q.value = timbre.filter.Q || 1;
+        filterNode.connect(masterGain);
+      }
+
+      const target = filterNode || masterGain;
+
+      waveforms.forEach(wf => {
+        const wfGainVal = wf.gain || 1;
+        const sourceGain = ctx.createGain();
+
+        if (wf.type === 'noise') {
+          const noiseBuffer = createNoiseBuffer(ctx, totalDur + 0.1);
+          const source = ctx.createBufferSource();
+          source.buffer = noiseBuffer;
+
+          const atkTime = startTime + Math.min(attack, totalDur * 0.5);
+          const decTime = atkTime + Math.min(decay, totalDur * 0.5);
+          const releaseStart = Math.max(decTime, startTime + totalDur - release);
+          const endTime = startTime + totalDur;
+
+          sourceGain.gain.setValueAtTime(0, startTime);
+          sourceGain.gain.linearRampToValueAtTime(vol * wfGainVal * 0.3, atkTime);
+          sourceGain.gain.linearRampToValueAtTime(vol * wfGainVal * 0.3 * sustainLevel, decTime);
+          sourceGain.gain.setValueAtTime(vol * wfGainVal * 0.3 * sustainLevel, releaseStart);
+          sourceGain.gain.linearRampToValueAtTime(0, endTime);
+
+          source.connect(sourceGain);
+          sourceGain.connect(target);
+          source.start(startTime);
+          source.stop(endTime);
+        } else {
+          const osc = ctx.createOscillator();
+          osc.type = wf.type || 'square';
+          osc.frequency.value = freq;
+          if (wf.detune) osc.detune.value = wf.detune;
+
+          if (timbre.pitch) {
+            osc.frequency.setValueAtTime(freq * (timbre.pitch.start || 1), startTime);
+            const pitchEnd = timbre.pitch.end || 1;
+            osc.frequency.exponentialRampToValueAtTime(Math.max(freq * pitchEnd, 0.01), startTime + totalDur * 0.5);
+          }
+
+          const atkTime = startTime + Math.min(attack, totalDur * 0.5);
+          const decTime = atkTime + Math.min(decay, totalDur * 0.5);
+          const releaseStart = Math.max(decTime, startTime + totalDur - release);
+          const endTime = startTime + totalDur;
+
+          sourceGain.gain.setValueAtTime(0, startTime);
+          sourceGain.gain.linearRampToValueAtTime(vol * wfGainVal * 0.3, atkTime);
+          sourceGain.gain.linearRampToValueAtTime(vol * wfGainVal * 0.3 * sustainLevel, decTime);
+          sourceGain.gain.setValueAtTime(vol * wfGainVal * 0.3 * sustainLevel, releaseStart);
+          sourceGain.gain.linearRampToValueAtTime(0, endTime);
+
+          osc.connect(sourceGain);
+          sourceGain.connect(target);
+          osc.start(startTime);
+          osc.stop(endTime + 0.05);
+        }
+      });
+    }
+
+    function getVelocity(perf, noteIndex) {
+      if (!perf || !perf.velocityCurve) return 1;
+      const curve = perf.velocityCurve;
+      for (let i = 0; i < curve.length - 1; i++) {
+        if (noteIndex >= curve[i][0] && noteIndex <= curve[i+1][0]) {
+          const denom = curve[i+1][0] - curve[i][0];
+          const t = denom === 0 ? 0 : (noteIndex - curve[i][0]) / denom;
+          return curve[i][1] + t * (curve[i+1][1] - curve[i][1]);
+        }
+      }
+      return curve[curve.length - 1][1];
+    }
+
+    function playScore(ctx, score, timbrePack, baseTime) {
+      const dest = ctx.destination;
+      const bpm = score.bpm || 120;
+
+      score.tracks.forEach(track => {
+        const timbreName = track.timbre;
+        const timbre = timbrePack.timbres[timbreName];
+        if (!timbre) return;
+
+        const perf = track.performance || {};
+        const layback = (perf.layback || 0) / 1000;
+        const humanize = perf.humanize || 0;
+        let currentTime = 0;
+
+        track.notes.forEach((noteObj, idx) => {
+          const dur = durationToMs(noteObj.duration, bpm);
+          const startMs = currentTime + (noteObj.offset || 0);
+          const velocity = getVelocity(perf, idx);
+          const hOff = humanize > 0 ? (Math.random() - 0.5) * humanize * 60 : 0;
+          playNote(ctx, dest, timbre, noteObj.note, dur, baseTime + startMs / 1000 + layback + hOff / 1000, velocity);
+          currentTime += dur;
+        });
+      });
+
+      let maxTime = 0;
+      score.tracks.forEach(track => {
+        let t = 0;
+        track.notes.forEach(n => {
+          const dur = durationToMs(n.duration, score.bpm || 120);
+          const start = t + (n.offset || 0);
+          const end = start + dur;
+          if (end > maxTime) maxTime = end;
+          t += dur;
+        });
+      });
+      maxTime /= 1000;
+      return maxTime;
+    }
+
+    const titleThemeScore = {"id":"title-theme","name":"Title Screen","bpm":130,"timbrePack":"16bit-sfc","config":{"loop":true,"reverb":"room"},"tracks":[{"timbre":"lead","performance":{"layback":15,"humanize":0.2,"velocityCurve":[[0,0.5],[4,0.9],[8,0.5],[16,0.5],[20,0.9],[24,0.5]]},"notes":[{"note":"E5","duration":"q"},{"note":"G5","duration":"q"},{"note":"A5","duration":"h"},{"note":"G5","duration":"q","offset":25},{"note":"E5","duration":"q"},{"note":"D5","duration":"h"},{"note":"C5","duration":"q"},{"note":"D5","duration":"q"},{"note":"E5","duration":"h"},{"note":"G5","duration":"q"},{"note":"E5","duration":"q"},{"note":"D5","duration":"h"},{"note":"E5","duration":"q"},{"note":"G5","duration":"q"},{"note":"A5","duration":"h"},{"note":"B5","duration":"q"},{"note":"C6","duration":"q"},{"note":"A5","duration":"h"},{"note":"G5","duration":"q"},{"note":"A5","duration":"q"},{"note":"B5","duration":"h"},{"note":"C6","duration":"q"},{"note":"B5","duration":"q"},{"note":"A5","duration":"h"}]},{"timbre":"bass","performance":{"layback":5},"notes":[{"note":"A2","duration":"w"},{"note":"G2","duration":"w"},{"note":"F2","duration":"w"},{"note":"E2","duration":"w"},{"note":"A2","duration":"w"},{"note":"G2","duration":"w"},{"note":"F2","duration":"w"},{"note":"E2","duration":"w"}]},{"timbre":"arp","performance":{"swing":0.4},"notes":[{"note":"A4","duration":"e"},{"note":"C5","duration":"e"},{"note":"E5","duration":"e"},{"note":"A5","duration":"e"},{"note":"G4","duration":"e"},{"note":"B4","duration":"e"},{"note":"D5","duration":"e"},{"note":"G5","duration":"e"},{"note":"F4","duration":"e"},{"note":"A4","duration":"e"},{"note":"C5","duration":"e"},{"note":"F5","duration":"e"},{"note":"E4","duration":"e"},{"note":"G4","duration":"e"},{"note":"B4","duration":"e"},{"note":"E5","duration":"e"},{"note":"A4","duration":"e"},{"note":"C5","duration":"e"},{"note":"E5","duration":"e"},{"note":"A5","duration":"e"},{"note":"G4","duration":"e"},{"note":"B4","duration":"e"},{"note":"D5","duration":"e"},{"note":"G5","duration":"e"},{"note":"F4","duration":"e"},{"note":"A4","duration":"e"},{"note":"C5","duration":"e"},{"note":"F5","duration":"e"},{"note":"E4","duration":"e"},{"note":"G4","duration":"e"},{"note":"B4","duration":"e"},{"note":"E5","duration":"e"}]},{"timbre":"kick","notes":[{"note":"C2","duration":"q"},{"note":null,"duration":"q"},{"note":"C2","duration":"q"},{"note":null,"duration":"q"},{"note":"C2","duration":"q"},{"note":null,"duration":"q"},{"note":"C2","duration":"q"},{"note":null,"duration":"q"},{"note":"C2","duration":"q"},{"note":null,"duration":"q"},{"note":"C2","duration":"q"},{"note":null,"duration":"q"},{"note":"C2","duration":"q"},{"note":null,"duration":"q"},{"note":"C2","duration":"q"},{"note":null,"duration":"q"}]},{"timbre":"hihat","performance":{"humanize":0.15},"notes":[{"note":"C6","duration":"e"},{"note":null,"duration":"e"},{"note":"C6","duration":"e"},{"note":null,"duration":"e"},{"note":"C6","duration":"e"},{"note":null,"duration":"e"},{"note":"C6","duration":"e"},{"note":null,"duration":"e"},{"note":"C6","duration":"e"},{"note":null,"duration":"e"},{"note":"C6","duration":"e"},{"note":null,"duration":"e"},{"note":"C6","duration":"e"},{"note":null,"duration":"e"},{"note":"C6","duration":"e"},{"note":null,"duration":"e"},{"note":"C6","duration":"e"},{"note":null,"duration":"e"},{"note":"C6","duration":"e"},{"note":null,"duration":"e"},{"note":"C6","duration":"e"},{"note":null,"duration":"e"},{"note":"C6","duration":"e"},{"note":null,"duration":"e"},{"note":"C6","duration":"e"},{"note":null,"duration":"e"},{"note":"C6","duration":"e"},{"note":null,"duration":"e"},{"note":"C6","duration":"e"},{"note":null,"duration":"e"},{"note":"C6","duration":"e"},{"note":null,"duration":"e"}]}]};
+
+    const timbrePack16bit = {"name":"16bit-sfc","style":"SFC/GBA 16-bit chiptune","description":"温润柔和的 SFC 风格音色，适合像素风游戏","timbres":{"lead":{"provider":"oscillator","waveforms":[{"type":"square","gain":0.5,"detune":-4},{"type":"square","gain":0.25,"detune":4}],"filter":{"type":"lowpass","frequency":2800,"Q":1},"envelope":{"attack":5,"decay":30,"sustain":0.3,"release":60}},"bass":{"provider":"oscillator","waveforms":[{"type":"triangle","gain":0.6},{"type":"square","gain":0.15,"detune":-6}],"filter":{"type":"lowpass","frequency":800,"Q":0.8},"envelope":{"attack":2,"decay":20,"sustain":0.5,"release":40}},"pad":{"provider":"oscillator","waveforms":[{"type":"sine","gain":0.4,"detune":-7},{"type":"sine","gain":0.4,"detune":7},{"type":"triangle","gain":0.2}],"filter":{"type":"lowpass","frequency":1500,"Q":0.5},"envelope":{"attack":80,"decay":100,"sustain":0.6,"release":200}},"arp":{"provider":"oscillator","waveforms":[{"type":"square","gain":0.35}],"filter":{"type":"lowpass","frequency":3500,"Q":1.5},"envelope":{"attack":1,"decay":15,"sustain":0,"release":20}},"kick":{"provider":"oscillator","waveforms":[{"type":"sine","gain":0.7}],"envelope":{"attack":1,"decay":80,"sustain":0,"release":60},"pitch":{"start":1.5,"end":0.5}},"snare":{"provider":"oscillator","waveforms":[{"type":"noise","gain":0.5},{"type":"triangle","gain":0.3}],"filter":{"type":"highpass","frequency":500,"Q":0.7},"envelope":{"attack":1,"decay":40,"sustain":0,"release":30}},"hihat":{"provider":"oscillator","waveforms":[{"type":"noise","gain":0.2}],"filter":{"type":"highpass","frequency":6000,"Q":0.5},"envelope":{"attack":0,"decay":10,"sustain":0,"release":5}}}};
+
+    const demoState = {
+      ctx: null,
+      raf: null,
+      startTime: 0,
+      totalDuration: 0
+    };
+
+    function updateProgress() {
+      if (!demoState.ctx || demoState.ctx.state === 'closed') return;
+      const elapsed = demoState.ctx.currentTime - demoState.startTime;
+      const pct = Math.min(100, (elapsed / demoState.totalDuration) * 100);
+      document.getElementById('progress-title').style.width = pct + '%';
+      if (elapsed < demoState.totalDuration) {
+        demoState.raf = requestAnimationFrame(updateProgress);
+      } else {
+        document.getElementById('progress-title').style.width = '100%';
+      }
+    }
+
+    window.demoPlay = function(id) {
+      if (demoState.ctx && demoState.ctx.state !== 'closed') return;
+      demoState.ctx = new (window.AudioContext || window.webkitAudioContext)();
+      demoState.startTime = demoState.ctx.currentTime + 0.05;
+      demoState.totalDuration = playScore(demoState.ctx, titleThemeScore, timbrePack16bit, demoState.startTime);
+
+      document.getElementById('demo-title-theme').classList.add('playing');
+      document.getElementById('status-title').textContent = 'Playing...';
+      demoState.raf = requestAnimationFrame(updateProgress);
+
+      setTimeout(() => {
+        if (demoState.ctx && demoState.ctx.state !== 'closed') {
+          demoStop(id);
+        }
+      }, (demoState.totalDuration + 0.5) * 1000);
+    };
+
+    window.demoStop = function(id) {
+      if (demoState.ctx) {
+        demoState.ctx.close();
+        demoState.ctx = null;
+      }
+      if (demoState.raf) cancelAnimationFrame(demoState.raf);
+      document.getElementById('demo-title-theme').classList.remove('playing');
+      document.getElementById('progress-title').style.width = '0%';
+      document.getElementById('status-title').textContent = 'Stopped';
+    };
+  </script>
+
+</body>
+</html>
+
+  function noteToFreq(note) {
+    const m = note.match(/^([A-Ga-g])([#b]?)([0-9])$/);
+    if (!m) return 0;
+    let semi = NOTE_NAMES.indexOf(m[1].toUpperCase());
+    if (m[2] === '#') semi += 1;
+    if (m[2] === 'b') semi -= 1;
+    return 440 * Math.pow(2, (semi + (parseInt(m[3]) + 1) * 12 - 69) / 12);
+  }
+
+  const DUR_MAP = {w:4,h:2,q:1,e:0.5,s:0.25,t:0.125,'w.':6,'h.':3,'q.':1.5,'e.':0.75,'s.':0.375};
+  function durToMs(d, bpm) {
+    if (typeof d === 'number') return d;
+    return (DUR_MAP[d] || 1) * 60000 / bpm;
+  }
+
+  const TIMBRES = {
+    lead: {waveforms:[{type:'square',gain:0.5,detune:-4},{type:'square',gain:0.3,detune:4}],envelope:{attack:5,decay:30,sustain:0.3,release:60},filter:{type:'lowpass',cutoff:3200,resonance:2}},
+    bass: {waveforms:[{type:'triangle',gain:0.6},{type:'square',gain:0.2,detune:-1}],envelope:{attack:2,decay:20,sustain:0.5,release:40},filter:{type:'lowpass',cutoff:800,resonance:1.5}},
+    pad: {waveforms:[{type:'sine',gain:0.4},{type:'sine',gain:0.3,detune:6},{type:'triangle',gain:0.2,detune:-6}],envelope:{attack:80,decay:100,sustain:0.6,release:200},filter:{type:'lowpass',cutoff:1800,resonance:0.5}},
+    arp: {waveforms:[{type:'square',gain:0.4}],envelope:{attack:1,decay:15,sustain:0,release:20},filter:{type:'lowpass',cutoff:2600,resonance:3}},
+    kick: {waveforms:[{type:'sine',gain:0.8}],envelope:{attack:0,decay:80,sustain:0,release:10}},
+    snare: {waveforms:[{type:'triangle',gain:0.5},{type:'sawtooth',gain:0.3}],envelope:{attack:0,decay:60,sustain:0,release:30},filter:{type:'highpass',cutoff:1000,resonance:1}},
+    hihat: {waveforms:[{type:'sawtooth',gain:0.25}],envelope:{attack:0,decay:10,sustain:0,release:5},filter:{type:'highpass',cutoff:6000,resonance:2}}
+  };
+
+  const TITLE_SCORE = {"id": "title-theme", "name": "Title Screen", "bpm": 130, "timbrePack": "16bit-sfc", "config": {"loop": true, "reverb": "room"}, "tracks": [{"timbre": "lead", "performance": {"layback": 15, "humanize": 0.2, "velocityCurve": [[0, 0.5], [4, 0.9], [8, 0.5], [16, 0.5], [20, 0.9], [24, 0.5]]}, "notes": [{"note": "E5", "duration": "q"}, {"note": "G5", "duration": "q"}, {"note": "A5", "duration": "h"}, {"note": "G5", "duration": "q", "offset": 25}, {"note": "E5", "duration": "q"}, {"note": "D5", "duration": "h"}, {"note": "C5", "duration": "q"}, {"note": "D5", "duration": "q"}, {"note": "E5", "duration": "h"}, {"note": "G5", "duration": "q"}, {"note": "E5", "duration": "q"}, {"note": "D5", "duration": "h"}, {"note": "E5", "duration": "q"}, {"note": "G5", "duration": "q"}, {"note": "A5", "duration": "h"}, {"note": "B5", "duration": "q"}, {"note": "C6", "duration": "q"}, {"note": "A5", "duration": "h"}, {"note": "G5", "duration": "q"}, {"note": "A5", "duration": "q"}, {"note": "B5", "duration": "h"}, {"note": "C6", "duration": "q"}, {"note": "B5", "duration": "q"}, {"note": "A5", "duration": "h"}]}, {"timbre": "bass", "performance": {"layback": 5}, "notes": [{"note": "A2", "duration": "w"}, {"note": "G2", "duration": "w"}, {"note": "F2", "duration": "w"}, {"note": "E2", "duration": "w"}, {"note": "A2", "duration": "w"}, {"note": "G2", "duration": "w"}, {"note": "F2", "duration": "w"}, {"note": "E2", "duration": "w"}]}, {"timbre": "arp", "performance": {"swing": 0.4}, "notes": [{"note": "A4", "duration": "e"}, {"note": "C5", "duration": "e"}, {"note": "E5", "duration": "e"}, {"note": "A5", "duration": "e"}, {"note": "G4", "duration": "e"}, {"note": "B4", "duration": "e"}, {"note": "D5", "duration": "e"}, {"note": "G5", "duration": "e"}, {"note": "F4", "duration": "e"}, {"note": "A4", "duration": "e"}, {"note": "C5", "duration": "e"}, {"note": "F5", "duration": "e"}, {"note": "E4", "duration": "e"}, {"note": "G4", "duration": "e"}, {"note": "B4", "duration": "e"}, {"note": "E5", "duration": "e"}, {"note": "A4", "duration": "e"}, {"note": "C5", "duration": "e"}, {"note": "E5", "duration": "e"}, {"note": "A5", "duration": "e"}, {"note": "G4", "duration": "e"}, {"note": "B4", "duration": "e"}, {"note": "D5", "duration": "e"}, {"note": "G5", "duration": "e"}, {"note": "F4", "duration": "e"}, {"note": "A4", "duration": "e"}, {"note": "C5", "duration": "e"}, {"note": "F5", "duration": "e"}, {"note": "E4", "duration": "e"}, {"note": "G4", "duration": "e"}, {"note": "B4", "duration": "e"}, {"note": "E5", "duration": "e"}]}, {"timbre": "kick", "notes": [{"note": "C2", "duration": "q"}, {"note": null, "duration": "q"}, {"note": "C2", "duration": "q"}, {"note": null, "duration": "q"}, {"note": "C2", "duration": "q"}, {"note": null, "duration": "q"}, {"note": "C2", "duration": "q"}, {"note": null, "duration": "q"}, {"note": "C2", "duration": "q"}, {"note": null, "duration": "q"}, {"note": "C2", "duration": "q"}, {"note": null, "duration": "q"}, {"note": "C2", "duration": "q"}, {"note": null, "duration": "q"}, {"note": "C2", "duration": "q"}, {"note": null, "duration": "q"}]}, {"timbre": "hihat", "performance": {"humanize": 0.15}, "notes": [{"note": "C6", "duration": "e"}, {"note": null, "duration": "e"}, {"note": "C6", "duration": "e"}, {"note": null, "duration": "e"}, {"note": "C6", "duration": "e"}, {"note": null, "duration": "e"}, {"note": "C6", "duration": "e"}, {"note": null, "duration": "e"}, {"note": "C6", "duration": "e"}, {"note": null, "duration": "e"}, {"note": "C6", "duration": "e"}, {"note": null, "duration": "e"}, {"note": "C6", "duration": "e"}, {"note": null, "duration": "e"}, {"note": "C6", "duration": "e"}, {"note": null, "duration": "e"}, {"note": "C6", "duration": "e"}, {"note": null, "duration": "e"}, {"note": "C6", "duration": "e"}, {"note": null, "duration": "e"}, {"note": "C6", "duration": "e"}, {"note": null, "duration": "e"}, {"note": "C6", "duration": "e"}, {"note": null, "duration": "e"}, {"note": "C6", "duration": "e"}, {"note": null, "duration": "e"}, {"note": "C6", "duration": "e"}, {"note": null, "duration": "e"}, {"note": "C6", "duration": "e"}, {"note": null, "duration": "e"}, {"note": "C6", "duration": "e"}, {"note": null, "duration": "e"}]}]};
+
+  let demoCtx = null;
+  let demoTimer = null;
+
+  function playNote(ctx, dest, timbreDef, noteName, durationMs, startTime, velocity) {
+    if (!noteName) return;
+    const freq = noteToFreq(noteName);
+    if (!freq) return;
+
+    const masterGain = ctx.createGain();
+    masterGain.gain.value = 1;
+    masterGain.connect(dest);
+
+    const waves = timbreDef.waveforms || [{type:'square'}];
+    const env = timbreDef.envelope || {attack:10,decay:30,sustain:0.3,release:50};
+    const vol = (timbreDef.volume || 1) * (velocity || 1) * 0.25;
+
+    waves.forEach((w, i) => {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = w.type === 'noise' ? 'sawtooth' : w.type;
+      osc.frequency.value = freq;
+      if (w.detune) osc.detune.value = w.detune;
+
+      const atkEnd = startTime + env.attack / 1000;
+      const durSec = durationMs / 1000;
+      const relStart = startTime + durSec - env.release / 1000;
+
+      gain.gain.setValueAtTime(0, startTime);
+      gain.gain.linearRampToValueAtTime(vol * (w.gain || 1), atkEnd);
+      gain.gain.linearRampToValueAtTime(vol * (w.gain || 1) * env.sustain, atkEnd + env.decay / 1000);
+      if (relStart > atkEnd + env.decay / 1000) {
+        gain.gain.setValueAtTime(vol * (w.gain || 1) * env.sustain, relStart);
+      }
+      gain.gain.linearRampToValueAtTime(0, startTime + durSec);
+
+      if (timbreDef.filter) {
+        const flt = ctx.createBiquadFilter();
+        flt.type = timbreDef.filter.type || 'lowpass';
+        flt.frequency.value = timbreDef.filter.cutoff || 2000;
+        flt.Q.value = timbreDef.filter.resonance || 1;
+        osc.connect(flt);
+        flt.connect(gain);
+      } else {
+        osc.connect(gain);
+      }
+      gain.connect(masterGain);
+      osc.start(startTime);
+      osc.stop(startTime + durSec + 0.1);
+    });
+  }
+
+  function demoPlay(id) {
+    demoStop(id);
+    demoCtx = new (window.AudioContext || window.webkitAudioContext)();
+    const dest = demoCtx.destination;
+
+    const score = TITLE_SCORE;
+    const bpm = score.bpm;
+    let totalMs = 0;
+
+    score.tracks.forEach(track => {
+      let t = 0;
+      track.notes.forEach(n => { t += durToMs(n.duration, bpm); });
+      if (t > totalMs) totalMs = t;
+    });
+
+    const now = demoCtx.currentTime + 0.1;
+    score.tracks.forEach(track => {
+      const timbre = TIMBRES[track.timbre];
+      if (!timbre) return;
+      let t = 0;
+      const perf = track.performance || {};
+      track.notes.forEach((n) => {
+        const dur = durToMs(n.duration, bpm);
+        const vel = n.velocity || 1;
+        const layback = (perf.layback || 0) + (n.offset || 0);
+        const humanize = perf.humanize ? (Math.random() - 0.5) * perf.humanize * 30 : 0;
+        const noteStart = now + (t + layback + humanize) / 1000;
+        playNote(demoCtx, dest, timbre, n.note, dur, noteStart, vel);
+        t += dur;
+      });
+    });
+
+    const card = document.getElementById('demo-title-theme');
+    card.classList.add('playing');
+    document.getElementById('status-title').textContent = 'Playing...';
+    const bar = document.getElementById('progress-title');
+
+    const startWall = Date.now();
+    demoTimer = setInterval(() => {
+      const elapsed = Date.now() - startWall;
+      const pct = Math.min(100, elapsed / totalMs * 100);
+      bar.style.width = pct + '%';
+      if (elapsed >= totalMs) demoStop(id);
+    }, 100);
+  }
+
+  function demoStop(id) {
+    if (demoTimer) { clearInterval(demoTimer); demoTimer = null; }
+    if (demoCtx) { demoCtx.close(); demoCtx = null; }
+    const card = document.getElementById('demo-title-theme');
+    if (card) card.classList.remove('playing');
+    const status = document.getElementById('status-title');
+    if (status) status.textContent = 'Ready';
+    const bar = document.getElementById('progress-title');
+    if (bar) bar.style.width = '0%';
+  }
   </script>
 
 </body>
