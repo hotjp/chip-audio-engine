@@ -6,9 +6,11 @@ import { ChannelPool } from '../core/ChannelPool.js';
 import { Aggregator, AggregationConfig } from '../core/Aggregator.js';
 import { DuckManager, DuckRule } from '../core/DuckManager.js';
 import { SoundPackLoader, SoundPack } from '../config/SoundPackLoader.js';
+import { TimbrePackLoader } from '../config/TimbrePackLoader.js';
+import type { TimbrePack } from '../config/TimbrePackLoader.js';
 import { EventEmitter } from '../core/EventEmitter.js';
 import { BGMEngine } from './BGMEngine.js';
-import type { EngineEvents, BGMScore } from './types.js';
+import type { EngineEvents, BGMScore, Score } from './types.js';
 import { ReverbEngine, ReverbParams } from '../effects/ReverbEngine.js';
 import { SpatialAudio } from '../effects/SpatialAudio.js';
 import { FocusManager } from '../core/FocusManager.js';
@@ -49,6 +51,7 @@ export class ChipAudioEngine extends EventEmitter<EngineEvents> {
   private aggregator: Aggregator;
   private duckManager: DuckManager;
   private soundPackLoader: SoundPackLoader;
+  private timbrePackLoader: TimbrePackLoader;
   private providers: Map<string, SoundProvider> = new Map();
   private activeSounds: Map<string, ActiveSound> = new Map();
   private config: EngineConfig;
@@ -74,6 +77,7 @@ export class ChipAudioEngine extends EventEmitter<EngineEvents> {
     this.aggregator = new Aggregator();
     this.duckManager = new DuckManager();
     this.soundPackLoader = new SoundPackLoader();
+    this.timbrePackLoader = new TimbrePackLoader();
 
     if (config.soundPack) {
       this.soundPackLoader.register(config.soundPack);
@@ -136,7 +140,7 @@ export class ChipAudioEngine extends EventEmitter<EngineEvents> {
     this.providers.set(oscProvider.id, oscProvider);
 
     if (musicBus) {
-      this.bgmEngine = new BGMEngine(this.ctx, oscProvider, musicBus, this.duckManager);
+      this.bgmEngine = new BGMEngine(this.ctx, oscProvider, musicBus, this.duckManager, this.timbrePackLoader);
       this.bgmEngine.on('bgm:start', (payload) => this.emit('bgm:start', payload));
       this.bgmEngine.on('bgm:stop', (payload) => this.emit('bgm:stop', payload));
       if (this.config.bgmScores) {
@@ -427,6 +431,35 @@ export class ChipAudioEngine extends EventEmitter<EngineEvents> {
       packName: pack.name,
       soundCount: Object.keys(pack.sounds).length,
     });
+  }
+
+  /**
+   * 加载音色包。
+   * @param pack - 音色包对象
+   * @example
+   * ```ts
+   * engine.loadTimbrePack({
+   *   name: 'pixel-sfc',
+   *   timbres: { lead: { provider: 'oscillator', waveforms: [{ type: 'square' }] } },
+   * });
+   * ```
+   */
+  loadTimbrePack(pack: TimbrePack): void {
+    this.timbrePackLoader.register(pack);
+    this.timbrePackLoader.setActive(pack.name);
+  }
+
+  /**
+   * 加载新格式乐谱。
+   * @param score - 乐谱对象
+   * @example
+   * ```ts
+   * engine.loadScore({ id: 'title', name: 'Title', bpm: 120, timbrePack: 'pixel-sfc', tracks: [] });
+   * ```
+   */
+  loadScore(score: Score): void {
+    if (!this.bgmEngine) return;
+    this.bgmEngine.loadNewScore(score);
   }
 
   /**

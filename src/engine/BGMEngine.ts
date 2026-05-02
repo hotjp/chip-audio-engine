@@ -4,7 +4,10 @@ import { OscillatorProvider } from '../providers/OscillatorProvider.js';
 import type { SoundParams } from '../providers/types.js';
 import type { SoundInstance } from '../providers/SoundProvider.js';
 import { EventEmitter } from '../core/EventEmitter.js';
-import type { BGMScore, BGMTrack, BGMNote } from './types.js';
+import type { BGMScore, BGMTrack, BGMNote, Score, ScoreTrack, ScoreNote } from './types.js';
+import { TimbrePackLoader } from '../config/TimbrePackLoader.js';
+import { MusicUtils } from '../music/MusicUtils.js';
+import { isEighthOrShorter } from '../music/DurationParser.js';
 
 interface TrackState {
   nextNoteIndex: number;
@@ -38,8 +41,9 @@ export class BGMEngine extends EventEmitter<BGMEngineEvents> {
   private provider: OscillatorProvider;
   private musicBus: AudioBus;
   private duckManager: DuckManager | null;
-  private scores: Map<string, BGMScore> = new Map();
-  private currentScore: BGMScore | null = null;
+  private timbrePackLoader: TimbrePackLoader | null;
+  private scores: Map<string, BGMScore | Score> = new Map();
+  private currentScore: BGMScore | Score | null = null;
   private isPlaying = false;
   private trackStates: TrackState[] = [];
   private schedulerTimer: ReturnType<typeof setTimeout> | null = null;
@@ -55,22 +59,25 @@ export class BGMEngine extends EventEmitter<BGMEngineEvents> {
    * @param provider - 振荡器提供者
    * @param musicBus - 音乐总线
    * @param duckManager - 可选的闪避管理器
+   * @param timbrePackLoader - 可选的音色包加载器
    */
   constructor(
     ctx: AudioContext,
     provider: OscillatorProvider,
     musicBus: AudioBus,
-    duckManager?: DuckManager
+    duckManager?: DuckManager,
+    timbrePackLoader?: TimbrePackLoader
   ) {
     super();
     this.ctx = ctx;
     this.provider = provider;
     this.musicBus = musicBus;
     this.duckManager = duckManager ?? null;
+    this.timbrePackLoader = timbrePackLoader ?? null;
   }
 
   /**
-   * 加载单个 BGM 乐谱。
+   * 加载单个 BGM 乐谱（旧格式）。
    * @param score - 乐谱对象
    * @example
    * ```ts
@@ -78,6 +85,18 @@ export class BGMEngine extends EventEmitter<BGMEngineEvents> {
    * ```
    */
   loadScore(score: BGMScore): void {
+    this.scores.set(score.id, score);
+  }
+
+  /**
+   * 加载新格式 Score 乐谱。
+   * @param score - 乐谱对象
+   * @example
+   * ```ts
+   * bgm.loadNewScore({ id: 'boss', name: 'Boss', bpm: 140, timbrePack: 'sfc', tracks: [] });
+   * ```
+   */
+  loadNewScore(score: Score): void {
     this.scores.set(score.id, score);
   }
 
@@ -238,13 +257,30 @@ export class BGMEngine extends EventEmitter<BGMEngineEvents> {
     this.scores.clear();
   }
 
+  private isLegacyScore(score: BGMScore | Score): score is BGMScore {
+    return !('timbrePack' in score);
+  }
+
   private scheduler(): void {
     if (!this.isPlaying || !this.currentScore) return;
 
     const now = this.ctx.currentTime;
 
-    for (let i = 0; i < this.currentScore.tracks.length; i++) {
-      const track = this.currentScore.tracks[i];
+    if (this.isLegacyScore(this.currentScore)) {
+      this.scheduleLegacyTracks(now);
+    } else {
+      this.scheduleScoreTracks(now);
+    }
+
+    if (this.isPlaying) {
+      this.schedulerTimer = setTimeout(() => this.scheduler(), this.lookahead);
+    }
+  }
+
+  private scheduleLegacyTracks(now: number): void {
+    const score = this.currentScore as BGMScore;
+    for (let i = 0; i < score.tracks.length; i++) {
+      const track = score.tracks[i];
       const state = this.trackStates[i];
 
       while (state.nextNoteTime < now + this.scheduleAheadTime) {
@@ -262,9 +298,44 @@ export class BGMEngine extends EventEmitter<BGMEngineEvents> {
         }
       }
     }
+  }
 
-    if (this.isPlaying) {
-      this.schedulerTimer = setTimeout(() => this.scheduler(), this.lookahead);
+  private scheduleScoreTracks(now: number): void {
+    const score = this.currentScore as Score;
+    for (let i = 0; i < score.tracks.length; i++) {
+      const track = score.tracks[i];
+      if (track.mute) continue;
+      const state = this.trackStates[i];
+
+      while (state.nextNoteTime < now + this.scheduleAheadTime) {
+        const scoreNote = track.notes[state.nextNoteIndex];
+        if (scoreNote && scoreNote.note !== null) {
+          this.playScoreNote(score, track, scoreNote, state.nextNoteTime, i, state.nextNoteIndex);
+        }
+
+        let durationMs = MusicUtils.durationToMs(scoreNote?.duration ?? 'q', score.bpm);
+
+        const swing = track.performance?.swing ?? 0;
+        if (swing > 0 && isEighthOrShorter(scoreNote?.duration ?? 'q')) {
+          const isOdd = (state.nextNoteIndex % 2) === 0;
+          if (isOdd) {
+            durationMs *= (1 + swing);
+          } else {
+            durationMs *= (1 - swing);
+          }
+        }
+
+        state.nextNoteTime += durationMs / 1000;
+        state.nextNoteIndex++;
+
+        if (state.nextNoteIndex >= track.notes.length) {
+          if (score.config?.loop !== false) {
+            state.nextNoteIndex = track.loopStart ?? 0;
+          } else {
+            break;
+          }
+        }
+      }
     }
   }
 
@@ -310,6 +381,110 @@ export class BGMEngine extends EventEmitter<BGMEngineEvents> {
 
     this.activeNotes.push({ instance, timeoutId });
     this.timeouts.push(timeoutId);
+  }
+
+  private playScoreNote(
+    score: Score,
+    track: ScoreTrack,
+    scoreNote: ScoreNote,
+    when: number,
+    trackIndex: number,
+    noteIndex: number
+  ): void {
+    const freq = MusicUtils.noteToFreq(scoreNote.note!);
+
+    const timbre = this.timbrePackLoader?.getTimbre(track.timbre);
+    if (!timbre) return;
+
+    const waveforms = (timbre.waveforms ?? []).map(w => ({
+      ...w,
+      frequency: freq * (w.detune ? Math.pow(2, w.detune / 1200) : 1),
+    }));
+
+    const params: SoundParams = {
+      waveforms,
+      envelope: timbre.envelope,
+      filter: timbre.filter,
+      volume: this.computeVelocity(scoreNote, track, noteIndex),
+      duration: MusicUtils.durationToMs(scoreNote.duration, score.bpm),
+    };
+
+    const offsetMs = this.computeOffset(track, scoreNote, noteIndex);
+    const adjustedWhen = when + offsetMs / 1000;
+
+    const instance = this.provider.createSound(this.ctx, 'bgm.note', params);
+    instance.connect(this.musicBus.input);
+    instance.start(adjustedWhen, {});
+
+    const releaseMs = params.envelope?.release ?? 80;
+    const stopTime = adjustedWhen + MusicUtils.durationToMs(scoreNote.duration, score.bpm) / 1000;
+    instance.stop(stopTime);
+
+    const cleanupDelay = MusicUtils.durationToMs(scoreNote.duration, score.bpm) + releaseMs + 50;
+    const timeoutId = setTimeout(() => {
+      instance.dispose();
+      this.activeNotes = this.activeNotes.filter((n) => n.instance !== instance);
+    }, cleanupDelay);
+
+    this.activeNotes.push({ instance, timeoutId });
+    this.timeouts.push(timeoutId);
+  }
+
+  private computeOffset(track: ScoreTrack, note: ScoreNote, noteIndex: number): number {
+    const perf = track.performance;
+    if (!perf) return note.offset ?? 0;
+
+    let offset = perf.layback ?? 0;
+    offset += note.offset ?? 0;
+
+    if (perf.humanize && perf.humanize > 0) {
+      const rand = this.seededRandom(track, noteIndex);
+      offset += (rand * 2 - 1) * perf.humanize * 30;
+    }
+
+    return offset;
+  }
+
+  private computeVelocity(note: ScoreNote, track: ScoreTrack, noteIndex: number): number {
+    let vel = track.volume ?? 1;
+    vel *= note.velocity ?? 1;
+
+    const curve = track.performance?.velocityCurve;
+    if (curve && curve.length >= 2) {
+      const multiplier = this.interpolateCurve(curve, noteIndex);
+      vel *= multiplier;
+    }
+
+    const humanize = track.performance?.humanize ?? 0;
+    if (humanize > 0) {
+      const rand = this.seededRandom(track, noteIndex);
+      vel *= (1 + (rand * 2 - 1) * humanize * 0.15);
+    }
+
+    return Math.max(0, Math.min(1, vel));
+  }
+
+  private interpolateCurve(curve: [number, number][], index: number): number {
+    if (index <= curve[0][0]) return curve[0][1];
+    const last = curve[curve.length - 1];
+    if (index >= last[0]) return last[1];
+    for (let i = 0; i < curve.length - 1; i++) {
+      if (index >= curve[i][0] && index <= curve[i + 1][0]) {
+        const t = (index - curve[i][0]) / (curve[i + 1][0] - curve[i][0]);
+        return curve[i][1] + t * (curve[i + 1][1] - curve[i][1]);
+      }
+    }
+    return 1;
+  }
+
+  private seededRandom(track: ScoreTrack, noteIndex: number): number {
+    const str = track.timbre + noteIndex;
+    let hash = 0;
+    for (let i = 0; i < str.length; i++) {
+      hash = ((hash << 5) - hash) + str.charCodeAt(i);
+      hash |= 0;
+    }
+    return ((hash >>> 0) % 10000) / 10000;
   }
 
   private internalCleanup(): void {
