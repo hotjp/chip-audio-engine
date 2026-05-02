@@ -1,0 +1,2383 @@
+{
+  "id": "hero-march",
+  "name": "Hero's March — Epic Battle Theme",
+  "bpm": 130,
+  "timbrePack": "16bit-sfc",
+  "config": {
+    "loop": false,
+    "volume": 0.9
+  },
+  "tracks": [
+    {
+      "timbre": "lead",
+      "performance": {
+        "layback": 10,
+        "humanize": 0.1,
+        "velocityCurve": [
+          [
+            0,
+            0.4
+          ],
+          [
+            16,
+            0.5
+          ],
+          [
+            32,
+            0.65
+          ],
+          [
+            48,
+            0.8
+          ],
+          [
+            56,
+            0.9
+          ],
+          [
+            64,
+            0.95
+          ],
+          [
+            72,
+            0.7
+          ],
+          [
+            80,
+            0.85
+          ],
+          [
+            88,
+            0.6
+          ],
+          [
+            96,
+            0.5
+          ],
+          [
+            112,
+            0.85
+          ],
+          [
+            128,
+            0.6
+          ],
+          [
+            144,
+            0.4
+          ]
+        ]
+      },
+      "notes": [
+        {
+          "note": "G3",
+          "duration": "q"
+        },
+        {
+          "note": null,
+          "duration": "e"
+        },
+        {
+          "note": "G3",
+          "duration": "e"
+        },
+        {
+          "note": "D4",
+          "duration": "h"
+        },
+        {
+          "note": "D4",
+          "duration": "q"
+        },
+        {
+          "note": "Eb4",
+          "duration": "q"
+        },
+        {
+          "note": "D4",
+          "duration": "h"
+        },
+        {
+          "note": "A3",
+          "duration": "q"
+        },
+        {
+          "note": null,
+          "duration": "q"
+        },
+        {
+          "note": "D4",
+          "duration": "h"
+        },
+        {
+          "note": "D4",
+          "duration": "q"
+        },
+        {
+          "note": "Eb4",
+          "duration": "q"
+        },
+        {
+          "note": "D4",
+          "duration": "h"
+        },
+        {
+          "note": "Bb3",
+          "duration": "q"
+        },
+        {
+          "note": null,
+          "duration": "q"
+        },
+        {
+          "note": "G3",
+          "duration": "q"
+        },
+        {
+          "note": null,
+          "duration": "e"
+        },
+        {
+          "note": "G3",
+          "duration": "e"
+        },
+        {
+          "note": "D4",
+          "duration": "h"
+        },
+        {
+          "note": "D4",
+          "duration": "q"
+        },
+        {
+          "note": "Eb4",
+          "duration": "q"
+        },
+        {
+          "note": "F4",
+          "duration": "h"
+        },
+        {
+          "note": "G4",
+          "duration": "h"
+        },
+        {
+          "note": "G4",
+          "duration": "q"
+        },
+        {
+          "note": "F4",
+          "duration": "q"
+        },
+        {
+          "note": "Eb4",
+          "duration": "q"
+        },
+        {
+          "note": "D4",
+          "duration": "q"
+        },
+        {
+          "note": "C4",
+          "duration": "h"
+        },
+        {
+          "note": "Bb3",
+          "duration": "q"
+        },
+        {
+          "note": "C4",
+          "duration": "q"
+        },
+        {
+          "note": "D4",
+          "duration": "w"
+        },
+        {
+          "note": "D4",
+          "duration": "e"
+        },
+        {
+          "note": "Eb4",
+          "duration": "e"
+        },
+        {
+          "note": "F4",
+          "duration": "e"
+        },
+        {
+          "note": "G4",
+          "duration": "e"
+        },
+        {
+          "note": "A4",
+          "duration": "q"
+        },
+        {
+          "note": "G4",
+          "duration": "q"
+        },
+        {
+          "note": "F4",
+          "duration": "h"
+        },
+        {
+          "note": "Eb4",
+          "duration": "q"
+        },
+        {
+          "note": "D4",
+          "duration": "q"
+        },
+        {
+          "note": "G4",
+          "duration": "q"
+        },
+        {
+          "note": "F4",
+          "duration": "q"
+        },
+        {
+          "note": "Eb4",
+          "duration": "q"
+        },
+        {
+          "note": "D4",
+          "duration": "q"
+        },
+        {
+          "note": "Eb4",
+          "duration": "h"
+        },
+        {
+          "note": "D4",
+          "duration": "q"
+        },
+        {
+          "note": "C4",
+          "duration": "q"
+        },
+        {
+          "note": "Bb3",
+          "duration": "w"
+        },
+        {
+          "note": null,
+          "duration": "h"
+        },
+        {
+          "note": "G3",
+          "duration": "q"
+        },
+        {
+          "note": null,
+          "duration": "e"
+        },
+        {
+          "note": "G3",
+          "duration": "e"
+        },
+        {
+          "note": "D4",
+          "duration": "q"
+        },
+        {
+          "note": "D4",
+          "duration": "q"
+        },
+        {
+          "note": "Eb4",
+          "duration": "q"
+        },
+        {
+          "note": "F4",
+          "duration": "q"
+        },
+        {
+          "note": "G4",
+          "duration": "h"
+        },
+        {
+          "note": "A4",
+          "duration": "h"
+        },
+        {
+          "note": "Bb4",
+          "duration": "q"
+        },
+        {
+          "note": "A4",
+          "duration": "q"
+        },
+        {
+          "note": "G4",
+          "duration": "q"
+        },
+        {
+          "note": "F4",
+          "duration": "q"
+        },
+        {
+          "note": "G4",
+          "duration": "w"
+        },
+        {
+          "note": "D4",
+          "duration": "h"
+        },
+        {
+          "note": "G4",
+          "duration": "h"
+        },
+        {
+          "note": "F4",
+          "duration": "q"
+        },
+        {
+          "note": "Eb4",
+          "duration": "q"
+        },
+        {
+          "note": "D4",
+          "duration": "w"
+        },
+        {
+          "note": "G4",
+          "duration": "q"
+        },
+        {
+          "note": null,
+          "duration": "e"
+        },
+        {
+          "note": "G4",
+          "duration": "e"
+        },
+        {
+          "note": "Bb4",
+          "duration": "h"
+        },
+        {
+          "note": "A4",
+          "duration": "q"
+        },
+        {
+          "note": "G4",
+          "duration": "q"
+        },
+        {
+          "note": "F4",
+          "duration": "h"
+        },
+        {
+          "note": "Eb4",
+          "duration": "q"
+        },
+        {
+          "note": "D4",
+          "duration": "q"
+        },
+        {
+          "note": "G4",
+          "duration": "w"
+        },
+        {
+          "note": null,
+          "duration": "h"
+        },
+        {
+          "note": "D4",
+          "duration": "q"
+        },
+        {
+          "note": "Eb4",
+          "duration": "q"
+        },
+        {
+          "note": "G4",
+          "duration": "h"
+        },
+        {
+          "note": "D4",
+          "duration": "h"
+        },
+        {
+          "note": "G4",
+          "duration": "h"
+        },
+        {
+          "note": "G3",
+          "duration": "w"
+        }
+      ]
+    },
+    {
+      "timbre": "bass",
+      "performance": {
+        "layback": 5
+      },
+      "notes": [
+        {
+          "note": "G2",
+          "duration": "w"
+        },
+        {
+          "note": "D2",
+          "duration": "w"
+        },
+        {
+          "note": "D2",
+          "duration": "w"
+        },
+        {
+          "note": "G2",
+          "duration": "w"
+        },
+        {
+          "note": "G2",
+          "duration": "w"
+        },
+        {
+          "note": "G2",
+          "duration": "h"
+        },
+        {
+          "note": "F2",
+          "duration": "h"
+        },
+        {
+          "note": "Eb2",
+          "duration": "w"
+        },
+        {
+          "note": "D2",
+          "duration": "w"
+        },
+        {
+          "note": "D2",
+          "duration": "q"
+        },
+        {
+          "note": null,
+          "duration": "q"
+        },
+        {
+          "note": "D2",
+          "duration": "q"
+        },
+        {
+          "note": null,
+          "duration": "q"
+        },
+        {
+          "note": "D2",
+          "duration": "w"
+        },
+        {
+          "note": "Bb2",
+          "duration": "w"
+        },
+        {
+          "note": "G2",
+          "duration": "h"
+        },
+        {
+          "note": "G2",
+          "duration": "q"
+        },
+        {
+          "note": null,
+          "duration": "q"
+        },
+        {
+          "note": "G2",
+          "duration": "h"
+        },
+        {
+          "note": "F2",
+          "duration": "h"
+        },
+        {
+          "note": "Eb2",
+          "duration": "w"
+        },
+        {
+          "note": "D2",
+          "duration": "w"
+        },
+        {
+          "note": "G2",
+          "duration": "w"
+        },
+        {
+          "note": "D2",
+          "duration": "w"
+        },
+        {
+          "note": "G2",
+          "duration": "w"
+        },
+        {
+          "note": "Bb2",
+          "duration": "w"
+        },
+        {
+          "note": "D2",
+          "duration": "w"
+        },
+        {
+          "note": "G2",
+          "duration": "w"
+        },
+        {
+          "note": "D2",
+          "duration": "h"
+        },
+        {
+          "note": "C2",
+          "duration": "h"
+        },
+        {
+          "note": "D2",
+          "duration": "w"
+        },
+        {
+          "note": "G2",
+          "duration": "w"
+        },
+        {
+          "note": "D2",
+          "duration": "h"
+        },
+        {
+          "note": "Eb2",
+          "duration": "h"
+        },
+        {
+          "note": "D2",
+          "duration": "w"
+        },
+        {
+          "note": "G2",
+          "duration": "w"
+        }
+      ]
+    },
+    {
+      "timbre": "pad",
+      "performance": {
+        "layback": 20,
+        "humanize": 0.15
+      },
+      "notes": [
+        {
+          "note": "G3",
+          "duration": "w"
+        },
+        {
+          "note": "D3",
+          "duration": "w"
+        },
+        {
+          "note": "D3",
+          "duration": "w"
+        },
+        {
+          "note": "G3",
+          "duration": "w"
+        },
+        {
+          "note": "G3",
+          "duration": "w"
+        },
+        {
+          "note": "Bb3",
+          "duration": "h"
+        },
+        {
+          "note": "F3",
+          "duration": "h"
+        },
+        {
+          "note": "Eb3",
+          "duration": "w"
+        },
+        {
+          "note": "D3",
+          "duration": "w"
+        },
+        {
+          "note": "D3",
+          "duration": "w"
+        },
+        {
+          "note": "D3",
+          "duration": "w"
+        },
+        {
+          "note": "G3",
+          "duration": "w"
+        },
+        {
+          "note": "Bb3",
+          "duration": "w"
+        },
+        {
+          "note": "G3",
+          "duration": "w"
+        },
+        {
+          "note": "F3",
+          "duration": "w"
+        },
+        {
+          "note": "Eb3",
+          "duration": "w"
+        },
+        {
+          "note": "D3",
+          "duration": "w"
+        },
+        {
+          "note": "G3",
+          "duration": "w"
+        },
+        {
+          "note": "D3",
+          "duration": "w"
+        },
+        {
+          "note": "G3",
+          "duration": "w"
+        },
+        {
+          "note": "Bb3",
+          "duration": "w"
+        },
+        {
+          "note": null,
+          "duration": "w"
+        },
+        {
+          "note": "D3",
+          "duration": "w"
+        },
+        {
+          "note": "C3",
+          "duration": "h"
+        },
+        {
+          "note": "D3",
+          "duration": "h"
+        },
+        {
+          "note": "G3",
+          "duration": "w"
+        },
+        {
+          "note": "G3",
+          "duration": "w"
+        },
+        {
+          "note": "D3",
+          "duration": "h"
+        },
+        {
+          "note": "Eb3",
+          "duration": "h"
+        },
+        {
+          "note": "D3",
+          "duration": "w"
+        },
+        {
+          "note": "G3",
+          "duration": "w"
+        }
+      ]
+    },
+    {
+      "timbre": "arp",
+      "performance": {
+        "swing": 0.3,
+        "humanize": 0.2
+      },
+      "notes": [
+        {
+          "note": "G4",
+          "duration": "e"
+        },
+        {
+          "note": "Bb4",
+          "duration": "e"
+        },
+        {
+          "note": "D5",
+          "duration": "e"
+        },
+        {
+          "note": "Bb4",
+          "duration": "e"
+        },
+        {
+          "note": "G4",
+          "duration": "e"
+        },
+        {
+          "note": "Bb4",
+          "duration": "e"
+        },
+        {
+          "note": "D5",
+          "duration": "e"
+        },
+        {
+          "note": "Bb4",
+          "duration": "e"
+        },
+        {
+          "note": "D4",
+          "duration": "e"
+        },
+        {
+          "note": "F4",
+          "duration": "e"
+        },
+        {
+          "note": "A4",
+          "duration": "e"
+        },
+        {
+          "note": "F4",
+          "duration": "e"
+        },
+        {
+          "note": "D4",
+          "duration": "e"
+        },
+        {
+          "note": "F4",
+          "duration": "e"
+        },
+        {
+          "note": "A4",
+          "duration": "e"
+        },
+        {
+          "note": "F4",
+          "duration": "e"
+        },
+        {
+          "note": "D4",
+          "duration": "e"
+        },
+        {
+          "note": "F4",
+          "duration": "e"
+        },
+        {
+          "note": "A4",
+          "duration": "e"
+        },
+        {
+          "note": "F4",
+          "duration": "e"
+        },
+        {
+          "note": "D4",
+          "duration": "e"
+        },
+        {
+          "note": "F4",
+          "duration": "e"
+        },
+        {
+          "note": "A4",
+          "duration": "e"
+        },
+        {
+          "note": "F4",
+          "duration": "e"
+        },
+        {
+          "note": "G4",
+          "duration": "e"
+        },
+        {
+          "note": "Bb4",
+          "duration": "e"
+        },
+        {
+          "note": "D5",
+          "duration": "e"
+        },
+        {
+          "note": "Bb4",
+          "duration": "e"
+        },
+        {
+          "note": "G4",
+          "duration": "e"
+        },
+        {
+          "note": "Bb4",
+          "duration": "e"
+        },
+        {
+          "note": "D5",
+          "duration": "e"
+        },
+        {
+          "note": "Bb4",
+          "duration": "e"
+        },
+        {
+          "note": "G4",
+          "duration": "e"
+        },
+        {
+          "note": "Bb4",
+          "duration": "e"
+        },
+        {
+          "note": "D5",
+          "duration": "e"
+        },
+        {
+          "note": "Bb4",
+          "duration": "e"
+        },
+        {
+          "note": "Bb4",
+          "duration": "e"
+        },
+        {
+          "note": "D5",
+          "duration": "e"
+        },
+        {
+          "note": "F5",
+          "duration": "e"
+        },
+        {
+          "note": "D5",
+          "duration": "e"
+        },
+        {
+          "note": "Eb4",
+          "duration": "e"
+        },
+        {
+          "note": "G4",
+          "duration": "e"
+        },
+        {
+          "note": "Bb4",
+          "duration": "e"
+        },
+        {
+          "note": "G4",
+          "duration": "e"
+        },
+        {
+          "note": "Eb4",
+          "duration": "e"
+        },
+        {
+          "note": "G4",
+          "duration": "e"
+        },
+        {
+          "note": "Bb4",
+          "duration": "e"
+        },
+        {
+          "note": "G4",
+          "duration": "e"
+        },
+        {
+          "note": "D4",
+          "duration": "e"
+        },
+        {
+          "note": "F4",
+          "duration": "e"
+        },
+        {
+          "note": "A4",
+          "duration": "e"
+        },
+        {
+          "note": "F4",
+          "duration": "e"
+        },
+        {
+          "note": "D4",
+          "duration": "e"
+        },
+        {
+          "note": "F4",
+          "duration": "e"
+        },
+        {
+          "note": "A4",
+          "duration": "e"
+        },
+        {
+          "note": "F4",
+          "duration": "e"
+        },
+        {
+          "note": null,
+          "duration": "w"
+        },
+        {
+          "note": null,
+          "duration": "w"
+        },
+        {
+          "note": "D4",
+          "duration": "e"
+        },
+        {
+          "note": "F4",
+          "duration": "e"
+        },
+        {
+          "note": "A4",
+          "duration": "e"
+        },
+        {
+          "note": "D5",
+          "duration": "e"
+        },
+        {
+          "note": "F4",
+          "duration": "e"
+        },
+        {
+          "note": "A4",
+          "duration": "e"
+        },
+        {
+          "note": "D5",
+          "duration": "e"
+        },
+        {
+          "note": "F5",
+          "duration": "e"
+        },
+        {
+          "note": "G4",
+          "duration": "e"
+        },
+        {
+          "note": "Bb4",
+          "duration": "e"
+        },
+        {
+          "note": "D5",
+          "duration": "e"
+        },
+        {
+          "note": "G5",
+          "duration": "e"
+        },
+        {
+          "note": "Bb4",
+          "duration": "e"
+        },
+        {
+          "note": "D5",
+          "duration": "e"
+        },
+        {
+          "note": "G5",
+          "duration": "e"
+        },
+        {
+          "note": "Bb5",
+          "duration": "e"
+        },
+        {
+          "note": "D4",
+          "duration": "e"
+        },
+        {
+          "note": "G4",
+          "duration": "e"
+        },
+        {
+          "note": "Bb4",
+          "duration": "e"
+        },
+        {
+          "note": "D5",
+          "duration": "e"
+        },
+        {
+          "note": "G4",
+          "duration": "e"
+        },
+        {
+          "note": "Bb4",
+          "duration": "e"
+        },
+        {
+          "note": "D5",
+          "duration": "e"
+        },
+        {
+          "note": "G5",
+          "duration": "e"
+        },
+        {
+          "note": "G4",
+          "duration": "e"
+        },
+        {
+          "note": "Bb4",
+          "duration": "e"
+        },
+        {
+          "note": "D5",
+          "duration": "e"
+        },
+        {
+          "note": "G5",
+          "duration": "e"
+        },
+        {
+          "note": "Bb4",
+          "duration": "e"
+        },
+        {
+          "note": "D5",
+          "duration": "e"
+        },
+        {
+          "note": "G5",
+          "duration": "e"
+        },
+        {
+          "note": "Bb5",
+          "duration": "e"
+        },
+        {
+          "note": "D4",
+          "duration": "e"
+        },
+        {
+          "note": "F4",
+          "duration": "e"
+        },
+        {
+          "note": "A4",
+          "duration": "e"
+        },
+        {
+          "note": "D5",
+          "duration": "e"
+        },
+        {
+          "note": "F4",
+          "duration": "e"
+        },
+        {
+          "note": "A4",
+          "duration": "e"
+        },
+        {
+          "note": "D5",
+          "duration": "e"
+        },
+        {
+          "note": "F5",
+          "duration": "e"
+        },
+        {
+          "note": null,
+          "duration": "w"
+        },
+        {
+          "note": null,
+          "duration": "w"
+        },
+        {
+          "note": "G4",
+          "duration": "e"
+        },
+        {
+          "note": "D5",
+          "duration": "e"
+        },
+        {
+          "note": "G5",
+          "duration": "e"
+        },
+        {
+          "note": "D5",
+          "duration": "e"
+        },
+        {
+          "note": "G4",
+          "duration": "e"
+        },
+        {
+          "note": "D5",
+          "duration": "e"
+        },
+        {
+          "note": "G5",
+          "duration": "e"
+        },
+        {
+          "note": "D5",
+          "duration": "e"
+        }
+      ]
+    },
+    {
+      "timbre": "kick",
+      "notes": [
+        {
+          "note": "C2",
+          "duration": "q"
+        },
+        {
+          "note": null,
+          "duration": "q"
+        },
+        {
+          "note": "C2",
+          "duration": "q"
+        },
+        {
+          "note": null,
+          "duration": "q"
+        },
+        {
+          "note": "C2",
+          "duration": "q"
+        },
+        {
+          "note": null,
+          "duration": "q"
+        },
+        {
+          "note": "C2",
+          "duration": "q"
+        },
+        {
+          "note": null,
+          "duration": "q"
+        },
+        {
+          "note": "C2",
+          "duration": "q"
+        },
+        {
+          "note": null,
+          "duration": "q"
+        },
+        {
+          "note": "C2",
+          "duration": "q"
+        },
+        {
+          "note": null,
+          "duration": "q"
+        },
+        {
+          "note": "C2",
+          "duration": "q"
+        },
+        {
+          "note": null,
+          "duration": "q"
+        },
+        {
+          "note": "C2",
+          "duration": "q"
+        },
+        {
+          "note": null,
+          "duration": "q"
+        },
+        {
+          "note": "C2",
+          "duration": "q"
+        },
+        {
+          "note": null,
+          "duration": "q"
+        },
+        {
+          "note": "C2",
+          "duration": "q"
+        },
+        {
+          "note": null,
+          "duration": "q"
+        },
+        {
+          "note": "C2",
+          "duration": "q"
+        },
+        {
+          "note": null,
+          "duration": "q"
+        },
+        {
+          "note": "C2",
+          "duration": "q"
+        },
+        {
+          "note": null,
+          "duration": "q"
+        },
+        {
+          "note": "C2",
+          "duration": "q"
+        },
+        {
+          "note": null,
+          "duration": "q"
+        },
+        {
+          "note": "C2",
+          "duration": "q"
+        },
+        {
+          "note": null,
+          "duration": "q"
+        },
+        {
+          "note": "C2",
+          "duration": "q"
+        },
+        {
+          "note": null,
+          "duration": "q"
+        },
+        {
+          "note": "C2",
+          "duration": "q"
+        },
+        {
+          "note": null,
+          "duration": "q"
+        },
+        {
+          "note": "C2",
+          "duration": "e"
+        },
+        {
+          "note": null,
+          "duration": "e"
+        },
+        {
+          "note": "C2",
+          "duration": "e"
+        },
+        {
+          "note": null,
+          "duration": "e"
+        },
+        {
+          "note": "C2",
+          "duration": "e"
+        },
+        {
+          "note": null,
+          "duration": "e"
+        },
+        {
+          "note": "C2",
+          "duration": "e"
+        },
+        {
+          "note": null,
+          "duration": "e"
+        },
+        {
+          "note": "C2",
+          "duration": "e"
+        },
+        {
+          "note": null,
+          "duration": "e"
+        },
+        {
+          "note": "C2",
+          "duration": "e"
+        },
+        {
+          "note": null,
+          "duration": "e"
+        },
+        {
+          "note": "C2",
+          "duration": "e"
+        },
+        {
+          "note": null,
+          "duration": "e"
+        },
+        {
+          "note": "C2",
+          "duration": "e"
+        },
+        {
+          "note": null,
+          "duration": "e"
+        },
+        {
+          "note": "C2",
+          "duration": "e"
+        },
+        {
+          "note": null,
+          "duration": "e"
+        },
+        {
+          "note": "C2",
+          "duration": "e"
+        },
+        {
+          "note": null,
+          "duration": "e"
+        },
+        {
+          "note": "C2",
+          "duration": "e"
+        },
+        {
+          "note": null,
+          "duration": "e"
+        },
+        {
+          "note": "C2",
+          "duration": "e"
+        },
+        {
+          "note": null,
+          "duration": "e"
+        },
+        {
+          "note": "C2",
+          "duration": "e"
+        },
+        {
+          "note": null,
+          "duration": "e"
+        },
+        {
+          "note": "C2",
+          "duration": "e"
+        },
+        {
+          "note": null,
+          "duration": "e"
+        },
+        {
+          "note": "C2",
+          "duration": "e"
+        },
+        {
+          "note": null,
+          "duration": "e"
+        },
+        {
+          "note": "C2",
+          "duration": "e"
+        },
+        {
+          "note": null,
+          "duration": "e"
+        },
+        {
+          "note": null,
+          "duration": "w"
+        },
+        {
+          "note": null,
+          "duration": "w"
+        },
+        {
+          "note": "C2",
+          "duration": "q"
+        },
+        {
+          "note": null,
+          "duration": "q"
+        },
+        {
+          "note": "C2",
+          "duration": "q"
+        },
+        {
+          "note": null,
+          "duration": "q"
+        },
+        {
+          "note": "C2",
+          "duration": "q"
+        },
+        {
+          "note": null,
+          "duration": "q"
+        },
+        {
+          "note": "C2",
+          "duration": "q"
+        },
+        {
+          "note": null,
+          "duration": "q"
+        },
+        {
+          "note": "C2",
+          "duration": "q"
+        },
+        {
+          "note": null,
+          "duration": "q"
+        },
+        {
+          "note": "C2",
+          "duration": "q"
+        },
+        {
+          "note": null,
+          "duration": "q"
+        },
+        {
+          "note": "C2",
+          "duration": "q"
+        },
+        {
+          "note": null,
+          "duration": "q"
+        },
+        {
+          "note": "C2",
+          "duration": "q"
+        },
+        {
+          "note": null,
+          "duration": "q"
+        },
+        {
+          "note": "C2",
+          "duration": "q"
+        },
+        {
+          "note": null,
+          "duration": "q"
+        },
+        {
+          "note": "C2",
+          "duration": "q"
+        },
+        {
+          "note": null,
+          "duration": "q"
+        },
+        {
+          "note": "C2",
+          "duration": "q"
+        },
+        {
+          "note": null,
+          "duration": "q"
+        },
+        {
+          "note": "C2",
+          "duration": "q"
+        },
+        {
+          "note": null,
+          "duration": "q"
+        },
+        {
+          "note": "C2",
+          "duration": "e"
+        },
+        {
+          "note": null,
+          "duration": "e"
+        },
+        {
+          "note": "C2",
+          "duration": "e"
+        },
+        {
+          "note": null,
+          "duration": "e"
+        },
+        {
+          "note": "C2",
+          "duration": "e"
+        },
+        {
+          "note": null,
+          "duration": "e"
+        },
+        {
+          "note": "C2",
+          "duration": "e"
+        },
+        {
+          "note": null,
+          "duration": "e"
+        },
+        {
+          "note": "C2",
+          "duration": "e"
+        },
+        {
+          "note": null,
+          "duration": "e"
+        },
+        {
+          "note": "C2",
+          "duration": "e"
+        },
+        {
+          "note": null,
+          "duration": "e"
+        },
+        {
+          "note": "C2",
+          "duration": "e"
+        },
+        {
+          "note": null,
+          "duration": "e"
+        },
+        {
+          "note": "C2",
+          "duration": "e"
+        },
+        {
+          "note": null,
+          "duration": "e"
+        },
+        {
+          "note": null,
+          "duration": "w"
+        },
+        {
+          "note": null,
+          "duration": "w"
+        },
+        {
+          "note": "C2",
+          "duration": "w"
+        }
+      ]
+    },
+    {
+      "timbre": "snare",
+      "notes": [
+        {
+          "note": null,
+          "duration": "q"
+        },
+        {
+          "note": "C3",
+          "duration": "q"
+        },
+        {
+          "note": null,
+          "duration": "q"
+        },
+        {
+          "note": "C3",
+          "duration": "q"
+        },
+        {
+          "note": null,
+          "duration": "q"
+        },
+        {
+          "note": "C3",
+          "duration": "q"
+        },
+        {
+          "note": null,
+          "duration": "q"
+        },
+        {
+          "note": "C3",
+          "duration": "q"
+        },
+        {
+          "note": null,
+          "duration": "q"
+        },
+        {
+          "note": "C3",
+          "duration": "q"
+        },
+        {
+          "note": null,
+          "duration": "q"
+        },
+        {
+          "note": "C3",
+          "duration": "q"
+        },
+        {
+          "note": null,
+          "duration": "q"
+        },
+        {
+          "note": "C3",
+          "duration": "q"
+        },
+        {
+          "note": null,
+          "duration": "q"
+        },
+        {
+          "note": "C3",
+          "duration": "q"
+        },
+        {
+          "note": null,
+          "duration": "e"
+        },
+        {
+          "note": "C3",
+          "duration": "e"
+        },
+        {
+          "note": null,
+          "duration": "e"
+        },
+        {
+          "note": "C3",
+          "duration": "e"
+        },
+        {
+          "note": null,
+          "duration": "e"
+        },
+        {
+          "note": "C3",
+          "duration": "e"
+        },
+        {
+          "note": null,
+          "duration": "e"
+        },
+        {
+          "note": "C3",
+          "duration": "e"
+        },
+        {
+          "note": null,
+          "duration": "e"
+        },
+        {
+          "note": "C3",
+          "duration": "e"
+        },
+        {
+          "note": null,
+          "duration": "e"
+        },
+        {
+          "note": "C3",
+          "duration": "e"
+        },
+        {
+          "note": null,
+          "duration": "e"
+        },
+        {
+          "note": "C3",
+          "duration": "e"
+        },
+        {
+          "note": null,
+          "duration": "e"
+        },
+        {
+          "note": "C3",
+          "duration": "e"
+        },
+        {
+          "note": null,
+          "duration": "e"
+        },
+        {
+          "note": "C3",
+          "duration": "e"
+        },
+        {
+          "note": null,
+          "duration": "e"
+        },
+        {
+          "note": "C3",
+          "duration": "e"
+        },
+        {
+          "note": null,
+          "duration": "e"
+        },
+        {
+          "note": "C3",
+          "duration": "e"
+        },
+        {
+          "note": null,
+          "duration": "e"
+        },
+        {
+          "note": "C3",
+          "duration": "e"
+        },
+        {
+          "note": null,
+          "duration": "w"
+        },
+        {
+          "note": null,
+          "duration": "w"
+        },
+        {
+          "note": null,
+          "duration": "q"
+        },
+        {
+          "note": "C3",
+          "duration": "q"
+        },
+        {
+          "note": null,
+          "duration": "q"
+        },
+        {
+          "note": "C3",
+          "duration": "q"
+        },
+        {
+          "note": null,
+          "duration": "q"
+        },
+        {
+          "note": "C3",
+          "duration": "q"
+        },
+        {
+          "note": null,
+          "duration": "q"
+        },
+        {
+          "note": "C3",
+          "duration": "q"
+        },
+        {
+          "note": null,
+          "duration": "q"
+        },
+        {
+          "note": "C3",
+          "duration": "q"
+        },
+        {
+          "note": null,
+          "duration": "q"
+        },
+        {
+          "note": "C3",
+          "duration": "q"
+        },
+        {
+          "note": null,
+          "duration": "e"
+        },
+        {
+          "note": "C3",
+          "duration": "e"
+        },
+        {
+          "note": null,
+          "duration": "e"
+        },
+        {
+          "note": "C3",
+          "duration": "e"
+        },
+        {
+          "note": null,
+          "duration": "e"
+        },
+        {
+          "note": "C3",
+          "duration": "e"
+        },
+        {
+          "note": null,
+          "duration": "e"
+        },
+        {
+          "note": "C3",
+          "duration": "e"
+        },
+        {
+          "note": null,
+          "duration": "w"
+        },
+        {
+          "note": null,
+          "duration": "w"
+        },
+        {
+          "note": null,
+          "duration": "w"
+        }
+      ]
+    },
+    {
+      "timbre": "hihat",
+      "performance": {
+        "humanize": 0.15
+      },
+      "notes": [
+        {
+          "note": "C6",
+          "duration": "e"
+        },
+        {
+          "note": null,
+          "duration": "e"
+        },
+        {
+          "note": "C6",
+          "duration": "e"
+        },
+        {
+          "note": null,
+          "duration": "e"
+        },
+        {
+          "note": "C6",
+          "duration": "e"
+        },
+        {
+          "note": null,
+          "duration": "e"
+        },
+        {
+          "note": "C6",
+          "duration": "e"
+        },
+        {
+          "note": null,
+          "duration": "e"
+        },
+        {
+          "note": "C6",
+          "duration": "e"
+        },
+        {
+          "note": null,
+          "duration": "e"
+        },
+        {
+          "note": "C6",
+          "duration": "e"
+        },
+        {
+          "note": null,
+          "duration": "e"
+        },
+        {
+          "note": "C6",
+          "duration": "e"
+        },
+        {
+          "note": null,
+          "duration": "e"
+        },
+        {
+          "note": "C6",
+          "duration": "e"
+        },
+        {
+          "note": null,
+          "duration": "e"
+        },
+        {
+          "note": "C6",
+          "duration": "e"
+        },
+        {
+          "note": null,
+          "duration": "e"
+        },
+        {
+          "note": "C6",
+          "duration": "e"
+        },
+        {
+          "note": null,
+          "duration": "e"
+        },
+        {
+          "note": "C6",
+          "duration": "e"
+        },
+        {
+          "note": null,
+          "duration": "e"
+        },
+        {
+          "note": "C6",
+          "duration": "e"
+        },
+        {
+          "note": null,
+          "duration": "e"
+        },
+        {
+          "note": "C6",
+          "duration": "e"
+        },
+        {
+          "note": null,
+          "duration": "e"
+        },
+        {
+          "note": "C6",
+          "duration": "e"
+        },
+        {
+          "note": null,
+          "duration": "e"
+        },
+        {
+          "note": "C6",
+          "duration": "e"
+        },
+        {
+          "note": null,
+          "duration": "e"
+        },
+        {
+          "note": "C6",
+          "duration": "e"
+        },
+        {
+          "note": null,
+          "duration": "e"
+        },
+        {
+          "note": "C6",
+          "duration": "s"
+        },
+        {
+          "note": null,
+          "duration": "s"
+        },
+        {
+          "note": "C6",
+          "duration": "s"
+        },
+        {
+          "note": null,
+          "duration": "s"
+        },
+        {
+          "note": "C6",
+          "duration": "s"
+        },
+        {
+          "note": null,
+          "duration": "s"
+        },
+        {
+          "note": "C6",
+          "duration": "s"
+        },
+        {
+          "note": null,
+          "duration": "s"
+        },
+        {
+          "note": "C6",
+          "duration": "s"
+        },
+        {
+          "note": null,
+          "duration": "s"
+        },
+        {
+          "note": "C6",
+          "duration": "s"
+        },
+        {
+          "note": null,
+          "duration": "s"
+        },
+        {
+          "note": "C6",
+          "duration": "s"
+        },
+        {
+          "note": null,
+          "duration": "s"
+        },
+        {
+          "note": "C6",
+          "duration": "s"
+        },
+        {
+          "note": null,
+          "duration": "s"
+        },
+        {
+          "note": "C6",
+          "duration": "s"
+        },
+        {
+          "note": null,
+          "duration": "s"
+        },
+        {
+          "note": "C6",
+          "duration": "s"
+        },
+        {
+          "note": null,
+          "duration": "s"
+        },
+        {
+          "note": "C6",
+          "duration": "s"
+        },
+        {
+          "note": null,
+          "duration": "s"
+        },
+        {
+          "note": "C6",
+          "duration": "s"
+        },
+        {
+          "note": null,
+          "duration": "s"
+        },
+        {
+          "note": "C6",
+          "duration": "s"
+        },
+        {
+          "note": null,
+          "duration": "s"
+        },
+        {
+          "note": "C6",
+          "duration": "s"
+        },
+        {
+          "note": null,
+          "duration": "s"
+        },
+        {
+          "note": "C6",
+          "duration": "s"
+        },
+        {
+          "note": null,
+          "duration": "s"
+        },
+        {
+          "note": "C6",
+          "duration": "s"
+        },
+        {
+          "note": null,
+          "duration": "s"
+        },
+        {
+          "note": "C6",
+          "duration": "s"
+        },
+        {
+          "note": null,
+          "duration": "s"
+        },
+        {
+          "note": "C6",
+          "duration": "s"
+        },
+        {
+          "note": null,
+          "duration": "s"
+        },
+        {
+          "note": "C6",
+          "duration": "s"
+        },
+        {
+          "note": null,
+          "duration": "s"
+        },
+        {
+          "note": "C6",
+          "duration": "s"
+        },
+        {
+          "note": null,
+          "duration": "s"
+        },
+        {
+          "note": "C6",
+          "duration": "s"
+        },
+        {
+          "note": null,
+          "duration": "s"
+        },
+        {
+          "note": "C6",
+          "duration": "s"
+        },
+        {
+          "note": null,
+          "duration": "s"
+        },
+        {
+          "note": "C6",
+          "duration": "s"
+        },
+        {
+          "note": null,
+          "duration": "s"
+        },
+        {
+          "note": "C6",
+          "duration": "s"
+        },
+        {
+          "note": null,
+          "duration": "s"
+        },
+        {
+          "note": null,
+          "duration": "w"
+        },
+        {
+          "note": null,
+          "duration": "w"
+        },
+        {
+          "note": "C6",
+          "duration": "e"
+        },
+        {
+          "note": null,
+          "duration": "e"
+        },
+        {
+          "note": "C6",
+          "duration": "e"
+        },
+        {
+          "note": null,
+          "duration": "e"
+        },
+        {
+          "note": "C6",
+          "duration": "e"
+        },
+        {
+          "note": null,
+          "duration": "e"
+        },
+        {
+          "note": "C6",
+          "duration": "e"
+        },
+        {
+          "note": null,
+          "duration": "e"
+        },
+        {
+          "note": "C6",
+          "duration": "e"
+        },
+        {
+          "note": null,
+          "duration": "e"
+        },
+        {
+          "note": "C6",
+          "duration": "e"
+        },
+        {
+          "note": null,
+          "duration": "e"
+        },
+        {
+          "note": "C6",
+          "duration": "e"
+        },
+        {
+          "note": null,
+          "duration": "e"
+        },
+        {
+          "note": "C6",
+          "duration": "e"
+        },
+        {
+          "note": null,
+          "duration": "e"
+        },
+        {
+          "note": "C6",
+          "duration": "e"
+        },
+        {
+          "note": null,
+          "duration": "e"
+        },
+        {
+          "note": "C6",
+          "duration": "e"
+        },
+        {
+          "note": null,
+          "duration": "e"
+        },
+        {
+          "note": "C6",
+          "duration": "e"
+        },
+        {
+          "note": null,
+          "duration": "e"
+        },
+        {
+          "note": "C6",
+          "duration": "e"
+        },
+        {
+          "note": null,
+          "duration": "e"
+        },
+        {
+          "note": "C6",
+          "duration": "s"
+        },
+        {
+          "note": null,
+          "duration": "s"
+        },
+        {
+          "note": "C6",
+          "duration": "s"
+        },
+        {
+          "note": null,
+          "duration": "s"
+        },
+        {
+          "note": "C6",
+          "duration": "s"
+        },
+        {
+          "note": null,
+          "duration": "s"
+        },
+        {
+          "note": "C6",
+          "duration": "s"
+        },
+        {
+          "note": null,
+          "duration": "s"
+        },
+        {
+          "note": "C6",
+          "duration": "s"
+        },
+        {
+          "note": null,
+          "duration": "s"
+        },
+        {
+          "note": "C6",
+          "duration": "s"
+        },
+        {
+          "note": null,
+          "duration": "s"
+        },
+        {
+          "note": "C6",
+          "duration": "s"
+        },
+        {
+          "note": null,
+          "duration": "s"
+        },
+        {
+          "note": "C6",
+          "duration": "s"
+        },
+        {
+          "note": null,
+          "duration": "s"
+        },
+        {
+          "note": null,
+          "duration": "w"
+        },
+        {
+          "note": null,
+          "duration": "w"
+        },
+        {
+          "note": "C6",
+          "duration": "e"
+        },
+        {
+          "note": null,
+          "duration": "e"
+        },
+        {
+          "note": "C6",
+          "duration": "e"
+        },
+        {
+          "note": null,
+          "duration": "e"
+        },
+        {
+          "note": "C6",
+          "duration": "e"
+        },
+        {
+          "note": null,
+          "duration": "e"
+        },
+        {
+          "note": "C6",
+          "duration": "e"
+        },
+        {
+          "note": null,
+          "duration": "e"
+        }
+      ]
+    }
+  ]
+}

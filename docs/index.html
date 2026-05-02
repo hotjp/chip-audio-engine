@@ -1049,7 +1049,7 @@
       <div class="demo-card" id="demo-title-theme">
         <div class="demo-header">
           <div class="demo-title">Title Screen</div>
-          <div class="demo-meta">BPM 130 · 5 Tracks · 16bit-sfc</div>
+          <div class="demo-meta">BPM 130 · 5 Tracks · ~8s loop · 16bit-sfc</div>
         </div>
         <div class="demo-tracks">
           <span class="demo-tag">lead</span>
@@ -1070,6 +1070,34 @@
           <div class="demo-progress-bar" id="progress-title"></div>
         </div>
         <div class="demo-status" id="status-title">Ready</div>
+      </div>
+
+      <div class="demo-card" id="demo-hero-march">
+        <div class="demo-header">
+          <div class="demo-title">Hero's March</div>
+          <div class="demo-meta">BPM 130 · 7 Tracks · ~2min · Epic Battle Theme</div>
+        </div>
+        <div class="demo-tracks">
+          <span class="demo-tag">lead</span>
+          <span class="demo-tag">bass</span>
+          <span class="demo-tag">pad</span>
+          <span class="demo-tag">arp</span>
+          <span class="demo-tag">kick</span>
+          <span class="demo-tag">snare</span>
+          <span class="demo-tag">hihat</span>
+        </div>
+        <div class="demo-controls">
+          <button class="demo-btn play" onclick="demoPlay('hero')" id="btn-hero">
+            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          </button>
+          <button class="demo-btn stop" onclick="demoStop('hero')" id="btn-hero-stop">
+            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="12" height="12"/></svg>
+          </button>
+        </div>
+        <div class="demo-progress">
+          <div class="demo-progress-bar" id="progress-hero"></div>
+        </div>
+        <div class="demo-status" id="status-hero">Ready</div>
       </div>
     </div>
   </section>
@@ -1401,44 +1429,73 @@
       totalDuration: 0
     };
 
-    function updateProgress() {
-      if (!demoState.ctx || demoState.ctx.state === 'closed') return;
-      const elapsed = demoState.ctx.currentTime - demoState.startTime;
-      const pct = Math.min(100, (elapsed / demoState.totalDuration) * 100);
-      document.getElementById('progress-title').style.width = pct + '%';
-      if (elapsed < demoState.totalDuration) {
-        demoState.raf = requestAnimationFrame(updateProgress);
-      } else {
-        document.getElementById('progress-title').style.width = '100%';
-      }
+    const SCORES = {
+      title: { data: titleThemeScore, cardId: 'demo-title-theme', progressId: 'progress-title', statusId: 'status-title' },
+      hero:  { url: './hero-march.json', cardId: 'demo-hero-march', progressId: 'progress-hero', statusId: 'status-hero' }
+    };
+    const scoreCache = { title: titleThemeScore };
+
+    async function loadScore(id) {
+      if (scoreCache[id]) return scoreCache[id];
+      const cfg = SCORES[id];
+      if (!cfg || !cfg.url) return null;
+      const resp = await fetch(cfg.url);
+      const data = await resp.json();
+      scoreCache[id] = data;
+      return data;
     }
 
-    window.demoPlay = function(id) {
-      if (demoState.ctx && demoState.ctx.state !== 'closed') return;
+    window.demoPlay = async function(id) {
+      // Stop any currently playing
+      demoStop(demoState.currentId || 'title');
+
+      const cfg = SCORES[id];
+      if (!cfg) return;
+
+      document.getElementById(cfg.statusId).textContent = 'Loading...';
+      const score = await loadScore(id);
+      if (!score) { document.getElementById(cfg.statusId).textContent = 'Load failed'; return; }
+
       demoState.ctx = new (window.AudioContext || window.webkitAudioContext)();
       demoState.startTime = demoState.ctx.currentTime + 0.05;
-      demoState.totalDuration = playScore(demoState.ctx, titleThemeScore, timbrePack16bit, demoState.startTime);
+      demoState.currentId = id;
+      demoState.totalDuration = playScore(demoState.ctx, score, timbrePack16bit, demoState.startTime);
 
-      document.getElementById('demo-title-theme').classList.add('playing');
-      document.getElementById('status-title').textContent = 'Playing...';
-      demoState.raf = requestAnimationFrame(updateProgress);
+      document.getElementById(cfg.cardId).classList.add('playing');
+      document.getElementById(cfg.statusId).textContent = 'Playing...';
+      demoState.raf = requestAnimationFrame(() => updateProgressFor(id));
 
       setTimeout(() => {
-        if (demoState.ctx && demoState.ctx.state !== 'closed') {
-          demoStop(id);
-        }
+        if (demoState.currentId === id) demoStop(id);
       }, (demoState.totalDuration + 0.5) * 1000);
     };
 
+    function updateProgressFor(id) {
+      const cfg = SCORES[id];
+      if (!demoState.ctx || demoState.ctx.state === 'closed') return;
+      const elapsed = demoState.ctx.currentTime - demoState.startTime;
+      const pct = Math.min(100, (elapsed / demoState.totalDuration) * 100);
+      document.getElementById(cfg.progressId).style.width = pct + '%';
+      if (elapsed < demoState.totalDuration) {
+        demoState.raf = requestAnimationFrame(() => updateProgressFor(id));
+      } else {
+        document.getElementById(cfg.progressId).style.width = '100%';
+      }
+    }
+
     window.demoStop = function(id) {
+      const cfg = SCORES[id || demoState.currentId];
       if (demoState.ctx) {
         demoState.ctx.close();
         demoState.ctx = null;
       }
       if (demoState.raf) cancelAnimationFrame(demoState.raf);
-      document.getElementById('demo-title-theme').classList.remove('playing');
-      document.getElementById('progress-title').style.width = '0%';
-      document.getElementById('status-title').textContent = 'Stopped';
+      if (cfg) {
+        document.getElementById(cfg.cardId).classList.remove('playing');
+        document.getElementById(cfg.progressId).style.width = '0%';
+        document.getElementById(cfg.statusId).textContent = 'Stopped';
+      }
+      demoState.currentId = null;
     };
   </script>
 
