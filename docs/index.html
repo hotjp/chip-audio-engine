@@ -1566,7 +1566,7 @@
 
     const SCORES = {
       title: { data: titleThemeScore, cardId: 'demo-title-theme', progressId: 'progress-title', statusId: 'status-title' },
-      hero:  { url: './hero-march.json', cardId: 'demo-hero-march', progressId: 'progress-hero', statusId: 'status-hero' }
+      hero:  { url: './scores/hero-march.json', cardId: 'demo-hero-march', progressId: 'progress-hero', statusId: 'status-hero' }
     };
     const scoreCache = { title: titleThemeScore };
 
@@ -1851,7 +1851,7 @@
 
     async function loadV2Score() {
       if (v2DemoState.compiled) return v2DemoState.compiled;
-      const resp = await fetch('./hero-march-v2.json');
+      const resp = await fetch('./scores/hero-march-v2.json');
       const data = await resp.json();
       v2DemoState.compiled = compileV2ForDemo(data);
       v2DemoState.chapters = v2DemoState.compiled.chapters;
