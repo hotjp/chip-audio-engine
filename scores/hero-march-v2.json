@@ -1,8 +1,7 @@
 {
   "$schema": "cae-score-v2",
   "meta": {
-    "$schema": "cae-score-v2",
-    "title": "Hero's March — Epic Battle Theme",
+    "title": "Hero's March v2",
     "bpm": 130,
     "timeSignature": [
       4,
@@ -17,62 +16,34 @@
       "name": "lead",
       "timbre": "lead",
       "perf": {
-        "humanize": 0.1,
-        "layback": 10,
+        "humanize": 0.08,
+        "layback": 8,
         "velocity": {
           "curve": "linear",
           "points": [
             [
-              0,
+              "intro:start",
               0.4
             ],
             [
-              0.1111111111111111,
-              0.5
+              "intro:end",
+              0.55
             ],
             [
-              0.2222222222222222,
+              "verse:mid",
               0.65
             ],
             [
-              0.3333333333333333,
-              0.8
+              "bridge:start",
+              0.4
             ],
             [
-              0.3888888888888889,
-              0.9
-            ],
-            [
-              0.4444444444444444,
+              "climax:mid",
               0.95
             ],
             [
-              0.5,
-              0.7
-            ],
-            [
-              0.5555555555555556,
-              0.85
-            ],
-            [
-              0.6111111111111112,
-              0.6
-            ],
-            [
-              0.6666666666666666,
-              0.5
-            ],
-            [
-              0.7777777777777778,
-              0.85
-            ],
-            [
-              0.8888888888888888,
-              0.6
-            ],
-            [
-              1,
-              0.4
+              "outro:end",
+              0.2
             ]
           ]
         }
@@ -82,983 +53,681 @@
       "name": "bass",
       "timbre": "bass",
       "perf": {
-        "layback": 5
+        "layback": 5,
+        "velocity": {
+          "curve": "linear",
+          "points": [
+            [
+              "intro:start",
+              0.5
+            ],
+            [
+              "verse:start",
+              0.6
+            ],
+            [
+              "climax:start",
+              0.85
+            ],
+            [
+              "outro:end",
+              0.3
+            ]
+          ]
+        }
       }
     },
     {
       "name": "pad",
       "timbre": "pad",
       "perf": {
-        "humanize": 0.15,
-        "layback": 20
+        "humanize": 0.1,
+        "layback": 15,
+        "velocity": {
+          "curve": "linear",
+          "points": [
+            [
+              "intro:end",
+              0.3
+            ],
+            [
+              "verse:start",
+              0.45
+            ],
+            [
+              "bridge:start",
+              0.5
+            ],
+            [
+              "climax:start",
+              0.7
+            ],
+            [
+              "outro:end",
+              0.1
+            ]
+          ]
+        }
       }
     },
     {
       "name": "arp",
       "timbre": "arp",
       "perf": {
-        "swing": 0.3,
-        "humanize": 0.2
+        "swing": 0.25,
+        "humanize": 0.15,
+        "velocity": {
+          "curve": "linear",
+          "points": [
+            [
+              "intro:start",
+              0.35
+            ],
+            [
+              "verse:start",
+              0.5
+            ],
+            [
+              "climax:start",
+              0.8
+            ],
+            [
+              "outro:end",
+              0.2
+            ]
+          ]
+        }
       }
     },
     {
       "name": "kick",
-      "timbre": "kick"
+      "timbre": "kick",
+      "perf": {
+        "velocity": {
+          "curve": "linear",
+          "points": [
+            [
+              "intro:start",
+              0.6
+            ],
+            [
+              "climax:start",
+              1
+            ],
+            [
+              "outro:end",
+              0
+            ]
+          ]
+        }
+      }
     },
     {
       "name": "snare",
-      "timbre": "snare"
+      "timbre": "snare",
+      "perf": {
+        "velocity": {
+          "curve": "linear",
+          "points": [
+            [
+              "intro:start",
+              0.5
+            ],
+            [
+              "climax:start",
+              0.95
+            ],
+            [
+              "outro:end",
+              0
+            ]
+          ]
+        }
+      }
     },
     {
       "name": "hihat",
       "timbre": "hihat",
       "perf": {
-        "humanize": 0.15
+        "humanize": 0.12,
+        "velocity": {
+          "curve": "linear",
+          "points": [
+            [
+              "intro:start",
+              0.4
+            ],
+            [
+              "climax:start",
+              0.85
+            ],
+            [
+              "outro:end",
+              0
+            ]
+          ]
+        }
       }
     }
   ],
   "patterns": {
-    "lead_0": {
-      "lead": [
-        [
-          "G3",
-          "q"
-        ],
-        [
-          "G3",
-          "q"
-        ],
-        [
-          "D4",
-          "h"
-        ]
-      ]
-    },
-    "lead_1": {
-      "lead": [
-        [
-          "Eb4",
-          "q"
-        ],
-        [
-          "Eb4",
-          "q"
-        ],
-        [
-          "Bb3",
-          "h"
-        ]
-      ]
-    },
-    "lead_2": {
-      "lead": [
-        [
-          "G4",
-          "q"
-        ],
-        [
-          "G4",
-          "q"
-        ],
-        [
-          "D4",
-          "h"
-        ]
-      ]
-    },
-    "lead_3": {
-      "lead": [
-        [
-          "D4",
-          "w"
-        ]
-      ]
-    },
-    "lead_4": {
-      "lead": [
-        [
-          "R",
-          "w"
-        ]
-      ]
-    },
-    "bass_0": {
-      "bass": [
-        [
-          "G2",
-          "w"
-        ]
-      ]
-    },
-    "bass_1": {
-      "bass": [
-        [
-          "D2",
-          "w"
-        ]
-      ]
-    },
-    "bass_2": {
-      "bass": [
-        [
-          "Bb2",
-          "w"
-        ]
-      ]
-    },
-    "bass_3": {
-      "bass": [
-        [
-          "R",
-          "w"
-        ]
-      ]
-    },
-    "bass_4": {
-      "bass": [
-        [
-          "Bb2",
-          "h"
-        ],
-        [
-          "C3",
-          "h"
-        ]
-      ]
-    },
-    "bass_5": {
-      "bass": [
-        [
-          "D3",
-          "q"
-        ],
-        [
-          "R",
-          "q"
-        ],
-        [
-          "D3",
-          "q"
-        ],
-        [
-          "R",
-          "q"
-        ]
-      ]
-    },
-    "bass_6": {
-      "bass": [
-        [
-          "G2",
-          "e"
-        ],
-        [
-          "G2",
-          "e"
-        ],
-        [
-          "G2",
-          "e"
-        ],
-        [
-          "G2",
-          "e"
-        ],
-        [
-          "G2",
-          "e"
-        ],
-        [
-          "G2",
-          "e"
-        ],
-        [
-          "G2",
-          "e"
-        ],
-        [
-          "G2",
-          "e"
-        ]
-      ]
-    },
-    "pad_0": {
-      "pad": [
-        [
-          "G3",
-          "w"
-        ]
-      ]
-    },
-    "pad_1": {
-      "pad": [
-        [
-          "D3",
-          "w"
-        ]
-      ]
-    },
-    "pad_2": {
-      "pad": [
-        [
-          "Bb3",
-          "w"
-        ]
-      ]
-    },
-    "pad_3": {
-      "pad": [
-        [
-          "Eb3",
-          "w"
-        ]
-      ]
-    },
-    "pad_4": {
-      "pad": [
-        [
-          "R",
-          "w"
-        ]
-      ]
-    },
-    "arp_0": {
-      "arp": [
-        [
-          "D4",
-          "e"
-        ],
-        [
-          "F4",
-          "e"
-        ],
-        [
-          "A4",
-          "e"
-        ],
-        [
-          "F4",
-          "e"
-        ],
-        [
-          "D4",
-          "e"
-        ],
-        [
-          "F4",
-          "e"
-        ],
-        [
-          "A4",
-          "e"
-        ],
-        [
-          "F4",
-          "e"
-        ]
-      ]
-    },
-    "arp_1": {
-      "arp": [
-        [
-          "R",
-          "w"
-        ]
-      ]
-    },
-    "arp_2": {
-      "arp": [
-        [
-          "G4",
-          "s"
-        ],
-        [
-          "Bb4",
-          "s"
-        ],
-        [
-          "D5",
-          "s"
-        ],
-        [
-          "G5",
-          "s"
-        ],
-        [
-          "Bb5",
-          "s"
-        ],
-        [
-          "D6",
-          "s"
-        ],
-        [
-          "Bb5",
-          "s"
-        ],
-        [
-          "G5",
-          "s"
-        ],
-        [
-          "G4",
-          "s"
-        ],
-        [
-          "Bb4",
-          "s"
-        ],
-        [
-          "D5",
-          "s"
-        ],
-        [
-          "G5",
-          "s"
-        ],
-        [
-          "Bb5",
-          "s"
-        ],
-        [
-          "D6",
-          "s"
-        ],
-        [
-          "Bb5",
-          "s"
-        ],
-        [
-          "G5",
-          "s"
-        ]
-      ]
-    },
-    "arp_3": {
-      "arp": [
-        [
-          "D4",
-          "s"
-        ],
-        [
-          "F4",
-          "s"
-        ],
-        [
-          "A4",
-          "s"
-        ],
-        [
-          "D5",
-          "s"
-        ],
-        [
-          "F5",
-          "s"
-        ],
-        [
-          "A5",
-          "s"
-        ],
-        [
-          "F5",
-          "s"
-        ],
-        [
-          "D5",
-          "s"
-        ],
-        [
-          "D4",
-          "s"
-        ],
-        [
-          "F4",
-          "s"
-        ],
-        [
-          "A4",
-          "s"
-        ],
-        [
-          "D5",
-          "s"
-        ],
-        [
-          "F5",
-          "s"
-        ],
-        [
-          "A5",
-          "s"
-        ],
-        [
-          "F5",
-          "s"
-        ],
-        [
-          "D5",
-          "s"
-        ]
-      ]
-    },
-    "arp_4": {
-      "arp": [
-        [
-          "Eb4",
-          "s"
-        ],
-        [
-          "G4",
-          "s"
-        ],
-        [
-          "Bb4",
-          "s"
-        ],
-        [
-          "Eb5",
-          "s"
-        ],
-        [
-          "G5",
-          "s"
-        ],
-        [
-          "Bb5",
-          "s"
-        ],
-        [
-          "G5",
-          "s"
-        ],
-        [
-          "Eb5",
-          "s"
-        ],
-        [
-          "Eb4",
-          "s"
-        ],
-        [
-          "G4",
-          "s"
-        ],
-        [
-          "Bb4",
-          "s"
-        ],
-        [
-          "Eb5",
-          "s"
-        ],
-        [
-          "G5",
-          "s"
-        ],
-        [
-          "Bb5",
-          "s"
-        ],
-        [
-          "G5",
-          "s"
-        ],
-        [
-          "Eb5",
-          "s"
-        ]
-      ]
-    },
-    "arp_5": {
-      "arp": [
-        [
-          "C4",
-          "s"
-        ],
-        [
-          "Eb4",
-          "s"
-        ],
-        [
-          "G4",
-          "s"
-        ],
-        [
-          "C5",
-          "s"
-        ],
-        [
-          "Eb5",
-          "s"
-        ],
-        [
-          "G5",
-          "s"
-        ],
-        [
-          "Eb5",
-          "s"
-        ],
-        [
-          "C5",
-          "s"
-        ],
-        [
-          "C4",
-          "s"
-        ],
-        [
-          "Eb4",
-          "s"
-        ],
-        [
-          "G4",
-          "s"
-        ],
-        [
-          "C5",
-          "s"
-        ],
-        [
-          "Eb5",
-          "s"
-        ],
-        [
-          "G5",
-          "s"
-        ],
-        [
-          "Eb5",
-          "s"
-        ],
-        [
-          "C5",
-          "s"
-        ]
-      ]
-    },
-    "arp_6": {
-      "arp": [
-        [
-          "G4",
-          "e"
-        ],
-        [
-          "Bb4",
-          "e"
-        ],
-        [
-          "D5",
-          "e"
-        ],
-        [
-          "G5",
-          "e"
-        ],
-        [
-          "G4",
-          "e"
-        ],
-        [
-          "Bb4",
-          "e"
-        ],
-        [
-          "D5",
-          "e"
-        ],
-        [
-          "G5",
-          "e"
-        ]
-      ]
-    },
-    "kick_0": {
+    "kick-march": {
       "kick": [
         [
           "C2",
-          "q"
+          "q",
+          1
         ],
         [
           "R",
-          "q"
+          "q",
+          2
         ],
         [
           "C2",
-          "q"
+          "q",
+          3
         ],
         [
           "R",
-          "q"
+          "q",
+          4
         ]
       ]
     },
-    "kick_1": {
-      "kick": [
-        [
-          "C2",
-          "e"
-        ],
-        [
-          "R",
-          "e"
-        ],
-        [
-          "C2",
-          "e"
-        ],
-        [
-          "R",
-          "e"
-        ],
-        [
-          "C2",
-          "e"
-        ],
-        [
-          "R",
-          "e"
-        ],
-        [
-          "C2",
-          "e"
-        ],
-        [
-          "R",
-          "e"
-        ]
-      ]
-    },
-    "kick_2": {
-      "kick": [
-        [
-          "R",
-          "w"
-        ]
-      ]
-    },
-    "kick_3": {
-      "kick": [
-        [
-          "R",
-          "h"
-        ],
-        [
-          "C2",
-          "h"
-        ]
-      ]
-    },
-    "kick_4": {
-      "kick": [
-        [
-          "C2",
-          "s"
-        ],
-        [
-          "R",
-          "s"
-        ],
-        [
-          "R",
-          "s"
-        ],
-        [
-          "R",
-          "s"
-        ],
-        [
-          "R",
-          "s"
-        ],
-        [
-          "R",
-          "s"
-        ],
-        [
-          "R",
-          "s"
-        ],
-        [
-          "R",
-          "s"
-        ],
-        [
-          "C2",
-          "s"
-        ],
-        [
-          "R",
-          "s"
-        ],
-        [
-          "R",
-          "s"
-        ],
-        [
-          "R",
-          "s"
-        ],
-        [
-          "R",
-          "s"
-        ],
-        [
-          "R",
-          "s"
-        ],
-        [
-          "R",
-          "s"
-        ],
-        [
-          "R",
-          "s"
-        ]
-      ]
-    },
-    "snare_0": {
+    "snare-march": {
       "snare": [
         [
           "R",
-          "q"
+          "q",
+          1
         ],
         [
           "C3",
-          "q"
+          "q",
+          2
         ],
         [
           "R",
-          "q"
+          "q",
+          3
         ],
         [
           "C3",
-          "q"
+          "q",
+          4
         ]
       ]
     },
-    "snare_1": {
-      "snare": [
-        [
-          "R",
-          "e"
-        ],
-        [
-          "C3",
-          "e"
-        ],
-        [
-          "R",
-          "e"
-        ],
-        [
-          "C3",
-          "e"
-        ],
-        [
-          "R",
-          "e"
-        ],
-        [
-          "C3",
-          "e"
-        ],
-        [
-          "R",
-          "e"
-        ],
-        [
-          "C3",
-          "e"
-        ]
-      ]
-    },
-    "snare_2": {
-      "snare": [
-        [
-          "R",
-          "w"
-        ]
-      ]
-    },
-    "snare_3": {
-      "snare": [
-        [
-          "R",
-          "s"
-        ],
-        [
-          "R",
-          "s"
-        ],
-        [
-          "R",
-          "s"
-        ],
-        [
-          "R",
-          "s"
-        ],
-        [
-          "C3",
-          "s"
-        ],
-        [
-          "R",
-          "s"
-        ],
-        [
-          "R",
-          "s"
-        ],
-        [
-          "R",
-          "s"
-        ],
-        [
-          "R",
-          "s"
-        ],
-        [
-          "R",
-          "s"
-        ],
-        [
-          "R",
-          "s"
-        ],
-        [
-          "R",
-          "s"
-        ],
-        [
-          "C3",
-          "s"
-        ],
-        [
-          "R",
-          "s"
-        ],
-        [
-          "R",
-          "s"
-        ],
-        [
-          "R",
-          "s"
-        ]
-      ]
-    },
-    "hihat_0": {
+    "hihat-8th": {
       "hihat": [
         [
           "C6",
-          "e"
+          "e",
+          1
         ],
         [
           "R",
-          "e"
+          "e",
+          1.5
         ],
         [
           "C6",
-          "e"
+          "e",
+          2
         ],
         [
           "R",
-          "e"
+          "e",
+          2.5
         ],
         [
           "C6",
-          "e"
+          "e",
+          3
         ],
         [
           "R",
-          "e"
+          "e",
+          3.5
         ],
         [
           "C6",
-          "e"
+          "e",
+          4
         ],
         [
           "R",
-          "e"
+          "e",
+          4.5
         ]
       ]
     },
-    "hihat_1": {
+    "hihat-16th": {
       "hihat": [
         [
           "C6",
-          "s"
-        ],
-        [
-          "R",
-          "s"
+          "s",
+          1
         ],
         [
           "C6",
-          "s"
+          "s",
+          1.25
         ],
         [
           "R",
-          "s"
+          "s",
+          1.5
         ],
         [
           "C6",
-          "s"
-        ],
-        [
-          "R",
-          "s"
+          "s",
+          1.75
         ],
         [
           "C6",
-          "s"
-        ],
-        [
-          "R",
-          "s"
+          "s",
+          2
         ],
         [
           "C6",
-          "s"
+          "s",
+          2.25
         ],
         [
           "R",
-          "s"
+          "s",
+          2.5
         ],
         [
           "C6",
-          "s"
-        ],
-        [
-          "R",
-          "s"
+          "s",
+          2.75
         ],
         [
           "C6",
-          "s"
-        ],
-        [
-          "R",
-          "s"
+          "s",
+          3
         ],
         [
           "C6",
-          "s"
+          "s",
+          3.25
         ],
         [
           "R",
-          "s"
+          "s",
+          3.5
+        ],
+        [
+          "C6",
+          "s",
+          3.75
+        ],
+        [
+          "C6",
+          "s",
+          4
+        ],
+        [
+          "C6",
+          "s",
+          4.25
+        ],
+        [
+          "R",
+          "s",
+          4.5
+        ],
+        [
+          "C6",
+          "s",
+          4.75
         ]
       ]
     },
-    "hihat_2": {
-      "hihat": [
+    "arp-gm": {
+      "arp": [
         [
-          "R",
-          "w"
+          "G4",
+          "e",
+          1
+        ],
+        [
+          "Bb4",
+          "e",
+          1.5
+        ],
+        [
+          "D5",
+          "e",
+          2
+        ],
+        [
+          "G5",
+          "e",
+          2.5
+        ],
+        [
+          "G4",
+          "e",
+          3
+        ],
+        [
+          "Bb4",
+          "e",
+          3.5
+        ],
+        [
+          "D5",
+          "e",
+          4
+        ],
+        [
+          "G5",
+          "e",
+          4.5
+        ]
+      ]
+    },
+    "arp-bb": {
+      "arp": [
+        [
+          "Bb4",
+          "e",
+          1
+        ],
+        [
+          "D5",
+          "e",
+          1.5
+        ],
+        [
+          "F5",
+          "e",
+          2
+        ],
+        [
+          "Bb5",
+          "e",
+          2.5
+        ],
+        [
+          "Bb4",
+          "e",
+          3
+        ],
+        [
+          "D5",
+          "e",
+          3.5
+        ],
+        [
+          "F5",
+          "e",
+          4
+        ],
+        [
+          "Bb5",
+          "e",
+          4.5
+        ]
+      ]
+    },
+    "arp-dm": {
+      "arp": [
+        [
+          "D4",
+          "e",
+          1
+        ],
+        [
+          "F4",
+          "e",
+          1.5
+        ],
+        [
+          "A4",
+          "e",
+          2
+        ],
+        [
+          "D5",
+          "e",
+          2.5
+        ],
+        [
+          "D4",
+          "e",
+          3
+        ],
+        [
+          "F4",
+          "e",
+          3.5
+        ],
+        [
+          "A4",
+          "e",
+          4
+        ],
+        [
+          "D5",
+          "e",
+          4.5
+        ]
+      ]
+    },
+    "bass-drive": {
+      "bass": [
+        [
+          "G2",
+          "e",
+          1
+        ],
+        [
+          "G2",
+          "e",
+          1.5
+        ],
+        [
+          "G2",
+          "e",
+          2
+        ],
+        [
+          "G2",
+          "e",
+          2.5
+        ],
+        [
+          "G2",
+          "e",
+          3
+        ],
+        [
+          "G2",
+          "e",
+          3.5
+        ],
+        [
+          "G2",
+          "e",
+          4
+        ],
+        [
+          "G2",
+          "e",
+          4.5
+        ]
+      ]
+    },
+    "arp-gm-fast": {
+      "arp": [
+        [
+          "G4",
+          "s",
+          1
+        ],
+        [
+          "Bb4",
+          "s",
+          1.25
+        ],
+        [
+          "D5",
+          "s",
+          1.5
+        ],
+        [
+          "G5",
+          "s",
+          1.75
+        ],
+        [
+          "G4",
+          "s",
+          2
+        ],
+        [
+          "Bb4",
+          "s",
+          2.25
+        ],
+        [
+          "D5",
+          "s",
+          2.5
+        ],
+        [
+          "G5",
+          "s",
+          2.75
+        ],
+        [
+          "G4",
+          "s",
+          3
+        ],
+        [
+          "Bb4",
+          "s",
+          3.25
+        ],
+        [
+          "D5",
+          "s",
+          3.5
+        ],
+        [
+          "G5",
+          "s",
+          3.75
+        ],
+        [
+          "G4",
+          "s",
+          4
+        ],
+        [
+          "Bb4",
+          "s",
+          4.25
+        ],
+        [
+          "D5",
+          "s",
+          4.5
+        ],
+        [
+          "G5",
+          "s",
+          4.75
+        ]
+      ]
+    },
+    "arp-dm-fast": {
+      "arp": [
+        [
+          "D4",
+          "s",
+          1
+        ],
+        [
+          "F4",
+          "s",
+          1.25
+        ],
+        [
+          "A4",
+          "s",
+          1.5
+        ],
+        [
+          "D5",
+          "s",
+          1.75
+        ],
+        [
+          "D4",
+          "s",
+          2
+        ],
+        [
+          "F4",
+          "s",
+          2.25
+        ],
+        [
+          "A4",
+          "s",
+          2.5
+        ],
+        [
+          "D5",
+          "s",
+          2.75
+        ],
+        [
+          "D4",
+          "s",
+          3
+        ],
+        [
+          "F4",
+          "s",
+          3.25
+        ],
+        [
+          "A4",
+          "s",
+          3.5
+        ],
+        [
+          "D5",
+          "s",
+          3.75
+        ],
+        [
+          "D4",
+          "s",
+          4
+        ],
+        [
+          "F4",
+          "s",
+          4.25
+        ],
+        [
+          "A4",
+          "s",
+          4.5
+        ],
+        [
+          "D5",
+          "s",
+          4.75
         ]
       ]
     }
@@ -1067,27 +736,31 @@
     {
       "id": "intro",
       "bars": 8,
-      "transition": 0
+      "transition": 2,
+      "mood": "march, moderate, building"
     },
     {
       "id": "verse",
-      "bars": 20,
-      "transition": 0
+      "bars": 12,
+      "transition": 2,
+      "mood": "melodic, steady"
     },
     {
       "id": "bridge",
-      "bars": 11,
-      "transition": 0
+      "bars": 8,
+      "transition": 2,
+      "mood": "quiet, building tension"
     },
     {
-      "id": "chorus",
-      "bars": 15,
-      "transition": 0
+      "id": "climax",
+      "bars": 12,
+      "transition": 2,
+      "mood": "intense, full power"
     },
     {
       "id": "outro",
-      "bars": 12,
-      "transition": 0
+      "bars": 4,
+      "mood": "resolution, fade"
     }
   ],
   "score": [
@@ -1095,906 +768,880 @@
       "chapter": "intro",
       "bar": 1,
       "t": {
-        "lead": "$lead_0.lead",
-        "bass": "$bass_0.bass",
-        "pad": "$pad_0.pad",
-        "arp": [
-          [
-            "G4",
-            "e"
-          ],
-          [
-            "Bb4",
-            "e"
-          ],
-          [
-            "D5",
-            "e"
-          ],
-          [
-            "Bb4",
-            "e"
-          ],
-          [
-            "G4",
-            "e"
-          ],
-          [
-            "Bb4",
-            "e"
-          ],
-          [
-            "D5",
-            "e"
-          ],
-          [
-            "Bb4",
-            "e"
-          ]
-        ],
-        "kick": "$kick_0.kick",
-        "snare": "$snare_0.snare",
-        "hihat": "$hihat_0.hihat"
+        "kick": "$kick-march.kick"
       }
     },
     {
       "chapter": "intro",
       "bar": 2,
       "t": {
-        "lead": "$lead_0.lead",
-        "bass": "$bass_0.bass",
-        "pad": "$pad_0.pad",
-        "arp": "$arp_0.arp",
-        "kick": "$kick_0.kick",
-        "snare": "$snare_0.snare",
-        "hihat": "$hihat_0.hihat"
+        "kick": "$kick-march.kick",
+        "snare": "$snare-march.snare"
       }
     },
     {
       "chapter": "intro",
       "bar": 3,
       "t": {
-        "lead": "$lead_1.lead",
-        "bass": "$bass_0.bass",
-        "pad": "$pad_0.pad",
-        "arp": "$arp_0.arp",
-        "kick": "$kick_0.kick",
-        "snare": "$snare_0.snare",
-        "hihat": "$hihat_0.hihat"
+        "kick": "$kick-march.kick",
+        "snare": "$snare-march.snare",
+        "hihat": "$hihat-8th.hihat",
+        "bass": [
+          [
+            "G2",
+            "w",
+            1
+          ]
+        ],
+        "lead": [
+          [
+            "G4",
+            "q",
+            1
+          ],
+          [
+            "R",
+            "q",
+            2
+          ],
+          [
+            "R",
+            "h",
+            "3-4"
+          ]
+        ],
+        "pad": [
+          [
+            "G3",
+            "w",
+            1
+          ]
+        ],
+        "arp": "$arp-gm.arp"
       }
     },
     {
       "chapter": "intro",
       "bar": 4,
       "t": {
-        "lead": "$lead_0.lead",
-        "bass": "$bass_0.bass",
-        "pad": "$pad_0.pad",
-        "arp": [
+        "kick": "$kick-march.kick",
+        "snare": "$snare-march.snare",
+        "hihat": "$hihat-8th.hihat",
+        "bass": [
           [
-            "G4",
-            "e"
-          ],
-          [
-            "Bb4",
-            "e"
-          ],
-          [
-            "D5",
-            "e"
-          ],
-          [
-            "Bb4",
-            "e"
-          ],
-          [
-            "G4",
-            "e"
-          ],
-          [
-            "Bb4",
-            "e"
-          ],
-          [
-            "D5",
-            "e"
-          ],
-          [
-            "Bb4",
-            "e"
+            "G2",
+            "w",
+            1
           ]
         ],
-        "kick": "$kick_0.kick",
-        "snare": "$snare_0.snare",
-        "hihat": "$hihat_0.hihat"
+        "lead": [
+          [
+            "G4",
+            "q",
+            1
+          ],
+          [
+            "G4",
+            "q",
+            2
+          ],
+          [
+            "D4",
+            "h",
+            "3-4"
+          ]
+        ],
+        "pad": [
+          [
+            "G3",
+            "w",
+            1
+          ]
+        ]
       }
     },
     {
       "chapter": "intro",
       "bar": 5,
       "t": {
+        "kick": "$kick-march.kick",
+        "snare": "$snare-march.snare",
+        "hihat": "$hihat-8th.hihat",
+        "bass": [
+          [
+            "G2",
+            "w",
+            1
+          ]
+        ],
         "lead": [
           [
+            "Bb4",
+            "q",
+            1
+          ],
+          [
+            "Bb4",
+            "q",
+            2
+          ],
+          [
             "F4",
-            "q"
-          ],
-          [
-            "Eb4",
-            "q"
-          ],
-          [
-            "D4",
-            "h"
+            "h",
+            "3-4"
           ]
         ],
-        "bass": "$bass_1.bass",
-        "pad": "$pad_1.pad",
-        "arp": [
-          [
-            "G4",
-            "e"
-          ],
-          [
-            "Bb4",
-            "e"
-          ],
-          [
-            "D5",
-            "e"
-          ],
-          [
-            "Bb4",
-            "e"
-          ],
-          [
-            "Bb4",
-            "e"
-          ],
-          [
-            "D5",
-            "e"
-          ],
-          [
-            "F5",
-            "e"
-          ],
-          [
-            "D5",
-            "e"
-          ]
-        ],
-        "kick": "$kick_0.kick",
-        "snare": "$snare_1.snare",
-        "hihat": "$hihat_1.hihat"
+        "arp": "$arp-gm.arp"
       }
     },
     {
       "chapter": "intro",
       "bar": 6,
       "t": {
+        "kick": "$kick-march.kick",
+        "snare": "$snare-march.snare",
+        "hihat": "$hihat-8th.hihat",
+        "bass": [
+          [
+            "G2",
+            "w",
+            1
+          ]
+        ],
         "lead": [
           [
-            "C4",
-            "q"
+            "D5",
+            "q",
+            1
           ],
           [
-            "D4",
-            "q"
+            "D5",
+            "q",
+            2
           ],
           [
-            "G3",
-            "h"
+            "A4",
+            "h",
+            "3-4"
           ]
         ],
-        "bass": "$bass_1.bass",
-        "pad": "$pad_1.pad",
-        "arp": [
-          [
-            "Eb4",
-            "e"
-          ],
-          [
-            "G4",
-            "e"
-          ],
-          [
-            "Bb4",
-            "e"
-          ],
-          [
-            "G4",
-            "e"
-          ],
-          [
-            "Eb4",
-            "e"
-          ],
-          [
-            "G4",
-            "e"
-          ],
-          [
-            "Bb4",
-            "e"
-          ],
-          [
-            "G4",
-            "e"
-          ]
-        ],
-        "kick": "$kick_0.kick",
-        "snare": "$snare_1.snare",
-        "hihat": "$hihat_1.hihat"
+        "arp": "$arp-gm.arp"
       }
     },
     {
       "chapter": "intro",
       "bar": 7,
+      "blend": {
+        "next": "verse",
+        "weight": 0.3
+      },
       "t": {
-        "lead": "$lead_2.lead",
-        "bass": "$bass_2.bass",
-        "pad": "$pad_2.pad",
-        "arp": "$arp_0.arp",
-        "kick": "$kick_0.kick",
-        "snare": "$snare_1.snare",
-        "hihat": "$hihat_1.hihat"
+        "kick": "$kick-march.kick",
+        "snare": "$snare-march.snare",
+        "hihat": "$hihat-8th.hihat",
+        "bass": [
+          [
+            "G2",
+            "w",
+            1
+          ]
+        ],
+        "lead": [
+          [
+            "G4",
+            "q",
+            1
+          ],
+          [
+            "A4",
+            "q",
+            2
+          ],
+          [
+            "Bb4",
+            "h",
+            "3-4"
+          ]
+        ],
+        "arp": "$arp-gm.arp",
+        "pad": [
+          [
+            "G3",
+            "w",
+            1
+          ]
+        ]
       }
     },
     {
       "chapter": "intro",
       "bar": 8,
+      "blend": {
+        "next": "verse",
+        "weight": 0.7
+      },
       "t": {
-        "lead": "$lead_1.lead",
-        "bass": "$bass_2.bass",
-        "pad": "$pad_2.pad",
-        "arp": "$arp_1.arp",
-        "kick": "$kick_0.kick",
-        "snare": "$snare_2.snare",
-        "hihat": "$hihat_2.hihat"
+        "kick": "$kick-march.kick",
+        "snare": "$snare-march.snare",
+        "hihat": "$hihat-8th.hihat",
+        "bass": [
+          [
+            "D2",
+            "w",
+            1
+          ]
+        ],
+        "lead": [
+          [
+            "D5",
+            "q",
+            1
+          ],
+          [
+            "C5",
+            "q",
+            2
+          ],
+          [
+            "Bb4",
+            "h",
+            "3-4"
+          ]
+        ],
+        "arp": "$arp-dm.arp",
+        "pad": [
+          [
+            "D3",
+            "w",
+            1
+          ]
+        ]
       }
     },
     {
       "chapter": "verse",
       "bar": 1,
       "t": {
-        "lead": [
+        "kick": "$kick-march.kick",
+        "snare": "$snare-march.snare",
+        "hihat": "$hihat-8th.hihat",
+        "bass": [
           [
-            "C4",
-            "q"
-          ],
-          [
-            "D4",
-            "q"
-          ],
-          [
-            "Eb4",
-            "q"
-          ],
-          [
-            "F4",
-            "q"
+            "G2",
+            "w",
+            1
           ]
         ],
-        "bass": "$bass_0.bass",
-        "pad": "$pad_0.pad",
-        "arp": "$arp_1.arp",
-        "kick": "$kick_1.kick",
-        "snare": "$snare_2.snare",
-        "hihat": "$hihat_2.hihat"
+        "lead": [
+          [
+            "G4",
+            "q",
+            1
+          ],
+          [
+            "Bb4",
+            "q",
+            2
+          ],
+          [
+            "D5",
+            "h",
+            "3-4"
+          ]
+        ],
+        "arp": "$arp-gm.arp",
+        "pad": [
+          [
+            "G3",
+            "w",
+            1
+          ]
+        ]
       }
     },
     {
       "chapter": "verse",
       "bar": 2,
       "t": {
+        "kick": "$kick-march.kick",
+        "snare": "$snare-march.snare",
+        "hihat": "$hihat-8th.hihat",
+        "bass": [
+          [
+            "G2",
+            "h",
+            1
+          ],
+          [
+            "G2",
+            "h",
+            3
+          ]
+        ],
         "lead": [
           [
-            "G4",
-            "h"
+            "D5",
+            "q",
+            1
           ],
           [
-            "F4",
-            "h"
+            "C5",
+            "q",
+            2
+          ],
+          [
+            "Bb4",
+            "h",
+            "3-4"
           ]
         ],
-        "bass": "$bass_0.bass",
-        "pad": "$pad_0.pad",
-        "arp": [
+        "arp": "$arp-gm.arp",
+        "pad": [
           [
-            "D4",
-            "e"
-          ],
-          [
-            "F4",
-            "e"
-          ],
-          [
-            "A4",
-            "e"
-          ],
-          [
-            "D5",
-            "e"
-          ],
-          [
-            "F4",
-            "e"
-          ],
-          [
-            "A4",
-            "e"
-          ],
-          [
-            "D5",
-            "e"
-          ],
-          [
-            "F5",
-            "e"
+            "G3",
+            "w",
+            1
           ]
-        ],
-        "kick": "$kick_1.kick",
-        "snare": "$snare_0.snare",
-        "hihat": "$hihat_0.hihat"
+        ]
       }
     },
     {
       "chapter": "verse",
       "bar": 3,
       "t": {
-        "lead": [
-          [
-            "Eb4",
-            "q"
-          ],
-          [
-            "D4",
-            "q"
-          ],
-          [
-            "C4",
-            "q"
-          ],
-          [
-            "Bb3",
-            "q"
-          ]
-        ],
+        "kick": "$kick-march.kick",
+        "snare": "$snare-march.snare",
+        "hihat": "$hihat-8th.hihat",
         "bass": [
           [
-            "F2",
-            "w"
+            "D2",
+            "w",
+            1
           ]
         ],
+        "lead": [
+          [
+            "F4",
+            "q",
+            1
+          ],
+          [
+            "A4",
+            "q",
+            2
+          ],
+          [
+            "D5",
+            "h",
+            "3-4"
+          ]
+        ],
+        "arp": "$arp-dm.arp",
         "pad": [
           [
-            "F3",
-            "w"
+            "D3",
+            "w",
+            1
           ]
-        ],
-        "arp": [
-          [
-            "G4",
-            "e"
-          ],
-          [
-            "Bb4",
-            "e"
-          ],
-          [
-            "D5",
-            "e"
-          ],
-          [
-            "G5",
-            "e"
-          ],
-          [
-            "Bb4",
-            "e"
-          ],
-          [
-            "D5",
-            "e"
-          ],
-          [
-            "G5",
-            "e"
-          ],
-          [
-            "Bb5",
-            "e"
-          ]
-        ],
-        "kick": "$kick_1.kick",
-        "snare": "$snare_0.snare",
-        "hihat": "$hihat_0.hihat"
+        ]
       }
     },
     {
       "chapter": "verse",
       "bar": 4,
       "t": {
-        "lead": [
-          [
-            "C4",
-            "h"
-          ],
-          [
-            "D4",
-            "h"
-          ]
-        ],
+        "kick": "$kick-march.kick",
+        "snare": "$snare-march.snare",
+        "hihat": "$hihat-8th.hihat",
         "bass": [
           [
-            "Eb2",
-            "w"
+            "D2",
+            "h",
+            1
+          ],
+          [
+            "D2",
+            "h",
+            3
           ]
         ],
-        "pad": "$pad_3.pad",
-        "arp": [
+        "lead": [
           [
-            "D4",
-            "e"
+            "A4",
+            "q",
+            1
           ],
           [
             "G4",
-            "e"
+            "q",
+            2
           ],
           [
-            "Bb4",
-            "e"
-          ],
-          [
-            "D5",
-            "e"
-          ],
-          [
-            "G4",
-            "e"
-          ],
-          [
-            "Bb4",
-            "e"
-          ],
-          [
-            "D5",
-            "e"
-          ],
-          [
-            "G5",
-            "e"
+            "F4",
+            "h",
+            "3-4"
           ]
         ],
-        "kick": "$kick_1.kick",
-        "snare": "$snare_0.snare",
-        "hihat": "$hihat_0.hihat"
+        "arp": "$arp-dm.arp",
+        "pad": [
+          [
+            "D3",
+            "w",
+            1
+          ]
+        ]
       }
     },
     {
       "chapter": "verse",
       "bar": 5,
       "t": {
-        "lead": "$lead_0.lead",
-        "bass": "$bass_1.bass",
-        "pad": "$pad_1.pad",
-        "arp": [
+        "kick": "$kick-march.kick",
+        "snare": "$snare-march.snare",
+        "hihat": "$hihat-8th.hihat",
+        "bass": [
           [
-            "G4",
-            "e"
-          ],
-          [
-            "Bb4",
-            "e"
-          ],
-          [
-            "D5",
-            "e"
-          ],
-          [
-            "G5",
-            "e"
-          ],
-          [
-            "Bb4",
-            "e"
-          ],
-          [
-            "D5",
-            "e"
-          ],
-          [
-            "G5",
-            "e"
-          ],
-          [
-            "Bb5",
-            "e"
+            "Bb2",
+            "w",
+            1
           ]
         ],
-        "kick": "$kick_2.kick",
-        "snare": "$snare_1.snare",
-        "hihat": "$hihat_1.hihat"
+        "lead": [
+          [
+            "Bb4",
+            "q",
+            1
+          ],
+          [
+            "D5",
+            "q",
+            2
+          ],
+          [
+            "F5",
+            "h",
+            "3-4"
+          ]
+        ],
+        "arp": "$arp-bb.arp",
+        "pad": [
+          [
+            "Bb3",
+            "w",
+            1
+          ]
+        ]
       }
     },
     {
       "chapter": "verse",
       "bar": 6,
       "t": {
-        "lead": "$lead_1.lead",
-        "bass": "$bass_0.bass",
-        "pad": "$pad_0.pad",
-        "arp": [
+        "kick": "$kick-march.kick",
+        "snare": "$snare-march.snare",
+        "hihat": "$hihat-8th.hihat",
+        "bass": [
           [
-            "D4",
-            "e"
+            "Bb2",
+            "h",
+            1
           ],
           [
-            "F4",
-            "e"
-          ],
-          [
-            "A4",
-            "e"
-          ],
-          [
-            "D5",
-            "e"
-          ],
-          [
-            "F4",
-            "e"
-          ],
-          [
-            "A4",
-            "e"
-          ],
-          [
-            "D5",
-            "e"
-          ],
-          [
-            "F5",
-            "e"
+            "Bb2",
+            "h",
+            3
           ]
         ],
-        "kick": "$kick_2.kick",
-        "snare": "$snare_2.snare",
-        "hihat": "$hihat_2.hihat"
+        "lead": [
+          [
+            "F5",
+            "q",
+            1
+          ],
+          [
+            "Eb5",
+            "q",
+            2
+          ],
+          [
+            "D5",
+            "h",
+            "3-4"
+          ]
+        ],
+        "arp": {
+          "$ref": "arp-gm.arp",
+          "transpose": 3
+        },
+        "pad": [
+          [
+            "Bb3",
+            "w",
+            1
+          ]
+        ]
       }
     },
     {
       "chapter": "verse",
       "bar": 7,
       "t": {
-        "lead": [
-          [
-            "G4",
-            "h"
-          ],
-          [
-            "F4",
-            "q"
-          ],
-          [
-            "Eb4",
-            "q"
-          ]
-        ],
+        "kick": "$kick-march.kick",
+        "snare": "$snare-march.snare",
+        "hihat": "$hihat-8th.hihat",
         "bass": [
           [
             "Eb2",
-            "w"
+            "w",
+            1
           ]
         ],
-        "pad": "$pad_3.pad",
-        "arp": "$arp_1.arp",
-        "kick": "$kick_0.kick",
-        "snare": "$snare_2.snare",
-        "hihat": "$hihat_2.hihat"
+        "lead": [
+          [
+            "Eb5",
+            "q",
+            1
+          ],
+          [
+            "G5",
+            "q",
+            2
+          ],
+          [
+            "Bb5",
+            "h",
+            "3-4"
+          ]
+        ],
+        "arp": "$arp-bb.arp",
+        "pad": [
+          [
+            "Eb3",
+            "w",
+            1
+          ]
+        ]
       }
     },
     {
       "chapter": "verse",
       "bar": 8,
       "t": {
-        "lead": "$lead_3.lead",
-        "bass": "$bass_2.bass",
-        "pad": "$pad_2.pad",
-        "arp": "$arp_1.arp",
-        "kick": "$kick_0.kick",
-        "snare": "$snare_2.snare",
-        "hihat": "$hihat_0.hihat"
+        "kick": "$kick-march.kick",
+        "snare": "$snare-march.snare",
+        "hihat": "$hihat-8th.hihat",
+        "bass": [
+          [
+            "Eb2",
+            "h",
+            1
+          ],
+          [
+            "Eb2",
+            "h",
+            3
+          ]
+        ],
+        "lead": [
+          [
+            "G5",
+            "q",
+            1
+          ],
+          [
+            "F5",
+            "q",
+            2
+          ],
+          [
+            "Eb5",
+            "h",
+            "3-4"
+          ]
+        ],
+        "arp": "$arp-bb.arp",
+        "pad": [
+          [
+            "Eb3",
+            "w",
+            1
+          ]
+        ]
       }
     },
     {
       "chapter": "verse",
       "bar": 9,
-      "t": {
+      "ref": 1,
+      "override": {
         "lead": [
           [
-            "Bb3",
-            "w"
-          ]
-        ],
-        "bass": [
-          [
-            "C2",
-            "w"
-          ]
-        ],
-        "pad": [
-          [
-            "C3",
-            "w"
-          ]
-        ],
-        "arp": [
-          [
             "G4",
-            "e"
+            "q",
+            1
           ],
           [
-            "D5",
-            "e"
+            "A4",
+            "q",
+            2
           ],
           [
-            "G5",
-            "e"
-          ],
-          [
-            "D5",
-            "e"
-          ],
-          [
-            "G4",
-            "e"
-          ],
-          [
-            "D5",
-            "e"
-          ],
-          [
-            "G5",
-            "e"
-          ],
-          [
-            "D5",
-            "e"
+            "Bb4",
+            "h",
+            "3-4"
           ]
-        ],
-        "kick": "$kick_0.kick",
-        "snare": "$snare_2.snare",
-        "hihat": "$hihat_2.hihat"
+        ]
       }
     },
     {
       "chapter": "verse",
       "bar": 10,
-      "t": {
-        "lead": "$lead_3.lead",
-        "bass": "$bass_1.bass",
-        "pad": "$pad_1.pad",
-        "arp": "$arp_1.arp",
-        "kick": "$kick_0.kick",
-        "snare": "$snare_2.snare",
-        "hihat": "$hihat_2.hihat"
+      "ref": 3,
+      "override": {
+        "lead": [
+          [
+            "F4",
+            "q",
+            1
+          ],
+          [
+            "A4",
+            "q",
+            2
+          ],
+          [
+            "C5",
+            "h",
+            "3-4"
+          ]
+        ]
       }
     },
     {
       "chapter": "verse",
       "bar": 11,
+      "blend": {
+        "next": "bridge",
+        "weight": 0.3
+      },
       "t": {
+        "kick": "$kick-march.kick",
+        "snare": "$snare-march.snare",
+        "hihat": "$hihat-8th.hihat",
+        "bass": [
+          [
+            "G2",
+            "q",
+            1
+          ],
+          [
+            "F2",
+            "q",
+            2
+          ],
+          [
+            "Eb2",
+            "q",
+            3
+          ],
+          [
+            "D2",
+            "q",
+            4
+          ]
+        ],
         "lead": [
           [
             "G4",
-            "h"
+            "h",
+            "1-2"
           ],
           [
             "F4",
-            "h"
+            "h",
+            "3-4"
           ]
         ],
-        "bass": "$bass_0.bass",
-        "pad": "$pad_0.pad",
-        "arp": "$arp_1.arp",
-        "kick": "$kick_0.kick",
-        "snare": "$snare_2.snare",
-        "hihat": "$hihat_2.hihat"
+        "arp": "$arp-gm.arp",
+        "pad": [
+          [
+            "G3",
+            "w",
+            1
+          ]
+        ]
       }
     },
     {
       "chapter": "verse",
       "bar": 12,
+      "blend": {
+        "next": "bridge",
+        "weight": 0.7
+      },
       "t": {
-        "lead": [
-          [
-            "Eb4",
-            "w"
-          ]
-        ],
-        "bass": "$bass_0.bass",
-        "pad": "$pad_0.pad",
-        "arp": "$arp_1.arp",
-        "kick": "$kick_0.kick",
-        "snare": "$snare_2.snare",
-        "hihat": "$hihat_2.hihat"
-      }
-    },
-    {
-      "chapter": "verse",
-      "bar": 13,
-      "t": {
-        "lead": [
-          [
-            "D4",
-            "h"
-          ],
-          [
-            "C4",
-            "h"
-          ]
-        ],
-        "bass": "$bass_3.bass",
-        "pad": "$pad_0.pad",
-        "arp": "$arp_1.arp",
-        "kick": "$kick_1.kick",
-        "snare": "$snare_2.snare",
-        "hihat": "$hihat_2.hihat"
-      }
-    },
-    {
-      "chapter": "verse",
-      "bar": 14,
-      "t": {
-        "lead": [
-          [
-            "Bb3",
-            "w"
-          ]
-        ],
-        "bass": "$bass_3.bass",
-        "pad": "$pad_0.pad",
-        "arp": "$arp_1.arp",
-        "kick": "$kick_1.kick",
-        "snare": "$snare_2.snare",
-        "hihat": "$hihat_2.hihat"
-      }
-    },
-    {
-      "chapter": "verse",
-      "bar": 15,
-      "t": {
-        "lead": [
-          [
-            "G3",
-            "w"
-          ]
-        ],
-        "bass": "$bass_0.bass",
-        "pad": "$pad_0.pad",
-        "arp": "$arp_1.arp",
-        "kick": "$kick_2.kick",
-        "snare": "$snare_2.snare",
-        "hihat": "$hihat_2.hihat"
-      }
-    },
-    {
-      "chapter": "verse",
-      "bar": 16,
-      "t": {
-        "lead": "$lead_4.lead",
-        "bass": "$bass_0.bass",
-        "pad": "$pad_0.pad",
-        "arp": "$arp_1.arp",
-        "kick": "$kick_2.kick",
-        "snare": "$snare_2.snare",
-        "hihat": "$hihat_2.hihat"
-      }
-    },
-    {
-      "chapter": "verse",
-      "bar": 17,
-      "t": {
-        "lead": "$lead_4.lead",
-        "bass": "$bass_0.bass",
-        "pad": "$pad_0.pad",
-        "arp": "$arp_1.arp",
         "kick": [
           [
             "C2",
-            "w"
+            "q",
+            1
+          ],
+          [
+            "R",
+            "q",
+            2
+          ],
+          [
+            "R",
+            "q",
+            3
+          ],
+          [
+            "R",
+            "q",
+            4
           ]
         ],
-        "snare": "$snare_2.snare",
-        "hihat": "$hihat_2.hihat"
-      }
-    },
-    {
-      "chapter": "verse",
-      "bar": 18,
-      "t": {
-        "lead": "$lead_4.lead",
-        "bass": "$bass_0.bass",
-        "pad": "$pad_0.pad",
-        "arp": "$arp_1.arp",
-        "kick": "$kick_2.kick",
-        "snare": "$snare_2.snare",
-        "hihat": "$hihat_2.hihat"
-      }
-    },
-    {
-      "chapter": "verse",
-      "bar": 19,
-      "t": {
-        "lead": "$lead_4.lead",
-        "bass": "$bass_0.bass",
-        "pad": "$pad_0.pad",
-        "arp": "$arp_1.arp",
-        "kick": "$kick_2.kick",
-        "snare": "$snare_2.snare",
-        "hihat": "$hihat_2.hihat"
-      }
-    },
-    {
-      "chapter": "verse",
-      "bar": 20,
-      "t": {
-        "lead": "$lead_4.lead",
-        "bass": "$bass_0.bass",
-        "pad": "$pad_0.pad",
-        "arp": "$arp_1.arp",
-        "kick": "$kick_2.kick",
-        "snare": "$snare_2.snare",
-        "hihat": "$hihat_2.hihat"
+        "bass": [
+          [
+            "D2",
+            "w",
+            1
+          ]
+        ],
+        "lead": [
+          [
+            "D4",
+            "w",
+            1
+          ]
+        ],
+        "pad": [
+          [
+            "D3",
+            "w",
+            1
+          ]
+        ],
+        "arp": "$arp-dm.arp"
       }
     },
     {
       "chapter": "bridge",
       "bar": 1,
       "t": {
-        "lead": "$lead_4.lead",
-        "bass": "$bass_0.bass",
-        "pad": "$pad_0.pad",
-        "arp": "$arp_1.arp",
-        "kick": "$kick_2.kick",
-        "snare": "$snare_2.snare",
-        "hihat": "$hihat_2.hihat"
+        "bass": [
+          [
+            "Eb2",
+            "h",
+            1
+          ],
+          [
+            "D2",
+            "h",
+            3
+          ]
+        ],
+        "lead": [
+          [
+            "G4",
+            "w",
+            1
+          ]
+        ],
+        "pad": [
+          [
+            "Eb3",
+            "w",
+            1
+          ]
+        ],
+        "snare": [
+          [
+            "R",
+            "q",
+            1
+          ],
+          [
+            "R",
+            "q",
+            2
+          ],
+          [
+            "R",
+            "q",
+            3
+          ],
+          [
+            "C3",
+            "q",
+            4
+          ]
+        ]
       }
     },
     {
       "chapter": "bridge",
       "bar": 2,
       "t": {
+        "bass": [
+          [
+            "C2",
+            "h",
+            1
+          ],
+          [
+            "D2",
+            "h",
+            3
+          ]
+        ],
         "lead": [
           [
-            "Bb3",
-            "h"
+            "F4",
+            "w",
+            1
+          ]
+        ],
+        "pad": [
+          [
+            "D3",
+            "w",
+            1
+          ]
+        ],
+        "kick": [
+          [
+            "C2",
+            "q",
+            1
           ],
           [
             "R",
-            "h"
-          ]
-        ],
-        "bass": "$bass_0.bass",
-        "pad": "$pad_1.pad",
-        "arp": [
+            "q",
+            2
+          ],
           [
             "R",
-            "h"
-          ]
-        ],
-        "kick": "$kick_3.kick",
-        "snare": [
+            "q",
+            3
+          ],
           [
             "R",
-            "h"
+            "q",
+            4
           ]
         ],
         "hihat": [
           [
+            "C6",
+            "e",
+            2.5
+          ],
+          [
             "R",
-            "h"
+            "e",
+            4
           ]
         ]
       }
@@ -2003,1030 +1650,1539 @@
       "chapter": "bridge",
       "bar": 3,
       "t": {
-        "lead": [
+        "bass": [
           [
-            "D4",
-            "h"
+            "Eb2",
+            "h",
+            1
           ],
           [
-            "R",
-            "h"
+            "D2",
+            "h",
+            3
           ]
         ],
-        "bass": "$bass_4.bass",
-        "pad": "$pad_3.pad",
-        "arp": "$arp_1.arp",
-        "kick": "$kick_3.kick",
-        "snare": "$snare_2.snare",
-        "hihat": "$hihat_2.hihat"
-      }
-    },
-    {
-      "chapter": "bridge",
-      "bar": 4,
-      "t": {
-        "lead": [
-          [
-            "F4",
-            "q"
-          ],
-          [
-            "G4",
-            "q"
-          ],
-          [
-            "F4",
-            "h"
-          ]
-        ],
-        "bass": "$bass_4.bass",
-        "pad": "$pad_0.pad",
-        "arp": "$arp_1.arp",
-        "kick": "$kick_3.kick",
-        "snare": "$snare_2.snare",
-        "hihat": "$hihat_2.hihat"
-      }
-    },
-    {
-      "chapter": "bridge",
-      "bar": 5,
-      "t": {
         "lead": [
           [
             "Eb4",
-            "h"
+            "h",
+            1
           ],
           [
             "D4",
-            "h"
-          ]
-        ],
-        "bass": "$bass_4.bass",
-        "pad": "$pad_4.pad",
-        "arp": "$arp_1.arp",
-        "kick": "$kick_3.kick",
-        "snare": "$snare_2.snare",
-        "hihat": "$hihat_2.hihat"
-      }
-    },
-    {
-      "chapter": "bridge",
-      "bar": 6,
-      "t": {
-        "lead": [
-          [
-            "F4",
-            "q"
-          ],
-          [
-            "G4",
-            "q"
-          ],
-          [
-            "Bb4",
-            "h"
-          ]
-        ],
-        "bass": "$bass_4.bass",
-        "pad": "$pad_4.pad",
-        "arp": "$arp_1.arp",
-        "kick": "$kick_3.kick",
-        "snare": "$snare_2.snare",
-        "hihat": "$hihat_2.hihat"
-      }
-    },
-    {
-      "chapter": "bridge",
-      "bar": 7,
-      "t": {
-        "lead": [
-          [
-            "R",
-            "h"
-          ],
-          [
-            "A4",
-            "q"
-          ],
-          [
-            "Bb4",
-            "q"
-          ]
-        ],
-        "bass": "$bass_5.bass",
-        "pad": "$pad_4.pad",
-        "arp": "$arp_1.arp",
-        "kick": "$kick_3.kick",
-        "snare": "$snare_2.snare",
-        "hihat": "$hihat_2.hihat"
-      }
-    },
-    {
-      "chapter": "bridge",
-      "bar": 8,
-      "t": {
-        "lead": [
-          [
-            "D5",
-            "h"
-          ],
-          [
-            "Bb4",
-            "h"
-          ]
-        ],
-        "bass": "$bass_5.bass",
-        "pad": "$pad_4.pad",
-        "arp": "$arp_1.arp",
-        "kick": "$kick_3.kick",
-        "snare": "$snare_2.snare",
-        "hihat": "$hihat_2.hihat"
-      }
-    },
-    {
-      "chapter": "bridge",
-      "bar": 9,
-      "t": {
-        "lead": [
-          [
-            "A4",
-            "q"
-          ],
-          [
-            "G4",
-            "q"
-          ],
-          [
-            "F4",
-            "q"
-          ],
-          [
-            "G4",
-            "q"
-          ]
-        ],
-        "bass": "$bass_5.bass",
-        "pad": "$pad_4.pad",
-        "arp": "$arp_1.arp",
-        "kick": "$kick_3.kick",
-        "snare": "$snare_2.snare",
-        "hihat": "$hihat_2.hihat"
-      }
-    },
-    {
-      "chapter": "bridge",
-      "bar": 10,
-      "t": {
-        "lead": "$lead_2.lead",
-        "bass": "$bass_6.bass",
-        "pad": "$pad_4.pad",
-        "arp": "$arp_1.arp",
-        "kick": "$kick_3.kick",
-        "snare": "$snare_2.snare",
-        "hihat": "$hihat_2.hihat"
-      }
-    },
-    {
-      "chapter": "bridge",
-      "bar": 11,
-      "t": {
-        "lead": [
-          [
-            "G4",
-            "q"
-          ],
-          [
-            "G4",
-            "q"
-          ],
-          [
-            "D5",
-            "h"
-          ]
-        ],
-        "bass": "$bass_6.bass",
-        "pad": "$pad_4.pad",
-        "arp": "$arp_1.arp",
-        "kick": "$kick_3.kick",
-        "snare": "$snare_2.snare",
-        "hihat": "$hihat_2.hihat"
-      }
-    },
-    {
-      "chapter": "chorus",
-      "bar": 1,
-      "t": {
-        "lead": [
-          [
-            "Bb4",
-            "q"
-          ],
-          [
-            "D5",
-            "q"
-          ],
-          [
-            "F5",
-            "q"
-          ],
-          [
-            "D5",
-            "q"
-          ]
-        ],
-        "bass": "$bass_6.bass",
-        "pad": "$pad_0.pad",
-        "arp": "$arp_1.arp",
-        "kick": [
-          [
-            "R",
-            "h"
-          ],
-          [
-            "C2",
-            "s"
-          ],
-          [
-            "R",
-            "s"
-          ],
-          [
-            "R",
-            "s"
-          ],
-          [
-            "R",
-            "s"
-          ],
-          [
-            "R",
-            "s"
-          ],
-          [
-            "R",
-            "s"
-          ],
-          [
-            "R",
-            "s"
-          ],
-          [
-            "R",
-            "s"
-          ]
-        ],
-        "snare": "$snare_2.snare",
-        "hihat": "$hihat_2.hihat"
-      }
-    },
-    {
-      "chapter": "chorus",
-      "bar": 2,
-      "t": {
-        "lead": [
-          [
-            "Bb4",
-            "q"
-          ],
-          [
-            "C5",
-            "q"
-          ],
-          [
-            "D5",
-            "h"
-          ]
-        ],
-        "bass": "$bass_6.bass",
-        "pad": "$pad_0.pad",
-        "arp": "$arp_2.arp",
-        "kick": "$kick_4.kick",
-        "snare": "$snare_3.snare",
-        "hihat": "$hihat_1.hihat"
-      }
-    },
-    {
-      "chapter": "chorus",
-      "bar": 3,
-      "t": {
-        "lead": [
-          [
-            "Eb5",
-            "q"
-          ],
-          [
-            "D5",
-            "q"
-          ],
-          [
-            "C5",
-            "q"
-          ],
-          [
-            "Bb4",
-            "q"
-          ]
-        ],
-        "bass": [
-          [
-            "Bb2",
-            "e"
-          ],
-          [
-            "Bb2",
-            "e"
-          ],
-          [
-            "Bb2",
-            "e"
-          ],
-          [
-            "Bb2",
-            "e"
-          ],
-          [
-            "Bb2",
-            "e"
-          ],
-          [
-            "Bb2",
-            "e"
-          ],
-          [
-            "Bb2",
-            "e"
-          ],
-          [
-            "Bb2",
-            "e"
-          ]
-        ],
-        "pad": "$pad_0.pad",
-        "arp": "$arp_2.arp",
-        "kick": "$kick_4.kick",
-        "snare": "$snare_3.snare",
-        "hihat": "$hihat_1.hihat"
-      }
-    },
-    {
-      "chapter": "chorus",
-      "bar": 4,
-      "t": {
-        "lead": [
-          [
-            "A4",
-            "q"
-          ],
-          [
-            "Bb4",
-            "q"
-          ],
-          [
-            "C5",
-            "h"
-          ]
-        ],
-        "bass": [
-          [
-            "Bb2",
-            "e"
-          ],
-          [
-            "Bb2",
-            "e"
-          ],
-          [
-            "Bb2",
-            "e"
-          ],
-          [
-            "Bb2",
-            "e"
-          ],
-          [
-            "Bb2",
-            "e"
-          ],
-          [
-            "Bb2",
-            "e"
-          ],
-          [
-            "Bb2",
-            "e"
-          ],
-          [
-            "Bb2",
-            "e"
-          ]
-        ],
-        "pad": "$pad_0.pad",
-        "arp": "$arp_2.arp",
-        "kick": "$kick_4.kick",
-        "snare": "$snare_3.snare",
-        "hihat": "$hihat_1.hihat"
-      }
-    },
-    {
-      "chapter": "chorus",
-      "bar": 5,
-      "t": {
-        "lead": [
-          [
-            "D5",
-            "e"
-          ],
-          [
-            "Eb5",
-            "e"
-          ],
-          [
-            "F5",
-            "e"
-          ],
-          [
-            "Eb5",
-            "e"
-          ],
-          [
-            "D5",
-            "e"
-          ],
-          [
-            "C5",
-            "e"
-          ],
-          [
-            "Bb4",
-            "e"
-          ],
-          [
-            "A4",
-            "e"
-          ]
-        ],
-        "bass": [
-          [
-            "D2",
-            "e"
-          ],
-          [
-            "D2",
-            "e"
-          ],
-          [
-            "D2",
-            "e"
-          ],
-          [
-            "D2",
-            "e"
-          ],
-          [
-            "D2",
-            "e"
-          ],
-          [
-            "D2",
-            "e"
-          ],
-          [
-            "D2",
-            "e"
-          ],
-          [
-            "D2",
-            "e"
-          ]
-        ],
-        "pad": "$pad_2.pad",
-        "arp": "$arp_2.arp",
-        "kick": "$kick_4.kick",
-        "snare": "$snare_3.snare",
-        "hihat": "$hihat_1.hihat"
-      }
-    },
-    {
-      "chapter": "chorus",
-      "bar": 6,
-      "t": {
-        "lead": [
-          [
-            "Bb4",
-            "e"
-          ],
-          [
-            "C5",
-            "e"
-          ],
-          [
-            "D5",
-            "e"
-          ],
-          [
-            "Eb5",
-            "e"
-          ],
-          [
-            "F5",
-            "q"
-          ],
-          [
-            "Eb5",
-            "q"
-          ]
-        ],
-        "bass": [
-          [
-            "D2",
-            "e"
-          ],
-          [
-            "D2",
-            "e"
-          ],
-          [
-            "D2",
-            "e"
-          ],
-          [
-            "D2",
-            "e"
-          ],
-          [
-            "D2",
-            "e"
-          ],
-          [
-            "D2",
-            "e"
-          ],
-          [
-            "D2",
-            "e"
-          ],
-          [
-            "D2",
-            "e"
-          ]
-        ],
-        "pad": "$pad_1.pad",
-        "arp": "$arp_3.arp",
-        "kick": "$kick_4.kick",
-        "snare": "$snare_3.snare",
-        "hihat": "$hihat_1.hihat"
-      }
-    },
-    {
-      "chapter": "chorus",
-      "bar": 7,
-      "t": {
-        "lead": [
-          [
-            "D5",
-            "q"
-          ],
-          [
-            "C5",
-            "q"
-          ],
-          [
-            "Bb4",
-            "q"
-          ],
-          [
-            "A4",
-            "q"
-          ]
-        ],
-        "bass": "$bass_6.bass",
-        "pad": "$pad_0.pad",
-        "arp": "$arp_3.arp",
-        "kick": "$kick_4.kick",
-        "snare": "$snare_3.snare",
-        "hihat": "$hihat_1.hihat"
-      }
-    },
-    {
-      "chapter": "chorus",
-      "bar": 8,
-      "t": {
-        "lead": [
-          [
-            "G4",
-            "e"
-          ],
-          [
-            "Bb4",
-            "e"
-          ],
-          [
-            "D5",
-            "e"
-          ],
-          [
-            "G5",
-            "e"
-          ],
-          [
-            "D5",
-            "e"
-          ],
-          [
-            "Bb4",
-            "e"
-          ],
-          [
-            "G4",
-            "e"
-          ],
-          [
-            "Bb4",
-            "e"
-          ]
-        ],
-        "bass": "$bass_6.bass",
-        "pad": "$pad_0.pad",
-        "arp": "$arp_3.arp",
-        "kick": "$kick_4.kick",
-        "snare": "$snare_3.snare",
-        "hihat": "$hihat_1.hihat"
-      }
-    },
-    {
-      "chapter": "chorus",
-      "bar": 9,
-      "t": {
-        "lead": [
-          [
-            "G4",
-            "q"
-          ],
-          [
-            "G4",
-            "q"
-          ],
-          [
-            "D5",
-            "h"
-          ]
-        ],
-        "bass": [
-          [
-            "G2",
-            "h"
-          ],
-          [
-            "G2",
-            "h"
-          ]
-        ],
-        "pad": "$pad_0.pad",
-        "arp": "$arp_3.arp",
-        "kick": "$kick_4.kick",
-        "snare": "$snare_3.snare",
-        "hihat": "$hihat_1.hihat"
-      }
-    },
-    {
-      "chapter": "chorus",
-      "bar": 10,
-      "t": {
-        "lead": [
-          [
-            "Bb4",
-            "h"
-          ],
-          [
-            "D5",
-            "h"
-          ]
-        ],
-        "bass": [
-          [
-            "D2",
-            "h"
-          ],
-          [
-            "G2",
-            "h"
-          ]
-        ],
-        "pad": "$pad_0.pad",
-        "arp": "$arp_4.arp",
-        "kick": "$kick_4.kick",
-        "snare": "$snare_3.snare",
-        "hihat": "$hihat_1.hihat"
-      }
-    },
-    {
-      "chapter": "chorus",
-      "bar": 11,
-      "t": {
-        "lead": "$lead_2.lead",
-        "bass": "$bass_0.bass",
-        "pad": "$pad_0.pad",
-        "arp": "$arp_4.arp",
-        "kick": "$kick_4.kick",
-        "snare": "$snare_3.snare",
-        "hihat": "$hihat_1.hihat"
-      }
-    },
-    {
-      "chapter": "chorus",
-      "bar": 12,
-      "t": {
-        "lead": [
-          [
-            "F4",
-            "q"
-          ],
-          [
-            "Eb4",
-            "q"
-          ],
-          [
-            "D4",
-            "h"
-          ]
-        ],
-        "bass": "$bass_0.bass",
-        "pad": "$pad_1.pad",
-        "arp": "$arp_4.arp",
-        "kick": "$kick_4.kick",
-        "snare": "$snare_3.snare",
-        "hihat": "$hihat_1.hihat"
-      }
-    },
-    {
-      "chapter": "chorus",
-      "bar": 13,
-      "t": {
-        "lead": [
-          [
-            "C4",
-            "q"
-          ],
-          [
-            "D4",
-            "q"
-          ],
-          [
-            "G3",
-            "h"
-          ]
-        ],
-        "bass": "$bass_3.bass",
-        "pad": "$pad_0.pad",
-        "arp": "$arp_4.arp",
-        "kick": "$kick_4.kick",
-        "snare": "$snare_3.snare",
-        "hihat": "$hihat_1.hihat"
-      }
-    },
-    {
-      "chapter": "chorus",
-      "bar": 14,
-      "t": {
-        "lead": "$lead_0.lead",
-        "bass": "$bass_3.bass",
-        "pad": "$pad_0.pad",
-        "arp": "$arp_5.arp",
-        "kick": "$kick_4.kick",
-        "snare": "$snare_3.snare",
-        "hihat": "$hihat_1.hihat"
-      }
-    },
-    {
-      "chapter": "chorus",
-      "bar": 15,
-      "t": {
-        "lead": "$lead_3.lead",
-        "bass": "$bass_3.bass",
-        "pad": "$pad_4.pad",
-        "arp": "$arp_5.arp",
-        "kick": "$kick_4.kick",
-        "snare": "$snare_3.snare",
-        "hihat": "$hihat_1.hihat"
-      }
-    },
-    {
-      "chapter": "outro",
-      "bar": 1,
-      "t": {
-        "lead": [
-          [
-            "G3",
-            "w"
-          ]
-        ],
-        "bass": "$bass_3.bass",
-        "pad": "$pad_4.pad",
-        "arp": "$arp_5.arp",
-        "kick": "$kick_4.kick",
-        "snare": "$snare_3.snare",
-        "hihat": "$hihat_1.hihat"
-      }
-    },
-    {
-      "chapter": "outro",
-      "bar": 2,
-      "t": {
-        "lead": "$lead_4.lead",
-        "bass": "$bass_3.bass",
-        "pad": "$pad_4.pad",
-        "arp": "$arp_5.arp",
-        "kick": [
-          [
-            "C2",
-            "s"
-          ],
-          [
-            "R",
-            "s"
-          ],
-          [
-            "R",
-            "s"
-          ],
-          [
-            "R",
-            "s"
-          ],
-          [
-            "R",
-            "s"
-          ],
-          [
-            "R",
-            "s"
-          ],
-          [
-            "R",
-            "s"
-          ],
-          [
-            "R",
-            "s"
-          ],
-          [
-            "C2",
-            "q"
-          ],
-          [
-            "R",
-            "q"
-          ]
-        ],
-        "snare": "$snare_3.snare",
-        "hihat": "$hihat_1.hihat"
-      }
-    },
-    {
-      "chapter": "outro",
-      "bar": 3,
-      "t": {
-        "lead": "$lead_4.lead",
-        "bass": "$bass_3.bass",
-        "pad": "$pad_4.pad",
-        "arp": "$arp_6.arp",
-        "kick": "$kick_0.kick",
-        "snare": "$snare_0.snare",
-        "hihat": "$hihat_0.hihat"
-      }
-    },
-    {
-      "chapter": "outro",
-      "bar": 4,
-      "t": {
-        "lead": "$lead_4.lead",
-        "bass": "$bass_3.bass",
-        "pad": "$pad_4.pad",
-        "arp": "$arp_6.arp",
-        "kick": "$kick_0.kick",
-        "snare": "$snare_0.snare",
-        "hihat": "$hihat_0.hihat"
-      }
-    },
-    {
-      "chapter": "outro",
-      "bar": 5,
-      "t": {
-        "lead": "$lead_4.lead",
-        "bass": "$bass_3.bass",
-        "pad": "$pad_4.pad",
-        "arp": "$arp_6.arp",
-        "kick": "$kick_0.kick",
-        "snare": "$snare_0.snare",
-        "hihat": "$hihat_0.hihat"
-      }
-    },
-    {
-      "chapter": "outro",
-      "bar": 6,
-      "t": {
-        "lead": "$lead_4.lead",
-        "bass": "$bass_3.bass",
-        "pad": "$pad_4.pad",
-        "arp": "$arp_6.arp",
-        "kick": [
-          [
-            "C2",
-            "q"
-          ],
-          [
-            "R",
-            "q"
-          ]
-        ],
-        "snare": "$snare_0.snare",
-        "hihat": "$hihat_0.hihat"
-      }
-    },
-    {
-      "chapter": "outro",
-      "bar": 7,
-      "t": {
-        "lead": "$lead_4.lead",
-        "bass": "$bass_3.bass",
-        "pad": "$pad_4.pad",
-        "arp": "$arp_6.arp",
-        "kick": "$kick_2.kick",
-        "snare": "$snare_2.snare",
-        "hihat": "$hihat_2.hihat"
-      }
-    },
-    {
-      "chapter": "outro",
-      "bar": 8,
-      "t": {
-        "lead": "$lead_4.lead",
-        "bass": "$bass_3.bass",
-        "pad": "$pad_4.pad",
-        "arp": "$arp_6.arp",
-        "kick": "$kick_2.kick",
-        "snare": "$snare_2.snare",
-        "hihat": "$hihat_2.hihat"
-      }
-    },
-    {
-      "chapter": "outro",
-      "bar": 9,
-      "t": {
-        "lead": "$lead_4.lead",
-        "bass": "$bass_3.bass",
-        "pad": "$pad_4.pad",
-        "arp": "$arp_6.arp",
-        "kick": "$kick_2.kick",
-        "snare": "$snare_2.snare",
-        "hihat": "$hihat_2.hihat"
-      }
-    },
-    {
-      "chapter": "outro",
-      "bar": 10,
-      "t": {
-        "lead": "$lead_4.lead",
-        "bass": "$bass_3.bass",
-        "pad": "$pad_4.pad",
-        "arp": "$arp_6.arp",
-        "kick": "$kick_2.kick",
-        "snare": "$snare_2.snare",
-        "hihat": "$hihat_2.hihat"
-      }
-    },
-    {
-      "chapter": "outro",
-      "bar": 11,
-      "silence": true
-    },
-    {
-      "chapter": "outro",
-      "bar": 12,
-      "t": {
-        "lead": [
-          [
-            "R",
-            "h"
-          ]
-        ],
-        "bass": [
-          [
-            "R",
-            "h"
+            "h",
+            3
           ]
         ],
         "pad": [
           [
-            "R",
-            "h"
+            "Eb3",
+            "w",
+            1
           ]
         ],
-        "arp": "$arp_1.arp",
-        "kick": "$kick_2.kick",
-        "snare": "$snare_2.snare",
-        "hihat": "$hihat_2.hihat"
+        "arp": "$arp-dm.arp",
+        "snare": [
+          [
+            "R",
+            "q",
+            1
+          ],
+          [
+            "C3",
+            "q",
+            2
+          ],
+          [
+            "R",
+            "q",
+            3
+          ],
+          [
+            "R",
+            "q",
+            4
+          ]
+        ],
+        "hihat": [
+          [
+            "C6",
+            "e",
+            2.5
+          ],
+          [
+            "R",
+            "e",
+            4
+          ]
+        ]
       }
+    },
+    {
+      "chapter": "bridge",
+      "bar": 4,
+      "t": {
+        "bass": [
+          [
+            "C2",
+            "h",
+            1
+          ],
+          [
+            "D2",
+            "h",
+            3
+          ]
+        ],
+        "lead": [
+          [
+            "C4",
+            "h",
+            1
+          ],
+          [
+            "D4",
+            "h",
+            3
+          ]
+        ],
+        "pad": [
+          [
+            "D3",
+            "w",
+            1
+          ]
+        ],
+        "arp": "$arp-dm.arp",
+        "hihat": [
+          [
+            "C6",
+            "e",
+            2.5
+          ],
+          [
+            "R",
+            "e",
+            4
+          ]
+        ]
+      }
+    },
+    {
+      "chapter": "bridge",
+      "bar": 5,
+      "t": {
+        "kick": "$kick-march.kick",
+        "bass": [
+          [
+            "Eb2",
+            "h",
+            1
+          ],
+          [
+            "D2",
+            "h",
+            3
+          ]
+        ],
+        "lead": [
+          [
+            "Eb4",
+            "h",
+            1
+          ],
+          [
+            "D4",
+            "h",
+            3
+          ]
+        ],
+        "pad": [
+          [
+            "Eb3",
+            "w",
+            1
+          ]
+        ],
+        "arp": "$arp-dm.arp"
+      }
+    },
+    {
+      "chapter": "bridge",
+      "bar": 6,
+      "t": {
+        "kick": "$kick-march.kick",
+        "snare": [
+          [
+            "R",
+            "q",
+            1
+          ],
+          [
+            "C3",
+            "q",
+            2
+          ],
+          [
+            "R",
+            "q",
+            3
+          ],
+          [
+            "C3",
+            "q",
+            4
+          ]
+        ],
+        "bass": [
+          [
+            "C2",
+            "h",
+            1
+          ],
+          [
+            "D2",
+            "h",
+            3
+          ]
+        ],
+        "lead": [
+          [
+            "C4",
+            "h",
+            1
+          ],
+          [
+            "D4",
+            "h",
+            3
+          ]
+        ],
+        "pad": [
+          [
+            "D3",
+            "w",
+            1
+          ]
+        ],
+        "arp": "$arp-dm.arp"
+      }
+    },
+    {
+      "chapter": "bridge",
+      "bar": 7,
+      "blend": {
+        "next": "climax",
+        "weight": 0.3
+      },
+      "t": {
+        "kick": [
+          [
+            "C2",
+            "e",
+            1
+          ],
+          [
+            "R",
+            "e",
+            1.5
+          ],
+          [
+            "C2",
+            "e",
+            2
+          ],
+          [
+            "R",
+            "e",
+            2.5
+          ],
+          [
+            "C2",
+            "e",
+            3
+          ],
+          [
+            "R",
+            "e",
+            3.5
+          ],
+          [
+            "C2",
+            "e",
+            4
+          ],
+          [
+            "R",
+            "e",
+            4.5
+          ]
+        ],
+        "snare": [
+          [
+            "R",
+            "q",
+            1
+          ],
+          [
+            "C3",
+            "q",
+            2
+          ],
+          [
+            "R",
+            "q",
+            3
+          ],
+          [
+            "C3",
+            "q",
+            4
+          ]
+        ],
+        "bass": [
+          [
+            "G2",
+            "e",
+            1
+          ],
+          [
+            "G2",
+            "e",
+            1.5
+          ],
+          [
+            "G2",
+            "e",
+            2
+          ],
+          [
+            "G2",
+            "e",
+            2.5
+          ],
+          [
+            "G2",
+            "e",
+            3
+          ],
+          [
+            "G2",
+            "e",
+            3.5
+          ],
+          [
+            "G2",
+            "e",
+            4
+          ],
+          [
+            "G2",
+            "e",
+            4.5
+          ]
+        ],
+        "lead": [
+          [
+            "G4",
+            "q",
+            1
+          ],
+          [
+            "A4",
+            "q",
+            2
+          ],
+          [
+            "Bb4",
+            "h",
+            "3-4"
+          ]
+        ],
+        "pad": [
+          [
+            "G3",
+            "w",
+            1
+          ]
+        ],
+        "arp": "$arp-gm.arp",
+        "hihat": [
+          [
+            "C6",
+            "e",
+            1
+          ],
+          [
+            "R",
+            "e",
+            1.5
+          ],
+          [
+            "R",
+            "e",
+            2
+          ],
+          [
+            "R",
+            "e",
+            2.5
+          ],
+          [
+            "R",
+            "e",
+            3
+          ],
+          [
+            "R",
+            "e",
+            3.5
+          ],
+          [
+            "R",
+            "e",
+            4
+          ],
+          [
+            "R",
+            "e",
+            4.5
+          ]
+        ]
+      }
+    },
+    {
+      "chapter": "bridge",
+      "bar": 8,
+      "blend": {
+        "next": "climax",
+        "weight": 0.7
+      },
+      "t": {
+        "kick": [
+          [
+            "C2",
+            "e",
+            1
+          ],
+          [
+            "R",
+            "e",
+            1.5
+          ],
+          [
+            "C2",
+            "e",
+            2
+          ],
+          [
+            "R",
+            "e",
+            2.5
+          ],
+          [
+            "C2",
+            "e",
+            3
+          ],
+          [
+            "R",
+            "e",
+            3.5
+          ],
+          [
+            "C2",
+            "e",
+            4
+          ],
+          [
+            "R",
+            "e",
+            4.5
+          ]
+        ],
+        "snare": [
+          [
+            "R",
+            "e",
+            1
+          ],
+          [
+            "C3",
+            "e",
+            1.5
+          ],
+          [
+            "R",
+            "e",
+            2
+          ],
+          [
+            "C3",
+            "e",
+            2.5
+          ],
+          [
+            "R",
+            "e",
+            3
+          ],
+          [
+            "C3",
+            "e",
+            3.5
+          ],
+          [
+            "R",
+            "e",
+            4
+          ],
+          [
+            "C3",
+            "e",
+            4.5
+          ]
+        ],
+        "bass": [
+          [
+            "G2",
+            "e",
+            1
+          ],
+          [
+            "G2",
+            "e",
+            1.5
+          ],
+          [
+            "G2",
+            "e",
+            2
+          ],
+          [
+            "G2",
+            "e",
+            2.5
+          ],
+          [
+            "G2",
+            "e",
+            3
+          ],
+          [
+            "G2",
+            "e",
+            3.5
+          ],
+          [
+            "G2",
+            "e",
+            4
+          ],
+          [
+            "G2",
+            "e",
+            4.5
+          ]
+        ],
+        "lead": [
+          [
+            "D5",
+            "q",
+            1
+          ],
+          [
+            "F5",
+            "q",
+            2
+          ],
+          [
+            "G5",
+            "h",
+            "3-4"
+          ]
+        ],
+        "pad": [
+          [
+            "G3",
+            "w",
+            1
+          ]
+        ],
+        "arp": "$arp-gm.arp"
+      }
+    },
+    {
+      "chapter": "climax",
+      "bar": 1,
+      "t": {
+        "kick": "$kick-march.kick",
+        "snare": "$snare-march.snare",
+        "hihat": "$hihat-16th.hihat",
+        "bass": "$bass-drive.bass",
+        "lead": [
+          [
+            "G5",
+            "q",
+            1
+          ],
+          [
+            "G5",
+            "q",
+            2
+          ],
+          [
+            "D5",
+            "h",
+            "3-4"
+          ]
+        ],
+        "pad": [
+          [
+            "G3",
+            "w",
+            1
+          ]
+        ],
+        "arp": "$arp-gm-fast.arp"
+      }
+    },
+    {
+      "chapter": "climax",
+      "bar": 2,
+      "t": {
+        "kick": "$kick-march.kick",
+        "snare": "$snare-march.snare",
+        "hihat": "$hihat-16th.hihat",
+        "bass": "$bass-drive.bass",
+        "lead": [
+          [
+            "Bb5",
+            "q",
+            1
+          ],
+          [
+            "Bb5",
+            "q",
+            2
+          ],
+          [
+            "F5",
+            "h",
+            "3-4"
+          ]
+        ],
+        "pad": [
+          [
+            "G3",
+            "w",
+            1
+          ]
+        ],
+        "arp": "$arp-gm-fast.arp"
+      }
+    },
+    {
+      "chapter": "climax",
+      "bar": 3,
+      "t": {
+        "kick": "$kick-march.kick",
+        "snare": "$snare-march.snare",
+        "hihat": "$hihat-16th.hihat",
+        "bass": [
+          [
+            "Bb2",
+            "e",
+            1
+          ],
+          [
+            "Bb2",
+            "e",
+            1.5
+          ],
+          [
+            "Bb2",
+            "e",
+            2
+          ],
+          [
+            "Bb2",
+            "e",
+            2.5
+          ],
+          [
+            "Bb2",
+            "e",
+            3
+          ],
+          [
+            "Bb2",
+            "e",
+            3.5
+          ],
+          [
+            "Bb2",
+            "e",
+            4
+          ],
+          [
+            "Bb2",
+            "e",
+            4.5
+          ]
+        ],
+        "lead": [
+          [
+            "D5",
+            "q",
+            1
+          ],
+          [
+            "D5",
+            "q",
+            2
+          ],
+          [
+            "A4",
+            "h",
+            "3-4"
+          ]
+        ],
+        "pad": [
+          [
+            "Bb3",
+            "w",
+            1
+          ]
+        ],
+        "arp": "$arp-bb.arp"
+      }
+    },
+    {
+      "chapter": "climax",
+      "bar": 4,
+      "ref": 2,
+      "override": {
+        "bass": [
+          [
+            "Bb2",
+            "e",
+            1
+          ],
+          [
+            "Bb2",
+            "e",
+            1.5
+          ],
+          [
+            "Bb2",
+            "e",
+            2
+          ],
+          [
+            "Bb2",
+            "e",
+            2.5
+          ],
+          [
+            "Bb2",
+            "e",
+            3
+          ],
+          [
+            "Bb2",
+            "e",
+            3.5
+          ],
+          [
+            "Bb2",
+            "e",
+            4
+          ],
+          [
+            "Bb2",
+            "e",
+            4.5
+          ]
+        ],
+        "lead": [
+          [
+            "F5",
+            "q",
+            1
+          ],
+          [
+            "F5",
+            "q",
+            2
+          ],
+          [
+            "C5",
+            "h",
+            "3-4"
+          ]
+        ],
+        "pad": [
+          [
+            "Bb3",
+            "w",
+            1
+          ]
+        ],
+        "arp": "$arp-bb.arp"
+      }
+    },
+    {
+      "chapter": "climax",
+      "bar": 5,
+      "t": {
+        "kick": "$kick-march.kick",
+        "snare": "$snare-march.snare",
+        "hihat": "$hihat-16th.hihat",
+        "bass": [
+          [
+            "Eb2",
+            "e",
+            1
+          ],
+          [
+            "Eb2",
+            "e",
+            1.5
+          ],
+          [
+            "Eb2",
+            "e",
+            2
+          ],
+          [
+            "Eb2",
+            "e",
+            2.5
+          ],
+          [
+            "Eb2",
+            "e",
+            3
+          ],
+          [
+            "Eb2",
+            "e",
+            3.5
+          ],
+          [
+            "Eb2",
+            "e",
+            4
+          ],
+          [
+            "Eb2",
+            "e",
+            4.5
+          ]
+        ],
+        "lead": [
+          [
+            "Eb5",
+            "q",
+            1
+          ],
+          [
+            "Eb5",
+            "q",
+            2
+          ],
+          [
+            "Bb4",
+            "h",
+            "3-4"
+          ]
+        ],
+        "pad": [
+          [
+            "Eb3",
+            "w",
+            1
+          ]
+        ],
+        "arp": "$arp-bb.arp"
+      }
+    },
+    {
+      "chapter": "climax",
+      "bar": 6,
+      "t": {
+        "kick": "$kick-march.kick",
+        "snare": "$snare-march.snare",
+        "hihat": "$hihat-16th.hihat",
+        "bass": [
+          [
+            "Eb2",
+            "e",
+            1
+          ],
+          [
+            "Eb2",
+            "e",
+            1.5
+          ],
+          [
+            "Eb2",
+            "e",
+            2
+          ],
+          [
+            "Eb2",
+            "e",
+            2.5
+          ],
+          [
+            "Eb2",
+            "e",
+            3
+          ],
+          [
+            "Eb2",
+            "e",
+            3.5
+          ],
+          [
+            "Eb2",
+            "e",
+            4
+          ],
+          [
+            "Eb2",
+            "e",
+            4.5
+          ]
+        ],
+        "lead": [
+          [
+            "Bb4",
+            "q",
+            1
+          ],
+          [
+            "Bb4",
+            "q",
+            2
+          ],
+          [
+            "G4",
+            "h",
+            "3-4"
+          ]
+        ],
+        "pad": [
+          [
+            "Eb3",
+            "w",
+            1
+          ]
+        ],
+        "arp": "$arp-bb.arp"
+      }
+    },
+    {
+      "chapter": "climax",
+      "bar": 7,
+      "t": {
+        "kick": "$kick-march.kick",
+        "snare": "$snare-march.snare",
+        "hihat": "$hihat-16th.hihat",
+        "bass": [
+          [
+            "F2",
+            "e",
+            1
+          ],
+          [
+            "F2",
+            "e",
+            1.5
+          ],
+          [
+            "F2",
+            "e",
+            2
+          ],
+          [
+            "F2",
+            "e",
+            2.5
+          ],
+          [
+            "F2",
+            "e",
+            3
+          ],
+          [
+            "F2",
+            "e",
+            3.5
+          ],
+          [
+            "F2",
+            "e",
+            4
+          ],
+          [
+            "F2",
+            "e",
+            4.5
+          ]
+        ],
+        "lead": [
+          [
+            "F5",
+            "q",
+            1
+          ],
+          [
+            "A5",
+            "q",
+            2
+          ],
+          [
+            "C6",
+            "h",
+            "3-4"
+          ]
+        ],
+        "pad": [
+          [
+            "F3",
+            "w",
+            1
+          ]
+        ],
+        "arp": "$arp-bb.arp"
+      }
+    },
+    {
+      "chapter": "climax",
+      "bar": 8,
+      "t": {
+        "kick": "$kick-march.kick",
+        "snare": "$snare-march.snare",
+        "hihat": "$hihat-16th.hihat",
+        "bass": [
+          [
+            "F2",
+            "e",
+            1
+          ],
+          [
+            "F2",
+            "e",
+            1.5
+          ],
+          [
+            "F2",
+            "e",
+            2
+          ],
+          [
+            "F2",
+            "e",
+            2.5
+          ],
+          [
+            "F2",
+            "e",
+            3
+          ],
+          [
+            "F2",
+            "e",
+            3.5
+          ],
+          [
+            "F2",
+            "e",
+            4
+          ],
+          [
+            "F2",
+            "e",
+            4.5
+          ]
+        ],
+        "lead": [
+          [
+            "C6",
+            "q",
+            1
+          ],
+          [
+            "C6",
+            "q",
+            2
+          ],
+          [
+            "A5",
+            "h",
+            "3-4"
+          ]
+        ],
+        "pad": [
+          [
+            "F3",
+            "w",
+            1
+          ]
+        ],
+        "arp": "$arp-bb.arp"
+      }
+    },
+    {
+      "chapter": "climax",
+      "bar": 9,
+      "t": {
+        "kick": "$kick-march.kick",
+        "snare": "$snare-march.snare",
+        "hihat": "$hihat-16th.hihat",
+        "bass": "$bass-drive.bass",
+        "lead": [
+          [
+            "D6",
+            "q",
+            1
+          ],
+          [
+            "D6",
+            "q",
+            2
+          ],
+          [
+            "G5",
+            "h",
+            "3-4"
+          ]
+        ],
+        "pad": [
+          [
+            "G3",
+            "w",
+            1
+          ]
+        ],
+        "arp": "$arp-gm-fast.arp"
+      }
+    },
+    {
+      "chapter": "climax",
+      "bar": 10,
+      "t": {
+        "kick": "$kick-march.kick",
+        "snare": "$snare-march.snare",
+        "hihat": "$hihat-16th.hihat",
+        "bass": "$bass-drive.bass",
+        "lead": [
+          [
+            "G5",
+            "q",
+            1
+          ],
+          [
+            "Bb5",
+            "q",
+            2
+          ],
+          [
+            "D6",
+            "h",
+            "3-4"
+          ]
+        ],
+        "pad": [
+          [
+            "G3",
+            "w",
+            1
+          ]
+        ],
+        "arp": "$arp-gm-fast.arp"
+      }
+    },
+    {
+      "chapter": "climax",
+      "bar": 11,
+      "blend": {
+        "next": "outro",
+        "weight": 0.3
+      },
+      "t": {
+        "kick": "$kick-march.kick",
+        "snare": "$snare-march.snare",
+        "hihat": "$hihat-8th.hihat",
+        "bass": [
+          [
+            "G2",
+            "w",
+            1
+          ]
+        ],
+        "lead": [
+          [
+            "G5",
+            "h",
+            "1-2"
+          ],
+          [
+            "F5",
+            "h",
+            "3-4"
+          ]
+        ],
+        "pad": [
+          [
+            "G3",
+            "w",
+            1
+          ]
+        ],
+        "arp": "$arp-gm.arp"
+      }
+    },
+    {
+      "chapter": "climax",
+      "bar": 12,
+      "blend": {
+        "next": "outro",
+        "weight": 0.7
+      },
+      "t": {
+        "kick": [
+          [
+            "C2",
+            "q",
+            1
+          ],
+          [
+            "R",
+            "q",
+            2
+          ],
+          [
+            "C2",
+            "q",
+            3
+          ],
+          [
+            "R",
+            "q",
+            4
+          ]
+        ],
+        "bass": [
+          [
+            "G2",
+            "w",
+            1
+          ]
+        ],
+        "lead": [
+          [
+            "D5",
+            "w",
+            1
+          ]
+        ],
+        "pad": [
+          [
+            "G3",
+            "w",
+            1
+          ]
+        ],
+        "arp": [
+          [
+            "D4",
+            "e",
+            1
+          ],
+          [
+            "R",
+            "e",
+            2
+          ],
+          [
+            "R",
+            "e",
+            3
+          ],
+          [
+            "R",
+            "e",
+            4
+          ]
+        ],
+        "snare": [
+          [
+            "R",
+            "q",
+            1
+          ],
+          [
+            "C3",
+            "q",
+            2
+          ],
+          [
+            "R",
+            "q",
+            3
+          ],
+          [
+            "R",
+            "q",
+            4
+          ]
+        ],
+        "hihat": [
+          [
+            "C6",
+            "e",
+            1
+          ],
+          [
+            "R",
+            "e",
+            1.5
+          ],
+          [
+            "R",
+            "e",
+            2
+          ],
+          [
+            "R",
+            "e",
+            2.5
+          ],
+          [
+            "R",
+            "e",
+            3
+          ],
+          [
+            "R",
+            "e",
+            3.5
+          ],
+          [
+            "R",
+            "e",
+            4
+          ],
+          [
+            "R",
+            "e",
+            4.5
+          ]
+        ]
+      }
+    },
+    {
+      "chapter": "outro",
+      "bar": 1,
+      "t": {
+        "kick": [
+          [
+            "C2",
+            "q",
+            1
+          ],
+          [
+            "R",
+            "q",
+            2
+          ],
+          [
+            "R",
+            "q",
+            3
+          ],
+          [
+            "R",
+            "q",
+            4
+          ]
+        ],
+        "bass": [
+          [
+            "G2",
+            "h",
+            1
+          ],
+          [
+            "G2",
+            "h",
+            3
+          ]
+        ],
+        "lead": [
+          [
+            "G4",
+            "w",
+            1
+          ]
+        ],
+        "pad": [
+          [
+            "G3",
+            "w",
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "chapter": "outro",
+      "bar": 2,
+      "t": {
+        "bass": [
+          [
+            "G2",
+            "h",
+            1
+          ],
+          [
+            "G2",
+            "h",
+            3
+          ]
+        ],
+        "lead": [
+          [
+            "D4",
+            "w",
+            1
+          ]
+        ],
+        "pad": [
+          [
+            "G3",
+            "w",
+            1
+          ]
+        ],
+        "kick": [
+          [
+            "C2",
+            "q",
+            1
+          ],
+          [
+            "R",
+            "q",
+            2
+          ],
+          [
+            "R",
+            "q",
+            3
+          ],
+          [
+            "R",
+            "q",
+            4
+          ]
+        ],
+        "snare": [
+          [
+            "R",
+            "q",
+            1
+          ],
+          [
+            "R",
+            "q",
+            2
+          ],
+          [
+            "C3",
+            "q",
+            3
+          ],
+          [
+            "R",
+            "q",
+            4
+          ]
+        ],
+        "hihat": [
+          [
+            "C6",
+            "e",
+            2.5
+          ],
+          [
+            "R",
+            "e",
+            4
+          ]
+        ],
+        "arp": [
+          [
+            "G4",
+            "e",
+            1
+          ],
+          [
+            "R",
+            "e",
+            2
+          ],
+          [
+            "R",
+            "e",
+            3
+          ],
+          [
+            "R",
+            "e",
+            4
+          ]
+        ]
+      }
+    },
+    {
+      "chapter": "outro",
+      "bar": 3,
+      "t": {
+        "lead": [
+          [
+            "G4",
+            "h",
+            1
+          ],
+          [
+            "R",
+            "h",
+            3
+          ]
+        ],
+        "pad": [
+          [
+            "G3",
+            "h",
+            1
+          ],
+          [
+            "R",
+            "h",
+            3
+          ]
+        ]
+      }
+    },
+    {
+      "chapter": "outro",
+      "bar": 4,
+      "silence": true
     }
   ]
 }
