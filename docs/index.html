@@ -115,7 +115,7 @@
       font-size: 1.5rem;
       opacity: 0.15;
       animation: float-up linear infinite;
-      text-shadow: 0 0 10px currentColor;
+      filter: drop-shadow(0 0 10px currentColor);
     }
     .floating-notes span:nth-child(1) { left: 10%; color: var(--cyan); animation-duration: 12s; animation-delay: 0s; font-size: 2rem; }
     .floating-notes span:nth-child(2) { left: 25%; color: var(--magenta); animation-duration: 15s; animation-delay: 2s; }
@@ -326,10 +326,13 @@
       opacity: 1;
     }
     .feature-icon {
-      font-size: 1.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
       margin-bottom: 0.75rem;
-      display: block;
-      font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+      color: var(--cyan);
     }
     .feature-title {
       font-family: var(--font-modern);
@@ -674,14 +677,14 @@
 
   <!-- Floating Notes -->
   <div class="floating-notes">
-    <span>&#9835;</span>
-    <span>&#9833;</span>
-    <span>&#9836;</span>
-    <span>&#9834;</span>
-    <span>&#9835;</span>
-    <span>&#9833;</span>
-    <span>&#9836;</span>
-    <span>&#9834;</span>
+    <span><svg width="1em" height="1em" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="8" cy="17" rx="3" ry="2"/><line x1="11" y1="17" x2="11" y2="7"/><path d="M11 7l6-2v3l-6 2"/></svg></span>
+    <span><svg width="1em" height="1em" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="8" cy="17" rx="3" ry="2"/><line x1="11" y1="17" x2="11" y2="7"/></svg></span>
+    <span><svg width="1em" height="1em" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="7" cy="17" rx="2.5" ry="2"/><ellipse cx="15" cy="17" rx="2.5" ry="2"/><line x1="9.5" y1="17" x2="9.5" y2="7"/><line x1="17.5" y1="17" x2="17.5" y2="7"/><line x1="9.5" y1="7" x2="17.5" y2="7"/></svg></span>
+    <span><svg width="1em" height="1em" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="8" cy="17" rx="3" ry="2"/><line x1="11" y1="17" x2="11" y2="7"/><path d="M11 7l6-2v3l-6 2"/></svg></span>
+    <span><svg width="1em" height="1em" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="8" cy="17" rx="3" ry="2"/><line x1="11" y1="17" x2="11" y2="7"/><path d="M11 7l6-2v3l-6 2"/></svg></span>
+    <span><svg width="1em" height="1em" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="8" cy="17" rx="3" ry="2"/><line x1="11" y1="17" x2="11" y2="7"/></svg></span>
+    <span><svg width="1em" height="1em" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="7" cy="17" rx="2.5" ry="2"/><ellipse cx="15" cy="17" rx="2.5" ry="2"/><line x1="9.5" y1="17" x2="9.5" y2="7"/><line x1="17.5" y1="17" x2="17.5" y2="7"/><line x1="9.5" y1="7" x2="17.5" y2="7"/></svg></span>
+    <span><svg width="1em" height="1em" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="8" cy="17" rx="3" ry="2"/><line x1="11" y1="17" x2="11" y2="7"/><path d="M11 7l6-2v3l-6 2"/></svg></span>
   </div>
 
   <!-- Hero -->
@@ -730,57 +733,57 @@
     <p class="section-subtitle">11 项核心特性，为浏览器游戏音频而生</p>
     <div class="features-grid">
       <div class="feature-card">
-        <span class="feature-icon">&#127925;</span>
+        <span class="feature-icon"><svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="4" r="2"/><line x1="12" y1="6" x2="12" y2="10"/><line x1="12" y1="10" x2="7" y2="16"/><line x1="12" y1="10" x2="17" y2="16"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg></span>
         <h3 class="feature-title">总线树架构</h3>
         <p class="feature-desc">master &rarr; music / sfx &rarr; ui / gameplay 层级混音，灵活控制每一层音量与效果</p>
       </div>
       <div class="feature-card">
-        <span class="feature-icon">&#127929;</span>
+        <span class="feature-icon"><svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></span>
         <h3 class="feature-title">振荡器 + 采样</h3>
         <p class="feature-desc">内置 OscillatorProvider 与 SampleProvider，支持合成器与采样双模式播放</p>
       </div>
       <div class="feature-card">
-        <span class="feature-icon">&#127932;</span>
+        <span class="feature-icon"><svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></span>
         <h3 class="feature-title">Timbre Pack</h3>
         <p class="feature-desc">将波形、包络、滤波器抽象为可复用音色包，BGM 创作即插即用</p>
       </div>
       <div class="feature-card">
-        <span class="feature-icon">&#128221;</span>
+        <span class="feature-icon"><svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="2" y1="7" x2="22" y2="7"/><line x1="2" y1="11" x2="22" y2="11"/><line x1="2" y1="15" x2="22" y2="15"/><line x1="2" y1="19" x2="22" y2="19"/><ellipse cx="15" cy="14" rx="2.5" ry="2"/><line x1="17.5" y1="14" x2="17.5" y2="6"/></svg></span>
         <h3 class="feature-title">Score 乐谱</h3>
         <p class="feature-desc">音名 + 时值 + 演奏表情的声明式 BGM 格式，代码即乐谱</p>
       </div>
       <div class="feature-card">
-        <span class="feature-icon">&#127941;</span>
+        <span class="feature-icon"><svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="8" x2="20" y2="8"/><line x1="4" y1="16" x2="20" y2="16"/><circle cx="8" cy="8" r="2"/><circle cx="16" cy="16" r="2"/></svg></span>
         <h3 class="feature-title">演奏表情</h3>
         <p class="feature-desc">layback / swing / humanize / velocityCurve 让机器演奏更自然</p>
       </div>
       <div class="feature-card">
-        <span class="feature-icon">&#128266;</span>
+        <span class="feature-icon"><svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="15" y1="10" x2="15" y2="14"/><line x1="15" y1="14" x2="13" y2="12"/><line x1="15" y1="14" x2="17" y2="12"/></svg></span>
         <h3 class="feature-title">侧链闪避</h3>
         <p class="feature-desc">BGM 播放时自动降低 sfx / ui 音量，智能避让关键音效</p>
       </div>
       <div class="feature-card">
-        <span class="feature-icon">&#128202;</span>
+        <span class="feature-icon"><svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="2 4 22 4 14 12 14 19 10 21 10 12 2 4"/></svg></span>
         <h3 class="feature-title">事件聚合</h3>
         <p class="feature-desc">debounce / stack / arpeggio 策略防止高频事件导致声音爆炸</p>
       </div>
       <div class="feature-card">
-        <span class="feature-icon">&#127911;</span>
+        <span class="feature-icon"><svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="2" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="22"/><line x1="2" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="22" y2="12"/></svg></span>
         <h3 class="feature-title">空间音频</h3>
         <p class="feature-desc">2D 坐标映射为 pan、距离滤音与混响 send，身临其境的方位感</p>
       </div>
       <div class="feature-card">
-        <span class="feature-icon">&#127968;</span>
+        <span class="feature-icon"><svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8c1.5-2 3.5-3 6-3s4.5 1 6 3 4.5 3 6 3"/><path d="M2 12c1.5-2 3.5-3 6-3s4.5 1 6 3 4.5 3 6 3"/><path d="M2 16c1.5-2 3.5-3 6-3s4.5 1 6 3 4.5 3 6 3"/></svg></span>
         <h3 class="feature-title">混响引擎</h3>
         <p class="feature-desc">room / hall / plate 三种预设，程序化 IR 轻量短尾混响</p>
       </div>
       <div class="feature-card">
-        <span class="feature-icon">&#127919;</span>
+        <span class="feature-icon"><svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/></svg></span>
         <h3 class="feature-title">焦点模式</h3>
         <p class="feature-desc">viewport / follow / zone / legion 四种空间聚焦策略</p>
       </div>
       <div class="feature-card">
-        <span class="feature-icon">&#9989;</span>
+        <span class="feature-icon"><svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 12 15 16 10"/></svg></span>
         <h3 class="feature-title">Score 校验</h3>
         <p class="feature-desc">validateScore() 在运行前捕获乐谱语法错误，提前排雷</p>
       </div>
@@ -915,22 +918,22 @@
         <div class="node-label">INPUT</div>
         <div class="node-name">Score</div>
       </div>
-      <div class="arch-arrow">&#10142;</div>
+      <div class="arch-arrow"><svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
       <div class="arch-node cyan">
         <div class="node-label">RESOURCE</div>
         <div class="node-name">Timbre Pack</div>
       </div>
-      <div class="arch-arrow">&#10142;</div>
+      <div class="arch-arrow"><svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
       <div class="arch-node yellow">
         <div class="node-label">CORE</div>
         <div class="node-name">Engine</div>
       </div>
-      <div class="arch-arrow">&#10142;</div>
+      <div class="arch-arrow"><svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
       <div class="arch-node green">
         <div class="node-label">MIXER</div>
         <div class="node-name">AudioBus</div>
       </div>
-      <div class="arch-arrow">&#10142;</div>
+      <div class="arch-arrow"><svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
       <div class="arch-node magenta">
         <div class="node-label">OUTPUT</div>
         <div class="node-name">Speaker</div>
@@ -940,19 +943,19 @@
         <div class="arch-node">
           <div class="node-name">ChannelPool</div>
         </div>
-        <div class="arch-arrow">&#10550;</div>
+        <div class="arch-arrow"><svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
         <div class="arch-node">
           <div class="node-name">DuckManager</div>
         </div>
-        <div class="arch-arrow">&#10550;</div>
+        <div class="arch-arrow"><svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
         <div class="arch-node">
           <div class="node-name">Aggregator</div>
         </div>
-        <div class="arch-arrow">&#10550;</div>
+        <div class="arch-arrow"><svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
         <div class="arch-node">
           <div class="node-name">ReverbEngine</div>
         </div>
-        <div class="arch-arrow">&#10550;</div>
+        <div class="arch-arrow"><svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
         <div class="arch-node">
           <div class="node-name">SpatialAudio</div>
         </div>
