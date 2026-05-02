@@ -23,3 +23,9 @@ export {
   ScaleType,
   ChordType,
 } from './MusicUtils.js';
+
+export {
+  validateScore,
+  type ValidationResult,
+  type ValidationError,
+} from './ScoreValidator.js';

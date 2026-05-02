@@ -51,3 +51,10 @@ export type {
   ScoreConfig,
   Score,
 } from './engine/types.js';
+
+export {
+  MusicUtils,
+  validateScore,
+  type ValidationResult,
+  type ValidationError,
+} from './music/index.js';

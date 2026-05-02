@@ -1,0 +1,210 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://chip-audio-engine.dev/scores/schema.json",
+  "title": "Score",
+  "description": "Schema for Chip Audio Engine Score (乐谱) definitions",
+  "type": "object",
+  "required": ["id", "name", "bpm", "timbrePack", "tracks"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique score identifier",
+      "minLength": 1
+    },
+    "name": {
+      "type": "string",
+      "description": "Human-readable score name",
+      "minLength": 1
+    },
+    "bpm": {
+      "type": "number",
+      "description": "Beats per minute",
+      "exclusiveMinimum": 0,
+      "maximum": 300
+    },
+    "timbrePack": {
+      "type": "string",
+      "description": "Reference to a Timbre Pack name",
+      "minLength": 1
+    },
+    "config": {
+      "$ref": "#/definitions/ScoreConfig"
+    },
+    "tracks": {
+      "type": "array",
+      "description": "Array of tracks",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/definitions/ScoreTrack"
+      }
+    }
+  },
+  "definitions": {
+    "ScoreConfig": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "loop": {
+          "type": "boolean",
+          "description": "Whether to loop the score (default: true)",
+          "default": true
+        },
+        "volume": {
+          "type": "number",
+          "description": "Master volume (0-1)",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "reverb": {
+          "type": "string",
+          "description": "Reverb preset name (room/hall/plate)",
+          "enum": ["room", "hall", "plate"]
+        }
+      }
+    },
+    "ScoreTrack": {
+      "type": "object",
+      "required": ["timbre", "notes"],
+      "additionalProperties": false,
+      "properties": {
+        "timbre": {
+          "type": "string",
+          "description": "Timbre name from the referenced Timbre Pack",
+          "minLength": 1
+        },
+        "volume": {
+          "type": "number",
+          "description": "Track volume (0-1)",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "mute": {
+          "type": "boolean",
+          "description": "Mute this track",
+          "default": false
+        },
+        "loopStart": {
+          "type": "integer",
+          "description": "Note index to loop back to (0-based)",
+          "minimum": 0
+        },
+        "transpose": {
+          "type": "integer",
+          "description": "Semitone offset for transposition",
+          "minimum": -24,
+          "maximum": 24
+        },
+        "performance": {
+          "$ref": "#/definitions/PerformanceExpr"
+        },
+        "notes": {
+          "type": "array",
+          "description": "Array of notes in this track",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/definitions/ScoreNote"
+          }
+        }
+      }
+    },
+    "PerformanceExpr": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "swing": {
+          "type": "number",
+          "description": "Swing ratio (0-1). 0=straight, 0.66=typical swing",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "humanize": {
+          "type": "number",
+          "description": "Humanization strength (0-1). Adds random timing/velocity offsets",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "layback": {
+          "type": "number",
+          "description": "Global timing offset in ms. Positive=late, negative=early",
+          "minimum": -100,
+          "maximum": 100
+        },
+        "velocityCurve": {
+          "type": "array",
+          "description": "Velocity control points as [noteIndex, multiplier] pairs",
+          "minItems": 2,
+          "items": {
+            "type": "array",
+            "items": [
+              {
+                "type": "number",
+                "description": "Note index (position)",
+                "minimum": 0
+              },
+              {
+                "type": "number",
+                "description": "Velocity multiplier (0-1)",
+                "minimum": 0,
+                "maximum": 1
+              }
+            ],
+            "minItems": 2,
+            "maxItems": 2
+          }
+        }
+      }
+    },
+    "ScoreNote": {
+      "type": "object",
+      "required": ["note", "duration"],
+      "additionalProperties": false,
+      "properties": {
+        "note": {
+          "description": "Note name (scientific pitch notation) or null for rest",
+          "oneOf": [
+            {
+              "type": "null",
+              "description": "Rest (no sound)"
+            },
+            {
+              "type": "string",
+              "description": "Note name: [A-G][#b][0-9] (e.g. C4, A#3, Bb5)",
+              "pattern": "^[A-Ga-g][#b]?[0-9]$"
+            }
+          ]
+        },
+        "duration": {
+          "$ref": "#/definitions/DurationValue"
+        },
+        "velocity": {
+          "type": "number",
+          "description": "Velocity/gain (0-1)",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "offset": {
+          "type": "number",
+          "description": "Per-note timing offset in ms",
+          "minimum": -100,
+          "maximum": 100
+        }
+      }
+    },
+    "DurationValue": {
+      "description": "Duration symbol or custom milliseconds",
+      "oneOf": [
+        {
+          "type": "string",
+          "enum": ["w", "h", "q", "e", "s", "t", "w.", "h.", "q.", "e.", "s."],
+          "description": "Duration symbol: w=whole, h=half, q=quarter, e=eighth, s=sixteenth, t=thirty-second, .=dotted"
+        },
+        {
+          "type": "number",
+          "description": "Custom duration in milliseconds",
+          "exclusiveMinimum": 0
+        }
+      ]
+    }
+  }
+}
