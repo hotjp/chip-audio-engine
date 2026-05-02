@@ -232,6 +232,8 @@ interface ScoreTrack {
   loopStart?: number;
   /** 八度偏移（半音数），用于转调 */
   transpose?: number;
+  /** 演奏表情配置（swing / humanize / layback / velocityCurve） */
+  performance?: PerformanceExpr;
   /** 音符序列 */
   notes: ScoreNote[];
 }
@@ -243,6 +245,66 @@ interface ScoreNote {
   duration: DurationValue;
   /** 力度（0-1），覆盖 timbre 默认音量 */
   velocity?: number;
+  /**
+   * 时间偏移（ms）。正数 = 晚出（layback），负数 = 抢拍。
+   * 用于制造拖拍感、摇摆感等人类化演奏表情。
+   * @default 0
+   * @example
+   * ```ts
+   * { note: "E5", duration: "q", offset: 20 }  // 微微拖拍
+   * ```
+   */
+  offset?: number;
+}
+
+/**
+ * 演奏表情配置，作用于 track 级别。
+ * 所有参数都是可选的，未设置 = 机器精度。
+ */
+interface PerformanceExpr {
+  /**
+   * Swing 比例（0-1）。
+   * 0 = 平均八分音符（直拍），
+   * 0.33 = 轻度 shuffle，
+   * 0.66 = 典型 swing，
+   * 1 = 极端 triplet feel。
+   *
+   * 原理：将每对八分音符的前一个拉长、后一个缩短。
+   * swing=0.66 时，八分音符对从 [250ms, 250ms] 变成 [333ms, 167ms]（BPM 120）。
+   * @default 0
+   */
+  swing?: number;
+
+  /**
+   * Humanize 强度（0-1）。
+   * 给每个音符的起始时间和力度加随机微偏移，去掉机器感。
+   * 0 = 关闭，0.3 = 轻微，0.7 = 明显的人类化。
+   *
+   * 实际偏移范围：
+   * - 时间: ±(humanize × 30)ms
+   * - 力度: ±(humanize × 0.15)
+   * @default 0
+   */
+  humanize?: number;
+
+  /**
+   * 全局 layback（ms）。整轨所有音符统一后移。
+   * 与 per-note offset 叠加：最终偏移 = track.layback + note.offset + humanize 随机。
+   * @default 0
+   */
+  layback?: number;
+
+  /**
+   * 力度曲线：跨多个音符的渐强/渐弱。
+   * 定义一组 [位置, 力度倍率] 控制点，中间线性插值。
+   *
+   * @example
+   * ```json
+   * // 从第 1 个音渐强到第 8 个音
+   * "velocityCurve": [[0, 0.3], [7, 1.0]]
+   * ```
+   */
+  velocityCurve?: [number, number][];
 }
 
 /** 时值：支持多种记法 */
@@ -314,11 +376,16 @@ type DurationValue =
   "tracks": [
     {
       "timbre": "lead",
+      "performance": {
+        "layback": 15,
+        "humanize": 0.2,
+        "velocityCurve": [[0, 0.5], [4, 0.9], [8, 0.5]]
+      },
       "notes": [
         { "note": "E5", "duration": "q" },
         { "note": "G5", "duration": "q" },
         { "note": "A5", "duration": "h" },
-        { "note": "G5", "duration": "q" },
+        { "note": "G5", "duration": "q", "offset": 25 },
         { "note": "E5", "duration": "q" },
         { "note": "D5", "duration": "h" },
         { "note": null, "duration": "q" },
@@ -327,7 +394,9 @@ type DurationValue =
     },
     {
       "timbre": "bass",
-      "transpose": 0,
+      "performance": {
+        "layback": 5
+      },
       "notes": [
         { "note": "A2", "duration": "w" },
         { "note": "G2", "duration": "w" }
@@ -335,6 +404,9 @@ type DurationValue =
     },
     {
       "timbre": "arp",
+      "performance": {
+        "swing": 0.4
+      },
       "notes": [
         { "note": "A4", "duration": "e" },
         { "note": "C5", "duration": "e" },
@@ -361,6 +433,9 @@ type DurationValue =
     },
     {
       "timbre": "hihat",
+      "performance": {
+        "humanize": 0.15
+      },
       "notes": [
         { "note": "C6", "duration": "e" },
         { "note": null, "duration": "e" },
@@ -615,10 +690,10 @@ chip-audio-engine/
 | Phase A | MusicUtils + NoteParser + DurationParser | ~300 行 |
 | Phase B | Timbre Pack 格式 + TimbrePackLoader + schema | ~200 行 |
 | Phase C | Score 格式 + Score 类型定义 + schema | ~150 行 |
-| Phase D | BGMEngine 升级（支持 timbre 引用 + 音名/时值解析） | ~200 行 |
+| Phase D | BGMEngine 升级（支持 timbre 引用 + 音名/时值解析 + 演奏表情） | ~300 行 |
 | Phase E | ChipAudioEngine 集成（loadTimbrePack / loadScore） | ~100 行 |
 | Phase F | 第一个完整 Timbre Pack（16bit-sfc.json）+ 示例乐谱 | ~150 行 |
-| **合计** | | **~1100 行** |
+| **合计** | | **~1200 行** |
 
 ---
 
@@ -651,3 +726,145 @@ chip-audio-engine/
 ```
 
 **AI 从此不碰频率、波形、滤波器参数。只写音乐。**
+
+---
+
+## 10. 演奏表情系统（Performance Expression）
+
+> 纯机器精度的音乐听起来死板。演奏表情系统让 AI 能控制"人味儿"。
+
+### 10.1 设计原则
+
+**所有表情参数都是可选的。** 不写 = 机器精度，写了 = 有人味儿。
+
+**叠加计算**：最终时间偏移 = `track.layback` + `note.offset` + `humanize 随机`。
+
+### 10.2 四种表情
+
+#### Layback（拖拍）
+
+整轨音符统一后移，制造放松感。
+
+```
+layback: 15ms  →  每个"音都比节拍晚 15ms
+layback: 0ms   →  卡拍（默认）
+layback: -10ms →  抢拍（罕见，制造紧张感）
+```
+
+典型值：5-30ms。超过 50ms 听起来像弹错了。
+
+#### Swing（摇摆）
+
+让八分音符不均匀——前长后短，产生 groove。
+
+```
+swing: 0    →  [250ms, 250ms]  直拍
+swing: 0.33 →  [312ms, 188ms]  轻度 shuffle
+swing: 0.66 →  [375ms, 125ms]  典型 swing（jazz/blues）
+swing: 1.0  →  [500ms, 0ms]   极端（几乎三连音）
+```
+
+计算公式：`前半 = baseMs × (1 + swing)`，`后半 = baseMs × 2 - 前半`。
+
+只影响八分音符和更短的时值（e / s / t），不影响四分及以上。
+
+#### Humanize（人性化）
+
+给每个音符加随机微偏移，去掉机器感。
+
+```
+humanize: 0   →  关闭
+humanize: 0.2 →  微妙（±6ms 时间偏移，±0.03 力度偏移）
+humanize: 0.5 →  明显（±15ms，±0.075）
+humanize: 0.8 →  夸张（±24ms，±0.12）
+```
+
+实际范围：
+- 时间偏移 = `(Math.random() * 2 - 1) × humanize × 30` ms
+- 力度偏移 = `(Math.random() * 2 - 1) × humanize × 0.15`
+
+使用 seeded PRNG（基于 scoreId + trackIndex + noteIndex），保证同一乐谱每次播放的 humanize 结果一致（可复现）。
+
+#### Velocity Curve（力度曲线）
+
+跨多个音符的渐强/渐弱，用控制点插值。
+
+```json
+"velocityCurve": [[0, 0.3], [4, 1.0], [8, 0.3]]
+```
+
+含义：
+- 第 0 个音符力度 × 0.3（弱起）
+- 第 4 个音符力度 × 1.0（高潮）
+- 第 8 个音符力度 × 0.3（回落）
+- 中间线性插值
+
+力度倍率与 per-note `velocity` 相乘：`最终力度 = note.velocity × curveMultiplier`。
+
+### 10.3 叠加优先级
+
+```
+最终时间偏移 = track.performance.layback
+              + note.offset
+              + humanize(随机)
+
+最终力度 = timbre 默认音量
+          × track.volume
+          × note.velocity
+          × velocityCurve(noteIndex)
+          × (1 + humanize(随机))
+
+Swing 单独作用于时值解析阶段，不与 offset 叠加
+```
+
+### 10.4 使用示例
+
+**放松的 lead**（微微拖拍 + 人性化）：
+```json
+{
+  "timbre": "lead",
+  "performance": {
+    "layback": 15,
+    "humanize": 0.2
+  }
+}
+```
+
+**爵士 swing arp**：
+```json
+{
+  "timbre": "arp",
+  "performance": {
+    "swing": 0.55,
+    "humanize": 0.3
+  }
+}
+```
+
+**渐强渐弱的 pad**：
+```json
+{
+  "timbre": "pad",
+  "performance": {
+    "velocityCurve": [[0, 0.2], [3, 0.8], [6, 0.8], [8, 0.2]]
+  }
+}
+```
+
+**精确的鼓组**（不加表情，卡拍）：
+```json
+{
+  "timbre": "kick",
+  "notes": [{ "note": "C2", "duration": "q" }]
+}
+```
+
+**人类化的 hi-hat**：
+```json
+{
+  "timbre": "hihat",
+  "performance": {
+    "humanize": 0.15
+  }
+}
+```
