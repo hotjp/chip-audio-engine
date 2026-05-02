@@ -66,3 +66,61 @@ export interface BGMScore {
   bpm: number;
   tracks: BGMTrack[];
 }
+
+// === 新增 Score 类型 ===
+
+/** 时值记号 */
+export type DurationSymbol =
+  | 'w' | 'h' | 'q' | 'e' | 's' | 't'
+  | 'w.' | 'h.' | 'q.' | 'e.' | 's.';
+
+/** 时值：符号或毫秒数 */
+export type DurationValue = DurationSymbol | number;
+
+/** 演奏表情配置 */
+export interface PerformanceExpr {
+  /** Swing 比例 (0-1) */
+  swing?: number;
+  /** Humanize 强度 (0-1) */
+  humanize?: number;
+  /** 全局 layback (ms) */
+  layback?: number;
+  /** 力度曲线：[位置, 力度倍率] 控制点 */
+  velocityCurve?: [number, number][];
+}
+
+/** Score 音符 */
+export interface ScoreNote {
+  note: string | null;  // 音名或休止符
+  duration: DurationValue;
+  velocity?: number;
+  offset?: number;  // 时间偏移 ms（layback 等）
+}
+
+/** Score 轨道 */
+export interface ScoreTrack {
+  timbre: string;  // 引用 Timbre Pack 中的音色名
+  volume?: number;
+  mute?: boolean;
+  loopStart?: number;
+  transpose?: number;
+  performance?: PerformanceExpr;
+  notes: ScoreNote[];
+}
+
+/** Score 全局配置 */
+export interface ScoreConfig {
+  loop?: boolean;
+  volume?: number;
+  reverb?: string;
+}
+
+/** 完整乐谱 */
+export interface Score {
+  id: string;
+  name: string;
+  bpm: number;
+  timbrePack: string;
+  config?: ScoreConfig;
+  tracks: ScoreTrack[];
+}

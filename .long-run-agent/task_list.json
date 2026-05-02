@@ -955,6 +955,121 @@
         "issues": [],
         "optimization_history": []
       }
+    },
+    {
+      "id": "task_034",
+      "description": "MusicUtils + NoteParser + DurationParser 音乐辅助函数",
+      "template": "task",
+      "priority": "P0",
+      "status": "pending",
+      "parent_id": null,
+      "output_req": "12k",
+      "context_hint": "16k",
+      "task_file": "tasks/task_034.md",
+      "created_at": "2026-05-02T00:40:49.049543+00:00",
+      "updated_at": "2026-05-02T00:40:49.049543+00:00",
+      "dependencies": [],
+      "dependency_type": "all",
+      "deadline": null,
+      "ralph": {
+        "iteration": 0,
+        "max_iterations": 5,
+        "quality_checks": {
+          "tests_passed": false,
+          "lint_passed": false,
+          "acceptance_met": false
+        },
+        "issues": [],
+        "optimization_history": []
+      }
+    },
+    {
+      "id": "task_035",
+      "description": "TimbrePackLoader + Score 类型定义",
+      "template": "task",
+      "priority": "P0",
+      "status": "pending",
+      "parent_id": null,
+      "output_req": "12k",
+      "context_hint": "16k",
+      "task_file": "tasks/task_035.md",
+      "created_at": "2026-05-02T00:40:49.049543+00:00",
+      "updated_at": "2026-05-02T00:40:49.049543+00:00",
+      "dependencies": [],
+      "dependency_type": "all",
+      "deadline": null,
+      "ralph": {
+        "iteration": 0,
+        "max_iterations": 5,
+        "quality_checks": {
+          "tests_passed": false,
+          "lint_passed": false,
+          "acceptance_met": false
+        },
+        "issues": [],
+        "optimization_history": []
+      }
+    },
+    {
+      "id": "task_036",
+      "description": "BGMEngine 升级 + ChipAudioEngine 集成（timbre/score/expression）",
+      "template": "task",
+      "priority": "P0",
+      "status": "pending",
+      "parent_id": null,
+      "output_req": "16k",
+      "context_hint": "24k",
+      "task_file": "tasks/task_036.md",
+      "created_at": "2026-05-02T00:40:49.049543+00:00",
+      "updated_at": "2026-05-02T00:40:49.049543+00:00",
+      "dependencies": [
+        "task_034",
+        "task_035"
+      ],
+      "dependency_type": "all",
+      "deadline": null,
+      "ralph": {
+        "iteration": 0,
+        "max_iterations": 7,
+        "quality_checks": {
+          "tests_passed": false,
+          "lint_passed": false,
+          "acceptance_met": false
+        },
+        "issues": [],
+        "optimization_history": []
+      }
+    },
+    {
+      "id": "task_037",
+      "description": "第一个 Timbre Pack + 示例乐谱 + 测试",
+      "template": "task",
+      "priority": "P1",
+      "status": "pending",
+      "parent_id": null,
+      "output_req": "12k",
+      "context_hint": "16k",
+      "task_file": "tasks/task_037.md",
+      "created_at": "2026-05-02T00:40:49.049543+00:00",
+      "updated_at": "2026-05-02T00:40:49.049543+00:00",
+      "dependencies": [
+        "task_034",
+        "task_035",
+        "task_036"
+      ],
+      "dependency_type": "all",
+      "deadline": null,
+      "ralph": {
+        "iteration": 0,
+        "max_iterations": 5,
+        "quality_checks": {
+          "tests_passed": false,
+          "lint_passed": false,
+          "acceptance_met": false
+        },
+        "issues": [],
+        "optimization_history": []
+      }
     }
   ]
 }

@@ -39,3 +39,15 @@ export { SoundPackLoader, SoundPack, SoundPackEntry } from './config/SoundPackLo
 export { ChipAudioEngine, EngineConfig } from './engine/ChipAudioEngine.js';
 export { BGMEngine } from './engine/BGMEngine.js';
 export type { EngineEvents, BGMScore, BGMTrack, BGMNote } from './engine/types.js';
+
+export { TimbrePackLoader } from './config/TimbrePackLoader.js';
+export type { TimbreDefinition, TimbrePack } from './config/TimbrePackLoader.js';
+export type {
+  DurationSymbol,
+  DurationValue,
+  PerformanceExpr,
+  ScoreNote,
+  ScoreTrack,
+  ScoreConfig,
+  Score,
+} from './engine/types.js';

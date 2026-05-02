@@ -1,0 +1,119 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "timbre-pack",
+  "title": "Timbre Pack",
+  "description": "Chip Audio Engine Timbre Pack schema",
+  "type": "object",
+  "required": ["name", "timbres"],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "音色包唯一名称"
+    },
+    "style": {
+      "type": "string",
+      "description": "风格标签"
+    },
+    "description": {
+      "type": "string",
+      "description": "音色包描述"
+    },
+    "timbres": {
+      "type": "object",
+      "description": "音色映射表",
+      "additionalProperties": {
+        "$ref": "#/definitions/timbreDefinition"
+      }
+    }
+  },
+  "definitions": {
+    "timbreDefinition": {
+      "type": "object",
+      "required": ["provider"],
+      "properties": {
+        "provider": {
+          "type": "string",
+          "description": "音源提供者标识"
+        },
+        "waveforms": {
+          "type": "array",
+          "description": "波形配置列表（不含 frequency）",
+          "items": {
+            "type": "object",
+            "required": ["type"],
+            "properties": {
+              "type": {
+                "oneOf": [
+                  {
+                    "type": "string",
+                    "enum": ["sine", "square", "sawtooth", "triangle"]
+                  },
+                  { "const": "noise" }
+                ]
+              },
+              "gain": {
+                "type": "number"
+              },
+              "detune": {
+                "type": "number"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "envelope": {
+          "type": "object",
+          "required": ["attack", "decay", "sustain", "release"],
+          "properties": {
+            "attack": { "type": "number" },
+            "decay": { "type": "number" },
+            "sustain": { "type": "number" },
+            "release": { "type": "number" }
+          },
+          "additionalProperties": false
+        },
+        "filter": {
+          "type": "object",
+          "required": ["type", "frequency"],
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": ["lowpass", "highpass", "bandpass", "lowshelf", "highshelf", "peaking", "notch", "allpass"]
+            },
+            "frequency": { "type": "number" },
+            "Q": { "type": "number" },
+            "gain": { "type": "number" }
+          },
+          "additionalProperties": false
+        },
+        "volume": {
+          "type": "number",
+          "description": "音量倍率"
+        },
+        "pitch": {
+          "type": "object",
+          "required": ["start", "end"],
+          "properties": {
+            "start": { "type": "number" },
+            "end": { "type": "number" },
+            "curve": {
+              "type": "string",
+              "enum": ["linear", "exponential", "vibrato"]
+            },
+            "vibrato": {
+              "type": "object",
+              "required": ["rate", "depth"],
+              "properties": {
+                "rate": { "type": "number" },
+                "depth": { "type": "number" }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}
