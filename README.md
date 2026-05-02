@@ -333,6 +333,164 @@ if (!result.valid) {
 
 ---
 
+## 📝 Score v2 格式（推荐）
+
+Score v2 是专为 AI Agent 创作优化的声明式乐谱格式，解决 v1 的音轨对齐、断点续写、章节过渡和字面量压缩问题。
+
+### v2 核心改进
+
+| 特性 | v1 | v2 |
+|------|-----|-----|
+| 小节网格 | 扁平音符流 | 按小节对齐的网格 |
+| Pattern 复用 | 无 | 支持命名 pattern 引用 |
+| 章节结构 | 无 | `chapters` + `transition` |
+| Velocity 曲线 | 按音符索引 | 按章节锚点插值 |
+| 文件体积 | ~150 KB | ~48 KB（同曲） |
+
+### v2 结构概览
+
+```typescript
+interface ScoreV2 {
+  $schema: 'cae-score-v2';
+  meta: {
+    title: string;
+    bpm: number;
+    timeSignature: [number, number];
+    timbrePack: string;
+    complexity?: 'minimal' | 'standard' | 'extended';
+    duration?: string;
+  };
+  tracks: ScoreV2Track[];
+  patterns?: { [name: string]: PatternDef };
+  chapters: Chapter[];
+  score: Bar[];
+}
+```
+
+### v2 音符格式
+
+v2 使用数组元组压缩字面量：`[note, duration, beat?]`
+
+```json
+["G3", "q", 1]      // G3 四分音符，第 1 拍
+["R", "q", 2]       // 休止，第 2 拍
+["D4", "h", "3-4"]  // D4 二分音符，跨第 3-4 拍
+["G3", "q"]         // 省略 beat = 顺序累加
+```
+
+### Pattern 复用
+
+```json
+"patterns": {
+  "kick-std": {
+    "kick": [["C2","q",1],["R","q",2],["C2","q",3],["R","q",4]]
+  }
+}
+```
+
+引用方式：
+```json
+"kick": "$kick-std.kick"                              // 简单引用
+"lead": {"$ref":"imperial-motif.lead","transpose":5}   // 移调引用
+```
+
+### Chapter 断点续写
+
+```json
+"chapters": [
+  {"id": "intro",  "bars": 6, "transition": 2, "mood": "march, moderate"},
+  {"id": "dev",    "bars": 8, "transition": 2, "mood": "crescendo"},
+  {"id": "climax", "bars": 10, "transition": 2, "mood": "intense, full power"},
+  {"id": "outro",  "bars": 6, "mood": "fade, resolution"}
+]
+```
+
+### Velocity 曲线
+
+按章节锚点声明，插入小节不影响曲线：
+
+```json
+"perf": {
+  "velocity": {
+    "curve": "linear",
+    "points": [
+      ["intro:start", 0.4],
+      ["climax:mid", 0.95],
+      ["outro:end", 0.3]
+    ]
+  }
+}
+```
+
+### v2 播放方式
+
+```typescript
+import { ChipAudioEngine } from 'chip-audio-engine';
+
+const engine = new ChipAudioEngine();
+engine.init();
+
+// 直接加载 v2 乐谱（引擎自动编译为 v1 执行）
+engine.getBGMEngine()?.loadV2Score(v2Score);
+engine.playBGM('heros-march-epic-battle-theme');
+
+// 或直接播放
+engine.getBGMEngine()?.playV2(v2Score, { fadeIn: 500 });
+```
+
+### v2 校验
+
+```typescript
+import { validateScoreV2 } from 'chip-audio-engine/dist/music/ScoreV2Validator.js';
+
+const result = validateScoreV2(v2Json);
+if (!result.valid) {
+  for (const err of result.errors) {
+    console.error(`${err.path}: ${err.message}`);
+  }
+}
+```
+
+---
+
+## 🔄 v1 → v2 迁移指南
+
+### 手动迁移步骤
+
+1. **切分小节**：将 v1 的扁平 `notes` 按拍号切分为小节
+2. **声明 tracks**：为每个 track 分配 `name`，将 `performance` 提取到 `perf`
+3. **提取 patterns**：将重复出现 3 次以上的小节提取为 `patterns`
+4. **划分 chapters**：按情绪/结构划分章节，设置 `transition` 重叠区
+5. **重写 score**：使用 `"t"` 字段按小节写音符，用 `"$pattern.track"` 引用 pattern
+6. **迁移 velocityCurve**：将按音符索引的曲线转换为按章节锚点的 `velocity.points`
+
+### 自动转换
+
+使用内置的 `V1ToV2Converter`：
+
+```typescript
+import { V1ToV2Converter } from 'chip-audio-engine/dist/music/V1ToV2Converter.js';
+
+const v2 = V1ToV2Converter.convert(v1Score, {
+  beatsPerBar: 4,
+  timeSignature: [4, 4],
+  chapters: [
+    { id: 'intro', bars: 8, transition: 0 },
+    { id: 'verse', bars: 16, transition: 2 },
+  ],
+  complexity: 'standard',
+});
+```
+
+### 兼容性说明
+
+- v2 是**创作格式**，v1 是**执行格式**
+- 引擎内部通过 `V2Compiler` 将 v2 编译为 v1 后执行
+- v1 和 v2 乐谱可以在同一引擎中共存
+- 旧版 `loadScore` / `loadNewScore` 不受 v2 影响
+
+---
+
 ## 🔌 自定义 Provider
 
 实现 `SoundProvider` 接口即可接入任意音源（Web Audio API 合成、WebSocket 音频流、程序生成等）。

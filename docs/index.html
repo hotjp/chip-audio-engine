@@ -1102,6 +1102,49 @@
     </div>
   </section>
 
+  <!-- Live Demo v2 -->
+  <section id="demo-v2">
+    <h2 class="section-title green">SCORE v2 DEMO</h2>
+    <p class="section-subtitle">Hero's March (v2) — 章节结构、Pattern 复用、Velocity 曲线</p>
+    <div class="demo-grid">
+      <div class="demo-card v2-demo-card" id="demo-hero-v2">
+        <div class="demo-header">
+          <div class="demo-title">Hero's March (v2)</div>
+          <div class="demo-meta">BPM 130 · 7 Tracks · 5 Chapters · 36 Patterns · 16bit-sfc</div>
+        </div>
+        <div class="v2-chapters" id="v2-chapters"></div>
+        <div class="demo-controls">
+          <button class="demo-btn play" onclick="demoV2Play()" id="btn-hero-v2-play" title="Play from selected chapter">
+            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          </button>
+          <button class="demo-btn stop" onclick="demoV2Stop()" id="btn-hero-v2-stop">
+            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="12" height="12"/></svg>
+          </button>
+        </div>
+        <div class="v2-progress-wrapper">
+          <div class="demo-progress v2-progress" id="progress-hero-v2-container">
+            <div class="demo-progress-bar" id="progress-hero-v2"></div>
+          </div>
+          <div class="v2-progress-labels" id="v2-progress-labels"></div>
+        </div>
+        <div class="v2-status" id="status-hero-v2">
+          <span id="v2-status-text">Ready</span>
+          <span class="v2-bar-info" id="v2-bar-info"></span>
+        </div>
+        <div class="v2-features">
+          <div class="v2-feature-title">v2 特性：</div>
+          <ul>
+            <li>小节网格对齐</li>
+            <li>Pattern 复用（36 个）</li>
+            <li>Velocity 曲线</li>
+            <li>Chapter 断点续写</li>
+            <li>文件体积：48 KB（v1: 148 KB）</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- API Overview -->
   <section id="api">
     <h2 class="section-title magenta">API OVERVIEW</h2>
@@ -1232,6 +1275,98 @@
       50% { box-shadow: 0 0 40px rgba(255, 224, 0, 0.3); }
     }
     .demo-card.playing { animation: pulse-glow 2s ease-in-out infinite; }
+
+    /* V2 Demo */
+    .v2-demo-card { border-color: rgba(57, 255, 20, 0.15); }
+    .v2-demo-card.playing {
+      border-color: var(--green);
+      box-shadow: 0 0 30px rgba(57, 255, 20, 0.15);
+      animation: pulse-glow-green 2s ease-in-out infinite;
+    }
+    @keyframes pulse-glow-green {
+      0%, 100% { box-shadow: 0 0 20px rgba(57, 255, 20, 0.15); }
+      50% { box-shadow: 0 0 40px rgba(57, 255, 20, 0.3); }
+    }
+    .v2-chapters {
+      display: flex;
+      gap: 0.4rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+    .v2-chapter-btn {
+      font-size: 0.7rem;
+      padding: 0.3rem 0.6rem;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      background: transparent;
+      color: var(--text-secondary);
+      cursor: pointer;
+      font-family: var(--font-modern);
+      transition: all 0.2s;
+    }
+    .v2-chapter-btn:hover {
+      border-color: var(--green);
+      color: var(--green);
+    }
+    .v2-chapter-btn.active {
+      border-color: var(--green);
+      background: rgba(57, 255, 20, 0.1);
+      color: var(--green);
+    }
+    .v2-progress-wrapper { position: relative; }
+    .v2-progress { position: relative; height: 6px; }
+    .v2-progress-marker {
+      position: absolute;
+      top: -2px;
+      width: 2px;
+      height: 10px;
+      background: var(--green);
+      opacity: 0.6;
+      pointer-events: none;
+    }
+    .v2-progress-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+      font-family: var(--font-modern);
+    }
+    .v2-status {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-family: var(--font-pixel);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+    .v2-demo-card.playing .v2-status { color: var(--green); }
+    .v2-bar-info { font-family: var(--font-modern); font-size: 0.8rem; }
+    .v2-features { font-size: 0.8rem; color: var(--text-secondary); }
+    .v2-feature-title {
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+      color: var(--text-primary);
+    }
+    .v2-features ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 0.25rem 1rem;
+    }
+    .v2-features li {
+      position: relative;
+      padding-left: 1rem;
+    }
+    .v2-features li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: var(--green);
+    }
   </style>
 
   <script>
@@ -1497,6 +1632,341 @@
       }
       demoState.currentId = null;
     };
+
+    // ------------------------------------------------------------------
+    // V2 Demo
+    // ------------------------------------------------------------------
+
+    const v2DemoState = {
+      ctx: null,
+      raf: null,
+      startTime: 0,
+      totalDuration: 0,
+      compiled: null,
+      startChapter: null,
+      chapters: [],
+      totalBars: 0,
+      beatsPerBar: 4,
+      bpm: 130
+    };
+
+    function isEighthOrShorter(dur) {
+      return ['e','e.','s','s.','t'].includes(dur);
+    }
+
+    function compileV2ForDemo(v2) {
+      const bpm = v2.meta.bpm;
+      const beatsPerBar = v2.meta.timeSignature[0];
+      const qMs = 60000 / bpm;
+
+      // Chapter map
+      let globalBar = 0;
+      const chapters = v2.chapters.map(ch => {
+        const info = { id: ch.id, startBar: globalBar, bars: ch.bars, transition: ch.transition || 0 };
+        globalBar += ch.bars;
+        return info;
+      });
+      const totalBars = globalBar;
+
+      // Bar lookup
+      const barMap = {};
+      v2.score.forEach(bar => {
+        if (!barMap[bar.chapter]) barMap[bar.chapter] = {};
+        barMap[bar.chapter][bar.bar] = bar;
+      });
+
+      function resolveContent(chapter, barNum, trackName, visited) {
+        if (!visited) visited = new Set();
+        const key = chapter + ':' + barNum;
+        if (visited.has(key)) return [];
+        visited.add(key);
+        const bar = barMap[chapter]?.[barNum];
+        if (!bar || bar.silence) return [];
+
+        let content = null;
+        if (bar.override && bar.override[trackName] !== undefined) {
+          content = bar.override[trackName];
+        } else if (bar.t && bar.t[trackName] !== undefined) {
+          content = bar.t[trackName];
+        } else if (bar.ref !== undefined) {
+          return resolveContent(chapter, bar.ref, trackName, visited);
+        }
+        if (!content) return [];
+        return expandContent(content);
+      }
+
+      function expandContent(content) {
+        if (typeof content === 'string') {
+          const path = content.slice(1);
+          const parts = path.split('.');
+          return (v2.patterns[parts[0]]?.[parts[1]] || []).map(t => [...t]);
+        }
+        if (Array.isArray(content)) return content.map(t => [...t]);
+        // PatternRef
+        const parts = content.$ref.split('.');
+        const tuples = v2.patterns[parts[0]]?.[parts[1]] || [];
+        return tuples.map(t => {
+          let note = t[0];
+          // Transpose not implemented in demo synth
+          return [note, t[1], t[2]];
+        });
+      }
+
+      function durationToBeats(dur) {
+        const map = {w:4,'w.':6,h:2,'h.':3,q:1,'q.':1.5,e:0.5,'e.':0.75,s:0.25,'s.':0.375,t:0.125};
+        return map[dur] || 1;
+      }
+
+      function beatsToRests(beats) {
+        const symbols = [[4,'w'],[3,'h.'],[2,'h'],[1.5,'q.'],[1,'q'],[0.75,'e.'],[0.5,'e'],[0.375,'s.'],[0.25,'s'],[0.125,'t']];
+        const result = [];
+        let remaining = beats;
+        for (const [val, sym] of symbols) {
+          while (remaining >= val - 1e-9) {
+            result.push({ note: null, duration: sym });
+            remaining -= val;
+          }
+        }
+        if (remaining > 1e-9) result.push({ note: null, duration: 't' });
+        return result;
+      }
+
+      // Compile tracks
+      const tracks = v2.tracks.map(t => {
+        const notes = [];
+        for (const ch of chapters) {
+          for (let b = 1; b <= ch.bars; b++) {
+            const gBar = ch.startBar + (b - 1);
+            const tuples = resolveContent(ch.id, b, t.name);
+            if (tuples.length === 0) {
+              notes.push(...beatsToRests(beatsPerBar).map(n => ({ ...n, _barIndex: gBar })));
+            } else {
+              const hasBeats = tuples.some(tu => tu[2] !== undefined);
+              if (hasBeats) {
+                let currentBeat = 1;
+                const items = tuples.map(tu => {
+                  let beat = tu[2];
+                  if (typeof beat === 'string' && beat.includes('-')) beat = parseFloat(beat.split('-')[0]);
+                  else if (typeof beat !== 'number') beat = parseFloat(beat);
+                  return { note: tu[0], duration: tu[1], beat: beat };
+                }).sort((a, b) => a.beat - b.beat);
+
+                for (const item of items) {
+                  if (item.beat > currentBeat) {
+                    notes.push(...beatsToRests(item.beat - currentBeat).map(n => ({ ...n, _barIndex: gBar })));
+                    currentBeat = item.beat;
+                  }
+                  notes.push({ note: item.note === 'R' ? null : item.note, duration: item.duration, _barIndex: gBar });
+                  currentBeat += durationToBeats(item.duration);
+                }
+                if (currentBeat < 1 + beatsPerBar) {
+                  notes.push(...beatsToRests((1 + beatsPerBar) - currentBeat).map(n => ({ ...n, _barIndex: gBar })));
+                }
+              } else {
+                let barBeats = 0;
+                for (const tu of tuples) {
+                  notes.push({ note: tu[0] === 'R' ? null : tu[0], duration: tu[1], _barIndex: gBar });
+                  barBeats += durationToBeats(tu[1]);
+                }
+                if (barBeats < beatsPerBar) {
+                  notes.push(...beatsToRests(beatsPerBar - barBeats).map(n => ({ ...n, _barIndex: gBar })));
+                }
+              }
+            }
+          }
+        }
+        const perf = {};
+        if (t.perf?.layback !== undefined) perf.layback = t.perf.layback;
+        if (t.perf?.humanize !== undefined) perf.humanize = t.perf.humanize;
+        if (t.perf?.swing !== undefined) perf.swing = t.perf.swing;
+        return {
+          timbre: t.timbre,
+          performance: Object.keys(perf).length > 0 ? perf : undefined,
+          notes
+        };
+      });
+
+      return {
+        id: v2.meta.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'score',
+        name: v2.meta.title,
+        bpm,
+        tracks,
+        chapters,
+        totalBars,
+        beatsPerBar
+      };
+    }
+
+    function playCompiledV2(ctx, compiled, timbrePack, startChapterId) {
+      const dest = ctx.destination;
+      const bpm = compiled.bpm;
+      const barDurMs = compiled.beatsPerBar * (60000 / bpm);
+
+      let startBar = 0;
+      if (startChapterId) {
+        const ch = compiled.chapters.find(c => c.id === startChapterId);
+        if (ch) startBar = ch.startBar;
+      }
+
+      const baseTime = ctx.currentTime + 0.05;
+
+      compiled.tracks.forEach(track => {
+        const timbre = timbrePack.timbres[track.timbre];
+        if (!timbre) return;
+
+        const perf = track.performance || {};
+        const layback = (perf.layback || 0) / 1000;
+        const humanize = perf.humanize || 0;
+
+        let timeMs = startBar * barDurMs;
+        let started = false;
+
+        for (let i = 0; i < track.notes.length; i++) {
+          const note = track.notes[i];
+          if (note._barIndex < startBar) continue;
+          if (!started) {
+            started = true;
+            timeMs = note._barIndex * barDurMs;
+          }
+
+          const durMs = durationToMs(note.duration, bpm);
+          let actualDurMs = durMs;
+          if (perf.swing && isEighthOrShorter(note.duration)) {
+            const isOdd = ((i) % 2) === 0;
+            actualDurMs = durMs * (isOdd ? (1 + perf.swing) : (1 - perf.swing));
+          }
+
+          if (note.note !== null) {
+            const hOff = humanize > 0 ? (Math.random() - 0.5) * humanize * 60 : 0;
+            playNote(ctx, dest, timbre, note.note, durMs, baseTime + timeMs / 1000 + layback + hOff / 1000, 1);
+          }
+
+          timeMs += actualDurMs;
+        }
+      });
+
+      const remainingBars = compiled.totalBars - startBar;
+      return remainingBars * barDurMs / 1000;
+    }
+
+    async function loadV2Score() {
+      if (v2DemoState.compiled) return v2DemoState.compiled;
+      const resp = await fetch('./hero-march-v2.json');
+      const data = await resp.json();
+      v2DemoState.compiled = compileV2ForDemo(data);
+      v2DemoState.chapters = v2DemoState.compiled.chapters;
+      v2DemoState.totalBars = v2DemoState.compiled.totalBars;
+      v2DemoState.beatsPerBar = v2DemoState.compiled.beatsPerBar;
+      v2DemoState.bpm = v2DemoState.compiled.bpm;
+      renderV2Chapters();
+      renderV2ProgressMarkers();
+      return v2DemoState.compiled;
+    }
+
+    function renderV2Chapters() {
+      const container = document.getElementById('v2-chapters');
+      if (!container || !v2DemoState.compiled) return;
+      container.innerHTML = '';
+      v2DemoState.compiled.chapters.forEach(ch => {
+        const btn = document.createElement('button');
+        btn.className = 'v2-chapter-btn' + (ch.id === v2DemoState.startChapter ? ' active' : '');
+        btn.textContent = ch.id;
+        btn.onclick = () => {
+          v2DemoState.startChapter = ch.id;
+          document.querySelectorAll('.v2-chapter-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+        };
+        container.appendChild(btn);
+      });
+    }
+
+    function renderV2ProgressMarkers() {
+      const container = document.getElementById('progress-hero-v2-container');
+      const labels = document.getElementById('v2-progress-labels');
+      if (!container || !v2DemoState.compiled) return;
+      // Remove old markers
+      container.querySelectorAll('.v2-progress-marker').forEach(m => m.remove());
+      labels.innerHTML = '';
+
+      const totalBars = v2DemoState.compiled.totalBars;
+      v2DemoState.compiled.chapters.forEach(ch => {
+        const leftPct = (ch.startBar / totalBars) * 100;
+        const marker = document.createElement('div');
+        marker.className = 'v2-progress-marker';
+        marker.style.left = leftPct + '%';
+        container.appendChild(marker);
+
+        const label = document.createElement('span');
+        label.textContent = ch.id;
+        labels.appendChild(label);
+      });
+    }
+
+    window.demoV2Play = async function() {
+      demoV2Stop();
+      document.getElementById('v2-status-text').textContent = 'Loading...';
+      const compiled = await loadV2Score();
+      if (!compiled) { document.getElementById('v2-status-text').textContent = 'Load failed'; return; }
+
+      v2DemoState.ctx = new (window.AudioContext || window.webkitAudioContext)();
+      v2DemoState.startTime = v2DemoState.ctx.currentTime + 0.05;
+      v2DemoState.totalDuration = playCompiledV2(v2DemoState.ctx, compiled, timbrePack16bit, v2DemoState.startChapter);
+
+      document.getElementById('demo-hero-v2').classList.add('playing');
+      document.getElementById('v2-status-text').textContent = 'Playing';
+      v2DemoState.raf = requestAnimationFrame(updateV2Progress);
+
+      setTimeout(() => {
+        if (v2DemoState.ctx) demoV2Stop();
+      }, (v2DemoState.totalDuration + 0.5) * 1000);
+    };
+
+    function updateV2Progress() {
+      if (!v2DemoState.ctx || v2DemoState.ctx.state === 'closed') return;
+      const elapsed = v2DemoState.ctx.currentTime - v2DemoState.startTime;
+      const pct = Math.min(100, (elapsed / v2DemoState.totalDuration) * 100);
+      document.getElementById('progress-hero-v2').style.width = pct + '%';
+
+      const barDurSec = (v2DemoState.beatsPerBar * 60) / v2DemoState.bpm;
+      const currentGlobalBar = Math.min(v2DemoState.totalBars - 1, Math.floor(elapsed / barDurSec));
+
+      let chapter = null;
+      let barInChapter = 0;
+      for (const ch of v2DemoState.chapters) {
+        if (currentGlobalBar >= ch.startBar && currentGlobalBar < ch.startBar + ch.bars) {
+          chapter = ch;
+          barInChapter = currentGlobalBar - ch.startBar + 1;
+          break;
+        }
+      }
+
+      if (chapter) {
+        document.getElementById('v2-bar-info').textContent =
+          'Chapter: ' + chapter.id + ' (bar ' + barInChapter + '/' + chapter.bars + ')';
+      }
+
+      if (elapsed < v2DemoState.totalDuration) {
+        v2DemoState.raf = requestAnimationFrame(updateV2Progress);
+      } else {
+        document.getElementById('progress-hero-v2').style.width = '100%';
+        document.getElementById('v2-status-text').textContent = 'Finished';
+      }
+    }
+
+    window.demoV2Stop = function() {
+      if (v2DemoState.ctx) {
+        v2DemoState.ctx.close();
+        v2DemoState.ctx = null;
+      }
+      if (v2DemoState.raf) cancelAnimationFrame(v2DemoState.raf);
+      document.getElementById('demo-hero-v2').classList.remove('playing');
+      document.getElementById('progress-hero-v2').style.width = '0%';
+      document.getElementById('v2-status-text').textContent = 'Ready';
+      document.getElementById('v2-bar-info').textContent = '';
+    };
+
+    // Pre-load v2 score on page load to render chapter buttons
+    loadV2Score().catch(() => {});
   </script>
 
 </body>

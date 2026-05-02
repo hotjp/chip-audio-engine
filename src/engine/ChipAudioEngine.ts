@@ -13,6 +13,7 @@ import { BGMEngine } from './BGMEngine.js';
 import type { EngineEvents, BGMScore, Score } from './types.js';
 import { ReverbEngine, ReverbParams } from '../effects/ReverbEngine.js';
 import { SpatialAudio } from '../effects/SpatialAudio.js';
+import { V2Compiler } from '../music/V2Compiler.js';
 import { FocusManager } from '../core/FocusManager.js';
 import type { FocusMode, FocusConfig } from '../core/FocusManager.js';
 
@@ -528,6 +529,19 @@ export class ChipAudioEngine extends EventEmitter<EngineEvents> {
    */
   getBGMEngine(): BGMEngine | null {
     return this.bgmEngine;
+  }
+
+  /**
+   * 获取 V2Compiler 实例。
+   * @returns V2Compiler 实例
+   * @example
+   * ```ts
+   * const compiler = engine.getV2Compiler();
+   * const score = compiler!.compile(v2Score);
+   * ```
+   */
+  getV2Compiler(): V2Compiler | null {
+    return new V2Compiler();
   }
 
   /**

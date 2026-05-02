@@ -5,6 +5,8 @@ import type { SoundParams } from '../providers/types.js';
 import type { SoundInstance } from '../providers/SoundProvider.js';
 import { EventEmitter } from '../core/EventEmitter.js';
 import type { BGMScore, BGMTrack, BGMNote, Score, ScoreTrack, ScoreNote } from './types.js';
+import type { ScoreV2 } from './types-v2.js';
+import { V2Compiler } from '../music/V2Compiler.js';
 import { TimbrePackLoader } from '../config/TimbrePackLoader.js';
 import { MusicUtils } from '../music/MusicUtils.js';
 import { isEighthOrShorter } from '../music/DurationParser.js';
@@ -53,6 +55,7 @@ export class BGMEngine extends EventEmitter<BGMEngineEvents> {
   private normalMusicVolume = 1;
   private readonly scheduleAheadTime = 0.1;
   private readonly lookahead = 25;
+  private compiler = new V2Compiler();
 
   /**
    * @param ctx - 音频上下文
@@ -98,6 +101,34 @@ export class BGMEngine extends EventEmitter<BGMEngineEvents> {
    */
   loadNewScore(score: Score): void {
     this.scores.set(score.id, score);
+  }
+
+  /**
+   * 加载 v2 格式乐谱。
+   * @param score - ScoreV2 乐谱对象
+   * @example
+   * ```ts
+   * bgm.loadV2Score({ $schema: 'cae-score-v2', meta: { ... }, tracks: [], chapters: [], score: [] });
+   * ```
+   */
+  loadV2Score(score: ScoreV2): void {
+    const compiled = this.compiler.compile(score);
+    this.scores.set(compiled.id, compiled);
+  }
+
+  /**
+   * 直接播放 v2 乐谱。
+   * @param score - ScoreV2 乐谱对象
+   * @param options - 可选的淡入配置
+   * @example
+   * ```ts
+   * bgm.playV2(score, { fadeIn: 500 });
+   * ```
+   */
+  playV2(score: ScoreV2, options?: { fadeIn?: number }): void {
+    this.loadV2Score(score);
+    const compiled = this.compiler.compile(score);
+    this.play(compiled.id, options);
   }
 
   /**

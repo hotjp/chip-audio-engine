@@ -1070,6 +1070,210 @@
         "issues": [],
         "optimization_history": []
       }
+    },
+    {
+      "id": "task_038",
+      "description": "Score v2 类型定义 + Schema 校验",
+      "template": "task",
+      "priority": "P0",
+      "status": "pending",
+      "parent_id": null,
+      "output_req": "12k",
+      "context_hint": "16k",
+      "task_file": "tasks/task_038.md",
+      "created_at": "2026-05-02T12:31:00.000Z",
+      "updated_at": "2026-05-02T12:31:00.000Z",
+      "dependencies": [],
+      "dependency_type": "all",
+      "deadline": null,
+      "ralph": {
+        "iteration": 0,
+        "max_iterations": 5,
+        "quality_checks": {
+          "tests_passed": false,
+          "lint_passed": false,
+          "acceptance_met": false
+        },
+        "issues": [],
+        "optimization_history": []
+      }
+    },
+    {
+      "id": "task_039",
+      "description": "Score v2 → v1 编译器（V2Compiler）",
+      "template": "task",
+      "priority": "P0",
+      "status": "pending",
+      "parent_id": null,
+      "output_req": "16k",
+      "context_hint": "20k",
+      "task_file": "tasks/task_039.md",
+      "created_at": "2026-05-02T12:31:00.000Z",
+      "updated_at": "2026-05-02T12:31:00.000Z",
+      "dependencies": [
+        "task_038"
+      ],
+      "dependency_type": "all",
+      "deadline": null,
+      "ralph": {
+        "iteration": 0,
+        "max_iterations": 7,
+        "quality_checks": {
+          "tests_passed": false,
+          "lint_passed": false,
+          "acceptance_met": false
+        },
+        "issues": [],
+        "optimization_history": []
+      }
+    },
+    {
+      "id": "task_040",
+      "description": "AGENT.md 创作指南 + Score v2 示例乐谱",
+      "template": "task",
+      "priority": "P1",
+      "status": "pending",
+      "parent_id": null,
+      "output_req": "12k",
+      "context_hint": "16k",
+      "task_file": "tasks/task_040.md",
+      "created_at": "2026-05-02T12:31:00.000Z",
+      "updated_at": "2026-05-02T12:31:00.000Z",
+      "dependencies": [
+        "task_038"
+      ],
+      "dependency_type": "all",
+      "deadline": null,
+      "ralph": {
+        "iteration": 0,
+        "max_iterations": 3,
+        "quality_checks": {
+          "tests_passed": false,
+          "lint_passed": false,
+          "acceptance_met": false
+        },
+        "issues": [],
+        "optimization_history": []
+      }
+    },
+    {
+      "id": "task_041",
+      "description": "引擎 P0 性能优化（Pink Noise 缓存 + 清理机制）",
+      "template": "task",
+      "priority": "P0",
+      "status": "pending",
+      "parent_id": null,
+      "output_req": "8k",
+      "context_hint": "12k",
+      "task_file": "tasks/task_041.md",
+      "created_at": "2026-05-02T12:31:00.000Z",
+      "updated_at": "2026-05-02T12:31:00.000Z",
+      "dependencies": [],
+      "dependency_type": "all",
+      "deadline": null,
+      "ralph": {
+        "iteration": 0,
+        "max_iterations": 3,
+        "quality_checks": {
+          "tests_passed": false,
+          "lint_passed": false,
+          "acceptance_met": false
+        },
+        "issues": [],
+        "optimization_history": []
+      }
+    },
+    {
+      "id": "task_042",
+      "description": "BGMEngine v2 集成（支持 ScoreV2 播放）",
+      "template": "task",
+      "priority": "P0",
+      "status": "pending",
+      "parent_id": null,
+      "output_req": "16k",
+      "context_hint": "20k",
+      "task_file": "tasks/task_042.md",
+      "created_at": "2026-05-02T12:31:00.000Z",
+      "updated_at": "2026-05-02T12:31:00.000Z",
+      "dependencies": [
+        "task_038",
+        "task_039",
+        "task_041"
+      ],
+      "dependency_type": "all",
+      "deadline": null,
+      "ralph": {
+        "iteration": 0,
+        "max_iterations": 5,
+        "quality_checks": {
+          "tests_passed": false,
+          "lint_passed": false,
+          "acceptance_met": false
+        },
+        "issues": [],
+        "optimization_history": []
+      }
+    },
+    {
+      "id": "task_043",
+      "description": "v1 → v2 转换器 + Hero's March v2 迁移",
+      "template": "task",
+      "priority": "P1",
+      "status": "pending",
+      "parent_id": null,
+      "output_req": "16k",
+      "context_hint": "20k",
+      "task_file": "tasks/task_043.md",
+      "created_at": "2026-05-02T12:31:00.000Z",
+      "updated_at": "2026-05-02T12:31:00.000Z",
+      "dependencies": [
+        "task_038",
+        "task_039"
+      ],
+      "dependency_type": "all",
+      "deadline": null,
+      "ralph": {
+        "iteration": 0,
+        "max_iterations": 7,
+        "quality_checks": {
+          "tests_passed": false,
+          "lint_passed": false,
+          "acceptance_met": false
+        },
+        "issues": [],
+        "optimization_history": []
+      }
+    },
+    {
+      "id": "task_044",
+      "description": "Score v2 文档更新 + Homepage v2 Demo",
+      "template": "task",
+      "priority": "P2",
+      "status": "pending",
+      "parent_id": null,
+      "output_req": "12k",
+      "context_hint": "16k",
+      "task_file": "tasks/task_044.md",
+      "created_at": "2026-05-02T12:31:00.000Z",
+      "updated_at": "2026-05-02T12:31:00.000Z",
+      "dependencies": [
+        "task_040",
+        "task_042",
+        "task_043"
+      ],
+      "dependency_type": "all",
+      "deadline": null,
+      "ralph": {
+        "iteration": 0,
+        "max_iterations": 3,
+        "quality_checks": {
+          "tests_passed": false,
+          "lint_passed": false,
+          "acceptance_met": false
+        },
+        "issues": [],
+        "optimization_history": []
+      }
     }
   ]
 }

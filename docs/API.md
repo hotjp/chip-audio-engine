@@ -20,6 +20,9 @@
 - [MusicUtils](#musicutils)
 - [FocusManager](#focusmanager)
 - [ScoreValidator](#scorevalidator)
+- [ScoreV2](#scorev2)
+- [V2Compiler](#v2compiler)
+- [V1ToV2Converter](#v1tov2converter)
 - [EventEmitter](#eventemitter)
 - [SoundPackLoader](#soundpackloader)
 
@@ -987,6 +990,28 @@ bgm.loadScore({ id: 'boss', name: 'Boss', bpm: 140, tracks: [] });
 bgm.loadNewScore({ id: 'boss', name: 'Boss', bpm: 140, timbrePack: 'sfc', tracks: [] });
 ```
 
+#### `loadV2Score(score: ScoreV2): void`
+
+加载 v2 格式乐谱。内部通过 `V2Compiler` 编译为 v1 后存储。
+
+```typescript
+bgm.loadV2Score({
+  $schema: 'cae-score-v2',
+  meta: { title: 'Boss', bpm: 140, timeSignature: [4, 4], timbrePack: 'sfc' },
+  tracks: [{ name: 'lead', timbre: 'lead' }],
+  chapters: [{ id: 'main', bars: 16 }],
+  score: [{ chapter: 'main', bar: 1, t: { lead: [['C4', 'q', 1]] } }],
+});
+```
+
+#### `playV2(score: ScoreV2, options?: { fadeIn?: number }): void`
+
+直接播放 v2 乐谱（无需预先用 `loadV2Score` 加载）。
+
+```typescript
+bgm.playV2(v2Score, { fadeIn: 500 });
+```
+
 #### `loadScores(scores: BGMScore[]): void`
 
 批量加载 BGM 乐谱。
@@ -1341,6 +1366,238 @@ if (!result.valid) {
 - `note.duration`：必须为时值符号或正数毫秒
 - `note.velocity`：`[0, 1]`
 - `note.offset`：`[-100, 100]`
+
+---
+
+## ScoreV2Validator
+
+校验 Score v2 JSON 对象是否语法正确。
+
+```typescript
+import { validateScoreV2 } from 'chip-audio-engine/dist/music/ScoreV2Validator.js';
+```
+
+### 函数
+
+#### `validateScoreV2(score: unknown): ValidationResult`
+
+校验一个 ScoreV2 对象。返回包含所有发现错误的结果。
+
+```typescript
+const result = validateScoreV2(v2Json);
+if (!result.valid) {
+  for (const err of result.errors) {
+    console.error(`${err.path}: ${err.message}`);
+  }
+}
+```
+
+**校验规则摘要：**
+
+- `$schema`：必须为 `"cae-score-v2"`
+- `meta.title`：必填非空字符串
+- `meta.bpm`：必填数字，`[20, 300]`
+- `meta.timeSignature`：必填 `[number, number]`，正整数
+- `meta.timbrePack`：必填非空字符串
+- `meta.complexity`：若存在必须为 `minimal` / `standard` / `extended`
+- `tracks`：必填非空数组
+- `track.name`：必填唯一字符串
+- `track.timbre`：必填非空字符串
+- `track.volume`：若存在必须为 `[0, 1]`
+- `track.perf.layback`：若存在必须为数字
+- `track.perf.humanize`：若存在必须为 `[0, 1]`
+- `track.perf.swing`：若存在必须为 `[0, 1]`
+- `track.perf.velocity.curve`：`linear` 或 `step`
+- `track.perf.velocity.points`：`[anchor, value]` 数组
+- `chapters`：必填非空数组
+- `chapter.id`：必填唯一字符串
+- `chapter.bars`：必填正整数
+- `chapter.transition`：若存在必须为非负整数
+- `patterns`：若存在必须为对象
+- `pattern` 内容：按 track 分组的 `NoteTuple[]`
+- `score`：必填数组
+- `bar.chapter`：必须引用已声明的 chapter
+- `bar.bar`：必须在 chapter 的小节范围内
+- `bar.ref`：若存在必须引用本 chapter 内有效小节
+- `bar.silence`：若存在必须为 `boolean`
+- `bar.blend.next`：必须引用已声明的 chapter
+- `bar.blend.weight`：`[0, 1]`
+- `bar.t` / `bar.override`：track 内容必须为 `NoteTuple[]`、字符串 pattern 引用或 `PatternRef` 对象
+- `NoteTuple`：`[note, duration, beat?]`，`note` 为 `"R"` 或音名，`duration` 为合法时值符号
+
+---
+
+## ScoreV2
+
+Score v2 类型定义。v2 是创作格式，解决音轨对齐、断点续写、章节过渡、字面量压缩。
+
+### 类型
+
+```typescript
+interface ScoreV2 {
+  $schema: 'cae-score-v2';
+  meta: ScoreV2Meta;
+  tracks: ScoreV2Track[];
+  patterns?: { [name: string]: PatternDef };
+  chapters: Chapter[];
+  score: Bar[];
+}
+
+interface ScoreV2Meta {
+  $schema: 'cae-score-v2';
+  title: string;
+  bpm: number;
+  timeSignature: [number, number];
+  timbrePack: string;
+  complexity?: 'minimal' | 'standard' | 'extended';
+  duration?: string;
+}
+
+interface ScoreV2Track {
+  name: string;
+  timbre: string;
+  perf?: Performance;
+  volume?: number;
+  mute?: boolean;
+}
+
+interface Performance {
+  layback?: number;
+  humanize?: number;
+  swing?: number;
+  velocity?: VelocityCurve;
+}
+
+interface VelocityCurve {
+  curve: 'linear' | 'step';
+  points: [string | number, number][];
+}
+
+interface Chapter {
+  id: string;
+  bars: number;
+  transition?: number;
+  mood?: string;
+}
+
+interface Bar {
+  chapter: string;
+  bar: number;
+  t?: { [trackName: string]: BarTrackContent };
+  ref?: number;
+  override?: { [trackName: string]: BarTrackContent };
+  silence?: boolean;
+  blend?: BlendDef;
+}
+
+type BarTrackContent = NoteTuple[] | string | PatternRef;
+
+type NoteTuple = [string, string, (string | number)?];
+
+interface PatternDef {
+  [trackName: string]: NoteTuple[];
+}
+
+interface PatternRef {
+  $ref: string;
+  transpose?: number;
+  velocity?: number;
+}
+
+interface BlendDef {
+  next: string;
+  weight: number;
+}
+```
+
+### 字段说明
+
+| 字段 | 说明 |
+|------|------|
+| `meta` | 全局元数据：标题、BPM、拍号、音色包 |
+| `tracks` | 音轨声明，含演奏参数 `perf` |
+| `patterns` | 可复用的音符片段库 |
+| `chapters` | 章节定义，`bars` 为小节数，`transition` 为过渡重叠区 |
+| `score` | 小节序列，`t` 为 track 内容，`ref` 复用本 chapter 小节 |
+| `silence` | 全静音小节 |
+| `blend` | 过渡混合定义，`next` 为下一 chapter，`weight` 为混合权重 |
+
+---
+
+## V2Compiler
+
+Score v2 → v1 编译器。将 v2 的小节网格、pattern 引用、velocity 曲线展开为 v1 的扁平格式。
+
+```typescript
+import { V2Compiler } from 'chip-audio-engine/dist/music/V2Compiler.js';
+```
+
+### 静态方法
+
+#### `compile(v2: ScoreV2): Score`
+
+编译 ScoreV2 为 v1 Score。
+
+```typescript
+const v1Score = V2Compiler.compile(v2Score);
+```
+
+### 实例方法
+
+#### `compile(v2: ScoreV2): Score`
+
+实例方法，功能与静态方法相同。
+
+```typescript
+const compiler = new V2Compiler();
+const v1Score = compiler.compile(v2Score);
+```
+
+---
+
+## V1ToV2Converter
+
+v1 Score → v2 ScoreV2 转换器。将扁平的 v1 音符序列转换为 v2 的小节网格、pattern 引用和 velocity 曲线。
+
+```typescript
+import { V1ToV2Converter } from 'chip-audio-engine/dist/music/V1ToV2Converter.js';
+```
+
+### 类型
+
+```typescript
+interface ConvertOptions {
+  beatsPerBar?: number;
+  timeSignature?: [number, number];
+  chapters?: Chapter[];
+  complexity?: 'minimal' | 'standard' | 'extended';
+  duration?: string;
+  minPatternRepeats?: number;
+}
+```
+
+### 静态方法
+
+#### `convert(score: Score, options?: ConvertOptions): ScoreV2`
+
+转换 v1 Score 为 v2 ScoreV2。
+
+```typescript
+const v2 = V1ToV2Converter.convert(v1Score, {
+  beatsPerBar: 4,
+  timeSignature: [4, 4],
+  chapters: [
+    { id: 'intro', bars: 8, transition: 0 },
+    { id: 'verse', bars: 16, transition: 2 },
+  ],
+  complexity: 'standard',
+  minPatternRepeats: 3,
+});
+```
+
+### 自动章节检测
+
+若未提供 `chapters`，转换器会根据音符密度自动检测章节边界。
 
 ---
 
