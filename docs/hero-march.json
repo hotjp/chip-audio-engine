@@ -74,76 +74,100 @@
           "duration": "q"
         },
         {
-          "note": null,
-          "duration": "e"
+          "note": "G3",
+          "duration": "q"
+        },
+        {
+          "note": "D4",
+          "duration": "h"
         },
         {
           "note": "G3",
-          "duration": "e"
+          "duration": "q"
+        },
+        {
+          "note": "G3",
+          "duration": "q"
         },
         {
           "note": "D4",
           "duration": "h"
-        },
-        {
-          "note": "D4",
-          "duration": "q"
         },
         {
           "note": "Eb4",
           "duration": "q"
         },
         {
-          "note": "D4",
-          "duration": "h"
-        },
-        {
-          "note": "A3",
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": "D4",
-          "duration": "h"
-        },
-        {
-          "note": "D4",
-          "duration": "q"
-        },
-        {
           "note": "Eb4",
           "duration": "q"
-        },
-        {
-          "note": "D4",
-          "duration": "h"
         },
         {
           "note": "Bb3",
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
+          "duration": "h"
         },
         {
           "note": "G3",
           "duration": "q"
         },
         {
-          "note": null,
-          "duration": "e"
-        },
-        {
           "note": "G3",
-          "duration": "e"
+          "duration": "q"
         },
         {
           "note": "D4",
           "duration": "h"
+        },
+        {
+          "note": "F4",
+          "duration": "q"
+        },
+        {
+          "note": "Eb4",
+          "duration": "q"
+        },
+        {
+          "note": "D4",
+          "duration": "h"
+        },
+        {
+          "note": "C4",
+          "duration": "q"
+        },
+        {
+          "note": "D4",
+          "duration": "q"
+        },
+        {
+          "note": "G3",
+          "duration": "h"
+        },
+        {
+          "note": "G4",
+          "duration": "q"
+        },
+        {
+          "note": "G4",
+          "duration": "q"
+        },
+        {
+          "note": "D4",
+          "duration": "h"
+        },
+        {
+          "note": "Eb4",
+          "duration": "q"
+        },
+        {
+          "note": "Eb4",
+          "duration": "q"
+        },
+        {
+          "note": "Bb3",
+          "duration": "h"
+        },
+        {
+          "note": "C4",
+          "duration": "q"
         },
         {
           "note": "D4",
@@ -155,19 +179,15 @@
         },
         {
           "note": "F4",
-          "duration": "h"
-        },
-        {
-          "note": "G4",
-          "duration": "h"
-        },
-        {
-          "note": "G4",
           "duration": "q"
+        },
+        {
+          "note": "G4",
+          "duration": "h"
         },
         {
           "note": "F4",
-          "duration": "q"
+          "duration": "h"
         },
         {
           "note": "Eb4",
@@ -179,7 +199,7 @@
         },
         {
           "note": "C4",
-          "duration": "h"
+          "duration": "q"
         },
         {
           "note": "Bb3",
@@ -187,138 +207,70 @@
         },
         {
           "note": "C4",
+          "duration": "h"
+        },
+        {
+          "note": "D4",
+          "duration": "h"
+        },
+        {
+          "note": "G3",
+          "duration": "q"
+        },
+        {
+          "note": "G3",
+          "duration": "q"
+        },
+        {
+          "note": "D4",
+          "duration": "h"
+        },
+        {
+          "note": "Eb4",
+          "duration": "q"
+        },
+        {
+          "note": "Eb4",
+          "duration": "q"
+        },
+        {
+          "note": "Bb3",
+          "duration": "h"
+        },
+        {
+          "note": "G4",
+          "duration": "h"
+        },
+        {
+          "note": "F4",
+          "duration": "q"
+        },
+        {
+          "note": "Eb4",
           "duration": "q"
         },
         {
           "note": "D4",
           "duration": "w"
-        },
-        {
-          "note": "D4",
-          "duration": "e"
-        },
-        {
-          "note": "Eb4",
-          "duration": "e"
-        },
-        {
-          "note": "F4",
-          "duration": "e"
-        },
-        {
-          "note": "G4",
-          "duration": "e"
-        },
-        {
-          "note": "A4",
-          "duration": "q"
-        },
-        {
-          "note": "G4",
-          "duration": "q"
-        },
-        {
-          "note": "F4",
-          "duration": "h"
-        },
-        {
-          "note": "Eb4",
-          "duration": "q"
-        },
-        {
-          "note": "D4",
-          "duration": "q"
-        },
-        {
-          "note": "G4",
-          "duration": "q"
-        },
-        {
-          "note": "F4",
-          "duration": "q"
-        },
-        {
-          "note": "Eb4",
-          "duration": "q"
-        },
-        {
-          "note": "D4",
-          "duration": "q"
-        },
-        {
-          "note": "Eb4",
-          "duration": "h"
-        },
-        {
-          "note": "D4",
-          "duration": "q"
-        },
-        {
-          "note": "C4",
-          "duration": "q"
         },
         {
           "note": "Bb3",
           "duration": "w"
         },
         {
-          "note": null,
+          "note": "D4",
+          "duration": "w"
+        },
+        {
+          "note": "G4",
           "duration": "h"
         },
         {
-          "note": "G3",
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "G3",
-          "duration": "e"
-        },
-        {
-          "note": "D4",
-          "duration": "q"
-        },
-        {
-          "note": "D4",
-          "duration": "q"
+          "note": "F4",
+          "duration": "h"
         },
         {
           "note": "Eb4",
-          "duration": "q"
-        },
-        {
-          "note": "F4",
-          "duration": "q"
-        },
-        {
-          "note": "G4",
-          "duration": "h"
-        },
-        {
-          "note": "A4",
-          "duration": "h"
-        },
-        {
-          "note": "Bb4",
-          "duration": "q"
-        },
-        {
-          "note": "A4",
-          "duration": "q"
-        },
-        {
-          "note": "G4",
-          "duration": "q"
-        },
-        {
-          "note": "F4",
-          "duration": "q"
-        },
-        {
-          "note": "G4",
           "duration": "w"
         },
         {
@@ -326,87 +278,23 @@
           "duration": "h"
         },
         {
-          "note": "G4",
+          "note": "C4",
           "duration": "h"
         },
         {
-          "note": "F4",
-          "duration": "q"
-        },
-        {
-          "note": "Eb4",
-          "duration": "q"
-        },
-        {
-          "note": "D4",
+          "note": "Bb3",
           "duration": "w"
-        },
-        {
-          "note": "G4",
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "G4",
-          "duration": "e"
-        },
-        {
-          "note": "Bb4",
-          "duration": "h"
-        },
-        {
-          "note": "A4",
-          "duration": "q"
-        },
-        {
-          "note": "G4",
-          "duration": "q"
-        },
-        {
-          "note": "F4",
-          "duration": "h"
-        },
-        {
-          "note": "Eb4",
-          "duration": "q"
-        },
-        {
-          "note": "D4",
-          "duration": "q"
-        },
-        {
-          "note": "G4",
-          "duration": "w"
-        },
-        {
-          "note": null,
-          "duration": "h"
-        },
-        {
-          "note": "D4",
-          "duration": "q"
-        },
-        {
-          "note": "Eb4",
-          "duration": "q"
-        },
-        {
-          "note": "G4",
-          "duration": "h"
-        },
-        {
-          "note": "D4",
-          "duration": "h"
-        },
-        {
-          "note": "G4",
-          "duration": "h"
         },
         {
           "note": "G3",
+          "duration": "w"
+        },
+        {
+          "note": null,
+          "duration": "w"
+        },
+        {
+          "note": null,
           "duration": "w"
         },
         {
@@ -508,6 +396,30 @@
         {
           "note": "G4",
           "duration": "q"
+        },
+        {
+          "note": "G4",
+          "duration": "q"
+        },
+        {
+          "note": "G4",
+          "duration": "q"
+        },
+        {
+          "note": "D4",
+          "duration": "h"
+        },
+        {
+          "note": "G4",
+          "duration": "q"
+        },
+        {
+          "note": "G4",
+          "duration": "q"
+        },
+        {
+          "note": "D5",
+          "duration": "h"
         },
         {
           "note": "Bb4",
@@ -670,20 +582,16 @@
           "duration": "e"
         },
         {
-          "note": "D5",
+          "note": "G4",
           "duration": "q"
         },
         {
-          "note": "F5",
-          "duration": "q"
-        },
-        {
-          "note": "Eb5",
+          "note": "G4",
           "duration": "q"
         },
         {
           "note": "D5",
-          "duration": "q"
+          "duration": "h"
         },
         {
           "note": "Bb4",
@@ -694,100 +602,12 @@
           "duration": "h"
         },
         {
-          "note": "D5",
-          "duration": "q"
-        },
-        {
-          "note": "Bb4",
-          "duration": "q"
-        },
-        {
           "note": "G4",
-          "duration": "h"
-        },
-        {
-          "note": "F4",
           "duration": "q"
         },
         {
           "note": "G4",
           "duration": "q"
-        },
-        {
-          "note": "Bb4",
-          "duration": "h"
-        },
-        {
-          "note": "D4",
-          "duration": "h"
-        },
-        {
-          "note": "G4",
-          "duration": "h"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": "G3",
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "G3",
-          "duration": "e"
-        },
-        {
-          "note": "D4",
-          "duration": "h"
-        },
-        {
-          "note": null,
-          "duration": "h"
-        },
-        {
-          "note": "D4",
-          "duration": "w"
-        },
-        {
-          "note": "G4",
-          "duration": "w"
-        },
-        {
-          "note": "G4",
-          "duration": "w"
-        },
-        {
-          "note": null,
-          "duration": "w"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "w"
-        },
-        {
-          "note": null,
-          "duration": "w"
-        },
-        {
-          "note": null,
-          "duration": "w"
-        },
-        {
-          "note": null,
-          "duration": "w"
-        },
-        {
-          "note": "Bb3",
-          "duration": "h"
         },
         {
           "note": "D4",
@@ -795,35 +615,11 @@
         },
         {
           "note": "F4",
-          "duration": "h"
-        },
-        {
-          "note": "G4",
-          "duration": "h"
-        },
-        {
-          "note": "A4",
-          "duration": "h"
-        },
-        {
-          "note": "Bb4",
-          "duration": "h"
-        },
-        {
-          "note": "A4",
-          "duration": "h"
-        },
-        {
-          "note": "G4",
-          "duration": "h"
-        },
-        {
-          "note": "F4",
-          "duration": "h"
+          "duration": "q"
         },
         {
           "note": "Eb4",
-          "duration": "h"
+          "duration": "q"
         },
         {
           "note": "D4",
@@ -831,235 +627,39 @@
         },
         {
           "note": "C4",
+          "duration": "q"
+        },
+        {
+          "note": "D4",
+          "duration": "q"
+        },
+        {
+          "note": "G3",
           "duration": "h"
         },
         {
-          "note": "Bb4",
+          "note": "G3",
+          "duration": "q"
+        },
+        {
+          "note": "G3",
+          "duration": "q"
+        },
+        {
+          "note": "D4",
           "duration": "h"
         },
         {
-          "note": "D5",
-          "duration": "h"
-        },
-        {
-          "note": "F5",
-          "duration": "h"
-        },
-        {
-          "note": "Bb5",
-          "duration": "h"
-        },
-        {
-          "note": "D5",
-          "duration": "h"
-        },
-        {
-          "note": "Bb4",
-          "duration": "h"
-        },
-        {
-          "note": "A4",
-          "duration": "h"
-        },
-        {
-          "note": "G4",
-          "duration": "h"
-        },
-        {
-          "note": "A4",
-          "duration": "h"
-        },
-        {
-          "note": "C5",
-          "duration": "h"
-        },
-        {
-          "note": "Eb5",
-          "duration": "h"
-        },
-        {
-          "note": "G5",
-          "duration": "h"
-        },
-        {
-          "note": "F5",
-          "duration": "h"
-        },
-        {
-          "note": "D5",
-          "duration": "h"
-        },
-        {
-          "note": "Bb4",
-          "duration": "h"
-        },
-        {
-          "note": "A4",
-          "duration": "h"
-        },
-        {
-          "note": "Bb4",
-          "duration": "h"
-        },
-        {
-          "note": "D5",
-          "duration": "h"
-        },
-        {
-          "note": "F5",
-          "duration": "h"
-        },
-        {
-          "note": "G5",
-          "duration": "h"
-        },
-        {
-          "note": "A5",
-          "duration": "h"
-        },
-        {
-          "note": "Bb5",
-          "duration": "h"
-        },
-        {
-          "note": "A5",
-          "duration": "h"
-        },
-        {
-          "note": "G5",
-          "duration": "h"
-        },
-        {
-          "note": "F5",
-          "duration": "h"
-        },
-        {
-          "note": "Eb5",
-          "duration": "h"
-        },
-        {
-          "note": "D5",
-          "duration": "h"
-        },
-        {
-          "note": "C5",
-          "duration": "h"
-        },
-        {
-          "note": "Bb4",
-          "duration": "w"
-        },
-        {
-          "note": "G4",
+          "note": "D4",
           "duration": "w"
         },
         {
           "note": "G3",
-          "duration": "q"
+          "duration": "w"
         },
         {
           "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "G3",
-          "duration": "e"
-        },
-        {
-          "note": "D4",
-          "duration": "h"
-        },
-        {
-          "note": "D4",
-          "duration": "q"
-        },
-        {
-          "note": "Eb4",
-          "duration": "q"
-        },
-        {
-          "note": "D4",
-          "duration": "h"
-        },
-        {
-          "note": "A3",
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": "D4",
-          "duration": "h"
-        },
-        {
-          "note": "D4",
-          "duration": "q"
-        },
-        {
-          "note": "Eb4",
-          "duration": "q"
-        },
-        {
-          "note": "D4",
-          "duration": "h"
-        },
-        {
-          "note": "Bb3",
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": "G3",
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "G3",
-          "duration": "e"
-        },
-        {
-          "note": "D4",
-          "duration": "h"
-        },
-        {
-          "note": "D4",
-          "duration": "q"
-        },
-        {
-          "note": "Eb4",
-          "duration": "q"
-        },
-        {
-          "note": "F4",
-          "duration": "h"
-        },
-        {
-          "note": "G4",
-          "duration": "h"
-        },
-        {
-          "note": "G4",
-          "duration": "e"
-        },
-        {
-          "note": "F4",
-          "duration": "e"
-        },
-        {
-          "note": "Eb4",
-          "duration": "e"
-        },
-        {
-          "note": "D4",
-          "duration": "e"
+          "duration": "w"
         },
         {
           "note": null,
@@ -1068,6 +668,38 @@
         {
           "note": null,
           "duration": "w"
+        },
+        {
+          "note": null,
+          "duration": "w"
+        },
+        {
+          "note": null,
+          "duration": "w"
+        },
+        {
+          "note": null,
+          "duration": "w"
+        },
+        {
+          "note": null,
+          "duration": "w"
+        },
+        {
+          "note": null,
+          "duration": "w"
+        },
+        {
+          "note": null,
+          "duration": "w"
+        },
+        {
+          "note": null,
+          "duration": "w"
+        },
+        {
+          "note": null,
+          "duration": "h"
         }
       ]
     },
@@ -1082,6 +714,18 @@
           "duration": "w"
         },
         {
+          "note": "G2",
+          "duration": "w"
+        },
+        {
+          "note": "G2",
+          "duration": "w"
+        },
+        {
+          "note": "G2",
+          "duration": "w"
+        },
+        {
           "note": "D2",
           "duration": "w"
         },
@@ -1090,7 +734,11 @@
           "duration": "w"
         },
         {
-          "note": "G2",
+          "note": "Bb2",
+          "duration": "w"
+        },
+        {
+          "note": "Bb2",
           "duration": "w"
         },
         {
@@ -1099,63 +747,11 @@
         },
         {
           "note": "G2",
-          "duration": "h"
+          "duration": "w"
         },
         {
           "note": "F2",
-          "duration": "h"
-        },
-        {
-          "note": "Eb2",
           "duration": "w"
-        },
-        {
-          "note": "D2",
-          "duration": "w"
-        },
-        {
-          "note": "D2",
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": "D2",
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": "D2",
-          "duration": "w"
-        },
-        {
-          "note": "Bb2",
-          "duration": "w"
-        },
-        {
-          "note": "G2",
-          "duration": "h"
-        },
-        {
-          "note": "G2",
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": "G2",
-          "duration": "h"
-        },
-        {
-          "note": "F2",
-          "duration": "h"
         },
         {
           "note": "Eb2",
@@ -1170,51 +766,19 @@
           "duration": "w"
         },
         {
-          "note": "D2",
-          "duration": "w"
-        },
-        {
-          "note": "G2",
+          "note": "Eb2",
           "duration": "w"
         },
         {
           "note": "Bb2",
           "duration": "w"
-        },
-        {
-          "note": "D2",
-          "duration": "w"
-        },
-        {
-          "note": "G2",
-          "duration": "w"
-        },
-        {
-          "note": "D2",
-          "duration": "h"
         },
         {
           "note": "C2",
-          "duration": "h"
-        },
-        {
-          "note": "D2",
-          "duration": "w"
-        },
-        {
-          "note": "G2",
           "duration": "w"
         },
         {
           "note": "D2",
-          "duration": "h"
-        },
-        {
-          "note": "Eb2",
-          "duration": "h"
-        },
-        {
-          "note": "D2",
           "duration": "w"
         },
         {
@@ -1223,67 +787,47 @@
         },
         {
           "note": "G2",
-          "duration": "h"
+          "duration": "w"
+        },
+        {
+          "note": null,
+          "duration": "w"
+        },
+        {
+          "note": null,
+          "duration": "w"
         },
         {
           "note": "G2",
-          "duration": "h"
+          "duration": "w"
         },
         {
           "note": "G2",
-          "duration": "h"
+          "duration": "w"
         },
         {
           "note": "G2",
-          "duration": "h"
+          "duration": "w"
         },
         {
           "note": "G2",
-          "duration": "h"
+          "duration": "w"
         },
         {
           "note": "G2",
-          "duration": "h"
+          "duration": "w"
         },
         {
           "note": "G2",
-          "duration": "h"
+          "duration": "w"
         },
         {
           "note": "G2",
-          "duration": "h"
+          "duration": "w"
         },
         {
           "note": "G2",
-          "duration": "h"
-        },
-        {
-          "note": "G2",
-          "duration": "h"
-        },
-        {
-          "note": "G2",
-          "duration": "h"
-        },
-        {
-          "note": "G2",
-          "duration": "h"
-        },
-        {
-          "note": "G2",
-          "duration": "h"
-        },
-        {
-          "note": "G2",
-          "duration": "h"
-        },
-        {
-          "note": "G2",
-          "duration": "h"
-        },
-        {
-          "note": "G2",
-          "duration": "h"
+          "duration": "w"
         },
         {
           "note": "Bb2",
@@ -1694,39 +1238,11 @@
           "duration": "h"
         },
         {
-          "note": "G2",
-          "duration": "h"
-        },
-        {
           "note": "D2",
           "duration": "h"
         },
         {
           "note": "G2",
-          "duration": "w"
-        },
-        {
-          "note": "G2",
-          "duration": "w"
-        },
-        {
-          "note": "D2",
-          "duration": "w"
-        },
-        {
-          "note": "G2",
-          "duration": "w"
-        },
-        {
-          "note": "G2",
-          "duration": "w"
-        },
-        {
-          "note": null,
-          "duration": "w"
-        },
-        {
-          "note": null,
           "duration": "h"
         },
         {
@@ -1734,134 +1250,6 @@
           "duration": "w"
         },
         {
-          "note": "D2",
-          "duration": "w"
-        },
-        {
-          "note": "Bb2",
-          "duration": "w"
-        },
-        {
-          "note": "Eb2",
-          "duration": "w"
-        },
-        {
-          "note": "C2",
-          "duration": "w"
-        },
-        {
-          "note": "D2",
-          "duration": "w"
-        },
-        {
-          "note": "G2",
-          "duration": "w"
-        },
-        {
-          "note": "G2",
-          "duration": "w"
-        },
-        {
-          "note": "D2",
-          "duration": "w"
-        },
-        {
-          "note": "G2",
-          "duration": "w"
-        },
-        {
-          "note": "G2",
-          "duration": "w"
-        },
-        {
-          "note": "G2",
-          "duration": "w"
-        },
-        {
-          "note": "G2",
-          "duration": "w"
-        },
-        {
-          "note": "G2",
-          "duration": "w"
-        },
-        {
-          "note": "D2",
-          "duration": "w"
-        },
-        {
-          "note": "D2",
-          "duration": "w"
-        },
-        {
-          "note": "D2",
-          "duration": "w"
-        },
-        {
-          "note": "D2",
-          "duration": "w"
-        },
-        {
-          "note": "Eb2",
-          "duration": "w"
-        },
-        {
-          "note": "Eb2",
-          "duration": "w"
-        },
-        {
-          "note": "Eb2",
-          "duration": "w"
-        },
-        {
-          "note": "Eb2",
-          "duration": "w"
-        },
-        {
-          "note": "C2",
-          "duration": "w"
-        },
-        {
-          "note": "C2",
-          "duration": "w"
-        },
-        {
-          "note": "C2",
-          "duration": "w"
-        },
-        {
-          "note": "C2",
-          "duration": "w"
-        },
-        {
-          "note": "G2",
-          "duration": "w"
-        },
-        {
-          "note": "G2",
-          "duration": "w"
-        },
-        {
-          "note": "G2",
-          "duration": "w"
-        },
-        {
-          "note": "G2",
-          "duration": "w"
-        },
-        {
-          "note": "G2",
-          "duration": "w"
-        },
-        {
-          "note": "G2",
-          "duration": "w"
-        },
-        {
-          "note": "G2",
-          "duration": "w"
-        },
-        {
           "note": "G2",
           "duration": "w"
         },
@@ -1872,6 +1260,58 @@
         {
           "note": null,
           "duration": "w"
+        },
+        {
+          "note": null,
+          "duration": "w"
+        },
+        {
+          "note": null,
+          "duration": "w"
+        },
+        {
+          "note": null,
+          "duration": "w"
+        },
+        {
+          "note": null,
+          "duration": "w"
+        },
+        {
+          "note": null,
+          "duration": "w"
+        },
+        {
+          "note": null,
+          "duration": "w"
+        },
+        {
+          "note": null,
+          "duration": "w"
+        },
+        {
+          "note": null,
+          "duration": "w"
+        },
+        {
+          "note": null,
+          "duration": "w"
+        },
+        {
+          "note": null,
+          "duration": "w"
+        },
+        {
+          "note": null,
+          "duration": "w"
+        },
+        {
+          "note": null,
+          "duration": "w"
+        },
+        {
+          "note": null,
+          "duration": "h"
         }
       ]
     },
@@ -1887,11 +1327,11 @@
           "duration": "w"
         },
         {
-          "note": "D3",
+          "note": "G3",
           "duration": "w"
         },
         {
-          "note": "D3",
+          "note": "G3",
           "duration": "w"
         },
         {
@@ -1899,39 +1339,23 @@
           "duration": "w"
         },
         {
-          "note": "G3",
+          "note": "D3",
+          "duration": "w"
+        },
+        {
+          "note": "D3",
           "duration": "w"
         },
         {
           "note": "Bb3",
-          "duration": "h"
-        },
-        {
-          "note": "F3",
-          "duration": "h"
-        },
-        {
-          "note": "Eb3",
-          "duration": "w"
-        },
-        {
-          "note": "D3",
-          "duration": "w"
-        },
-        {
-          "note": "D3",
-          "duration": "w"
-        },
-        {
-          "note": "D3",
-          "duration": "w"
-        },
-        {
-          "note": "G3",
           "duration": "w"
         },
         {
           "note": "Bb3",
+          "duration": "w"
+        },
+        {
+          "note": "G3",
           "duration": "w"
         },
         {
@@ -1955,63 +1379,7 @@
           "duration": "w"
         },
         {
-          "note": "D3",
-          "duration": "w"
-        },
-        {
-          "note": "G3",
-          "duration": "w"
-        },
-        {
-          "note": "Bb3",
-          "duration": "w"
-        },
-        {
-          "note": null,
-          "duration": "w"
-        },
-        {
-          "note": "D3",
-          "duration": "w"
-        },
-        {
-          "note": "C3",
-          "duration": "h"
-        },
-        {
-          "note": "D3",
-          "duration": "h"
-        },
-        {
-          "note": "G3",
-          "duration": "w"
-        },
-        {
-          "note": "G3",
-          "duration": "w"
-        },
-        {
-          "note": "D3",
-          "duration": "h"
-        },
-        {
           "note": "Eb3",
-          "duration": "h"
-        },
-        {
-          "note": "D3",
-          "duration": "w"
-        },
-        {
-          "note": "G3",
-          "duration": "w"
-        },
-        {
-          "note": "G3",
-          "duration": "w"
-        },
-        {
-          "note": "G3",
           "duration": "w"
         },
         {
@@ -2027,7 +1395,55 @@
           "duration": "w"
         },
         {
+          "note": "G3",
+          "duration": "w"
+        },
+        {
+          "note": "G3",
+          "duration": "w"
+        },
+        {
+          "note": "G3",
+          "duration": "w"
+        },
+        {
+          "note": "G3",
+          "duration": "w"
+        },
+        {
+          "note": "G3",
+          "duration": "w"
+        },
+        {
+          "note": "G3",
+          "duration": "w"
+        },
+        {
+          "note": "G3",
+          "duration": "w"
+        },
+        {
+          "note": "G3",
+          "duration": "w"
+        },
+        {
+          "note": "G3",
+          "duration": "w"
+        },
+        {
+          "note": "G3",
+          "duration": "w"
+        },
+        {
+          "note": "G3",
+          "duration": "w"
+        },
+        {
           "note": "D3",
+          "duration": "w"
+        },
+        {
+          "note": "Eb3",
           "duration": "w"
         },
         {
@@ -2063,7 +1479,15 @@
           "duration": "w"
         },
         {
-          "note": null,
+          "note": "G3",
+          "duration": "w"
+        },
+        {
+          "note": "G3",
+          "duration": "w"
+        },
+        {
+          "note": "G3",
           "duration": "w"
         },
         {
@@ -2083,7 +1507,15 @@
           "duration": "w"
         },
         {
-          "note": "Bb3",
+          "note": "G3",
+          "duration": "w"
+        },
+        {
+          "note": "G3",
+          "duration": "w"
+        },
+        {
+          "note": "G3",
           "duration": "w"
         },
         {
@@ -2092,6 +1524,10 @@
         },
         {
           "note": "D3",
+          "duration": "w"
+        },
+        {
+          "note": "G3",
           "duration": "w"
         },
         {
@@ -2107,180 +1543,48 @@
           "duration": "w"
         },
         {
-          "note": "G3",
+          "note": null,
           "duration": "w"
         },
         {
-          "note": "D3",
+          "note": null,
           "duration": "w"
         },
         {
-          "note": "G3",
+          "note": null,
           "duration": "w"
         },
         {
-          "note": "G3",
+          "note": null,
           "duration": "w"
         },
         {
-          "note": "D3",
+          "note": null,
           "duration": "w"
         },
         {
-          "note": "G3",
+          "note": null,
           "duration": "w"
         },
         {
-          "note": "G3",
+          "note": null,
+          "duration": "w"
+        },
+        {
+          "note": null,
+          "duration": "w"
+        },
+        {
+          "note": null,
+          "duration": "w"
+        },
+        {
+          "note": null,
           "duration": "w"
         },
         {
           "note": null,
           "duration": "h"
-        },
-        {
-          "note": "G3",
-          "duration": "w"
-        },
-        {
-          "note": "D3",
-          "duration": "w"
-        },
-        {
-          "note": "Bb3",
-          "duration": "w"
-        },
-        {
-          "note": "Eb3",
-          "duration": "w"
-        },
-        {
-          "note": "C3",
-          "duration": "w"
-        },
-        {
-          "note": "D3",
-          "duration": "w"
-        },
-        {
-          "note": "G3",
-          "duration": "w"
-        },
-        {
-          "note": "G3",
-          "duration": "w"
-        },
-        {
-          "note": "D3",
-          "duration": "w"
-        },
-        {
-          "note": "G3",
-          "duration": "w"
-        },
-        {
-          "note": "G3",
-          "duration": "w"
-        },
-        {
-          "note": "G3",
-          "duration": "w"
-        },
-        {
-          "note": "G3",
-          "duration": "w"
-        },
-        {
-          "note": "G3",
-          "duration": "w"
-        },
-        {
-          "note": "D3",
-          "duration": "w"
-        },
-        {
-          "note": "D3",
-          "duration": "w"
-        },
-        {
-          "note": "D3",
-          "duration": "w"
-        },
-        {
-          "note": "D3",
-          "duration": "w"
-        },
-        {
-          "note": "Eb3",
-          "duration": "w"
-        },
-        {
-          "note": "Eb3",
-          "duration": "w"
-        },
-        {
-          "note": "Eb3",
-          "duration": "w"
-        },
-        {
-          "note": "Eb3",
-          "duration": "w"
-        },
-        {
-          "note": "C3",
-          "duration": "w"
-        },
-        {
-          "note": "C3",
-          "duration": "w"
-        },
-        {
-          "note": "C3",
-          "duration": "w"
-        },
-        {
-          "note": "C3",
-          "duration": "w"
-        },
-        {
-          "note": "G3",
-          "duration": "w"
-        },
-        {
-          "note": "G3",
-          "duration": "w"
-        },
-        {
-          "note": "G3",
-          "duration": "w"
-        },
-        {
-          "note": "G3",
-          "duration": "w"
-        },
-        {
-          "note": "G3",
-          "duration": "w"
-        },
-        {
-          "note": "G3",
-          "duration": "w"
-        },
-        {
-          "note": "G3",
-          "duration": "w"
-        },
-        {
-          "note": "G3",
-          "duration": "w"
-        },
-        {
-          "note": "G3",
-          "duration": "w"
-        },
-        {
-          "note": "G3",
-          "duration": "w"
         }
       ]
     },
@@ -2725,715 +2029,11 @@
         },
         {
           "note": null,
-          "duration": "q"
+          "duration": "w"
         },
         {
           "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": "G4",
-          "duration": "e"
-        },
-        {
-          "note": "Bb4",
-          "duration": "e"
-        },
-        {
-          "note": "D5",
-          "duration": "e"
-        },
-        {
-          "note": "G5",
-          "duration": "e"
-        },
-        {
-          "note": "D5",
-          "duration": "e"
-        },
-        {
-          "note": "Bb4",
-          "duration": "e"
-        },
-        {
-          "note": "G4",
-          "duration": "e"
-        },
-        {
-          "note": "D5",
-          "duration": "e"
-        },
-        {
-          "note": "G4",
-          "duration": "e"
-        },
-        {
-          "note": "Bb4",
-          "duration": "e"
-        },
-        {
-          "note": "D5",
-          "duration": "e"
-        },
-        {
-          "note": "G5",
-          "duration": "e"
-        },
-        {
-          "note": "D5",
-          "duration": "e"
-        },
-        {
-          "note": "Bb4",
-          "duration": "e"
-        },
-        {
-          "note": "G4",
-          "duration": "e"
-        },
-        {
-          "note": "D5",
-          "duration": "e"
-        },
-        {
-          "note": "Bb4",
-          "duration": "e"
-        },
-        {
-          "note": "D5",
-          "duration": "e"
-        },
-        {
-          "note": "F5",
-          "duration": "e"
-        },
-        {
-          "note": "Bb5",
-          "duration": "e"
-        },
-        {
-          "note": "F5",
-          "duration": "e"
-        },
-        {
-          "note": "D5",
-          "duration": "e"
-        },
-        {
-          "note": "Bb4",
-          "duration": "e"
-        },
-        {
-          "note": "F5",
-          "duration": "e"
-        },
-        {
-          "note": "Bb4",
-          "duration": "e"
-        },
-        {
-          "note": "D5",
-          "duration": "e"
-        },
-        {
-          "note": "F5",
-          "duration": "e"
-        },
-        {
-          "note": "Bb5",
-          "duration": "e"
-        },
-        {
-          "note": "F5",
-          "duration": "e"
-        },
-        {
-          "note": "D5",
-          "duration": "e"
-        },
-        {
-          "note": "Bb4",
-          "duration": "e"
-        },
-        {
-          "note": "F5",
-          "duration": "e"
-        },
-        {
-          "note": "D4",
-          "duration": "e"
-        },
-        {
-          "note": "F4",
-          "duration": "e"
-        },
-        {
-          "note": "A4",
-          "duration": "e"
-        },
-        {
-          "note": "D5",
-          "duration": "e"
-        },
-        {
-          "note": "A4",
-          "duration": "e"
-        },
-        {
-          "note": "F4",
-          "duration": "e"
-        },
-        {
-          "note": "D4",
-          "duration": "e"
-        },
-        {
-          "note": "A4",
-          "duration": "e"
-        },
-        {
-          "note": "D4",
-          "duration": "e"
-        },
-        {
-          "note": "F4",
-          "duration": "e"
-        },
-        {
-          "note": "A4",
-          "duration": "e"
-        },
-        {
-          "note": "D5",
-          "duration": "e"
-        },
-        {
-          "note": "A4",
-          "duration": "e"
-        },
-        {
-          "note": "F4",
-          "duration": "e"
-        },
-        {
-          "note": "D4",
-          "duration": "e"
-        },
-        {
-          "note": "A4",
-          "duration": "e"
-        },
-        {
-          "note": "G4",
-          "duration": "e"
-        },
-        {
-          "note": "Bb4",
-          "duration": "e"
-        },
-        {
-          "note": "D5",
-          "duration": "e"
-        },
-        {
-          "note": "G5",
-          "duration": "e"
-        },
-        {
-          "note": "D5",
-          "duration": "e"
-        },
-        {
-          "note": "Bb4",
-          "duration": "e"
-        },
-        {
-          "note": "G4",
-          "duration": "e"
-        },
-        {
-          "note": "Bb4",
-          "duration": "e"
-        },
-        {
-          "note": "G4",
-          "duration": "e"
-        },
-        {
-          "note": "Bb4",
-          "duration": "e"
-        },
-        {
-          "note": "D5",
-          "duration": "e"
-        },
-        {
-          "note": "G5",
-          "duration": "e"
-        },
-        {
-          "note": "D5",
-          "duration": "e"
-        },
-        {
-          "note": "Bb4",
-          "duration": "e"
-        },
-        {
-          "note": "G4",
-          "duration": "e"
-        },
-        {
-          "note": "Bb4",
-          "duration": "e"
-        },
-        {
-          "note": "G4",
-          "duration": "e"
-        },
-        {
-          "note": "Bb4",
-          "duration": "e"
-        },
-        {
-          "note": "D5",
-          "duration": "e"
-        },
-        {
-          "note": "Bb4",
-          "duration": "e"
-        },
-        {
-          "note": "G4",
-          "duration": "e"
-        },
-        {
-          "note": "D5",
-          "duration": "e"
-        },
-        {
-          "note": "Bb4",
-          "duration": "e"
-        },
-        {
-          "note": "G4",
-          "duration": "e"
-        },
-        {
-          "note": "G4",
-          "duration": "e"
-        },
-        {
-          "note": "Bb4",
-          "duration": "e"
-        },
-        {
-          "note": "D5",
-          "duration": "e"
-        },
-        {
-          "note": "Bb4",
-          "duration": "e"
-        },
-        {
-          "note": "G4",
-          "duration": "e"
-        },
-        {
-          "note": "D5",
-          "duration": "e"
-        },
-        {
-          "note": "Bb4",
-          "duration": "e"
-        },
-        {
-          "note": "G4",
-          "duration": "e"
-        },
-        {
-          "note": "G4",
-          "duration": "e"
-        },
-        {
-          "note": "Bb4",
-          "duration": "e"
-        },
-        {
-          "note": "D5",
-          "duration": "e"
-        },
-        {
-          "note": "Bb4",
-          "duration": "e"
-        },
-        {
-          "note": "G4",
-          "duration": "e"
-        },
-        {
-          "note": "Bb4",
-          "duration": "e"
-        },
-        {
-          "note": "D5",
-          "duration": "e"
-        },
-        {
-          "note": "Bb4",
-          "duration": "e"
-        },
-        {
-          "note": "D4",
-          "duration": "q"
-        },
-        {
-          "note": "G4",
-          "duration": "q"
-        },
-        {
-          "note": "Bb4",
-          "duration": "q"
-        },
-        {
-          "note": "G4",
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
+          "duration": "w"
         },
         {
           "note": null,
@@ -3474,6 +2074,10 @@
         {
           "note": null,
           "duration": "w"
+        },
+        {
+          "note": null,
+          "duration": "h"
         },
         {
           "note": null,
@@ -4538,6 +3142,134 @@
         {
           "note": "C5",
           "duration": "s"
+        },
+        {
+          "note": "G4",
+          "duration": "e"
+        },
+        {
+          "note": "Bb4",
+          "duration": "e"
+        },
+        {
+          "note": "D5",
+          "duration": "e"
+        },
+        {
+          "note": "G5",
+          "duration": "e"
+        },
+        {
+          "note": "G4",
+          "duration": "e"
+        },
+        {
+          "note": "Bb4",
+          "duration": "e"
+        },
+        {
+          "note": "D5",
+          "duration": "e"
+        },
+        {
+          "note": "G5",
+          "duration": "e"
+        },
+        {
+          "note": "G4",
+          "duration": "e"
+        },
+        {
+          "note": "Bb4",
+          "duration": "e"
+        },
+        {
+          "note": "D5",
+          "duration": "e"
+        },
+        {
+          "note": "G5",
+          "duration": "e"
+        },
+        {
+          "note": "G4",
+          "duration": "e"
+        },
+        {
+          "note": "Bb4",
+          "duration": "e"
+        },
+        {
+          "note": "D5",
+          "duration": "e"
+        },
+        {
+          "note": "G5",
+          "duration": "e"
+        },
+        {
+          "note": "G4",
+          "duration": "e"
+        },
+        {
+          "note": "Bb4",
+          "duration": "e"
+        },
+        {
+          "note": "D5",
+          "duration": "e"
+        },
+        {
+          "note": "G5",
+          "duration": "e"
+        },
+        {
+          "note": "G4",
+          "duration": "e"
+        },
+        {
+          "note": "Bb4",
+          "duration": "e"
+        },
+        {
+          "note": "D5",
+          "duration": "e"
+        },
+        {
+          "note": "G5",
+          "duration": "e"
+        },
+        {
+          "note": "G4",
+          "duration": "e"
+        },
+        {
+          "note": "Bb4",
+          "duration": "e"
+        },
+        {
+          "note": "D5",
+          "duration": "e"
+        },
+        {
+          "note": "G5",
+          "duration": "e"
+        },
+        {
+          "note": "G4",
+          "duration": "e"
+        },
+        {
+          "note": "Bb4",
+          "duration": "e"
+        },
+        {
+          "note": "D5",
+          "duration": "e"
+        },
+        {
+          "note": "G5",
+          "duration": "e"
         },
         {
           "note": "G4",
@@ -5117,784 +3849,20 @@
           "duration": "w"
         },
         {
-          "note": "C2",
-          "duration": "h"
-        },
-        {
-          "note": null,
-          "duration": "h"
-        },
-        {
-          "note": "C2",
-          "duration": "h"
-        },
-        {
-          "note": null,
-          "duration": "h"
-        },
-        {
-          "note": "C2",
-          "duration": "h"
-        },
-        {
-          "note": null,
-          "duration": "h"
-        },
-        {
-          "note": "C2",
-          "duration": "h"
-        },
-        {
-          "note": null,
-          "duration": "h"
-        },
-        {
-          "note": "C2",
-          "duration": "h"
-        },
-        {
-          "note": null,
-          "duration": "h"
-        },
-        {
-          "note": "C2",
-          "duration": "h"
-        },
-        {
-          "note": null,
-          "duration": "h"
-        },
-        {
-          "note": "C2",
-          "duration": "h"
-        },
-        {
-          "note": null,
-          "duration": "h"
-        },
-        {
-          "note": "C2",
-          "duration": "h"
-        },
-        {
-          "note": null,
-          "duration": "h"
-        },
-        {
-          "note": "C2",
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": "C2",
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": "C2",
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": "C2",
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": "C2",
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": "C2",
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": "C2",
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": "C2",
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": "C2",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C2",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C2",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C2",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C2",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C2",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C2",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C2",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C2",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C2",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C2",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C2",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C2",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C2",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C2",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C2",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C2",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C2",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C2",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C2",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C2",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C2",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C2",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C2",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C2",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C2",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C2",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C2",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C2",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C2",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C2",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C2",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C2",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C2",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C2",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C2",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C2",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C2",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C2",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C2",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C2",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C2",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C2",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C2",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C2",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C2",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C2",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C2",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C2",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C2",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C2",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C2",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C2",
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": "C2",
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": "C2",
-          "duration": "h"
-        },
-        {
-          "note": null,
-          "duration": "h"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
           "note": null,
-          "duration": "q"
+          "duration": "w"
         },
         {
           "note": null,
-          "duration": "q"
+          "duration": "w"
         },
         {
           "note": null,
-          "duration": "q"
+          "duration": "w"
         },
         {
           "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": "C2",
-          "duration": "h"
-        },
-        {
-          "note": null,
-          "duration": "h"
-        },
-        {
-          "note": "C2",
-          "duration": "h"
-        },
-        {
-          "note": null,
-          "duration": "h"
-        },
-        {
-          "note": "C2",
-          "duration": "h"
-        },
-        {
-          "note": null,
-          "duration": "h"
-        },
-        {
-          "note": "C2",
-          "duration": "h"
-        },
-        {
-          "note": null,
-          "duration": "h"
-        },
-        {
-          "note": "C2",
-          "duration": "h"
-        },
-        {
-          "note": null,
-          "duration": "h"
-        },
-        {
-          "note": "C2",
-          "duration": "h"
-        },
-        {
-          "note": null,
-          "duration": "h"
-        },
-        {
-          "note": "C2",
-          "duration": "h"
-        },
-        {
-          "note": null,
-          "duration": "h"
-        },
-        {
-          "note": "C2",
-          "duration": "h"
-        },
-        {
-          "note": null,
-          "duration": "h"
-        },
-        {
-          "note": "C2",
-          "duration": "h"
-        },
-        {
-          "note": null,
-          "duration": "h"
-        },
-        {
-          "note": "C2",
-          "duration": "h"
+          "duration": "w"
         },
         {
           "note": null,
@@ -7359,707 +5327,19 @@
         },
         {
           "note": null,
-          "duration": "h"
+          "duration": "w"
         },
         {
-          "note": "C3",
-          "duration": "h"
-        },
-        {
-          "note": null,
-          "duration": "h"
-        },
-        {
-          "note": "C3",
-          "duration": "h"
-        },
-        {
-          "note": null,
-          "duration": "h"
-        },
-        {
-          "note": "C3",
-          "duration": "h"
-        },
-        {
-          "note": null,
-          "duration": "h"
-        },
-        {
-          "note": "C3",
-          "duration": "h"
-        },
-        {
-          "note": null,
-          "duration": "h"
-        },
-        {
-          "note": "C3",
-          "duration": "h"
-        },
-        {
-          "note": null,
-          "duration": "h"
-        },
-        {
-          "note": "C3",
-          "duration": "h"
-        },
-        {
-          "note": null,
-          "duration": "h"
-        },
-        {
-          "note": "C3",
-          "duration": "h"
-        },
-        {
-          "note": null,
-          "duration": "h"
-        },
-        {
-          "note": "C3",
-          "duration": "h"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": "C3",
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": "C3",
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": "C3",
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": "C3",
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": "C3",
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": "C3",
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": "C3",
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": "C3",
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C3",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C3",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C3",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C3",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C3",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C3",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C3",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C3",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C3",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C3",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C3",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C3",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C3",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C3",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C3",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C3",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C3",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C3",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C3",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C3",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C3",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C3",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C3",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C3",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C3",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C3",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C3",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C3",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C3",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C3",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C3",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C3",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": "C3",
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": "C3",
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "h"
-        },
-        {
-          "note": "C3",
-          "duration": "h"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
           "note": null,
-          "duration": "q"
+          "duration": "w"
         },
         {
           "note": null,
-          "duration": "q"
+          "duration": "w"
         },
         {
           "note": null,
-          "duration": "q"
+          "duration": "w"
         },
         {
           "note": null,
@@ -8096,6 +5376,10 @@
         {
           "note": null,
           "duration": "w"
+        },
+        {
+          "note": null,
+          "duration": "h"
         },
         {
           "note": null,
@@ -9787,798 +7071,6 @@
         },
         {
           "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": "C6",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C6",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C6",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C6",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C6",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C6",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C6",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C6",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C6",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C6",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C6",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C6",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C6",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C6",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C6",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C6",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C6",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C6",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C6",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C6",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C6",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C6",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C6",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C6",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C6",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C6",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C6",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C6",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C6",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C6",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C6",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C6",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C6",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C6",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C6",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C6",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C6",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C6",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C6",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C6",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C6",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C6",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C6",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C6",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C6",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C6",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C6",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C6",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C6",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C6",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C6",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C6",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C6",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C6",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C6",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C6",
-          "duration": "e"
-        },
-        {
-          "note": null,
-          "duration": "e"
-        },
-        {
-          "note": "C6",
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": "C6",
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
-          "duration": "q"
-        },
-        {
-          "note": null,
           "duration": "w"
         },
         {
@@ -10631,7 +7123,7 @@
         },
         {
           "note": null,
-          "duration": "w"
+          "duration": "h"
         },
         {
           "note": null,
@@ -10654,1028 +7146,24 @@
           "duration": "w"
         },
         {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
           "note": null,
-          "duration": "s"
+          "duration": "w"
         },
         {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
-          "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
-        },
-        {
           "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
+          "duration": "w"
         },
         {
           "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
+          "duration": "w"
         },
         {
           "note": null,
-          "duration": "s"
-        },
-        {
-          "note": "C6",
-          "duration": "s"
+          "duration": "w"
         },
         {
           "note": null,
-          "duration": "s"
+          "duration": "w"
         },
         {
           "note": "C6",
